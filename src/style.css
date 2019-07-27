@@ -1,0 +1,19 @@
+body {
+  font-family: 'patchy-robots';
+  background-color: black;
+  margin: 0px;
+}
+
+#loading {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  font-size: 48px;
+}
+
+@font-face {
+  font-family: 'patchy-robots';
+  src: url('asset/patchy-robots.ttf');
+}

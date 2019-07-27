@@ -1,0 +1,29 @@
+{
+  "name": "browser-game-template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Simon Lagos <simon.lagos.sallhed@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "rm -rf dist && parcel build src/index.html --public-url ./",
+    "checkjs": "tsc --module commonjs --allowJs --checkJs --noEmit --target es2016 src/*.js",
+    "lint": "eslint .",
+    "validate-ci": "circleci config validate",
+    "sprites": "muncher --input asset --output static/spritesheet/spritesheet --flip"
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "muncher": "^0.0.4",
+    "parcel-bundler": "^1.12.3",
+    "parcel-plugin-static-files-copy": "^2.1.2",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "l1": "^0.5.28",
+    "pixi.js": "^5.1.0"
+  }
+}

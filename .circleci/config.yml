@@ -1,0 +1,75 @@
+version: 2.1
+commands:
+  npm_install:
+    parameters:
+      dir:
+        type: string
+    steps:
+      - restore_cache:
+          name: "[<< parameters.dir >>] restore_cache"
+          key: v1-npm-{{ checksum "<< parameters.dir >>/package-lock.json" }}
+      - run:
+          name: "[<< parameters.dir >>] npm ci"
+          command: if [ ! -d "node_modules" ]; then npm ci; fi
+          working_directory: << parameters.dir >>
+      - save_cache:
+          name: "[<< parameters.dir >>] save_cache"
+          key: v1-npm-{{ checksum "<< parameters.dir >>/package-lock.json" }}
+          paths:
+          - "<< parameters.dir >>/node_modules"
+jobs:
+  setup:
+    docker:
+      - image: node:11.11
+    working_directory: ~/browser-game-template
+    steps:
+      - checkout
+      - run:
+          name: Combine timestamp and sha of last commit to create version
+          command: git show -s --format="%ct-%h" > version
+      - npm_install:
+          dir: "game"
+      - persist_to_workspace:
+          paths: .
+          root: .
+  build_game:
+    docker:
+      - image: node:11.11
+    working_directory: ~/browser-game-template
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Load version into env
+          command: |
+            echo 'export VERSION=`cat ~/browser-game-template/version`' >> $BASH_ENV
+      - run:
+          command: npm run build
+          working_directory: game
+      - persist_to_workspace:
+          paths:
+            - game/dist
+          root: .
+  deploy_game_itch:
+    docker:
+      - image: rymdkraftverk/ci:latest
+    working_directory: ~/browser-game-template
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Upload to itch.io
+          command: butler push game/dist rymdkraftverk/browser-game-template:web
+workflows:
+  default:
+    jobs:
+      - setup
+      - build_game:
+          requires:
+              - setup
+          filters:
+            branches:
+              only: master
+      - deploy_game_itch:
+          requires:
+            - build_game
