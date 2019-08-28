@@ -24,7 +24,9 @@
     "typescript": "^3.5.3"
   },
   "dependencies": {
+    "howler": "^2.1.2",
     "l1": "^0.5.28",
+    "lodash": "^4.17.15",
     "pixi.js": "^5.1.0"
   }
 }

@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js'
 import * as l1 from 'l1'
 import { GAME_HEIGHT, GAME_WIDTH } from './constant'
+import Sound from './sound'
 
 const VERSION = process.env.VERSION || 'N/A'
 
@@ -42,6 +43,8 @@ document.fonts.load('10pt "patchy-robots"')
       text.x = GAME_WIDTH / 2
       text.y = GAME_HEIGHT / 2
       app.stage.addChild(text)
+
+      Sound.SWORD_01.play()
     })
   })
   .catch(() => {
