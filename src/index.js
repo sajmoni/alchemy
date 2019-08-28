@@ -38,11 +38,22 @@ document.fonts.load('10pt "patchy-robots"')
       sprite.y = 10
       app.stage.addChild(sprite)
 
-      const text = new PIXI.Text('Game template initialized', { fontFamily: 'patchy-robots', fill: 'white' })
+      const text = new PIXI.Text('Game template initialized', { fontFamily: 'patchy-robots', fill: 'white', fontSize: 30 })
       text.anchor.set(0.5)
       text.x = GAME_WIDTH / 2
       text.y = GAME_HEIGHT / 2
+      l1.makeResizable(text)
       app.stage.addChild(text)
+
+      const getScale = juice.sine({
+        duration: 180,
+        startValue: 1,
+        endValue: 1.2,
+      })
+
+      l1.repeat((counter) => {
+        text.scale.set(getScale(counter))
+      })
 
       Sound.SWORD_01.play()
     })
