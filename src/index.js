@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js'
 import * as l1 from 'l1'
+import * as juice from 'juice.js'
 import { GAME_HEIGHT, GAME_WIDTH } from './constant'
 import Sound from './sound'
 
@@ -61,6 +62,19 @@ document.fonts.load('10pt "patchy-robots"')
   .catch(() => {
     error('Unable to load font')
   })
+
+// Make game fullscreen and resize when window is resized
+const resizeGame = () => {
+  // const game = document.getElementById('container')
+  // game.style.height = `${window.innerHeight}px`
+
+  const screenWidth = window.innerWidth
+  const screenHeight = window.innerHeight
+  l1.resize(screenWidth, screenHeight)
+}
+resizeGame()
+
+window.addEventListener('resize', resizeGame)
 
 window.debug = {
   ...window.debug,
