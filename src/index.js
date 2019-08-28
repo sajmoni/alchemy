@@ -25,7 +25,6 @@ l1.init(app, {
   logging: false,
 })
 
-// TODO: Automatically load all spritesheets
 app.loader.add('spritesheet/spritesheet.json')
 
 // Experimental API's are not supported by typescript

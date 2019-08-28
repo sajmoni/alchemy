@@ -40,7 +40,7 @@ Validate config at `.circleci/config.yml`
 
 ### Typescript
 
-`npm run checkjs`
+`npm run typecheck`
 
 Will check the code with the typescript compiler.
 

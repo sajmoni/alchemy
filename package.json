@@ -8,7 +8,7 @@
   "scripts": {
     "start": "parcel src/index.html",
     "build": "rm -rf dist && parcel build src/index.html --public-url ./",
-    "checkjs": "tsc --module commonjs --allowJs --checkJs --noEmit --target es2016 src/*.js",
+    "typecheck": "tsc --module commonjs --allowJs --checkJs --noEmit --target es2016 src/*.js",
     "lint": "eslint .",
     "validate-ci": "circleci config validate",
     "sprites": "muncher --input asset --output static/spritesheet/spritesheet --flip"
