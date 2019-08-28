@@ -11,6 +11,7 @@
     "typecheck": "tsc --module commonjs --allowJs --checkJs --noEmit --target es2016 src/*.js",
     "lint": "eslint .",
     "validate-ci": "circleci config validate",
+    "check-all": "yarn lint && yarn typecheck && yarn validate-ci",
     "sprites": "muncher --input asset --output static/spritesheet/spritesheet --flip"
   },
   "devDependencies": {
