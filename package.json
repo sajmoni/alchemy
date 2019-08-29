@@ -12,7 +12,7 @@
     "lint": "eslint .",
     "validate-ci": "circleci config validate",
     "check-all": "yarn lint && yarn typecheck && yarn validate-ci",
-    "sprites": "muncher --input asset --output static/spritesheet/spritesheet --flip"
+    "munch": "muncher --input asset --output static/spritesheet/spritesheet --flip"
   },
   "devDependencies": {
     "eslint": "^6.1.0",
