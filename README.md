@@ -2,29 +2,36 @@
 
 ## Includes
 
- - Parcel module bundler
+ - `parcel` - Super fast no-config module bundler :sparkles:
 
- - Pixi.js and l1 starter
+ - `pixi.js` - The best WebGL library for 2D graphics :tv:
 
- - Spritesheet pipeline
+ - `level1` - Pixi and general game utils :wrench:
 
- - Itch.io circle.ci config
+ - `muncher` - Automatically create sprite sheets from the command line :cake:
 
- - Eslint
+ - `circle.ci` config to automatically push builds to `itch.io` :red_circle:
 
- - Typescript compiler type checker
+ - `eslint` and `typescript` compiler type checker :policeman:
+
+ - `sentry` and `google analytics` - Log errors and usage :chart:
+
+ - `howler` - Preload sounds :sound:
 
 
-## Instructions after copying
+## How to use
 
- - Update `.cicleci/config.yml`
+ - Click the green `Use this template` button on the top of the page.
 
- - Update `src/index.html`
+ Once you have your own project:
 
+ - Update the project name in: `.cicleci/config.yml`
+
+ - Update sentry and google analytics URLs
 
 ### Validate CI config
 
-#### Install
+#### Install circle.ci CLI
 
 `https://circleci.com/docs/2.0/local-cli/`
 
@@ -36,11 +43,11 @@
 
 Validate config at `.circleci/config.yml`
 
-`circleci config validate`
+`yarn validate-ci`
 
 ### Typescript
 
-`npm run typecheck`
+`yarn typecheck`
 
 Will check the code with the typescript compiler.
 
@@ -49,3 +56,7 @@ _To ignore a line, add `@ts-ignore` on the line above_
 ### Static folder
 
 Content in the `static` folder will be copied over to `dist` without being bundled.
+
+### Generate spritesheet
+
+`yarn munch`
