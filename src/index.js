@@ -76,7 +76,10 @@ resizeGame()
 
 window.addEventListener('resize', resizeGame)
 
+// debug is not a part of the window type
+// @ts-ignore
 window.debug = {
+  // @ts-ignore
   ...window.debug,
   // Add console commands here
 }
