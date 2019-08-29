@@ -15,19 +15,19 @@
     "munch": "muncher --input asset --output static/spritesheet/spritesheet --flip"
   },
   "devDependencies": {
-    "eslint": "^6.1.0",
-    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint": "^6.2.2",
+    "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "muncher": "^0.0.4",
+    "muncher": "^0.0.5",
     "parcel-bundler": "^1.12.3",
-    "parcel-plugin-static-files-copy": "^2.1.2",
-    "typescript": "^3.5.3"
+    "parcel-plugin-static-files-copy": "^2.2.1",
+    "typescript": "^3.6.2"
   },
   "dependencies": {
     "howler": "^2.1.2",
     "juice.js": "^1.0.6",
     "l1": "^0.6.0-3",
     "lodash": "^4.17.15",
-    "pixi.js": "^5.1.0"
+    "pixi.js": "^5.1.2"
   }
 }
