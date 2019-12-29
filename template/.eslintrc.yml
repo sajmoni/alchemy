@@ -1,0 +1,12 @@
+extends: airbnb-base
+env:
+  browser: true
+rules:
+  # Enables typescript not reporting extended objects as errors
+  dot-notation: off
+  # These two rules interfere with Parcel absolute imports
+  import/no-absolute-path: off
+  import/no-unresolved: off
+  semi:
+    - error
+    - never

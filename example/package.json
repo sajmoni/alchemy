@@ -1,0 +1,14 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "refresh": "rm -rf node_modules && yarn",
+    "test-game": "rm -rf test-game && yarn make-web-game test-game"
+  },
+  "dependencies": {
+    "make-web-game": "file:../"
+  }
+}

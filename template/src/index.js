@@ -1,14 +1,14 @@
 import * as PIXI from 'pixi.js'
+import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
 import * as juice from 'juice.js'
+
 import { GAME_HEIGHT, GAME_WIDTH } from './constant'
 import Sound from './sound'
 
 const VERSION = process.env.VERSION || 'N/A'
-
-const { error, log } = console
-
-log(`Version: ${VERSION}`)
+const DEBUG_PERFORMANCE = false
+console.log(`Version: ${VERSION}`)
 
 const app = new PIXI.Application({
   width: GAME_WIDTH,
@@ -22,11 +22,28 @@ document
   .getElementById('game')
   .appendChild(app.view)
 
-l1.init(app, {
-  debug: false,
-  logging: false,
-})
+ex.init(app)
 
+const loopDurations = []
+
+if (DEBUG_PERFORMANCE) {
+  app.ticker.add((deltaTime) => {
+    const before = performance.now()
+
+    l1.update(deltaTime)
+
+    const after = performance.now()
+
+    const delta = after - before
+    loopDurations.push(delta)
+  })
+} else {
+  app.ticker.add(l1.update)
+}
+
+// statex.init(app, defaultState)
+
+// TODO: Automatically read and load sprite sheets?
 app.loader.add('spritesheet/spritesheet.json')
 
 // Experimental API's are not supported by typescript
@@ -34,7 +51,7 @@ app.loader.add('spritesheet/spritesheet.json')
 document.fonts.load('10pt "patchy-robots"')
   .then(() => {
     app.loader.load(() => {
-      const sprite = new PIXI.Sprite(l1.getTexture('square1'))
+      const sprite = new PIXI.Sprite(ex.getTexture('square1'))
       sprite.x = 10
       sprite.y = 10
       app.stage.addChild(sprite)
@@ -43,7 +60,7 @@ document.fonts.load('10pt "patchy-robots"')
       text.anchor.set(0.5)
       text.x = GAME_WIDTH / 2
       text.y = GAME_HEIGHT / 2
-      l1.makeResizable(text)
+      ex.makeResizable(text)
       app.stage.addChild(text)
 
       const getScale = juice.sine({
@@ -57,10 +74,15 @@ document.fonts.load('10pt "patchy-robots"')
       })
 
       Sound.SWORD_01.play()
+
+      // * Attempt to improve performance
+      app.renderer.plugins.prepare.upload(app.stage, () => {
+        app.ticker.start()
+      })
     })
   })
   .catch(() => {
-    error('Unable to load font')
+    console.error('Unable to load font')
   })
 
 // Make game fullscreen and resize when window is resized
@@ -70,16 +92,13 @@ const resizeGame = () => {
 
   const screenWidth = window.innerWidth
   const screenHeight = window.innerHeight
-  l1.resize(screenWidth, screenHeight)
+  ex.resize(screenWidth, screenHeight)
 }
 resizeGame()
 
 window.addEventListener('resize', resizeGame)
 
-// debug is not a part of the window type
-// @ts-ignore
-window.debug = {
-  // @ts-ignore
-  ...window.debug,
+window['debug'] = {
+  ...window['debug'],
   // Add console commands here
 }

@@ -1,3 +1,5 @@
+// Shows a simple loading screen before the game has loaded
+
 const loading = document.createElement('div')
 loading.innerHTML = 'loading...'
 loading.setAttribute('id', 'loading')
