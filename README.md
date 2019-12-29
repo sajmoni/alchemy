@@ -1,62 +1,73 @@
-# Browser game template
+<h1 align="center" style="background-color: black; color:red; padding: 10px 0 15px 0">
+  make web game
+</h1>
+<h4 align="center">
+  CLI tool to generate a web game template
+</h4>
+
+---
+
+Generates a modular template to get started making games that run in the browser. All libraries can be switched out for other ones that you prefer. These are just some very good defaults.
+
+---
 
 ## Includes
 
- - `parcel` - Super fast no-config module bundler :sparkles:
+ - :tv: [`pixi.js`](https://github.com/pixijs/pixi.js) - The best WebGL library for 2D graphics
+ 
+ - :tv::up: [`pixi-ex`](https://github.com/rymdkraftverk/pixi-ex) - Pixi.js utility functions
 
- - `pixi.js` - The best WebGL library for 2D graphics :tv:
+ - :sparkles: [`parcel`](https://github.com/parcel-bundler/parcel) - Super fast no-config module bundler
+ 
+ - :one: [`level1`](https://github.com/rymdkraftverk/level1) - Delayed and repeated callback execution for games
 
- - `level1` - Pixi and general game utils :wrench:
+ - :cake: [`muncher`](https://github.com/sajmoni/muncher) - Automatically create sprite sheets from the command line 
 
- - `muncher` - Automatically create sprite sheets from the command line :cake:
+ - :red_circle: [`circle.ci`](https://circleci.com/) config to automatically push builds to `itch.io` 
 
- - `circle.ci` config to automatically push builds to `itch.io` :red_circle:
+ - :policeman: [`eslint`](https://github.com/eslint/eslint) and [`typescript`](https://github.com/microsoft/TypeScript) compiler type checker
 
- - `eslint` and `typescript` compiler type checker :policeman:
+ - :chart: [`sentry`]() and [`google analytics`]() - Log errors and usage 
 
- - `sentry` and `google analytics` - Log errors and usage :chart:
+ - :sound: [`howler`](https://github.com/goldfire/howler.js/) - Preloaded sounds
+ 
+ <!-- - :wrench: [`tiny-tools`](https://github.com/sajmoni/tiny-toolkit) - General game utils -->
 
- - `howler` - Preload sounds :sound:
+ - :earth_asia: [`lingui`]() - Translations
 
+ - :straight_ruler: [`ava`]() - Super simple test framework
+
+ <!-- - versioning (tag releases) - create release notes with ease -->
+
+ <!-- - :: [`electron`] - Easily convert your web game into a desktop application
+ - electron and electron-forge -->
+
+ <!-- - marketing -->
+
+ <!-- - state management -->
+
+ <!-- - Debug tools -->
+
+ <!-- - random number generation [`chance`] -->
+
+---
 
 ## How to use
 
- - Click the green `Use this template` button on the top of the page.
+`npx make-web-game [game name]`
+
+_Usage with `npx` ensures that you are always using the latest version_
 
  Once you have your own project:
 
- - Update the project name in: `.cicleci/config.yml`
+ <!-- - Update the project name in: `.cicleci/config.yml` -->
 
- - Update sentry and google analytics URLs
+ - Set sentry and google analytics URLs
 
-### Validate CI config
+ - Add your git repo with `git remote add origin`
 
-#### Install circle.ci CLI
+---
 
-`https://circleci.com/docs/2.0/local-cli/`
+## Requirements
 
-##### MacOS
-
-`brew install circleci`
-
-#### Validate
-
-Validate config at `.circleci/config.yml`
-
-`yarn validate-ci`
-
-### Typescript
-
-`yarn typecheck`
-
-Will check the code with the typescript compiler.
-
-_To ignore a line, add `@ts-ignore` on the line above_
-
-### Static folder
-
-Content in the `static` folder will be copied over to `dist` without being bundled.
-
-### Generate spritesheet
-
-`yarn munch`
+`make-web-game` uses `yarn` and `git` and requires them to be installed on your machine in order to work.
