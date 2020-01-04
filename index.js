@@ -131,21 +131,20 @@ const command = 'yarnpkg'
 const productionArgs = defaultArgs.concat(allDependencies).concat(pathArg)
 const devArgs = defaultArgs.concat('--dev').concat(devDependencies).concat(pathArg)
 
-Promise.all([
-  spawnCommand({ command, args: productionArgs }),
-  spawnCommand({ command, args: devArgs }),
-]).then(() => {
+spawnCommand({ command, args: productionArgs })
+  .then(() => spawnCommand({ command, args: devArgs }))
+  .then(() => {
   // * Get README file in order to get template directory path
-  const templateDirectory = path.dirname(require.resolve('./template/README.md'))
-  fs.copySync(templateDirectory, rootPath)
+    const templateDirectory = path.dirname(require.resolve('./template/README.md'))
+    fs.copySync(templateDirectory, rootPath)
 
-  // TODO: Create an initial commit
-  displayDoneMessage({ name: projectName, rootPath })
-}).catch((reason) => {
-  console.log()
-  console.log(chalk.red('Aborting installation.'))
-  console.log(`Command failed: ${chalk.cyan(reason.command)}`)
-  console.log()
-})
+    // TODO: Create an initial commit
+    displayDoneMessage({ name: projectName, rootPath })
+  }).catch((reason) => {
+    console.log()
+    console.log(chalk.red('Aborting installation.'))
+    console.log(`Command failed: ${chalk.cyan(reason.command)}`)
+    console.log()
+  })
 
 // TODO: Tests
