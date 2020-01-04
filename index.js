@@ -80,7 +80,7 @@ const packageJsonTemplate = {
   private: true,
   main: 'src/electron.js',
   scripts: {
-    start: 'parcel src/index.html --no-autoinstall',
+    start: 'parcel src/index.html --no-autoinstall --no-cache',
     build: 'rm -rf dist && parcel build src/index.html --public-url ./',
     elec: 'electron .',
     lint: 'eslint .',
