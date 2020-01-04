@@ -1,8 +1,8 @@
 <h1 align="center" style="background-color: black; color:red; padding: 10px 0 15px 0">
-  make web game
+  make-web-game
 </h1>
 <h4 align="center">
-  CLI tool to generate a web game template
+  CLI tool to generate a 2D browser game template
 </h4>
 
 ---
@@ -39,8 +39,7 @@ Generates a modular template to get started making games that run in the browser
 
  <!-- - versioning (tag releases) - create release notes with ease -->
 
- <!-- - :: [`electron`] - Easily convert your web game into a desktop application
- - electron and electron-forge -->
+ - :bulb: [`electron`]() - Easily convert your web game into a desktop application
 
  <!-- - marketing -->
 
@@ -49,6 +48,8 @@ Generates a modular template to get started making games that run in the browser
  <!-- - Debug tools -->
 
  <!-- - random number generation [`chance`] -->
+ 
+ <!-- - Pixi Camera? -->
 
 ---
 

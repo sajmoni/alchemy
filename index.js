@@ -78,9 +78,11 @@ const packageJsonTemplate = {
   name: appName,
   version: '0.1.0',
   private: true,
+  main: 'src/electron.js',
   scripts: {
     start: 'parcel src/index.html --no-autoinstall',
     build: 'rm -rf dist && parcel build src/index.html --public-url ./',
+    elec: 'electron .',
     lint: 'eslint .',
     typecheck: 'tsc --module commonjs --allowJs --checkJs --noEmit --target es2016 src/*.js',
     'validate-ci': 'circleci config validate',
@@ -95,7 +97,6 @@ fs.writeFileSync(
 )
 
 // TODO: Sentry, google analytics or log rocket?
-// TODO: Electron
 // TODO: State management
 // TODO: Debug tools
 // TODO: chance? tiny-tools?
@@ -105,6 +106,7 @@ const allDependencies = [
   'l1',
   'pixi.js',
   'pixi-ex',
+  'electron',
 ]
 
 // TODO: Ava
