@@ -1,0 +1,1 @@
+/* eslint-disable */module.exports={languageData:{"plurals":function(n,ord){if(ord)return"other";return"other"}},messages:{"main.gameStarted":"\u30B2\u30FC\u30E0\u304C\u59CB\u307E\u308A\u307E\u3057\u305F"}};

@@ -1,0 +1,12 @@
+{
+  "main.gameStarted": {
+    "translation": "Game started!",
+    "defaults": "Game started!",
+    "origin": [
+      [
+        "src/index.js",
+        75
+      ]
+    ]
+  }
+}

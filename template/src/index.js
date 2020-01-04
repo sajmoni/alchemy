@@ -2,14 +2,17 @@ import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
 import * as juice from 'juice.js'
+import { t } from '@lingui/macro'
 
 import { GAME_HEIGHT, GAME_WIDTH } from './constant'
 import Sound from './sound'
+import i18n from './i18n'
 
 const VERSION = process.env.VERSION || 'N/A'
 const DEBUG_PERFORMANCE = false
 console.log(`Version: ${VERSION}`)
 
+// TODO: Do not use PIXI.Application
 const app = new PIXI.Application({
   width: GAME_WIDTH,
   height: GAME_HEIGHT,
@@ -56,7 +59,11 @@ document.fonts.load('10pt "patchy-robots"')
       sprite.y = 10
       app.stage.addChild(sprite)
 
-      const text = new PIXI.Text('Game template initialized', { fontFamily: 'patchy-robots', fill: 'white', fontSize: 30 })
+      const text = new PIXI.Text(i18n._(t('main.gameStarted')`Game started!`),
+        {
+          fontFamily: 'patchy-robots', fill: 'white', fontSize: 30,
+        })
+
       text.anchor.set(0.5)
       text.x = GAME_WIDTH / 2
       text.y = GAME_HEIGHT / 2

@@ -107,6 +107,10 @@ const allDependencies = [
   'pixi.js',
   'pixi-ex',
   'electron',
+  // * Translations
+  '@lingui/core',
+  '@lingui/macro',
+  // * --
 ]
 
 // TODO: Ava
@@ -119,6 +123,12 @@ const devDependencies = [
   'parcel-bundler',
   'parcel-plugin-static-files-copy',
   'typescript',
+  // * Translations
+  '@lingui/cli',
+  '@babel/core',
+  'babel-plugin-macros',
+  'babel-core@bridge',
+  // * --
 ]
 
 console.log('Installing packages. This might take a couple of minutes.')
