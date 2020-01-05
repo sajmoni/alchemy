@@ -7,7 +7,7 @@ const os = require('os')
 const fs = require('fs-extra')
 
 const packageJson = require('./package.json')
-const spawnCommand = require('./spawnCommand')
+const spawnCommand = require('./spawnCommand.js')
 
 // The structure of this code is inspired by the create-react-app source code
 
