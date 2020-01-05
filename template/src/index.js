@@ -7,6 +7,7 @@ import { t } from '@lingui/macro'
 import { GAME_HEIGHT, GAME_WIDTH } from './constant'
 import Sound from './sound'
 import i18n from './i18n'
+import * as prism from './prism'
 
 const VERSION = process.env.VERSION || 'N/A'
 const DEBUG_PERFORMANCE = false
@@ -44,6 +45,17 @@ if (DEBUG_PERFORMANCE) {
   app.ticker.add(l1.update)
 }
 
+
+const state = {
+  square: {
+    x: 1,
+    angle: 50,
+    visible: true,
+  },
+}
+
+prism.init(state)
+
 // statex.init(app, defaultState)
 
 // TODO: Automatically read and load sprite sheets?
@@ -56,8 +68,42 @@ document.fonts.load('10pt "patchy-robots"')
     app.loader.load(() => {
       const sprite = new PIXI.Sprite(ex.getTexture('square1'))
       sprite.x = 10
-      sprite.y = 10
+      sprite.y = 50
+      sprite.anchor.set(0.5)
       app.stage.addChild(sprite)
+
+      l1.repeat(() => {
+        prism.state.square.x += 1
+      }, 4)
+
+      l1.repeat(() => {
+        prism.state.square.angle += 2
+      })
+
+      l1.repeat(() => {
+        if (prism.getState().square.visible) {
+          prism.state.square.visible = false
+        } else {
+          prism.state.square.visible = true
+        }
+      }, 30)
+
+      const disconnectSquare = prism.connect(['square.speed', 'square.angle', 'square.visible'],
+        ({
+          square: {
+            angle, x,
+          },
+        }) => {
+          // console.log('TCL: _state render', _state)
+
+          sprite.x = x
+          sprite.angle = angle
+        })
+
+      l1.once(() => {
+        disconnectSquare()
+        sprite.destroy()
+      }, 500)
 
       const text = new PIXI.Text(i18n._(t('main.gameStarted')`Game started!`),
         {
