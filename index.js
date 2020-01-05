@@ -113,6 +113,7 @@ const allDependencies = [
   'pixi.js',
   'pixi-ex',
   'electron',
+  'lodash',
   // * Translations
   '@lingui/core',
   '@lingui/macro',
