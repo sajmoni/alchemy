@@ -89,6 +89,9 @@ const packageJsonTemplate = {
     'validate-ci': 'circleci config validate',
     'check-all': 'yarn lint && yarn typecheck && yarn validate-ci',
     munch: 'muncher --input asset --output static/spritesheet/spritesheet --flip',
+    'add-locale': 'lingui add-locale',
+    extract: 'lingui extract --clean --overwrite',
+    compile: 'lingui compile',
   },
   ava: {
     require: [
