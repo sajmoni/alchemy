@@ -45,8 +45,6 @@ Generates a modular template to get started making games that run in the browser
 
  <!-- - Debug tools -->
 
- <!-- - Pixi Camera? -->
-
 ---
 
 ## How to use

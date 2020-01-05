@@ -6,7 +6,8 @@
   "license": "MIT",
   "private": false,
   "files": [
-    "/index.js"
+    "./index.js",
+    "./spawnCommand.js"
   ],
   "directories": {
     "example": "example"
