@@ -1,5 +1,6 @@
 {
   "plugins": [
     "macros"
-  ]
+  ],
+  "presets": ["@babel/preset-env"]
 }

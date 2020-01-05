@@ -83,11 +83,17 @@ const packageJsonTemplate = {
     start: 'parcel src/index.html --no-autoinstall --no-cache',
     build: 'rm -rf dist && parcel build src/index.html --public-url ./',
     elec: 'electron .',
+    test: 'ava',
     lint: 'eslint .',
     typecheck: 'tsc --module commonjs --allowJs --checkJs --noEmit --target es2016 src/*.js',
     'validate-ci': 'circleci config validate',
     'check-all': 'yarn lint && yarn typecheck && yarn validate-ci',
     munch: 'muncher --input asset --output static/spritesheet/spritesheet --flip',
+  },
+  ava: {
+    require: [
+      '@babel/register',
+    ],
   },
 }
 
@@ -128,6 +134,11 @@ const devDependencies = [
   '@babel/core',
   'babel-plugin-macros',
   'babel-core@bridge',
+  // * --
+  // * Testing
+  '@babel/preset-env',
+  '@babel/register',
+  'ava',
   // * --
 ]
 
