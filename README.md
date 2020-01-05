@@ -30,8 +30,6 @@ Generates a modular template to get started making games that run in the browser
  - :chart: [`sentry`]() and [`google analytics`]() - Log errors and usage 
 
  - :sound: [`howler`](https://github.com/goldfire/howler.js/) - Preloaded sounds
- 
- <!-- - :wrench: [`tiny-tools`](https://github.com/sajmoni/tiny-toolkit) - General game utils -->
 
  - :earth_asia: [`lingui`]() - Translations
 
@@ -47,8 +45,6 @@ Generates a modular template to get started making games that run in the browser
 
  <!-- - Debug tools -->
 
- <!-- - random number generation [`chance`] -->
- 
  <!-- - Pixi Camera? -->
 
 ---

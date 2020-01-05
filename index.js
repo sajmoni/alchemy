@@ -105,7 +105,6 @@ fs.writeFileSync(
 // TODO: Sentry, google analytics or log rocket?
 // TODO: State management
 // TODO: Debug tools
-// TODO: chance? tiny-tools?
 const allDependencies = [
   'howler',
   'juice.js',
@@ -120,7 +119,6 @@ const allDependencies = [
   // * --
 ]
 
-// TODO: Ava
 // TODO: Versioning? Tag releases, generate patch notes
 const devDependencies = [
   'eslint',
