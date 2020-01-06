@@ -27,19 +27,19 @@ Generates a modular template to get started making games that run in the browser
 
  - :policeman: [`eslint`](https://github.com/eslint/eslint) and [`typescript`](https://github.com/microsoft/TypeScript) compiler type checker
 
- - :chart: [`sentry`]() and [`google analytics`]() - Log errors and usage 
+ - :chart: [`sentry`](https://sentry.io/) - Log errors
 
  - :sound: [`howler`](https://github.com/goldfire/howler.js/) - Preloaded sounds
 
- - :earth_asia: [`lingui`]() - Translations
+ - :earth_asia: [`lingui`](https://github.com/lingui/js-lingui) - Translations
 
- - :straight_ruler: [`ava`]() - Super simple test framework
+ - :straight_ruler: [`ava`](https://github.com/avajs/ava) - Super simple test framework
 
  <!-- - versioning (tag releases) - create release notes with ease -->
 
- - :bulb: [`electron`]() - Easily convert your web game into a desktop application
+ - :bulb: [`electron`](https://github.com/electron/electron) - Easily convert your web game into a desktop application
 
- <!-- - marketing -->
+ <!-- - :speech_balloon: Marketing - Tool for generating gifs? -->
 
  <!-- - state management -->
 

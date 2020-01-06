@@ -105,8 +105,7 @@ fs.writeFileSync(
   JSON.stringify(packageJsonTemplate, null, 2) + os.EOL,
 )
 
-// TODO: Sentry, google analytics or log rocket?
-// TODO: State management
+// TODO: Sentry
 // TODO: Debug tools
 const allDependencies = [
   'howler',
