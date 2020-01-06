@@ -1,20 +1,19 @@
 {
   "name": "make-web-game",
   "version": "0.0.4",
-  "main": "index.js",
+  "main": "dist/index.js",
   "author": "Simon Lagos <simon.lagos.sallhed@gmail.com>",
   "license": "MIT",
   "private": false,
   "files": [
-    "./index.js",
-    "./spawnCommand.js"
+    "dist/"
   ],
   "directories": {
     "example": "example"
   },
-  "bin": "./index.js",
+  "bin": "dist/index.js",
   "scripts": {
-    "foo": "yarn build && cd example && yarn refresh && rm -rf test-game && yarn make-web-game test-game && cd -",
+    "foo": "yarn build && rm -f make-web-game.tgz && yarn pack --filename make-web-game.tgz && cd example && yarn refresh && rm -rf test-game && yarn make-web-game test-game && cd -",
     "start": "parcel index.js --no-autoinstall",
     "build": "rm -rf dist && parcel build index.js --target node --no-cache",
     "typecheck": "tsc --module commonjs --allowJs --checkJs --noEmit --target es2016 src/*.js",
@@ -28,7 +27,8 @@
     "eslint-plugin-import": "2.19.1",
     "np": "5.2.1",
     "parcel-bundler": "1.12.4",
-    "parcel-plugin-shebang": "1.2.8"
+    "parcel-plugin-shebang": "1.2.8",
+    "parcel-plugin-static-files-copy": "2.2.1"
   },
   "dependencies": {
     "chalk": "3.0.0",

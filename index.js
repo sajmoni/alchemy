@@ -158,8 +158,12 @@ const devArgs = defaultArgs.concat('--dev').concat(devDependencies).concat(pathA
 spawnCommand({ command, args: productionArgs })
   .then(() => spawnCommand({ command, args: devArgs }))
   .then(() => {
-  // * Get README file in order to get template directory path
-    const templateDirectory = path.dirname(require.resolve('./template/README.md'))
+    console.log()
+    console.log('Copying files from template')
+
+    // TODO: Investigate how to turn into relative path from dist
+    const templateDirectory = path.resolve('./node_modules/make-web-game/dist/template')
+
     fs.copySync(templateDirectory, rootPath)
 
     // TODO: Create an initial commit

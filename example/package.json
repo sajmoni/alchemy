@@ -5,10 +5,10 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "refresh": "rm -rf node_modules && yarn",
+    "refresh": "yarn cache clean && rm -rf node_modules && rm yarn.lock && yarn",
     "test-game": "rm -rf test-game && yarn make-web-game test-game"
   },
   "dependencies": {
-    "make-web-game": "file:../"
+    "make-web-game": "file:../make-web-game.tgz"
   }
 }
