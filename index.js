@@ -161,8 +161,7 @@ spawnCommand({ command, args: productionArgs })
     console.log()
     console.log('Copying files from template')
 
-    // TODO: Investigate how to turn into relative path from dist
-    const templateDirectory = path.resolve('./node_modules/make-web-game/dist/template')
+    const templateDirectory = `${__dirname}/template`
 
     fs.copySync(templateDirectory, rootPath)
 
