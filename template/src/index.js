@@ -8,19 +8,11 @@ import { GAME_HEIGHT, GAME_WIDTH } from './constant'
 import Sound from './sound'
 import i18n from './i18n'
 import * as prism from './prism'
+import app from './app'
 
 const VERSION = process.env.VERSION || 'N/A'
 const DEBUG_PERFORMANCE = false
 console.log(`Version: ${VERSION}`)
-
-// TODO: Do not use PIXI.Application
-const app = new PIXI.Application({
-  width: GAME_WIDTH,
-  height: GAME_HEIGHT,
-  // Can be enabled once a background image exists
-  // clearBeforeRender: false,
-  backgroundColor: 0x000077,
-})
 
 document
   .getElementById('game')
@@ -45,7 +37,6 @@ if (DEBUG_PERFORMANCE) {
   app.ticker.add(l1.update)
 }
 
-
 const state = {
   square: {
     x: 1,
@@ -55,8 +46,6 @@ const state = {
 }
 
 prism.init(state)
-
-// statex.init(app, defaultState)
 
 // TODO: Automatically read and load sprite sheets?
 app.loader.add('spritesheet/spritesheet.json')
@@ -94,8 +83,6 @@ document.fonts.load('10pt "patchy-robots"')
             angle, x,
           },
         }) => {
-          // console.log('TCL: _state render', _state)
-
           sprite.x = x
           sprite.angle = angle
         })
