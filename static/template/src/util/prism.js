@@ -1,38 +1,39 @@
 import onChange from 'on-change'
 
 // eslint-disable-next-line no-underscore-dangle, import/no-mutable-exports
-let _state
+let state
 // eslint-disable-next-line no-underscore-dangle
-const _scenes = []
+const subscribers = []
 
 function onChangeFn(path /* value, previousValue */) {
-  const state = onChange.target(this)
+  const currentState = onChange.target(this)
 
-  _scenes.forEach(([paths, render]) => {
+  subscribers.forEach(([paths, callback]) => {
     if (paths.includes(path)) {
-      render(state)
+      callback(currentState)
     }
   })
 }
 
-export const init = (state) => {
-  _state = onChange(state, onChangeFn)
+export const init = (initialState) => {
+  state = onChange(initialState, onChangeFn)
 }
 
-export const getState = () => onChange.target(_state)
+export const getState = () => onChange.target(state)
 
-export const connect = (paths, render) => {
-  const scene = [paths, render]
-  _scenes.push(scene)
-  // Return disconnect?
-  const disconnect = () => {
+export const subscribe = (paths, callback) => {
+  const scene = [paths, callback]
+  subscribers.push(scene)
+
+  const unsubscribe = () => {
     // * Mutate array for performance reasons
-    const indexToRemove = _scenes.indexOf(scene)
+    const indexToRemove = subscribers.indexOf(scene)
     if (indexToRemove >= 0) {
-      _scenes.splice(indexToRemove, 1)
+      subscribers.splice(indexToRemove, 1)
     }
   }
-  return disconnect
+
+  return unsubscribe
 }
 
-export { _state as state }
+export { state }

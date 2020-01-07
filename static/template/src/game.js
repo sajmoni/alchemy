@@ -33,7 +33,7 @@ export default () => {
     }
   }, 30)
 
-  const disconnectSquare = prism.connect(['square.speed', 'square.angle', 'square.visible'],
+  const unsubscribeSquare = prism.subscribe(['square.speed', 'square.angle', 'square.visible'],
     ({
       square: {
         angle, x,
@@ -44,7 +44,7 @@ export default () => {
     })
 
   l1.once(() => {
-    disconnectSquare()
+    unsubscribeSquare()
     sprite.destroy()
   }, 500)
 
