@@ -5,6 +5,7 @@ import * as prism from './util/prism'
 import app from './app'
 import game from './game'
 import state from './state'
+import debugOverlay from './util/debugOverlay'
 
 const VERSION = process.env.VERSION || 'N/A'
 const DEBUG_PERFORMANCE = false
@@ -17,6 +18,8 @@ document
 ex.init(app)
 
 const loopDurations = []
+
+let loopDurations = []
 
 if (DEBUG_PERFORMANCE) {
   app.ticker.add((deltaTime) => {
@@ -70,5 +73,39 @@ window.addEventListener('resize', resizeGame)
 
 window['debug'] = {
   ...window['debug'],
-  // Add console commands here
+  state: () => prism.getState(),
+  // * Add console commands here
+}
+
+if (process.env.NODE_ENV === 'development' && DEBUG_PERFORMANCE) {
+  // const spector = new SPECTOR.Spector()
+  const debugItems = {
+    ups: () => Math.floor(app.ticker.FPS),
+    // fps: () => Math.floor(spector.getFps()),
+    behaviors: () => l1.getAll().length,
+    'display objects': () => ex.getAllChildren(app.stage).length,
+    'loop duration': () => {
+      const averageLoopDuration = loopDurations
+        .reduce((acc, ts) => acc + ts, 0)
+      / (loopDurations.length || 1)
+
+      loopDurations = []
+
+      return averageLoopDuration.toFixed(3)
+    },
+    // TODO: Enable this in the future
+    // 'draw calls': () => drawCalls,
+  }
+
+  const renderDebugOverlay = debugOverlay(debugItems)
+
+  const debug = l1.repeat(() => {
+    renderDebugOverlay()
+    // TODO: Enable this in the future
+    // spector.captureNextFrame(app.view, true)
+    // spector.onCapture.add((res) => {
+    //   drawCalls = res.commands.filter(c => c.name === 'drawElements').length
+    // })
+  }, 60)
+  debug.id = 'debug'
 }
