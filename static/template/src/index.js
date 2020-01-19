@@ -79,23 +79,27 @@ window['debug'] = {
 
 if (process.env.NODE_ENV === 'development' && DEBUG_PERFORMANCE) {
   // const spector = new SPECTOR.Spector()
-  const debugItems = {
-    ups: () => Math.floor(app.ticker.FPS),
-    // fps: () => Math.floor(spector.getFps()),
-    behaviors: () => l1.getAll().length,
-    'display objects': () => ex.getAllChildren(app.stage).length,
-    'loop duration': () => {
-      const averageLoopDuration = loopDurations
-        .reduce((acc, ts) => acc + ts, 0)
+  const debugItems = [
+    { label: 'ups', getData: () => Math.floor(app.ticker.FPS) },
+    // { label: 'fps', getData: () => Math.floor(spector.getFps())},
+    { label: 'behaviors', getData: () => l1.getAll().length },
+    { label: 'display objects', getData: () => ex.getAllChildren(app.stage).length },
+    {
+      label: 'loop duration',
+      threshold: 1,
+      getData: () => {
+        const averageLoopDuration = loopDurations
+          .reduce((acc, ts) => acc + ts, 0)
       / (loopDurations.length || 1)
 
-      loopDurations = []
+        loopDurations = []
 
-      return averageLoopDuration.toFixed(3)
+        return averageLoopDuration.toFixed(3)
+      },
     },
-    // TODO: Enable this in the future
-    // 'draw calls': () => drawCalls,
-  }
+  ]
+  // TODO: Enable this in the future
+  // 'draw calls': () => drawCalls,
 
   const renderDebugOverlay = debugOverlay(debugItems)
 

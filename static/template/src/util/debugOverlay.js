@@ -1,6 +1,9 @@
 /**
  * items: [{
- *  label: getData
+ *  label,
+ *  getData,
+ *  threshold,
+ *  type: 'label' | 'button',
  * }]
  */
 export default (items, options = {}) => {
@@ -21,21 +24,32 @@ export default (items, options = {}) => {
   container.style.userSelect = 'none'
   // container.style.width = `${width}px`
 
-  const elements = Object.entries(items).map(([key, getData]) => {
+  const elements = items.map(({ label, getData, threshold }) => {
     const element = document.createElement('div')
-    element.innerHTML = `${key}: ${getData() || '-'}`
+    element.innerHTML = `${label}: ${getData() || '-'}`
     container.appendChild(element)
     return {
-      key,
+      label,
       getData,
       element,
+      threshold,
     }
   })
 
   const render = () => {
-    elements.forEach(({ key, getData, element }) => {
+    elements.forEach(({
+      label, getData, element, threshold,
+    }) => {
+      const data = getData()
       // eslint-disable-next-line no-param-reassign
-      element.innerHTML = `${key}: ${getData() || '-'}`
+      element.innerHTML = `${label}: ${data || '-'}`
+      if (threshold && data >= threshold) {
+        // eslint-disable-next-line no-param-reassign
+        element.style.color = 'red'
+      } else {
+        // eslint-disable-next-line no-param-reassign
+        element.style.color = 'white'
+      }
     })
   }
   return render
