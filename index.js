@@ -111,7 +111,8 @@ const allDependencies = [
   'howler',
   'juice.js',
   'l1',
-  'pixi.js',
+  // TODO: Figure out how Pixi handles versioning
+  'pixi.js@5.2.0',
   'pixi-ex',
   'electron',
   'lodash',
