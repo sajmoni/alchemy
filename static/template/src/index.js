@@ -6,6 +6,7 @@ import app from './app'
 import game from './game'
 import state from './state'
 import debugOverlay from './util/debugOverlay'
+import autoFullScreen from './util/autoFullScreen'
 
 const VERSION = process.env.VERSION || 'N/A'
 const DEBUG_PERFORMANCE = false
@@ -15,9 +16,6 @@ document
   .getElementById('game')
   .appendChild(app.renderer.view)
 
-ex.init(app)
-
-const loopDurations = []
 
 let loopDurations = []
 
@@ -46,6 +44,9 @@ app.loader.add('spritesheet/spritesheet.json')
 document.fonts.load('10pt "patchy-robots"')
   .then(() => {
     app.loader.load(() => {
+      ex.init(app)
+      autoFullScreen()
+
       game()
 
       // * Attempt to improve performance
@@ -57,19 +58,6 @@ document.fonts.load('10pt "patchy-robots"')
   .catch(() => {
     console.error('Unable to load font')
   })
-
-// Make game fullscreen and resize when window is resized
-const resizeGame = () => {
-  // const game = document.getElementById('container')
-  // game.style.height = `${window.innerHeight}px`
-
-  const screenWidth = window.innerWidth
-  const screenHeight = window.innerHeight
-  ex.resize(screenWidth, screenHeight)
-}
-resizeGame()
-
-window.addEventListener('resize', resizeGame)
 
 window['debug'] = {
   ...window['debug'],

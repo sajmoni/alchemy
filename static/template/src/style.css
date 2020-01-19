@@ -13,6 +13,12 @@ body {
   font-size: 48px;
 }
 
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @font-face {
   font-family: 'patchy-robots';
   src: url('asset/patchy-robots.ttf');
