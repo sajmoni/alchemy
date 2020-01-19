@@ -13,7 +13,8 @@
   },
   "bin": "dist/index.js",
   "scripts": {
-    "foo": "yarn build && rm -f make-web-game.tgz && yarn pack --filename make-web-game.tgz && cd example && yarn refresh && rm -rf test-game && yarn make-web-game test-game && cd -",
+    "clean": "rm -rf ./example/test-game && rm -f make-web-game.tgz",
+    "build-test": "yarn clean && yarn build && yarn pack --filename make-web-game.tgz && cd example && yarn refresh && yarn make-web-game test-game && cd test-game && yarn start",
     "start": "parcel index.js --no-autoinstall",
     "build": "rm -rf dist && parcel build index.js --target node --no-cache",
     "typecheck": "tsc --module commonjs --allowJs --checkJs --noEmit --target es2016 src/*.js",
