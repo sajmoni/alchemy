@@ -4,11 +4,12 @@ import { t } from '@lingui/macro'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
 
-import { GAME_HEIGHT, GAME_WIDTH } from './constant'
 import Sound from './sound'
 import i18n from './i18n'
 import * as prism from './util/prism'
 import app from './app'
+import centerX from './util/centerX'
+import centerY from './util/centerY'
 
 export default () => {
   const sprite = new PIXI.Sprite(ex.getTexture('square1'))
@@ -53,9 +54,9 @@ export default () => {
       fontFamily: 'patchy-robots', fill: 'white', fontSize: 30,
     })
 
-  text.anchor.set(0.5)
-  text.x = GAME_WIDTH / 2
-  text.y = GAME_HEIGHT / 2
+  centerX(text)
+  centerY(text)
+
   ex.makeResizable(text)
   app.stage.addChild(text)
 
