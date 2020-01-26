@@ -119,6 +119,10 @@ Gameplay videos / trailers
 GIFs
 Sales pitch (One sentence, Paragraph and long)
 
+### Pixi TextStyle generator
+
+https://pixijs.io/pixi-text-style
+
 ### Misc
 
  - Content in the `static` folder will be copied over to `dist` without being bundled. This is where you should put your sprite sheets.
