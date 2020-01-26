@@ -1,12 +1,21 @@
+import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
+import { t } from '@lingui/macro'
 
+import i18n from './i18n'
 import * as prism from './util/prism'
 import app from './app'
 import game from './game'
 import state from './state'
 import debugOverlay from './util/debugOverlay'
 import autoFullScreen from './util/autoFullScreen'
+import centerY from './util/centerY'
+import centerX from './util/centerX'
+import textStyleMain from './textStyle/main'
+import { GAME_WIDTH, GAME_HEIGHT } from './constant'
+
+const FONT = 'patchy-robots'
 
 const VERSION = process.env.VERSION || 'N/A'
 console.log(`Version: ${VERSION}`)
@@ -41,18 +50,38 @@ if (DEBUG) {
 
 prism.init(state)
 
-// TODO: Automatically read and load sprite sheets?
 app.loader.add('spritesheet/spritesheet.json')
 
 // Experimental API's are not supported by typescript
 // @ts-ignore
-document.fonts.load('10pt "patchy-robots"')
+document.fonts.load(`10pt "${FONT}"`)
   .then(() => {
+    const loadingContainer = new PIXI.Container()
+    loadingContainer.zIndex = 9999
+    app.stage.addChild(loadingContainer)
+
+    const loadingBackground = new PIXI.Graphics()
+    loadingBackground
+      .beginFill(ex.fromHex('#000000'))
+      .drawRect(0, 0, GAME_WIDTH, GAME_HEIGHT)
+      // .endFill()
+    loadingContainer.addChild(loadingBackground)
+
+    const loading = new PIXI.Text(i18n._(t('main.loading')`Loading`), textStyleMain)
+    centerY(loading)
+    centerX(loading)
+    loadingContainer.addChild(loading)
+
     app.loader.load(() => {
       ex.init(app)
+
       autoFullScreen()
 
       game()
+
+      l1.once(() => {
+        loadingContainer.destroy()
+      })
 
       // * Attempt to improve performance
       app.renderer.plugins.prepare.upload(app.stage, () => {
