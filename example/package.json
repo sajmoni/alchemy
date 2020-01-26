@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "refresh": "yarn cache clean && rm -rf node_modules && rm -f yarn.lock && yarn",
-    "test-game": "rm -rf test-game && yarn make-web-game test-game"
+    "test-game": "rm -rf test-game && yarn make-web-game test-game",
+    "test-all-use-cases": "./test-all-use-cases.sh"
   },
   "dependencies": {
     "make-web-game": "file:../make-web-game.tgz"
