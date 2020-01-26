@@ -4,10 +4,17 @@
 <h4 align="center">
   CLI tool to generate a 2D browser game template
 </h4>
+<div align="center">
+  <img src="https://badgen.net/npm/v/make-web-game?icon=npm" />
+  <img src="https://badgen.net/npm/dw/make-web-game?icon=npm" />
+</div>
+<div align="center">
+  <img src="https://badgen.net/github/last-commit/sajmoni/make-web-game?icon=github" />
+</div>
 
 ---
 
-Generates a modular template to get started making games that run in the browser. All libraries can be switched out for other ones that you prefer. These are just some very good defaults.
+Generates a modular template to get started making 2D games that run in the browser. All libraries can be switched out for other ones that you prefer. These are just some good defaults.
 
 ---
 
@@ -39,9 +46,10 @@ Generates a modular template to get started making games that run in the browser
 
  - :bulb: [`electron`](https://github.com/electron/electron) - Easily convert your web game into a desktop application
 
- <!-- - :speech_balloon: Marketing - Tool for generating gifs? -->
+ - Workflow for marketing
 
  <!-- - state management -->
+ <!-- Prism? -->
 
  <!-- - Debug tools -->
 
