@@ -1,8 +1,10 @@
 import onChange from 'on-change'
 
-// eslint-disable-next-line no-underscore-dangle, import/no-mutable-exports
+// TODO: Tests
+// TODO: Performance tests
+
+// eslint-disable-next-line import/no-mutable-exports
 let state
-// eslint-disable-next-line no-underscore-dangle
 const subscribers = []
 
 function onChangeFn(path /* value, previousValue */) {
@@ -22,12 +24,12 @@ export const init = (initialState) => {
 export const getState = () => onChange.target(state)
 
 export const subscribe = (paths, callback) => {
-  const scene = [paths, callback]
-  subscribers.push(scene)
+  const subscriber = [paths, callback]
+  subscribers.push(subscriber)
 
   const unsubscribe = () => {
     // * Mutate array for performance reasons
-    const indexToRemove = subscribers.indexOf(scene)
+    const indexToRemove = subscribers.indexOf(subscriber)
     if (indexToRemove >= 0) {
       subscribers.splice(indexToRemove, 1)
     }

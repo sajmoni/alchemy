@@ -10,11 +10,13 @@ import * as prism from './util/prism'
 import app from './app'
 import centerX from './util/centerX'
 import centerY from './util/centerY'
+import textStyleMain from './textStyle/main'
+import { GAME_HEIGHT } from './constant'
 
 export default () => {
   const sprite = new PIXI.Sprite(ex.getTexture('square1'))
   sprite.x = 10
-  sprite.y = 50
+  sprite.y = GAME_HEIGHT / 2
   sprite.anchor.set(0.5)
   app.stage.addChild(sprite)
 
@@ -27,7 +29,7 @@ export default () => {
   })
 
   l1.repeat(() => {
-    if (prism.getState().square.visible) {
+    if (prism.state.square.visible) {
       prism.state.square.visible = false
     } else {
       prism.state.square.visible = true
@@ -49,10 +51,7 @@ export default () => {
     sprite.destroy()
   }, 500)
 
-  const text = new PIXI.Text(i18n._(t('main.gameStarted')`Game started!`),
-    {
-      fontFamily: 'patchy-robots', fill: 'white', fontSize: 30,
-    })
+  const text = new PIXI.Text(i18n._(t('main.gameStarted')`Game started!`), textStyleMain)
 
   centerX(text)
   centerY(text)
