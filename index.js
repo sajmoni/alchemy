@@ -78,7 +78,7 @@ const packageJsonTemplate = {
   name: appName,
   version: '0.1.0',
   private: true,
-  main: 'src/electron.js',
+  main: './electron.js',
   scripts: {
     start: 'parcel src/index.html --no-autoinstall --no-cache',
     build: 'rm -rf dist && parcel build src/index.html --public-url ./',
