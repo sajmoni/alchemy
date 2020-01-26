@@ -82,7 +82,6 @@ const packageJsonTemplate = {
   scripts: {
     start: 'parcel src/index.html --no-autoinstall --no-cache',
     build: 'rm -rf dist && parcel build src/index.html --public-url ./',
-    elec: 'electron .',
     test: 'ava',
     lint: 'eslint .',
     typecheck: 'tsc --module commonjs --allowJs --checkJs --noEmit --target es2016 src/*.js',
@@ -92,6 +91,11 @@ const packageJsonTemplate = {
     'add-locale': 'lingui add-locale',
     extract: 'lingui extract --clean --overwrite',
     compile: 'lingui compile',
+    'elec:start': 'electron .',
+    'elec:build': 'rm -rf dist && parcel build src/index.html --public-url ./ --target electron',
+    'elec:pack': 'yarn electron-packager . --overwrite',
+    'elec:run': `open ${appName}-darwin-x64/${appName}.app`,
+    'elec:all': 'yarn elec:build && yarn elec:pack && yarn elec:run',
   },
   ava: {
     require: [
@@ -114,7 +118,6 @@ const allDependencies = [
   // TODO: Figure out how Pixi handles versioning
   'pixi.js@5.2.0',
   'pixi-ex',
-  'electron',
   'lodash',
   'on-change',
   // * Translations
@@ -125,6 +128,8 @@ const allDependencies = [
 
 // TODO: Versioning? Tag releases, generate patch notes
 const devDependencies = [
+  'electron',
+  'electron-packager',
   'eslint',
   'eslint-config-airbnb-base',
   'eslint-plugin-import',
