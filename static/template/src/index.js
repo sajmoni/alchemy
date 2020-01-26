@@ -9,8 +9,9 @@ import debugOverlay from './util/debugOverlay'
 import autoFullScreen from './util/autoFullScreen'
 
 const VERSION = process.env.VERSION || 'N/A'
-const DEBUG_PERFORMANCE = false
 console.log(`Version: ${VERSION}`)
+
+const DEBUG = true
 
 document
   .getElementById('game')
@@ -19,8 +20,12 @@ document
 
 let loopDurations = []
 
-if (DEBUG_PERFORMANCE) {
+if (DEBUG) {
   app.ticker.add((deltaTime) => {
+    if (deltaTime > 1.2) {
+      console.warn('Game loop did not finish in time. UPS dropped to 30')
+    }
+
     const before = performance.now()
 
     l1.update(deltaTime)
@@ -59,13 +64,17 @@ document.fonts.load('10pt "patchy-robots"')
     console.error('Unable to load font')
   })
 
+// * These commands can be run in the console, e.g: 'debug.state()'
 window['debug'] = {
   ...window['debug'],
   state: () => prism.getState(),
-  // * Add console commands here
+  info: () => ({
+    'display objects': ex.getAllChildren(app.stage).length,
+    behaviors: l1.getAll().length,
+  }),
 }
 
-if (process.env.NODE_ENV === 'development' && DEBUG_PERFORMANCE) {
+if (process.env.NODE_ENV === 'development' && DEBUG) {
   // const spector = new SPECTOR.Spector()
   const debugItems = [
     { label: 'ups', getData: () => Math.floor(app.ticker.FPS) },
