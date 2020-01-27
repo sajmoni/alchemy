@@ -1,17 +1,19 @@
+// * Replace this file with your game
+
 import * as PIXI from 'pixi.js'
 import * as juice from 'juice.js'
 import { t } from '@lingui/macro'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
 
-import Sound from './sound'
-import i18n from './i18n'
-import * as prism from './util/prism'
-import app from './app'
-import centerX from './util/centerX'
-import centerY from './util/centerY'
-import textStyleMain from './textStyle/main'
-import { GAME_HEIGHT } from './constant'
+import Sound from '../sound'
+import i18n from '../i18n'
+import * as prism from '../util/prism'
+import app from '../app'
+import centerX from '../util/centerX'
+import centerY from '../util/centerY'
+import textStyleMain from '../textStyle/main'
+import { GAME_HEIGHT } from '../constant'
 
 export default () => {
   const sprite = new PIXI.Sprite(ex.getTexture('square1'))

@@ -3,7 +3,7 @@ import _ from 'lodash/fp'
 
 // Typescript erroneously reports this as an error
 // @ts-ignore
-import sword01 from './asset/sound/Sword01.wav'
+import sword01 from './file/Sword01.wav'
 
 const sound = ({ src, ...rest }) => {
   const soundFile = new Howl({
