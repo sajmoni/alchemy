@@ -5,6 +5,7 @@ const chalk = require('chalk')
 const path = require('path')
 const os = require('os')
 const fs = require('fs-extra')
+const { execSync } = require('child_process')
 
 const packageJson = require('./package.json')
 const spawnCommand = require('./spawnCommand.js')
@@ -13,7 +14,7 @@ const spawnCommand = require('./spawnCommand.js')
 
 const displayDoneMessage = ({ name, rootPath }) => {
   console.log()
-  console.log(`Success! Created ${chalk.cyan(name)} at ${chalk.cyan(rootPath)}`)
+  console.log(`${chalk.green('Success!')} Created ${chalk.cyan(name)} at ${chalk.cyan(rootPath)}`)
   console.log()
   console.log('Start the game by typing:')
   console.log()
@@ -23,6 +24,35 @@ const displayDoneMessage = ({ name, rootPath }) => {
   console.log()
   console.log('Happy hacking!')
   console.log()
+}
+
+const tryGitInit = ({ rootPath, appName }) => {
+  let didInit = false
+  try {
+    execSync(`git init ${appName}`, { stdio: 'ignore' })
+    didInit = true
+
+    execSync(`git -C ${appName}/ add -A`, { stdio: 'ignore' })
+
+    execSync(`git -C ${appName}/ commit -m "Initial commit from Make Web Game"`, {
+      stdio: 'ignore',
+    })
+
+    return true
+  } catch (e) {
+    if (didInit) {
+      // If we successfully initialized but couldn't commit,
+      // maybe the commit author config is not set.
+      // Remove the Git files to avoid a half-done state.
+      // TODO: Test this by adding to use-cases file
+      try {
+        fs.removeSync(path.join(rootPath, '.git'))
+      } catch (removeErr) {
+        // Ignore.
+      }
+    }
+    return false
+  }
 }
 
 let projectName
@@ -170,7 +200,11 @@ spawnCommand({ command, args: productionArgs })
 
     fs.copySync(templateDirectory, rootPath)
 
-    // TODO: Create an initial commit
+    if (tryGitInit({ rootPath, appName })) {
+      console.log()
+      console.log('Initialized a git repository.')
+    }
+
     displayDoneMessage({ name: projectName, rootPath })
   }).catch((reason) => {
     console.log()
