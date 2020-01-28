@@ -22,7 +22,7 @@ const displayDoneMessage = ({ name, rootPath }) => {
   console.log()
   console.log(`  ${chalk.cyan('yarn start')}`)
   console.log()
-  console.log('Happy hacking!')
+  console.log('Good luck!')
   console.log()
 }
 
@@ -142,14 +142,23 @@ fs.writeFileSync(
 // TODO: Sentry
 // TODO: Debug tools
 const allDependencies = [
-  'howler',
-  'juice.js',
-  'l1',
   // TODO: Figure out how Pixi handles versioning
+  // * Rendering
   'pixi.js@5.2.0',
   'pixi-ex',
+  // * --
+  // * Sound
+  'howler',
+  // * --
+  // * Game logic
+  'juice.js',
+  'l1',
+  // * --
+  // * Util
   'lodash',
+  // TODO: Replace with Prism
   'on-change',
+  // * --
   // * Translations
   '@lingui/core',
   '@lingui/macro',
@@ -158,15 +167,20 @@ const allDependencies = [
 
 // TODO: Versioning? Tag releases, generate patch notes
 const devDependencies = [
+  // * Electron
   'electron',
   'electron-packager',
+  // * --
+  // * Code quality
   'eslint',
   'eslint-config-airbnb-base',
   'eslint-plugin-import',
-  'muncher',
+  'typescript',
+  // * --
+  // * Module bundling
   'parcel-bundler',
   'parcel-plugin-static-files-copy',
-  'typescript',
+  // * --
   // * Translations
   '@lingui/cli',
   '@babel/core',
@@ -178,6 +192,8 @@ const devDependencies = [
   '@babel/register',
   'ava',
   // * --
+  // * Other
+  'muncher',
 ]
 
 console.log('Installing packages. This might take a couple of minutes.')
@@ -212,5 +228,3 @@ spawnCommand({ command, args: productionArgs })
     console.log(`Command failed: ${chalk.cyan(reason.command)}`)
     console.log()
   })
-
-// TODO: Tests
