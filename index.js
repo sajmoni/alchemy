@@ -38,6 +38,8 @@ const tryGitInit = ({ rootPath, appName }) => {
       stdio: 'ignore',
     })
 
+    execSync(`git -C ${appName}/ branch release`, { stdio: 'ignore' })
+
     return true
   } catch (e) {
     if (didInit) {
