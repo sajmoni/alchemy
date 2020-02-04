@@ -7,6 +7,7 @@ rules:
   # These two rules interfere with Parcel absolute imports
   import/no-absolute-path: off
   import/no-unresolved: off
+  no-use-before-define: off
   semi:
     - error
     - never

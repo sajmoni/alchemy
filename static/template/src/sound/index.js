@@ -1,5 +1,6 @@
 import _ from 'lodash/fp'
 
+import './globalVolume'
 import createSound from './createSound'
 
 // Typescript erroneously reports this as an error
@@ -12,4 +13,5 @@ export default _.mapValues(createSound,
   })
 
 // How to use
+// import Sound from './sound'
 // Sound.SWORD_01.play()

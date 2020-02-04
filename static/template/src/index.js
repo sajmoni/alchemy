@@ -14,6 +14,7 @@ import centerY from './util/centerY'
 import centerX from './util/centerX'
 import textStyleMain from './textStyle/main'
 import { GAME_WIDTH, GAME_HEIGHT } from './constant'
+import Sound from './sound'
 
 const FONT = 'patchy-robots'
 
@@ -101,6 +102,9 @@ window['debug'] = {
     'display objects': ex.getAllChildren(app.stage).length,
     behaviors: l1.getAll().length,
   }),
+  sound: () => {
+    Sound.SWORD_01.play()
+  },
 }
 
 if (process.env.NODE_ENV === 'development' && DEBUG) {

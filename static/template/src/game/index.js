@@ -13,9 +13,26 @@ import app from '../app'
 import centerX from '../util/centerX'
 import centerY from '../util/centerY'
 import textStyleMain from '../textStyle/main'
-import { GAME_HEIGHT } from '../constant'
+import { GAME_HEIGHT, GAME_WIDTH } from '../constant'
+import { slider, bar } from '../component'
+import { getVolume } from '../selector'
 
 export default () => {
+  const [manaBar, renderManaBar] = bar({
+    initialValue: 1,
+  })
+  manaBar.position.set(200, 200)
+  app.stage.addChild(manaBar)
+  l1.repeat(() => {
+    prism.state.bar -= 1
+  }, 10)
+  prism.subscribe(['bar'], (state) => {
+    // value / max
+    renderManaBar((state.bar / 100).toFixed(2))
+  })
+
+  makeVolumeSlider()
+
   const sprite = new PIXI.Sprite(ex.getTexture('square1'))
   sprite.x = 10
   sprite.y = GAME_HEIGHT / 2
@@ -72,4 +89,35 @@ export default () => {
   })
 
   Sound.SWORD_01.play()
+}
+
+const makeVolumeSlider = () => {
+  const MAX_VOLUME = 10
+  const MIN_VOLUME = 0
+
+  const volume = getVolume(prism.state)
+
+  const container = new PIXI.Container()
+  container.position.set(GAME_WIDTH - 100, GAME_HEIGHT - 50)
+  app.stage.addChild(container)
+
+  const text = new PIXI.Text(i18n._(t('settings.volume')`Volume`), textStyleMain)
+  text.anchor.set(0.5)
+  text.position.set(-5, -40)
+  container.addChild(text)
+
+  const [volumeSlider, volumeSliderRender] = slider(volume, () => {
+    const currentVolume = getVolume(prism.state)
+    prism.state.application.volume = Math.max(currentVolume - 1, MIN_VOLUME)
+  }, () => {
+    const currentVolume = getVolume(prism.state)
+    prism.state.application.volume = Math.min(currentVolume + 1, MAX_VOLUME)
+  })
+
+  container.addChild(volumeSlider)
+
+  prism.subscribe(['application.volume'], (state) => {
+    const newVolume = getVolume(state)
+    volumeSliderRender(newVolume)
+  })
 }
