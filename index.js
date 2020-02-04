@@ -144,9 +144,8 @@ fs.writeFileSync(
 // TODO: Sentry
 // TODO: Debug tools
 const allDependencies = [
-  // TODO: Figure out how Pixi handles versioning
   // * Rendering
-  'pixi.js@5.2.0',
+  'pixi.js',
   'pixi-ex',
   // * --
   // * Sound
