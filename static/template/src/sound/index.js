@@ -5,7 +5,7 @@ import createSound from './createSound'
 
 // Typescript erroneously reports this as an error
 // @ts-ignore
-import sword01 from './file/Sword01.wav'
+import sword01 from '../../asset/sound/Sword01.wav'
 
 export default _.mapValues(createSound,
   {

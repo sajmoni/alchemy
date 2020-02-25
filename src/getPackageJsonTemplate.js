@@ -13,7 +13,7 @@ module.exports = ({ appName }) => {
       typecheck: 'tsc --module commonjs --allowJs --checkJs --noEmit --target es2016 src/*.js',
       'validate-ci': 'circleci config validate',
       'check-all': 'yarn lint && yarn typecheck && yarn validate-ci',
-      munch: 'muncher --input sprite --output static/spritesheet/spritesheet --flip',
+      munch: 'muncher --input asset/sprite --output static/spritesheet/spritesheet --flip',
       'add-locale': 'lingui add-locale',
       extract: 'lingui extract --clean --overwrite',
       compile: 'lingui compile',

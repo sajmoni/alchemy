@@ -21,5 +21,5 @@ body {
 
 @font-face {
   font-family: 'patchy-robots';
-  src: url('asset/patchy-robots.ttf');
+  src: url('../asset/font/patchy-robots.ttf');
 }
