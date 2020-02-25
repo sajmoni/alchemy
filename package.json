@@ -19,9 +19,9 @@
     "clean": "rm -rf ./example/test-game && rm -f make-web-game.tgz",
     "build-test": "yarn clean && yarn build && yarn pack --filename make-web-game.tgz && cd example && yarn refresh && yarn make-web-game test-game && cd test-game && yarn start",
     "build": "rm -rf dist && parcel build src/index.js --target node --no-cache",
-    "typecheck": "tsc --module commonjs --allowJs --checkJs --noEmit --target es2016 src/*.js",
-    "lint": "eslint .",
-    "check-all": "yarn lint && yarn typecheck && yarn validate-ci",
+    "typecheck": "tsc --module commonjs --allowJs --checkJs --noEmit --target es2016 --resolveJsonModule src/*.js",
+    "lint": "eslint src",
+    "check-all": "yarn lint && yarn typecheck",
     "release": "yarn build && np --no-tests"
   },
   "devDependencies": {
@@ -31,7 +31,8 @@
     "np": "6.1.0",
     "parcel-bundler": "1.12.4",
     "parcel-plugin-shebang": "1.2.8",
-    "parcel-plugin-static-files-copy": "2.3.1"
+    "parcel-plugin-static-files-copy": "2.3.1",
+    "typescript": "3.8.2"
   },
   "dependencies": {
     "chalk": "3.0.0",
