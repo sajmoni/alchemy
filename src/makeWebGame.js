@@ -11,24 +11,24 @@ const tryGitInit = require('./git/init')
 // TODO: Debug tools
 const dependencies = [
   // * Rendering
-  'pixi.js',
-  'pixi-ex',
+  'pixi.js@5.2.1',
+  'pixi-ex@0.0.6',
   // * --
   // * Sound
-  'howler',
+  'howler@2.1.3',
   // * --
   // * Game logic
-  'juice.js',
-  'l1',
+  'juice.js@1.0.6',
+  'l1@0.6.1',
   // * --
   // * Util
-  'lodash',
+  'lodash@4.17.15',
   // TODO: Replace with Prism
-  'on-change',
+  'on-change@1.6.2',
   // * --
   // * Translations
-  '@lingui/core',
-  '@lingui/macro',
+  '@lingui/core@2.9.1',
+  '@lingui/macro@2.9.1',
   // * --
 ]
 
