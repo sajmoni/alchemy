@@ -10,6 +10,10 @@
   "directories": {
     "example": "example"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sajmoni/make-web-game.git"
+  },
   "bin": "dist/index.js",
   "scripts": {
     "clean": "rm -rf ./example/test-game && rm -f make-web-game.tgz",
