@@ -7,8 +7,8 @@ const os = require('os')
 const fs = require('fs-extra')
 const { execSync } = require('child_process')
 
-const packageJson = require('./package.json')
-const spawnCommand = require('./spawnCommand.js')
+const packageJson = require('../package.json')
+const spawnCommand = require('./spawnCommand')
 
 // The structure of this code is inspired by the create-react-app source code
 
@@ -169,32 +169,32 @@ const allDependencies = [
 // TODO: Versioning? Tag releases, generate patch notes
 const devDependencies = [
   // * Electron
-  'electron',
-  'electron-packager',
+  // 'electron',
+  // 'electron-packager',
   // * --
   // * Code quality
-  'eslint',
-  'eslint-config-airbnb-base',
-  'eslint-plugin-import',
-  'typescript',
+  // 'eslint',
+  // 'eslint-config-airbnb-base',
+  // 'eslint-plugin-import',
+  // 'typescript',
   // * --
   // * Module bundling
   'parcel-bundler',
   'parcel-plugin-static-files-copy',
   // * --
   // * Translations
-  '@lingui/cli',
-  '@babel/core',
-  'babel-plugin-macros',
-  'babel-core@bridge',
+  // '@lingui/cli',
+  // '@babel/core',
+  // 'babel-plugin-macros',
+  // 'babel-core@bridge',
   // * --
   // * Testing
-  '@babel/preset-env',
-  '@babel/register',
-  'ava',
+  // '@babel/preset-env',
+  // '@babel/register',
+  // 'ava',
   // * --
   // * Other
-  'muncher',
+  // 'muncher',
 ]
 
 console.log('Installing packages. This might take a couple of minutes.')
