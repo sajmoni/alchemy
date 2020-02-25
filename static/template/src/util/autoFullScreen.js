@@ -1,6 +1,6 @@
 import * as ex from 'pixi-ex'
 
-// Make game fullscreen and resize when window is resized
+// * Make game fullscreen and resize when window is resized
 export default () => {
   const resizeGame = () => {
     // const game = document.getElementById('container')

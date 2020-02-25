@@ -89,7 +89,6 @@ module.exports = ({ projectName }) => {
   console.log('Installing dependencies.')
   console.log()
 
-  // TODO: Remove pathArg
   const pathArg = ['--cwd', rootPath]
   const defaultArgs = ['add', '--exact']
 

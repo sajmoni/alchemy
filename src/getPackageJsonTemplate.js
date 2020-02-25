@@ -9,7 +9,7 @@ module.exports = ({ appName }) => {
       start: 'parcel src/index.html --no-autoinstall --no-cache',
       build: 'rm -rf dist && parcel build src/index.html --public-url ./',
       test: 'ava',
-      lint: 'eslint .',
+      lint: 'eslint src',
       typecheck: 'tsc --module commonjs --allowJs --checkJs --noEmit --target es2016 src/*.js',
       'validate-ci': 'circleci config validate',
       'check-all': 'yarn lint && yarn typecheck && yarn validate-ci',

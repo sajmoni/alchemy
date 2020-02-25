@@ -125,4 +125,6 @@ https://pixijs.io/pixi-text-style
 
 ### Misc
 
- - Content in the `static` folder will be copied over to `dist` without being bundled. This is where you should put your sprite sheets.
+ - Content in the `static` folder will be copied over to `dist` without being bundled. This is used for sprite sheets.
+
+ - For pixel perfect rendering: uncomment line `5` in `src/app.js`
