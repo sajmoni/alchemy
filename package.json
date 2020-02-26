@@ -22,7 +22,7 @@
     "typecheck": "tsc --module commonjs --allowJs --checkJs --noEmit --target es2016 --resolveJsonModule src/*.js",
     "lint": "eslint src",
     "check-all": "yarn lint && yarn typecheck",
-    "release": "yarn build && np --no-tests"
+    "release": "yarn clean && yarn check-all && yarn audit && yarn build && np --no-tests"
   },
   "devDependencies": {
     "eslint": "6.8.0",
