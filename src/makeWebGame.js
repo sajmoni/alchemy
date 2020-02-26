@@ -106,6 +106,14 @@ module.exports = ({ projectName }) => {
 
       fs.copySync(templateDirectory, rootPath)
 
+      // Rename gitignore to prevent npm from renaming it to .npmignore
+      // See: https://github.com/npm/npm/issues/1862
+      fs.moveSync(
+        path.join(rootPath, 'gitignore'),
+        path.join(rootPath, '.gitignore'),
+        [],
+      )
+
       tryGitInit({ rootPath, appName })
 
       displayDoneMessage({ name: projectName, rootPath })
