@@ -34,32 +34,32 @@ const dependencies = [
 
 const devDependencies = [
   // * Electron
-  // 'electron',
-  // 'electron-packager',
+  'electron',
+  'electron-packager',
   // * --
   // * Code quality
-  // 'eslint',
-  // 'eslint-config-airbnb-base',
-  // 'eslint-plugin-import',
-  // 'typescript',
+  'eslint',
+  'eslint-config-airbnb-base',
+  'eslint-plugin-import',
+  'typescript',
   // * --
   // * Module bundling
   'parcel-bundler',
   'parcel-plugin-static-files-copy',
   // * --
   // * Translations
-  // '@lingui/cli',
-  // '@babel/core',
-  // 'babel-plugin-macros',
-  // 'babel-core@bridge',
+  '@lingui/cli',
+  '@babel/core',
+  'babel-plugin-macros',
+  'babel-core@bridge',
   // * --
   // * Testing
-  // '@babel/preset-env',
-  // '@babel/register',
-  // 'ava',
+  '@babel/preset-env',
+  '@babel/register',
+  'ava',
   // * --
   // * Other
-  // 'muncher',
+  'muncher',
 ]
 
 module.exports = ({ projectName }) => {
