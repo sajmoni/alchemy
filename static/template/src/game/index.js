@@ -1,6 +1,7 @@
 // * Replace this file with your game
 
 import * as PIXI from 'pixi.js'
+import * as filters from 'pixi-filters'
 import * as juice from 'juice.js'
 import { t } from '@lingui/macro'
 import * as ex from 'pixi-ex'
@@ -71,6 +72,7 @@ export default () => {
   }, 500)
 
   const text = new PIXI.Text(i18n._(t('main.gameStarted')`Game started!`), textStyleMain)
+  text.filters = [new filters.CRTFilter()]
 
   centerX(text)
   centerY(text)

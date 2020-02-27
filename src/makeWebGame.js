@@ -13,6 +13,7 @@ const dependencies = [
   // * Rendering
   'pixi.js@5.2.1',
   'pixi-ex@0.0.6',
+  'pixi-filters@3.0.3',
   // * --
   // * Sound
   'howler@2.1.3',
