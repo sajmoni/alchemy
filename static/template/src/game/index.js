@@ -2,6 +2,7 @@
 
 import * as PIXI from 'pixi.js'
 import * as filters from 'pixi-filters'
+import * as particles from 'pixi-particles'
 import * as juice from 'juice.js'
 import { t } from '@lingui/macro'
 import * as ex from 'pixi-ex'
@@ -17,6 +18,7 @@ import textStyleMain from '../textStyle/main'
 import { GAME_HEIGHT, GAME_WIDTH } from '../constant'
 import { slider, bar } from '../component'
 import { getVolume } from '../selector'
+import { explosion } from '../particle'
 
 export default () => {
   const [manaBar, renderManaBar] = bar({
@@ -89,6 +91,18 @@ export default () => {
   l1.repeat((counter) => {
     text.scale.set(getScale(counter))
   })
+
+  const particleContainer = new PIXI.Container()
+  particleContainer.position.set(400, 200)
+  app.stage.addChild(particleContainer)
+
+  const explosionParticles = new particles.Emitter(
+    particleContainer,
+    ['square1', 'square2'].map(ex.getTexture),
+    explosion,
+  )
+
+  explosionParticles.playOnceAndDestroy()
 
   Sound.SWORD_01.play()
 }
