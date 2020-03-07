@@ -13,7 +13,7 @@ const program = new commander.Command(packageJson.name)
   .version(packageJson.version)
   .arguments('<project-directory>')
   .usage(`${chalk.green('<project-directory>')}`)
-  .action((name) => {
+  .action(name => {
     projectName = name
   })
   .on('--help', () => {

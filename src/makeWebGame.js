@@ -70,7 +70,9 @@ module.exports = ({ projectName }) => {
 
   if (fs.existsSync(rootPath)) {
     console.log()
-    console.log(`${chalk.red('Game folder already exists')} ${chalk.green(rootPath)}`)
+    console.log(
+      `${chalk.red('Game folder already exists')} ${chalk.green(rootPath)}`,
+    )
     console.log()
     process.exit(1)
   }
@@ -96,7 +98,10 @@ module.exports = ({ projectName }) => {
 
   const command = 'yarn'
   const productionArgs = defaultArgs.concat(dependencies).concat(pathArg)
-  const devArgs = defaultArgs.concat('--dev').concat(devDependencies).concat(pathArg)
+  const devArgs = defaultArgs
+    .concat('--dev')
+    .concat(devDependencies)
+    .concat(pathArg)
 
   spawnCommand({ command, args: productionArgs })
     .then(() => spawnCommand({ command, args: devArgs }))
@@ -106,10 +111,14 @@ module.exports = ({ projectName }) => {
 
       const templateDirectory = `${__dirname}/template`
 
-      fs.copySync(templateDirectory, rootPath)
+      try {
+        fs.copySync(templateDirectory, rootPath)
+      } catch (error) {
+        console.log(
+          `${chalk.red('  Error: Could not copy template files: ')} ${error}`,
+        )
+      }
 
-      // Rename gitignore to prevent npm from renaming it to .npmignore
-      // See: https://github.com/npm/npm/issues/1862
       fs.moveSync(
         path.join(rootPath, 'gitignore'),
         path.join(rootPath, '.gitignore'),
@@ -119,7 +128,8 @@ module.exports = ({ projectName }) => {
       tryGitInit({ rootPath, appName })
 
       displayDoneMessage({ name: projectName, rootPath })
-    }).catch((reason) => {
+    })
+    .catch(reason => {
       console.log()
       console.log(chalk.red('Aborting installation.'))
       console.log(`Command failed: ${chalk.cyan(reason.command)}`)

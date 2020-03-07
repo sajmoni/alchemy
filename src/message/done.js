@@ -2,7 +2,11 @@ const chalk = require('chalk')
 
 module.exports = ({ name, rootPath }) => {
   console.log()
-  console.log(`${chalk.green('Success!')} Created ${chalk.cyan(name)} at ${chalk.cyan(rootPath)}`)
+  console.log(
+    `${chalk.green('Success!')} Created ${chalk.cyan(name)} at ${chalk.cyan(
+      rootPath,
+    )}`,
+  )
   console.log()
   console.log('Start the game by typing:')
   console.log()

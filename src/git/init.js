@@ -10,9 +10,12 @@ module.exports = ({ appName, rootPath }) => {
 
     execSync(`git -C ${appName}/ add -A`, { stdio: 'ignore' })
 
-    execSync(`git -C ${appName}/ commit -m "Initial commit from Make Web Game"`, {
-      stdio: 'ignore',
-    })
+    execSync(
+      `git -C ${appName}/ commit -m "Initial commit from Make Web Game"`,
+      {
+        stdio: 'ignore',
+      },
+    )
 
     execSync(`git -C ${appName}/ branch release`, { stdio: 'ignore' })
 
