@@ -11,6 +11,8 @@ export const sprite = (texture) => {
 export const animatedSprite = (textures) => {
   const a = new PIXI.AnimatedSprite(textures.map(ex.getTexture))
   a.anchor.set(0.5)
+  a.animationSpeed = 0.02
+  a.play()
   return a
 }
 
