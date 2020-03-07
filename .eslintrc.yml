@@ -1,6 +1,6 @@
-extends: airbnb-base
+extends: prettier
 rules:
   no-console: off
-  semi:
-    - error
-    - never
+env:
+  es2017: true
+  node: true

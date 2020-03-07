@@ -1,4 +1,4 @@
-extends: airbnb-base
+extends: prettier
 env:
   browser: true
 rules:
@@ -8,6 +8,3 @@ rules:
   import/no-absolute-path: off
   import/no-unresolved: off
   no-use-before-define: off
-  semi:
-    - error
-    - never
