@@ -40,12 +40,12 @@
     "eslint-config-prettier": "6.10.0",
     "husky": "4.2.3",
     "lint-staged": "10.0.8",
-    "np": "6.1.0",
+    "np": "6.2.0",
     "parcel-bundler": "1.12.4",
     "parcel-plugin-shebang": "1.2.8",
     "parcel-plugin-static-files-copy": "2.3.1",
     "prettier": "1.19.1",
-    "typescript": "3.8.2"
+    "typescript": "3.8.3"
   },
   "dependencies": {
     "chalk": "3.0.0",
