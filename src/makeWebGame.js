@@ -56,9 +56,9 @@ const devDependencies = [
   'babel-core@bridge',
   // * --
   // * Testing
-  '@babel/preset-env',
-  '@babel/register',
-  'ava',
+  'ava@3.4.0',
+  'eslint-plugin-ava@10.2.0',
+  '@ava/babel@1.0.1',
   // * --
   // * Other
   'muncher',

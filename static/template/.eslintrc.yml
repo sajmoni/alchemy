@@ -1,4 +1,6 @@
-extends: prettier
+extends: 
+  - prettier
+  - plugin:ava/recommended
 env:
   browser: true
 rules:

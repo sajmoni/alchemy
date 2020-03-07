@@ -25,7 +25,7 @@ module.exports = ({ appName }) => {
       'elec:all': 'yarn elec:build && yarn elec:pack && yarn elec:run',
     },
     ava: {
-      require: ['@babel/register'],
+      babel: true,
     },
     prettier: {
       trailingComma: 'all',
