@@ -37,23 +37,23 @@ const dependencies = [
 
 const devDependencies = [
   // * Electron
-  'electron',
-  'electron-packager',
+  'electron@8.1.0',
+  'electron-packager@14.2.1',
   // * --
   // * Code quality
-  'eslint',
-  'eslint-config-airbnb-base',
-  'eslint-plugin-import',
-  'typescript',
+  'prettier@1.19.1',
+  'eslint@6.8.0',
+  'eslint-config-prettier@6.10.0',
+  'typescript@3.8.3',
   // * --
   // * Module bundling
-  'parcel-bundler',
-  'parcel-plugin-static-files-copy',
+  'parcel-bundler@1.12.4',
+  'parcel-plugin-static-files-copy@2.3.1',
   // * --
   // * Translations
-  '@lingui/cli',
-  '@babel/core',
-  'babel-plugin-macros',
+  '@lingui/cli@2.9.1',
+  '@babel/core@7.8.7',
+  'babel-plugin-macros@2.8.0',
   'babel-core@bridge',
   // * --
   // * Testing
@@ -62,7 +62,7 @@ const devDependencies = [
   '@ava/babel@1.0.1',
   // * --
   // * Other
-  'muncher',
+  'muncher@0.0.7',
 ]
 
 module.exports = ({ projectName }) => {
