@@ -76,7 +76,8 @@ document.fonts.load(`10pt "${FONT}"`)
     app.loader.load(() => {
       ex.init(app)
 
-      autoFullScreen()
+      // * Enable this to make your game be always full screen.
+      // autoFullScreen()
 
       game()
 

@@ -25,8 +25,8 @@ ticker.add(() => {
   renderer.render(stage)
 }, PIXI.UPDATE_PRIORITY.LOW)
 
-// * Enables setting z-index on children
-// stage.sortableChildren = true
+// * Disable this if you don't need z-index position on children
+stage.sortableChildren = true
 
 const loader = new PIXI.Loader()
 

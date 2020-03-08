@@ -88,6 +88,7 @@ _Usage with `npx` ensures that you are always using the latest version_
  - Create a new folder called `<game-name>`
  - Copy all template files to that folder
  - Install the dependencies
+ - Create an initial commit 
 
 ### Example usage
 
