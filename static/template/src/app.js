@@ -20,16 +20,11 @@ const renderer = new PIXI.Renderer({
 
 const stage = new PIXI.Container()
 
-const ticker = new PIXI.Ticker()
-ticker.add(() => {
-  renderer.render(stage)
-}, PIXI.UPDATE_PRIORITY.LOW)
-
 // * Disable this if you don't need z-index position on children
 stage.sortableChildren = true
 
 const loader = new PIXI.Loader()
 
 export default {
-  renderer, stage, ticker, loader,
+  renderer, stage, loader,
 }

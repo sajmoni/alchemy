@@ -2,6 +2,7 @@ import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
 import { t } from '@lingui/macro'
+import MainLoop from 'mainloop.js'
 
 import i18n from './i18n'
 import * as prism from './util/prism'
@@ -31,23 +32,26 @@ document
 let loopDurations = []
 
 if (DEBUG) {
-  app.ticker.add((deltaTime) => {
-    if (deltaTime > 1.2) {
-      console.warn('Game loop did not finish in time. UPS dropped to 30')
-    }
-
-    const before = performance.now()
-
-    l1.update(deltaTime)
-
-    const after = performance.now()
-
-    const delta = after - before
-    loopDurations.push(delta)
+  MainLoop.setUpdate((deltaTime) => {
+    const beforeUpdate = performance.now()
+  
+    // 16.6 -> 1
+    l1.update(deltaTime / (1000 / 60))
+  
+    const afterUpdate = performance.now()
+    const loopDuration = afterUpdate - beforeUpdate
+    loopDurations.push(loopDuration)
   })
 } else {
-  app.ticker.add(l1.update)
+  MainLoop.setUpdate((deltaTime) => {
+    // 16.6 -> 1
+    l1.update(deltaTime / (1000 / 60))
+  })
 }
+
+MainLoop.setDraw(() => {
+  app.renderer.render(app.stage)
+})
 
 prism.init(state)
 
@@ -87,7 +91,7 @@ document.fonts.load(`10pt "${FONT}"`)
 
       // * Attempt to improve performance
       app.renderer.plugins.prepare.upload(app.stage, () => {
-        app.ticker.start()
+        MainLoop.start()
       })
     })
   })
@@ -111,8 +115,7 @@ window['debug'] = {
 if (process.env.NODE_ENV === 'development' && DEBUG) {
   // const spector = new SPECTOR.Spector()
   const debugItems = [
-    { label: 'ups', getData: () => Math.floor(app.ticker.FPS) },
-    // { label: 'fps', getData: () => Math.floor(spector.getFps())},
+    { label: 'fps', getData: () => Math.round(MainLoop.getFPS()) },
     { label: 'behaviors', getData: () => l1.getAll().length },
     { label: 'display objects', getData: () => ex.getAllChildren(app.stage).length },
     {
