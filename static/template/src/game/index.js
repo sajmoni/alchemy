@@ -8,6 +8,7 @@ import { t } from '@lingui/macro'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
 
+import * as Language from '../constant/language'
 import Sound from '../sound'
 import i18n from '../i18n'
 import * as prism from '../util/prism'
@@ -16,9 +17,10 @@ import centerX from '../util/centerX'
 import centerY from '../util/centerY'
 import textStyleMain from '../textStyle/main'
 import { GAME_HEIGHT, GAME_WIDTH } from '../constant'
-import { slider, bar } from '../component'
+import { slider, bar, select} from '../component'
 import { getVolume } from '../selector'
 import { explosion } from '../particle'
+import { save } from '../util/storage'
 
 export default () => {
   const [manaBar, renderManaBar] = bar({
@@ -103,6 +105,19 @@ export default () => {
   )
 
   explosionParticles.playOnceAndDestroy()
+
+  const [languagePicker, renderLanguagePicker] = select({ 
+    languages: Object.values(Language), 
+    onClick: (languageCode) => {
+      save('language', languageCode)
+      window.location.reload()
+    }
+  })
+  
+  renderLanguagePicker(prism.state.application.language)
+
+  languagePicker.position.set(600, 100)
+  app.stage.addChild(languagePicker)
 
   Sound.SWORD_01.play()
 }

@@ -2,8 +2,8 @@ import * as Language from './constant/language'
 
 export default {
   application: {
-    volume: 10,
-    language: Language.EN
+    volume: 1,
+    language: null
   },
   bar: 100,
   square: {

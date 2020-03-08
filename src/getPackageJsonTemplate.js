@@ -38,6 +38,9 @@ module.exports = ({ appName }) => {
         'pre-push': 'yarn test',
       },
     },
+    lingui: {
+      srcPathDirs: ['src'],
+    },
   }
 
   return packageJsonTemplate

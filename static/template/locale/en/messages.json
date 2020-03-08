@@ -4,8 +4,28 @@
     "defaults": "Game started!",
     "origin": [
       [
+        "src/game/index.js",
+        80
+      ]
+    ]
+  },
+  "main.loading": {
+    "translation": "",
+    "defaults": "Loading",
+    "origin": [
+      [
         "src/index.js",
-        75
+        89
+      ]
+    ]
+  },
+  "settings.volume": {
+    "translation": "",
+    "defaults": "Volume",
+    "origin": [
+      [
+        "src/game/index.js",
+        144
       ]
     ]
   }

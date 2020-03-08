@@ -16,8 +16,11 @@ import centerX from './util/centerX'
 import textStyleMain from './textStyle/main'
 import { GAME_WIDTH, GAME_HEIGHT } from './constant'
 import Sound from './sound'
+import { restore } from './util/storage'
+import * as Language from './constant/language'
 
 const FONT = 'patchy-robots'
+const DEFAULT_LANGUAGE = Language.EN.code
 
 const VERSION = process.env.VERSION || 'N/A'
 console.log(`Version: ${VERSION}`)
@@ -54,6 +57,10 @@ MainLoop.setDraw(() => {
 })
 
 prism.init(state)
+
+const languageCode = restore('language') || DEFAULT_LANGUAGE
+i18n.activate(languageCode)
+prism.state.application.language = languageCode
 
 app.loader.add('spritesheet/spritesheet.json')
 
