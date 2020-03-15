@@ -11,6 +11,7 @@ import game from './game'
 import state from './state'
 import debugOverlay from './util/debugOverlay'
 import autoFullScreen from './util/autoFullScreen'
+import autoPause from './util/autoPause'
 import centerY from './util/centerY'
 import centerX from './util/centerX'
 import textStyleMain from './textStyle/main'
@@ -90,6 +91,8 @@ document.fonts.load(`10pt "${FONT}"`)
       // * Enable this to make your game be always full screen.
       // autoFullScreen()
 
+      autoPause()
+
       game()
 
       l1.once(() => {
@@ -99,6 +102,16 @@ document.fonts.load(`10pt "${FONT}"`)
       // * Attempt to improve performance
       app.renderer.plugins.prepare.upload(app.stage, () => {
         MainLoop.start()
+      })
+
+      prism.subscribe(['application.paused'], ({ application: { paused }}) => {
+        if (paused) {
+          // TODO: This should probably just stop the l1.repeat main behavior
+          // * Because we might want to have an animation when paused
+          MainLoop.stop()
+        } else {
+          MainLoop.start()
+        }
       })
     })
   })

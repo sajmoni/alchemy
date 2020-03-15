@@ -3,7 +3,8 @@ import * as Language from './constant/language'
 export default {
   application: {
     volume: 1,
-    language: null
+    language: null,
+    paused: false,
   },
   bar: 100,
   square: {
