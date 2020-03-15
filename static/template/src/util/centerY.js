@@ -1,8 +1,6 @@
-import { GAME_HEIGHT } from '../constant'
+import { Render } from '../constant'
 
 export default (displayObject) => {
-  // eslint-disable-next-line no-param-reassign
-  displayObject.position.y = GAME_HEIGHT / 2
-  // eslint-disable-next-line no-param-reassign
+  displayObject.position.y = Render.GAME_HEIGHT / 2
   displayObject.anchor.y = 0.5
 }

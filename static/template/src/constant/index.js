@@ -1,2 +1,11 @@
-export const GAME_WIDTH = 1280
-export const GAME_HEIGHT = 720
+import Language from './language'
+import Render from './render'
+import Resolution from './resolution'
+import TextStyle from './textStyle'
+
+export {
+  Language,
+  Render,
+  Resolution,
+  TextStyle,
+}

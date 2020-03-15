@@ -1,10 +1,11 @@
-import * as Language from './constant/language'
+import { Resolution } from './constant'
 
 export default {
   application: {
     volume: 1,
     language: null,
     paused: false,
+    resolution: Resolution.NORMAL
   },
   bar: 100,
   square: {

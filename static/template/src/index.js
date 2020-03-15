@@ -14,11 +14,9 @@ import autoFullScreen from './util/autoFullScreen'
 import autoPause from './util/autoPause'
 import centerY from './util/centerY'
 import centerX from './util/centerX'
-import textStyleMain from './textStyle/main'
-import { GAME_WIDTH, GAME_HEIGHT } from './constant'
+import { TextStyle, Render, Language } from './constant'
 import Sound from './sound'
 import { restore } from './util/storage'
-import * as Language from './constant/language'
 
 const FONT = 'patchy-robots'
 const DEFAULT_LANGUAGE = Language.EN.code
@@ -76,11 +74,11 @@ document.fonts.load(`10pt "${FONT}"`)
     const loadingBackground = new PIXI.Graphics()
     loadingBackground
       .beginFill(ex.fromHex('#000000'))
-      .drawRect(0, 0, GAME_WIDTH, GAME_HEIGHT)
+      .drawRect(0, 0, Render.GAME_WIDTH, Render.GAME_HEIGHT)
       // .endFill()
     loadingContainer.addChild(loadingBackground)
 
-    const loading = new PIXI.Text(i18n._(t('main.loading')`Loading`), textStyleMain)
+    const loading = new PIXI.Text(i18n._(t('main.loading')`Loading`), TextStyle.MAIN)
     centerY(loading)
     centerX(loading)
     loadingContainer.addChild(loading)

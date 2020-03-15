@@ -8,15 +8,13 @@ import { t } from '@lingui/macro'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
 
-import * as Language from '../constant/language'
 import Sound from '../sound'
 import i18n from '../i18n'
 import * as prism from '../util/prism'
 import app from '../app'
 import centerX from '../util/centerX'
 import centerY from '../util/centerY'
-import textStyleMain from '../textStyle/main'
-import { GAME_HEIGHT, GAME_WIDTH } from '../constant'
+import { Render, Language, TextStyle } from '../constant'
 import { slider, bar, select} from '../component'
 import { getVolume } from '../selector'
 import { explosion } from '../particle'
@@ -40,7 +38,7 @@ export default () => {
 
   const sprite = new PIXI.Sprite(ex.getTexture('square1'))
   sprite.x = 10
-  sprite.y = GAME_HEIGHT / 2
+  sprite.y = Render.GAME_HEIGHT / 2
   sprite.anchor.set(0.5)
   app.stage.addChild(sprite)
 
@@ -75,7 +73,7 @@ export default () => {
     sprite.destroy()
   }, 500)
 
-  const text = new PIXI.Text(i18n._(t('main.gameStarted')`Game started!`), textStyleMain)
+  const text = new PIXI.Text(i18n._(t('main.gameStarted')`Game started!`), TextStyle.MAIN)
   text.filters = [new filters.CRTFilter()]
 
   centerX(text)
@@ -129,10 +127,10 @@ const makeVolumeSlider = () => {
   const volume = getVolume(prism.state)
 
   const container = new PIXI.Container()
-  container.position.set(GAME_WIDTH - 100, GAME_HEIGHT - 50)
+  container.position.set(Render.GAME_WIDTH - 100, Render.GAME_HEIGHT - 50)
   app.stage.addChild(container)
 
-  const text = new PIXI.Text(i18n._(t('settings.volume')`Volume`), textStyleMain)
+  const text = new PIXI.Text(i18n._(t('settings.volume')`Volume`), TextStyle.MAIN)
   text.anchor.set(0.5)
   text.position.set(-5, -40)
   container.addChild(text)

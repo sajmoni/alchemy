@@ -1,8 +1,6 @@
-import { GAME_WIDTH } from '../constant'
+import { Render } from '../constant'
 
 export default (displayObject) => {
-  // eslint-disable-next-line no-param-reassign
-  displayObject.position.x = GAME_WIDTH / 2
-  // eslint-disable-next-line no-param-reassign
+  displayObject.position.x = Render.GAME_WIDTH / 2
   displayObject.anchor.x = 0.5
 }

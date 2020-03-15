@@ -1,13 +1,13 @@
 import * as PIXI from 'pixi.js'
-import { GAME_HEIGHT, GAME_WIDTH } from './constant'
+import { Render } from './constant'
 
 // * Enable to turn on pixel perfect rendering:
 // PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST
 // PIXI.settings.ROUND_PIXELS = true
 
 const renderer = new PIXI.Renderer({
-  width: GAME_WIDTH,
-  height: GAME_HEIGHT,
+  width: Render.GAME_WIDTH,
+  height: Render.GAME_HEIGHT,
   // * Enable to turn on pixel perfect rendering:
   // antialias: false,
   // * Can be enabled once a background image exists
