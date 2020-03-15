@@ -26,7 +26,7 @@ Generates a modular template to get started making 2D games that run in the brow
  
  - :coffee: [`pixi-filter`](https://github.com/pixijs/pixi-filters) - A collection of display filters for PixiJS
  
- - :up: [`pixi-ex`](https://github.com/rymdkraftverk/pixi-ex) - Useful utility functions
+ - :up: [`pixi-ex`](https://github.com/sajmoni/pixi-ex) - Useful utility functions
 
 ### QA
 
@@ -99,7 +99,7 @@ npx make-web-game my-game
 The output file structure will look like this:
 
 ```
-my-game
+my-game/
 ├── .circleci/
 ├── asset/
 │   ├── font/
@@ -107,33 +107,33 @@ my-game
 │   └── sprite/
 ├── locale/
 ├── node_modules/
-├── src
-│   ├── behavior
+├── src/
+│   ├── behavior/
 │   │   ├── fadeIn.js
 │   │   └── index.js
-│   ├── component
+│   ├── component/
 │   │   ├── bar.js
 │   │   ├── button.js
 │   │   ├── index.js
 │   │   └── slider.js
-│   ├── constant
+│   ├── constant/
 │   │   └── index.js
-│   ├── game
+│   ├── game/
 │   │   └── index.js
-│   ├── particle
+│   ├── particle/
 │   │   ├── explosion.js
 │   │   └── index.js
-│   ├── pixi
+│   ├── pixi/
 │   │   └── index.js
-│   ├── selector
+│   ├── selector/
 │   │   └── index.js
-│   ├── sound
+│   ├── sound/
 │   │   ├── createSound.js
 │   │   ├── globalVolume.js
 │   │   └── index.js
-│   ├── textStyle
+│   ├── textStyle/
 │   │   └── main.js
-│   ├── util
+│   ├── util/
 │   │   ├── autoFullScreen.js
 │   │   ├── centerX.js
 │   │   ├── centerY.js
@@ -147,7 +147,7 @@ my-game
 │   ├── index.html
 │   ├── index.js
 │   ├── state.js
-│   └── style.css
+│   ├── style.css
 │   └── package.json
 ├── static/
 │   └── spritesheet/

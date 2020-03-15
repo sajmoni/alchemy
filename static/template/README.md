@@ -28,6 +28,7 @@ This game was initially created with [`make-web-game`](https://github.com/sajmon
 - [Performance Tips](#performance-tips)
   - [Lodash](#lodash)
   - [Draw calls](#draw-calls)
+  - [Immutability](#immutability)
 - [Marketing](#marketing)
 - [Useful external tools](#useful-external-tools)
 - [Useful libraries](#useful-libraries)
@@ -326,6 +327,10 @@ Try to keep your `draw calls` low. Inspect your scene with `SpectorJS` occasiona
 
 TODO: Link to an external resource
 
+#### Immutability
+
+Try not to use immutability too much. Immutability has its benefits in many situations, but it can add a significant performance penalty if used in the wrong places. 
+
 ---
 
 ### Marketing
@@ -355,6 +360,8 @@ Hooks (TODO)
 ### Useful libraries
 
 [chance](https://github.com/chancejs/chancejs) - Randomness
+
+[xstate-fsm](https://github.com/davidkpiano/xstate/tree/master/packages/xstate-fsm) - Minimal finite state machine
 
 ---
 

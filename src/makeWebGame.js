@@ -120,6 +120,8 @@ module.exports = ({ projectName }) => {
         )
       }
 
+      // * Rename gitignore to prevent npm from renaming it to .npmignore
+      // * See: https://github.com/npm/npm/issues/1862
       fs.moveSync(
         path.join(rootPath, 'gitignore'),
         path.join(rootPath, '.gitignore'),
