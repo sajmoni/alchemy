@@ -117,7 +117,11 @@ my-game/
 │   │   ├── index.js
 │   │   └── slider.js
 │   ├── constant/
-│   │   └── index.js
+│   │   ├── index.js
+│   │   ├── language.js
+│   │   ├── render.js
+│   │   ├── resolution.js
+│   │   └── textStyle.js
 │   ├── game/
 │   │   └── index.js
 │   ├── particle/
@@ -131,8 +135,6 @@ my-game/
 │   │   ├── createSound.js
 │   │   ├── globalVolume.js
 │   │   └── index.js
-│   ├── textStyle/
-│   │   └── main.js
 │   ├── util/
 │   │   ├── autoFullScreen.js
 │   │   ├── centerX.js
