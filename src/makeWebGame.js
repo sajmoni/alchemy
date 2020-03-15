@@ -8,13 +8,12 @@ const getPackageJsonTemplate = require('./getPackageJsonTemplate')
 const displayDoneMessage = require('./message/done')
 const tryGitInit = require('./git/init')
 
-// TODO: Debug tools
 const dependencies = [
   // * Rendering
   'pixi.js@5.2.1',
   'pixi-ex@0.0.6',
   'pixi-particles@4.2.0',
-  'pixi-filters@3.0.3',
+  'pixi-filters@3.1.1',
   // * --
   // * Sound
   'howler@2.1.3',
@@ -27,7 +26,7 @@ const dependencies = [
   // * Util
   'lodash@4.17.15',
   // TODO: Replace with Prism
-  'on-change@1.6.2',
+  'on-change@1.8.1',
   // * --
   // * Translations
   '@lingui/core@2.9.1',
@@ -37,7 +36,7 @@ const dependencies = [
 
 const devDependencies = [
   // * Electron
-  'electron@8.1.0',
+  'electron@8.1.1',
   'electron-packager@14.2.1',
   // * --
   // * Code quality
@@ -57,12 +56,12 @@ const devDependencies = [
   'babel-core@bridge',
   // * --
   // * Testing
-  'ava@3.4.0',
+  'ava@3.5.0',
   'eslint-plugin-ava@10.2.0',
   '@ava/babel@1.0.1',
   // * --
   // * Other
-  'muncher@0.0.7',
+  'muncher@0.0.10',
 ]
 
 module.exports = ({ projectName }) => {
