@@ -18,13 +18,11 @@ export default (displayObject, {
   })
 
   const f = l1.repeat((counter) => {
-    // eslint-disable-next-line no-param-reassign
     displayObject.alpha = getAlpha(counter)
     if (counter === (duration * resolveAt)) {
       res()
     }
     if (counter === duration) {
-      // eslint-disable-next-line no-param-reassign
       displayObject.alpha = END_VALUE
       l1.remove(f)
     }

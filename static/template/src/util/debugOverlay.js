@@ -41,13 +41,10 @@ export default (items, options = {}) => {
       label, getData, element, threshold,
     }) => {
       const data = getData()
-      // eslint-disable-next-line no-param-reassign
       element.innerHTML = `${label}: ${data || '-'}`
       if (threshold && data >= threshold) {
-        // eslint-disable-next-line no-param-reassign
         element.style.color = 'red'
       } else {
-        // eslint-disable-next-line no-param-reassign
         element.style.color = 'white'
       }
     })
