@@ -1,0 +1,38 @@
+{
+  "settings.settings": {
+    "defaults": "Settings",
+    "origin": [
+      [
+        "src/component/settings.js",
+        62
+      ]
+    ]
+  },
+  "settings.sound": {
+    "defaults": "Sound",
+    "origin": [
+      [
+        "src/component/settings.js",
+        73
+      ]
+    ]
+  },
+  "settings.music": {
+    "defaults": "Music",
+    "origin": [
+      [
+        "src/component/settings.js",
+        91
+      ]
+    ]
+  },
+  "settings.done": {
+    "defaults": "Done",
+    "origin": [
+      [
+        "src/component/settings.js",
+        129
+      ]
+    ]
+  }
+}

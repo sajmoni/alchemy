@@ -1,0 +1,29 @@
+{
+  "main.gameStarted": {
+    "defaults": "Game started!",
+    "origin": [
+      [
+        "src/game/index.js",
+        83
+      ]
+    ]
+  },
+  "main.settings": {
+    "defaults": "Settings",
+    "origin": [
+      [
+        "src/game/index.js",
+        127
+      ]
+    ]
+  },
+  "main.startGame": {
+    "defaults": "Start game",
+    "origin": [
+      [
+        "src/game/index.js",
+        138
+      ]
+    ]
+  }
+}

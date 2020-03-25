@@ -3,8 +3,6 @@ import onChange from 'on-change'
 // TODO: Tests
 // TODO: Performance tests
 
-// eslint-disable-next-line import/no-mutable-exports
-let state
 const subscribers = []
 
 function onChangeFn(path /* value, previousValue */) {
@@ -17,12 +15,24 @@ function onChangeFn(path /* value, previousValue */) {
   })
 }
 
+// Maybe init should return the state for it being handled in userland??
+/**
+ * @param {object} initialState
+ */
 export const init = (initialState) => {
-  state = onChange(initialState, onChangeFn)
+  return onChange(initialState, onChangeFn)
 }
 
-export const getState = () => onChange.target(state)
+/**
+ * Get state as a regular JavaScript object
+ * @param {object} state
+ */
+export const target = (state) => onChange.target(state)
 
+/**
+ * @param {string[]|string} paths
+ * @param {(state) => void} callback
+ */
 export const subscribe = (paths, callback) => {
   const subscriber = [paths, callback]
   subscribers.push(subscriber)
@@ -37,5 +47,3 @@ export const subscribe = (paths, callback) => {
 
   return unsubscribe
 }
-
-export { state }

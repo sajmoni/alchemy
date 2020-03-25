@@ -1,3 +1,3 @@
+export const getSoundVolume = state => state.application.volume.sound
 
-// eslint-disable-next-line import/prefer-default-export
-export const getVolume = (state) => state.application.volume
+export const getMusicVolume = state => state.application.volume.music

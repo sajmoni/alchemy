@@ -4,7 +4,7 @@ import * as ex from 'pixi-ex'
 export default ({
   label: labelString,
   onClick,
-  texture,
+  backgroundTexture = null,
   textStyle,
 }) => {
   const component = new PIXI.Container()
@@ -13,13 +13,15 @@ export default ({
     onClick()
   })
 
-  const button = new PIXI.Sprite(texture)
-  button.anchor.set(0.5)
-  component.addChild(button)
+  if (backgroundTexture) {
+    const button = new PIXI.Sprite(backgroundTexture)
+    button.anchor.set(0.5)
+    component.addChild(button)
+  }
 
   const label = new PIXI.Text(labelString, textStyle)
-  // label.y = -7
   label.anchor.set(0.5)
+  component.addChild(label)
 
   // TODO: Pass in state? Active, disabled etc. Change label?
   // const render = (value) => {

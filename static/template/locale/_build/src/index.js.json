@@ -1,0 +1,11 @@
+{
+  "main.loading": {
+    "defaults": "Loading",
+    "origin": [
+      [
+        "src/index.js",
+        86
+      ]
+    ]
+  }
+}

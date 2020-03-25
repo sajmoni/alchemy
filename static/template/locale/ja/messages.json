@@ -5,7 +5,7 @@
     "origin": [
       [
         "src/game/index.js",
-        80
+        83
       ]
     ]
   },
@@ -15,17 +15,67 @@
     "origin": [
       [
         "src/index.js",
-        89
+        86
       ]
     ]
   },
-  "settings.volume": {
-    "translation": "ボリューム",
-    "defaults": "Volume",
+  "main.settings": {
+    "translation": "セッティング",
+    "defaults": "Settings",
     "origin": [
       [
         "src/game/index.js",
-        144
+        127
+      ]
+    ]
+  },
+  "main.startGame": {
+    "translation": "ゲームを始める",
+    "defaults": "Start game",
+    "origin": [
+      [
+        "src/game/index.js",
+        138
+      ]
+    ]
+  },
+  "settings.done": {
+    "translation": "やった",
+    "defaults": "Done",
+    "origin": [
+      [
+        "src/component/settings.js",
+        129
+      ]
+    ]
+  },
+  "settings.music": {
+    "translation": "音楽",
+    "defaults": "Music",
+    "origin": [
+      [
+        "src/component/settings.js",
+        91
+      ]
+    ]
+  },
+  "settings.settings": {
+    "translation": "セッティング",
+    "defaults": "Settings",
+    "origin": [
+      [
+        "src/component/settings.js",
+        62
+      ]
+    ]
+  },
+  "settings.sound": {
+    "translation": "音",
+    "defaults": "Sound",
+    "origin": [
+      [
+        "src/component/settings.js",
+        73
       ]
     ]
   }

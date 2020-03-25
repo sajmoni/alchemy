@@ -55,11 +55,9 @@ MainLoop.setDraw(() => {
   app.renderer.render(app.stage)
 })
 
-prism.init(state)
-
 const languageCode = restore('language') || DEFAULT_LANGUAGE
 i18n.activate(languageCode)
-prism.state.application.language = languageCode
+state.application.language = languageCode
 
 app.loader.add('spritesheet/spritesheet.json')
 
@@ -120,10 +118,11 @@ document.fonts.load(`10pt "${FONT}"`)
 // * These commands can be run in the console, e.g: 'debug.state()'
 window['debug'] = {
   ...window['debug'],
-  state: () => prism.getState(),
+  state: () => state,
   info: () => ({
     'display objects': ex.getAllChildren(app.stage).length,
-    behaviors: l1.getAll().length,
+    'amount of behaviors': l1.getAll().length,
+    behaviors: l1.getAll(),
   }),
   sound: () => {
     Sound.SWORD_01.play()

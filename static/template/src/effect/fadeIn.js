@@ -4,27 +4,25 @@ import * as juice from 'juice.js'
 const END_VALUE = 1
 
 export default (displayObject, {
-  // endValue = 1,
   duration = 90,
   resolveAt = 0.5,
-} = {
-  duration: 90,
-  resolveAt: 0.5,
-}) => new Promise((res) => {
+  endValue = END_VALUE,
+} = {}) => new Promise((res) => {
   const getAlpha = juice.easeOut({
     startValue: 0,
-    endValue: END_VALUE,
+    endValue,
     duration,
   })
 
-  const f = l1.repeat((counter) => {
+  const fadeIn = l1.repeat((counter) => {
     displayObject.alpha = getAlpha(counter)
-    if (counter === (duration * resolveAt)) {
+    if (counter === Math.floor(duration * resolveAt)) {
       res()
     }
     if (counter === duration) {
-      displayObject.alpha = END_VALUE
-      l1.remove(f)
+      displayObject.alpha = endValue
+      l1.remove(fadeIn)
     }
   })
+  fadeIn.id = `fadeIn-${displayObject.name}`
 })

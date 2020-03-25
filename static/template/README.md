@@ -363,6 +363,8 @@ Hooks (TODO)
 
 [xstate-fsm](https://github.com/davidkpiano/xstate/tree/master/packages/xstate-fsm) - Minimal finite state machine
 
+[tiny-toolkit](https://github.com/sajmoni/tiny-toolkit) - Useful utility functions
+
 ---
 
 ### Misc
