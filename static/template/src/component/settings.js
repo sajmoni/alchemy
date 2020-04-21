@@ -129,7 +129,6 @@ export default () => {
     label: i18n._(t('settings.done')`Done`),
     onClick: () => {
       state.application.settingsVisible = false
-      console.log('done clicked')
     },
   })
   doneButton.position.set(CENTER_COLUMN, BUTTONS_Y)
@@ -139,7 +138,6 @@ export default () => {
 
   const render = visible => {
     if (visible) {
-      console.log('VISIBLE')
       component.visible = visible
       fadeIn(component, { duration: 15 })
     } else if (visible !== component.visible) {

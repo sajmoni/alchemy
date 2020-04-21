@@ -27,7 +27,7 @@
   },
   "scripts": {
     "clean": "rm -rf ./example/test-game && rm -f make-web-game.tgz",
-    "build-test": "./build-test.sh",
+    "go": "./build-test.sh",
     "build": "rm -rf dist && parcel build src/index.js --target node --no-cache",
     "typecheck": "tsc --resolveJsonModule",
     "format": "prettier --write \"src/**/*.js\"",
