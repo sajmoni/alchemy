@@ -11,7 +11,7 @@ const tryGitInit = require('./git/init')
 const dependencies = [
   // * Rendering
   'pixi.js@5.2.1',
-  'pixi-ex@0.0.6',
+  'pixi-ex@0.0.7',
   'pixi-particles@4.2.0',
   'pixi-filters@3.1.1',
   // * --

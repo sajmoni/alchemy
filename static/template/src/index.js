@@ -10,10 +10,7 @@ import app from './app'
 import game from './game'
 import state from './state'
 import debugOverlay from './util/debugOverlay'
-import autoFullScreen from './util/autoFullScreen'
 import autoPause from './util/autoPause'
-import centerY from './util/centerY'
-import centerX from './util/centerX'
 import { TextStyle, Render, Language } from './constant'
 import Sound from './sound'
 import { restore } from './util/storage'
@@ -76,16 +73,16 @@ document.fonts.load(`10pt "${FONT}"`)
       // .endFill()
     loadingContainer.addChild(loadingBackground)
 
-    const loading = new PIXI.Text(i18n._(t('main.loading')`Loading`), TextStyle.MAIN)
-    centerY(loading)
-    centerX(loading)
+    const loading = new PIXI.Text(
+      i18n._(t('main.loading')`Loading`),
+      TextStyle.MAIN,
+    )
+    ex.centerX(loading, Render.GAME_WIDTH / 2)
+    ex.centerY(loading, Render.GAME_HEIGHT / 2)
     loadingContainer.addChild(loading)
 
     app.loader.load(() => {
       ex.init(app)
-
-      // * Enable this to make your game be always full screen.
-      // autoFullScreen()
 
       autoPause()
 
