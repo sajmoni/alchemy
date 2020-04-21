@@ -3,6 +3,7 @@ import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
 import { t } from '@lingui/macro'
 import MainLoop from 'mainloop.js'
+// import * as Sentry from '@sentry/browser'
 
 import i18n from './i18n'
 import * as prism from './util/prism'
@@ -30,6 +31,10 @@ document
   .getElementById('game')
   .appendChild(app.renderer.view)
 
+// TODO: Replace with your sentry config
+// Sentry.init({
+//   dsn: '__DSN__',
+// })
 
 let loopDurations = []
 

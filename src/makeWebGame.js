@@ -32,6 +32,9 @@ const dependencies = [
   '@lingui/core@2.9.1',
   '@lingui/macro@2.9.1',
   // * --
+  // * Error logging
+  '@sentry/browser@5.14.2',
+  // * --
 ]
 
 const devDependencies = [
