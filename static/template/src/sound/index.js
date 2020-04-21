@@ -7,10 +7,9 @@ import createSound from './createSound'
 // @ts-ignore
 import sword01 from '../../asset/sound/Sword01.wav'
 
-const Sound = _.mapValues(createSound,
-  {
-    SWORD_01: { src: sword01, volume: 0.8 },
-  })
+const Sound = _.mapValues(createSound, {
+  SWORD_01: { src: sword01, volume: 0.8 },
+})
 
 export default Sound
 

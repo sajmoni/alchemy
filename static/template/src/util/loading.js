@@ -3,8 +3,7 @@
 const loading = document.createElement('div')
 loading.innerHTML = 'Please wait'
 loading.setAttribute('id', 'loading')
-document.getElementById('game')
-  .appendChild(loading)
+document.querySelector('#game').append(loading)
 
 document.addEventListener('DOMContentLoaded', () => {
   loading.remove()

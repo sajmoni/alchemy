@@ -25,14 +25,11 @@ export default ({
     component.drawRect(BAR_X + 1, 1, width, HEIGHT)
 
     component.beginFill(ex.fromHex(onColor))
-    const valueWidth = Math.max(Math.floor((width) * value), 0)
+    const valueWidth = Math.max(Math.floor(width * value), 0)
     component.drawRect(BAR_X + 1, 1, valueWidth, HEIGHT)
   }
 
   render(initialValue)
 
-  return [
-    component,
-    render,
-  ]
+  return [component, render]
 }

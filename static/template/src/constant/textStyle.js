@@ -1,7 +1,7 @@
 export default {
   MAIN: {
-    fontFamily: 'patchy-robots', 
-    fill: 'white', 
+    fontFamily: 'patchy-robots',
+    fill: 'white',
     fontSize: 30,
   },
 }

@@ -4,7 +4,5 @@ import fullscreenFadeInOut from './fullscreenFadeInOut'
 
 export default (displayObject, otherObjects) => {
   blink(displayObject)
-  return Promise.all(
-    otherObjects.map(fadeOut),
-  ).then(fullscreenFadeInOut)
+  return Promise.all(otherObjects.map(fadeOut)).then(fullscreenFadeInOut)
 }

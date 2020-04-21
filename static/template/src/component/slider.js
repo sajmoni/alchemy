@@ -20,7 +20,7 @@ export default ({ initialValue, onMinus, onPlus }) => {
   plus.x = 50
   component.addChild(plus)
 
-  const render = value => {
+  const render = (value) => {
     text.text = value
   }
 

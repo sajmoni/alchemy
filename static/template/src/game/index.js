@@ -12,14 +12,12 @@ import i18n from '../i18n'
 import * as prism from '../util/prism'
 import app from '../app'
 import state from '../state'
-import centerX from '../util/centerX'
-import centerY from '../util/centerY'
 import { Render, TextStyle } from '../constant'
-import { bar } from '../component'
+import { bar, button } from '../component'
 import { explosion } from '../particle'
 import createSettings from '../component/settings'
-import { button } from '../component/index'
-import {clickBlink, easeOutToPosition} from '../effect'
+
+import { clickBlink, easeOutToPosition } from '../effect'
 
 export default () => {
   const container = new PIXI.Container()
@@ -36,7 +34,7 @@ export default () => {
       l1.remove(barBehavior)
     }
   }, 10)
-  prism.subscribe(['bar'], state => {
+  prism.subscribe(['bar'], (state) => {
     // value / max
     renderManaBar((state.bar / 100).toFixed(2))
   })
@@ -82,8 +80,8 @@ export default () => {
   )
   text.filters = [new filters.CRTFilter()]
 
-  centerX(text)
-  centerY(text)
+  ex.centerX(text, Render.GAME_WIDTH / 2)
+  ex.centerY(text, Render.GAME_HEIGHT / 2)
 
   ex.makeResizable(text)
   container.addChild(text)
@@ -94,7 +92,7 @@ export default () => {
     endValue: 1.2,
   })
 
-  l1.repeat(counter => {
+  l1.repeat((counter) => {
     text.scale.set(getScale(counter))
   })
 
@@ -135,13 +133,19 @@ export default () => {
     label: i18n._(t('main.startGame')`Start game`),
     textStyle: TextStyle.MAIN,
     onClick: () => {
-      easeOutToPosition(startGameButton, { position: {y: 30, x: startGameButton.x}})
-        .then(() => {
-          clickBlink(startGameButton, container.children.filter((c) => c !== startGameButton)).then(() => {
-            container.destroy()
-            l1.getAll().filter(({id}) => id !== 'fullscreenFadeInOut' && id !== 'debug').forEach(l1.remove)
-          })
+      easeOutToPosition(startGameButton, {
+        position: { y: 30, x: startGameButton.x },
+      }).then(() => {
+        clickBlink(
+          startGameButton,
+          container.children.filter((c) => c !== startGameButton),
+        ).then(() => {
+          container.destroy()
+          l1.getAll()
+            .filter(({ id }) => id !== 'fullscreenFadeInOut' && id !== 'debug')
+            .forEach(l1.remove)
         })
+      })
     },
   })
   startGameButton.position.set(600, 500)

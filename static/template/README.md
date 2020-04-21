@@ -1,38 +1,42 @@
 <!-- omit in toc -->
-## My web game 
+
+## My web game
 
 This game was initially created with [`make-web-game`](https://github.com/sajmoni/make-web-game)
 
 ---
 
 <!-- omit in toc -->
+
 ## Documentation
 
-- [Folder structure](#folder-structure)
-  - [Components](#components)
-  - [Behaviors](#behaviors)
-  - [Selectors](#selectors)
-- [Git branching](#git-branching)
-- [Type check](#type-check)
-- [Generate sprite sheet](#generate-sprite-sheet)
-- [Translations](#translations)
-- [Generating a production build](#generating-a-production-build)
-- [Electron](#electron)
-- [Sentry](#sentry)
-- [Linting](#linting)
-- [Debug overlay](#debug-overlay)
-- [Sounds](#sounds)
-- [State management](#state-management)
-- [Plop](#plop)
-- [Web worker](#web-worker)
-- [Performance Tips](#performance-tips)
-  - [Lodash](#lodash)
-  - [Draw calls](#draw-calls)
-  - [Immutability](#immutability)
-- [Marketing](#marketing)
-- [Useful external tools](#useful-external-tools)
-- [Useful libraries](#useful-libraries)
-- [Misc](#misc)
+- [My web game](#my-web-game)
+- [Documentation](#documentation)
+  - [Folder structure](#folder-structure)
+    - [Components](#components)
+    - [Behaviors](#behaviors)
+    - [Selectors](#selectors)
+  - [Git branching](#git-branching)
+  - [Type check](#type-check)
+  - [Generate sprite sheet](#generate-sprite-sheet)
+  - [Translations](#translations)
+  - [Generating a production build](#generating-a-production-build)
+  - [Electron](#electron)
+  - [Sentry](#sentry)
+  - [Linting](#linting)
+  - [Debug overlay](#debug-overlay)
+  - [Sounds](#sounds)
+  - [State management](#state-management)
+  - [Plop](#plop)
+  - [Web worker](#web-worker)
+  - [Performance Tips](#performance-tips)
+    - [Lodash](#lodash)
+    - [Draw calls](#draw-calls)
+    - [Immutability](#immutability)
+  - [Marketing](#marketing)
+  - [Useful external tools](#useful-external-tools)
+  - [Useful libraries](#useful-libraries)
+  - [Misc](#misc)
 
 ---
 
@@ -43,7 +47,7 @@ This game was initially created with [`make-web-game`](https://github.com/sajmon
 The `component` folder is a collection of Pixi UI Components.
 
 ```js
-const [ playButton, renderPlayButton ] = button(configuration)  
+const [playButton, renderPlayButton] = button(configuration)
 
 app.stage.addChild(playButton)
 
@@ -52,24 +56,23 @@ renderPlayButton()
 
 A component is a function that takes a `configuration` object and returns an array with two elements. The first one is a `Pixi.DisplayObject` that you need to add to a `Pixi.Container` (for example your stage). The other one is a function that you need to call every time you want to render your component based on a state change.
 
-
 #### Behaviors
 
 Behaviors can manipulate your display objects in certain ways. There are several ones included in your template. Use them as inspiration for making your own behaviors.
 
 Included behaviors:
 
- - `fadeIn`
- - `fadeOut`
- - `fullScreenFadeOut`
- - `bounce`
- - `fadeOut`
+- `fadeIn`
+- `fadeOut`
+- `fullScreenFadeOut`
+- `bounce`
+- `fadeOut`
 
 #### Selectors
 
-You should keep information about accessing your state tree in one place. 
+You should keep information about accessing your state tree in one place.
 
-This way, when you change your state tree, you only need to update it in one place, instead of spread out throughout your code base. 
+This way, when you change your state tree, you only need to update it in one place, instead of spread out throughout your code base.
 
 ---
 
@@ -136,7 +139,7 @@ Put your image files into the `asset/sprite` folder and run `yarn munch` to run 
 
 Translations use [`lingui`](https://github.com/lingui/js-lingui).
 
-Example usage: 
+Example usage:
 
 ```js
 import { t } from '@lingui/macro'
@@ -193,7 +196,7 @@ Linting is done by [`eslint`](https://github.com/eslint/eslint)
 
 ### Debug overlay
 
-Set `DEBUG` to `true` in `src/index.js` to display an overlay with debug information. 
+Set `DEBUG` to `true` in `src/index.js` to display an overlay with debug information.
 This overlay can be customized to show any information you want.
 
 TODO: Link to nano-overlay
@@ -204,7 +207,7 @@ TODO: Link to nano-overlay
 
 Sounds are preloaded with `Howler`.
 
-Example usage: 
+Example usage:
 
 ```js
 import Sound from './sound'
@@ -226,12 +229,12 @@ Example usage:
 const state = {
   application: {
     volume: 5,
-  }
+  },
 }
 
 prism.init(state)
 
-prims.subscribe('application.volume', (state) => {
+prims.subscribe('application.volume', state => {
   renderVolume(state.application.volume)
 })
 ```
@@ -252,7 +255,7 @@ yarn plop
 
 ### Web worker
 
-If you find that your game struggles to keep up with your desired frame rate, try putting some of the more performance heavy code in a `web worker`. A `web worker` is run in a separate thread and allows you to run code concurrently, which can dramatically improve your performance. 
+If you find that your game struggles to keep up with your desired frame rate, try putting some of the more performance heavy code in a `web worker`. A `web worker` is run in a separate thread and allows you to run code concurrently, which can dramatically improve your performance.
 
 The worker has no access to `PixiJS` and needs to communicate with your main thread using messages.
 
@@ -268,13 +271,13 @@ worker.postMessage({
   payload: 'ping',
 })
 
-worker.onmessage = ({ data: { type, payload }}) => {
+worker.onmessage = ({ data: { type, payload } }) => {
   switch (type) {
     case Message.FROM_WORKER.INIT: {
       console.log('Message from worker:', payload)
     }
     default:
-      break;
+      break
   }
 }
 ```
@@ -282,7 +285,7 @@ worker.onmessage = ({ data: { type, payload }}) => {
 `worker.js`
 
 ```js
-onmessage = ({ data: { type, payload }}) => {
+onmessage = ({ data: { type, payload } }) => {
   switch (type) {
     case Message.TO_WORKER.INIT: {
       postMessage({
@@ -291,7 +294,7 @@ onmessage = ({ data: { type, payload }}) => {
       })
     }
     default:
-      break;
+      break
   }
 }
 ```
@@ -329,13 +332,13 @@ TODO: Link to an external resource
 
 #### Immutability
 
-Try not to use immutability too much. Immutability has its benefits in many situations, but it can add a significant performance penalty if used in the wrong places. 
+Try not to use immutability too much. Immutability has its benefits in many situations, but it can add a significant performance penalty if used in the wrong places.
 
 ---
 
 ### Marketing
 
- - Install [Gifski](https://sindresorhus.com/gifski) to generate GIFs on Mac.
+- Install [Gifski](https://sindresorhus.com/gifski) to generate GIFs on Mac.
 
 Screenshots (TODO)
 
@@ -365,10 +368,12 @@ Hooks (TODO)
 
 [tiny-toolkit](https://github.com/sajmoni/tiny-toolkit) - Useful utility functions
 
+[eventemitter3](https://github.com/primus/eventemitter3) - Events
+
 ---
 
 ### Misc
 
- - Content in the `static` folder will be copied over to `dist` without being bundled. This is used for sprite sheets.
+- Content in the `static` folder will be copied over to `dist` without being bundled. This is used for sprite sheets.
 
- - For pixel perfect rendering: uncomment lines in `src/app.js`
+- For pixel perfect rendering: uncomment lines in `src/app.js`

@@ -9,7 +9,7 @@ const DURATION = 35
 const ID = 'fullscreenFadeInOut'
 
 export default () =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     const fade = new PIXI.Graphics()
     fade.zIndex = 1
     app.stage.addChild(fade)
@@ -23,7 +23,7 @@ const fadeInOut = (graphics, duration, resolve) => {
     duration,
     height: 1,
   })
-  return counter => {
+  return (counter) => {
     const alpha = animation(counter)
 
     graphics
@@ -37,6 +37,7 @@ const fadeInOut = (graphics, duration, resolve) => {
       hasResolved = true
       resolve()
     }
+
     if (counter === duration) {
       l1.remove(ID)
       graphics.destroy()

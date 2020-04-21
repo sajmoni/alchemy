@@ -14,7 +14,7 @@ const renderer = new PIXI.Renderer({
   // * This might increase performance
   // clearBeforeRender: false,
   // preserveDrawingBuffer: true,
-  // 
+  //
   backgroundColor: 0x000077,
 })
 
@@ -26,5 +26,7 @@ stage.sortableChildren = true
 const loader = new PIXI.Loader()
 
 export default {
-  renderer, stage, loader,
+  renderer,
+  stage,
+  loader,
 }

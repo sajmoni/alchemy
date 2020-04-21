@@ -6,21 +6,18 @@ import state from '../state'
 import { Render, Language, TextStyle } from '../constant'
 import select from './select'
 import { save } from '../util/storage'
-import { getSoundVolume, getMusicVolume } from '../selector/index'
+import { getSoundVolume, getMusicVolume } from '../selector'
 import i18n from '../i18n'
-import { slider } from './index'
-import Sound from '../sound/index'
+import { slider } from '.'
+import Sound from '../sound'
 import * as prism from '../util/prism'
 import app from '../app'
 import button from './button'
 import { fadeIn, fadeOut } from '../effect'
 
-const INVERTED_SIZE = 100
-
 const MAX_VOLUME = 10
 const MIN_VOLUME = 0
 
-const LANGUAGE_Y = 200
 const SOUND_Y = 200
 const BUTTONS_Y = 520
 
@@ -105,7 +102,7 @@ export default () => {
 
   const [languagePicker, renderLanguagePicker] = select({
     languages: Object.values(Language),
-    onClick: languageCode => {
+    onClick: (languageCode) => {
       save('language', languageCode)
       window.location.reload()
     },
@@ -115,11 +112,11 @@ export default () => {
   languagePicker.position.set(RIGHT_COLUMN, SOUND_Y)
   component.addChild(languagePicker)
 
-  prism.subscribe(['application.volume.sound'], state => {
+  prism.subscribe(['application.volume.sound'], (state) => {
     const newVolume = getSoundVolume(state)
     renderSoundSlider(newVolume)
   })
-  prism.subscribe(['application.volume.music'], state => {
+  prism.subscribe(['application.volume.music'], (state) => {
     const newVolume = getMusicVolume(state)
     renderMusicSlider(newVolume)
   })
@@ -136,12 +133,12 @@ export default () => {
 
   app.stage.addChild(component)
 
-  const render = visible => {
+  const render = (visible) => {
     if (visible) {
       component.visible = visible
       fadeIn(component, { duration: 15 })
     } else if (visible !== component.visible) {
-      fadeOut(component, { resolveAt: 0.6, duration: 30}).then(() => {
+      fadeOut(component, { resolveAt: 0.6, duration: 30 }).then(() => {
         component.visible = visible
       })
     }

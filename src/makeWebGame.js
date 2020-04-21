@@ -74,6 +74,7 @@ module.exports = ({ projectName }) => {
       `${chalk.red('Game folder already exists')} ${chalk.green(rootPath)}`,
     )
     console.log()
+    // eslint-disable-next-line unicorn/no-process-exit
     process.exit(1)
   }
 
@@ -131,7 +132,7 @@ module.exports = ({ projectName }) => {
 
       displayDoneMessage({ name: projectName, rootPath })
     })
-    .catch(reason => {
+    .catch((reason) => {
       console.log()
       console.log(chalk.red('Aborting installation.'))
       console.log(`Command failed: ${chalk.cyan(reason.command)}`)

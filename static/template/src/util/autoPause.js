@@ -10,4 +10,5 @@ const autoPause = () => {
     }
   })
 }
+
 export default autoPause

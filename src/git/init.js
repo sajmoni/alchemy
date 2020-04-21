@@ -21,7 +21,7 @@ module.exports = ({ appName, rootPath }) => {
 
     console.log()
     console.log('Initialized a git repository.')
-  } catch (e) {
+  } catch (_) {
     if (didInit) {
       // If we successfully initialized but couldn't commit,
       // maybe the commit author config is not set.
@@ -29,7 +29,7 @@ module.exports = ({ appName, rootPath }) => {
       // TODO: Test this by adding to use-cases file
       try {
         fs.removeSync(path.join(rootPath, '.git'))
-      } catch (removeErr) {
+      } catch (_) {
         // Ignore.
       }
     }

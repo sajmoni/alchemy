@@ -15,14 +15,44 @@
     "url": "git+https://github.com/sajmoni/make-web-game.git"
   },
   "bin": "dist/index.js",
-  "prettier": {
-    "trailingComma": "all",
-    "semi": false,
-    "singleQuote": true
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
+    }
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "semi": false,
+    "singleQuote": true,
+    "useTabs": false,
+    "bracketSpacing": true
+  },
+  "xo": {
+    "ignores": [
+      "static/template/locale/"
+    ],
+    "prettier": true,
+    "env": [
+      "browser",
+      "es2020",
+      "node"
+    ],
+    "rules": {
+      "import/no-unassigned-import": "off",
+      "import/no-absolute-path": "off",
+      "react/prop-types": "off",
+      "unicorn/filename-case": "off",
+      "capitalized-comments": "off",
+      "dot-notation": "off",
+      "unicorn/prefer-node-remove": "off",
+      "import/extensions": [
+        "error",
+        "never",
+        {
+          "png": "always",
+          "wav": "always"
+        }
+      ]
     }
   },
   "scripts": {
@@ -37,16 +67,14 @@
     "release:prepare": "yarn clean && yarn audit && yarn build && np --preview --no-tests"
   },
   "devDependencies": {
-    "eslint": "6.8.0",
-    "eslint-config-prettier": "6.10.1",
     "husky": "4.2.5",
     "lint-staged": "10.1.6",
     "np": "6.2.1",
     "parcel-bundler": "1.12.4",
     "parcel-plugin-shebang": "1.2.8",
     "parcel-plugin-static-files-copy": "2.3.1",
-    "prettier": "2.0.4",
-    "typescript": "3.8.3"
+    "typescript": "3.8.3",
+    "xo": "0.29.1"
   },
   "dependencies": {
     "chalk": "4.0.0",

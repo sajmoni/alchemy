@@ -13,7 +13,7 @@ export default (items, options = {}) => {
   } = options
 
   const container = document.createElement('div')
-  appendTo.appendChild(container)
+  appendTo.append(container)
   container.style.backgroundColor = 'rgba(0,0,0,0.8)'
   container.style.position = 'absolute'
   container.style.top = '0px'
@@ -27,7 +27,7 @@ export default (items, options = {}) => {
   const elements = items.map(({ label, getData, threshold }) => {
     const element = document.createElement('div')
     element.innerHTML = `${label}: ${getData() || '-'}`
-    container.appendChild(element)
+    container.append(element)
     return {
       label,
       getData,
@@ -37,9 +37,7 @@ export default (items, options = {}) => {
   })
 
   const render = () => {
-    elements.forEach(({
-      label, getData, element, threshold,
-    }) => {
+    elements.forEach(({ label, getData, element, threshold }) => {
       const data = getData()
       element.innerHTML = `${label}: ${data || '-'}`
       if (threshold && data >= threshold) {
@@ -49,5 +47,6 @@ export default (items, options = {}) => {
       }
     })
   }
+
   return render
 }

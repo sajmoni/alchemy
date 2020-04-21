@@ -23,20 +23,17 @@ console.log(`Version: ${VERSION}`)
 
 const DEBUG = true
 
-document
-  .getElementById('game')
-  .appendChild(app.renderer.view)
-
+document.querySelector('#game').append(app.renderer.view)
 
 let loopDurations = []
 
 if (DEBUG) {
   MainLoop.setUpdate((deltaTime) => {
     const beforeUpdate = performance.now()
-  
+
     // 16.6 -> 1
     l1.update(deltaTime / (1000 / 60))
-  
+
     const afterUpdate = performance.now()
     const loopDuration = afterUpdate - beforeUpdate
     loopDurations.push(loopDuration)
@@ -60,7 +57,8 @@ app.loader.add('spritesheet/spritesheet.json')
 
 // Experimental API's are not supported by typescript
 // @ts-ignore
-document.fonts.load(`10pt "${FONT}"`)
+document.fonts
+  .load(`10pt "${FONT}"`)
   .then(() => {
     const loadingContainer = new PIXI.Container()
     loadingContainer.zIndex = 9999
@@ -70,7 +68,7 @@ document.fonts.load(`10pt "${FONT}"`)
     loadingBackground
       .beginFill(ex.fromHex('#000000'))
       .drawRect(0, 0, Render.GAME_WIDTH, Render.GAME_HEIGHT)
-      // .endFill()
+    // .endFill()
     loadingContainer.addChild(loadingBackground)
 
     const loading = new PIXI.Text(
@@ -97,7 +95,7 @@ document.fonts.load(`10pt "${FONT}"`)
         MainLoop.start()
       })
 
-      prism.subscribe(['application.paused'], ({ application: { paused }}) => {
+      prism.subscribe(['application.paused'], ({ application: { paused } }) => {
         if (paused) {
           // TODO: This should probably just stop the l1.repeat main behavior
           // * Because we might want to have an animation when paused
@@ -131,14 +129,17 @@ if (process.env.NODE_ENV === 'development' && DEBUG) {
   const debugItems = [
     { label: 'fps', getData: () => Math.round(MainLoop.getFPS()) },
     { label: 'behaviors', getData: () => l1.getAll().length },
-    { label: 'display objects', getData: () => ex.getAllChildren(app.stage).length },
+    {
+      label: 'display objects',
+      getData: () => ex.getAllChildren(app.stage).length,
+    },
     {
       label: 'loop duration',
       threshold: 1,
       getData: () => {
-        const averageLoopDuration = loopDurations
-          .reduce((acc, ts) => acc + ts, 0)
-      / (loopDurations.length || 1)
+        const averageLoopDuration =
+          loopDurations.reduce((acc, ts) => acc + ts, 0) /
+          (loopDurations.length || 1)
 
         loopDurations = []
 

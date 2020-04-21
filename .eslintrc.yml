@@ -1,6 +1,0 @@
-extends: prettier
-rules:
-  no-console: off
-env:
-  es2017: true
-  node: true
