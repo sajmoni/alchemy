@@ -58,16 +58,18 @@ const devDependencies = [
   '@babel/register@7.9.0',
   // * --
   // * Other
-  'yup@0.28.4',
+  'yup@0.28.5',
   '@babel/node@7.8.7',
+  'plop@2.6.0',
   'muncher@0.0.13',
   '@babel/preset-typescript@7.9.0',
+  '@types/node@13.13.4',
   // * Labs
   'react@16.13.1',
   'react-dom@16.13.1',
   'styled-components@5.1.0',
   '@types/react@16.9.34',
-  '@types/react-dom@16.9.6',
+  '@types/react-dom@16.9.7',
   '@types/styled-components@5.1.0',
   'eslint-config-xo-react@0.23.0',
   'eslint-plugin-react@7.19.0',

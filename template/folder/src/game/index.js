@@ -36,7 +36,7 @@ export default () => {
   }, 10)
   prism.subscribe(['bar'], (state) => {
     // value / max
-    renderManaBar((state.bar / 100).toFixed(2))
+    renderManaBar(state.bar / 100)
   })
 
   const sprite = new PIXI.Sprite(ex.getTexture('square1'))
@@ -109,14 +109,17 @@ export default () => {
   explosionParticles.playOnceAndDestroy()
 
   const [settings, renderSettings] = createSettings()
+  // @ts-ignore
   app.stage.addChild(settings)
 
   prism.subscribe(
     'application.settingsVisible',
     ({ application: { settingsVisible } }) => {
+      // @ts-ignore
       renderSettings(settingsVisible)
     },
   )
+  // @ts-ignore
   renderSettings(state.application.settingsVisible)
 
   const [settingsButton] = button({
