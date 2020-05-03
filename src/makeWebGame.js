@@ -58,6 +58,8 @@ const devDependencies = [
   '@ava/babel@1.0.1',
   // * --
   // * Other
+  'yup@0.28.4',
+  '@babel/node@7.8.7',
   'muncher@0.0.13',
   // * Labs
   'react@16.13.1',

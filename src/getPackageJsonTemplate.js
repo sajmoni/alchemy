@@ -17,6 +17,7 @@ module.exports = ({ projectName }) => {
       'add-locale': 'lingui add-locale',
       extract: 'lingui extract --clean --overwrite',
       compile: 'lingui compile',
+      validate: 'babel-node ./script/validateData.js',
       'elec:start': 'electron .',
       'elec:build':
         'rm -rf dist && parcel build src/index.html --public-url ./ --target electron',
@@ -64,7 +65,7 @@ module.exports = ({ projectName }) => {
     husky: {
       hooks: {
         'pre-commit': 'lint-staged',
-        'pre-push': 'yarn test',
+        'pre-push': 'yarn test && yarn validate',
       },
     },
     lingui: {
