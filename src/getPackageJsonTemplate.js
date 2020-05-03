@@ -6,6 +6,7 @@ module.exports = ({ projectName }) => {
     main: './electron.js',
     scripts: {
       start: 'parcel src/index.html --no-autoinstall --no-cache',
+      lab: 'parcel labs/index.html --no-autoinstall --no-cache',
       build: 'rm -rf dist && parcel build src/index.html --public-url ./',
       test: 'ava',
       qa: 'tsc && xo --fix',

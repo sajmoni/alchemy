@@ -60,6 +60,12 @@ const devDependencies = [
   // * Other
   'muncher@0.0.13',
   // * Labs
+  'react@16.13.1',
+  'react-dom@16.13.1',
+  'styled-components@5.1.0',
+  '@types/react@16.9.34',
+  '@types/react-dom@16.9.6',
+  '@types/styled-components@5.1.0',
   'eslint-config-xo-react@0.23.0',
   'eslint-plugin-react@7.19.0',
   'eslint-plugin-react-hooks@4.0.0',
