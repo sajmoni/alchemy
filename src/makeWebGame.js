@@ -55,7 +55,7 @@ const devDependencies = [
   // * --
   // * Testing
   'ava@3.8.1',
-  '@ava/babel@1.0.1',
+  '@babel/register@7.9.0',
   // * --
   // * Other
   'yup@0.28.4',

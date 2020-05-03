@@ -26,7 +26,7 @@ module.exports = ({ projectName }) => {
       'elec:all': 'yarn elec:build && yarn elec:pack && yarn elec:run',
     },
     ava: {
-      babel: true,
+      require: ['./script/setupTests.js'],
     },
     prettier: {
       trailingComma: 'all',
