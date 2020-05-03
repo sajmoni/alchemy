@@ -10,9 +10,9 @@ const displayDoneMessage = require('./message/done')
 
 const dependencies = [
   // * Rendering
-  'pixi.js@5.2.1',
+  'pixi.js@5.2.3',
   'pixi-ex@0.0.7',
-  'pixi-particles@4.2.0',
+  'pixi-particles@4.2.1',
   'pixi-filters@3.1.1',
   // * --
   // * Sound
@@ -26,7 +26,7 @@ const dependencies = [
   // * Util
   'lodash@4.17.15',
   // TODO: Replace with Prism
-  'on-change@1.8.1',
+  'on-change@2.0.1',
   // * --
   // * Translations
   '@lingui/core@2.9.1',
@@ -51,15 +51,14 @@ const devDependencies = [
   '@lingui/cli@2.9.1',
   '@babel/core@7.8.7',
   'babel-plugin-macros@2.8.0',
-  'babel-core@bridge',
+  '@babel/preset-env@7.9.6',
   // * --
   // * Testing
-  'ava@3.5.0',
-  'eslint-plugin-ava@10.2.0',
+  'ava@3.8.1',
   '@ava/babel@1.0.1',
   // * --
   // * Other
-  'muncher@0.0.10',
+  'muncher@0.0.13',
   // * Labs
   'eslint-config-xo-react@0.23.0',
   'eslint-plugin-react@7.19.0',
