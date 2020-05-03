@@ -1,8 +1,5 @@
 import onChange from 'on-change'
 
-// TODO: Tests
-// TODO: Performance tests
-
 const subscribers = []
 
 function onChangeFn(path /* value, previousValue */) {

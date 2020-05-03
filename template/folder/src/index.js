@@ -20,7 +20,9 @@ const DEFAULT_LANGUAGE = Language.EN.code
 
 const VERSION = process.env.VERSION || 'N/A'
 console.log(`Version: ${VERSION}`)
+// const ERROR_LOGGING = process.env.ERROR_LOGGING || false
 
+// TODO: Move to settings file and default from env variable
 const DEBUG = true
 
 document.querySelector('#game').append(app.renderer.view)

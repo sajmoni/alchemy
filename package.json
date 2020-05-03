@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/sajmoni/make-web-game.git"
   },
-  "bin": "dist/index.js",
+  "bin": "dist/bundle.js",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -38,6 +38,7 @@
       "node"
     ],
     "rules": {
+      "unicorn/no-process-exit": "off",
       "import/no-unassigned-import": "off",
       "import/no-absolute-path": "off",
       "react/prop-types": "off",
@@ -58,7 +59,7 @@
   "scripts": {
     "clean": "rm -rf ./example/test-game && rm -f make-web-game.tgz",
     "go": "./build-test.sh",
-    "build": "rm -rf dist && parcel build src/index.js --target node --no-cache",
+    "build": "rm -rf dist && rollup --config rollup.config.js",
     "typecheck": "tsc --resolveJsonModule",
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint src",
@@ -67,12 +68,16 @@
     "release:prepare": "yarn clean && yarn audit && yarn build && np --preview --no-tests"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "11.1.0",
+    "@rollup/plugin-json": "4.0.3",
     "husky": "4.2.5",
     "lint-staged": "10.1.6",
     "np": "6.2.1",
     "parcel-bundler": "1.12.4",
     "parcel-plugin-shebang": "1.2.8",
     "parcel-plugin-static-files-copy": "2.3.1",
+    "rollup": "2.7.6",
+    "rollup-plugin-copy": "3.3.0",
     "typescript": "3.8.3",
     "xo": "0.29.1"
   },

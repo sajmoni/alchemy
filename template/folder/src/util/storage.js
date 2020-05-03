@@ -1,4 +1,4 @@
-// TODO: Change this
+// TODO: Make this dynamic with mustache template
 const keyPrefix = 'my-web-game'
 
 const { localStorage } = window

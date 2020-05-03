@@ -74,7 +74,6 @@ module.exports = ({ projectName }) => {
       `${chalk.red('Game folder already exists')} ${chalk.green(rootPath)}`,
     )
     console.log()
-    // eslint-disable-next-line unicorn/no-process-exit
     process.exit(1)
   }
 
@@ -113,7 +112,7 @@ module.exports = ({ projectName }) => {
       const templateDirectory = `${__dirname}/template`
 
       try {
-        fs.copySync(templateDirectory, rootPath)
+        fs.copySync(`${templateDirectory}/folder`, rootPath)
       } catch (error) {
         console.log(
           `${chalk.red('  Error: Could not copy template files: ')} ${error}`,
@@ -125,6 +124,7 @@ module.exports = ({ projectName }) => {
       fs.moveSync(
         path.join(rootPath, 'gitignore'),
         path.join(rootPath, '.gitignore'),
+        // @ts-ignore
         [],
       )
 

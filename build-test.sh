@@ -3,6 +3,7 @@ set -e
 runCommand() {
   echo "=== $1 ==="
   $1
+  echo ""
 }
 
 runCommand "yarn clean"
