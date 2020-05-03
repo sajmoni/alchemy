@@ -20,21 +20,21 @@ Generates a modular template to get started making 2D games that run in the brow
 
 ### Rendering
 
- - :tv: [`PixiJS`](https://github.com/pixijs/pixi.js) - The best WebGL library for 2D graphics
- 
- - :boom: [`pixi-particles`](https://github.com/pixijs/pixi-particles) - A particle system for PixiJS
- 
- - :coffee: [`pixi-filter`](https://github.com/pixijs/pixi-filters) - A collection of display filters for PixiJS
- 
- - :up: [`pixi-ex`](https://github.com/sajmoni/pixi-ex) - Useful utility functions
+- :tv: [`PixiJS`](https://github.com/pixijs/pixi.js) - The best WebGL library for 2D graphics
+
+- :boom: [`pixi-particles`](https://github.com/pixijs/pixi-particles) - A particle system for PixiJS
+
+- :coffee: [`pixi-filter`](https://github.com/pixijs/pixi-filters) - A collection of display filters for PixiJS
+
+- :up: [`pixi-ex`](https://github.com/sajmoni/pixi-ex) - Useful utility functions
 
 ### QA
 
-- :policeman: [`eslint`](https://github.com/eslint/eslint) and [`tsc`](https://github.com/microsoft/TypeScript) - Ensure code quality
+- :policeman: [`xo`](https://github.com/xojs/xo) and [`tsc`](https://github.com/microsoft/TypeScript) - Ensure code quality
 
 - :nail_care: [`prettier`](https://github.com/prettier/prettier) - Auto-formats your code
 
- - :chart: [`sentry`](https://sentry.io/) - Log errors (TODO)
+- :chart: [`sentry`](https://sentry.io/) - Log errors (TODO)
 
 - :no_entry_sign: :poop: [`lint-staged`](https://github.com/okonet/lint-staged) + :dog: [`husky`](https://github.com/typicode/husky) - Ensure code quality on each git commit and push
 
@@ -42,13 +42,13 @@ Generates a modular template to get started making 2D games that run in the brow
 
 ### Tooling
 
- - :zap: [`parcel`](https://github.com/parcel-bundler/parcel) - Super fast no-config module bundler
- 
- - :cake: [`muncher`](https://github.com/sajmoni/muncher) - Automatically create sprite sheets from the command line 
+- :zap: [`parcel`](https://github.com/parcel-bundler/parcel) - Super fast no-config module bundler
 
- <!-- - :red_circle: [`circle.ci`](https://circleci.com/) config to automatically push builds to `itch.io` -->
+- :cake: [`muncher`](https://github.com/sajmoni/muncher) - Automatically create sprite sheets from the command line
 
- - :bulb: [`electron`](https://github.com/electron/electron) - Convert your web game into a desktop application
+- :red_circle: [`GitHub actions`](https://github.com/features/actions) workflows to automatically push builds to `itch.io` (TODO)
+
+- :bulb: [`electron`](https://github.com/electron/electron) - Convert your web game into a desktop application
 
 - :recycle: [`plop`](https://github.com/plopjs/plop) - Micro-generator framework
 
@@ -62,11 +62,11 @@ Generates a modular template to get started making 2D games that run in the brow
 
 - :one: [`level1`](https://github.com/rymdkraftverk/level1) - Trigger a function after a set amount of game updates
 
-- :loop: [`mainloop`](https://github.com/IceCreamYou/MainLoop.js) - Game loop (TODO)
+- :loop: [`mainloop`](https://github.com/IceCreamYou/MainLoop.js) - Game loop
 
 - :earth_asia: [`lingui`](https://github.com/lingui/js-lingui) - Translations
 
- - Workflow for marketing (TODO)
+- Workflow for marketing (TODO)
 
  <!-- - state management -->
  <!-- Prism? -->
@@ -85,10 +85,10 @@ _Usage with `npx` ensures that you are always using the latest version_
 
 `make-web-game` will do the following:
 
- - Create a new folder called `<game-name>`
- - Copy all template files to that folder
- - Install the dependencies
- - Create an initial commit 
+- Create a new folder called `<game-name>`
+- Copy all template files to that folder
+- Install the dependencies
+- Create an initial commit
 
 ### Example usage
 
@@ -165,15 +165,15 @@ my-game/
 
 ## Options
 
- `--no-translations` (TODO)
+`--no-translations` (TODO)
 
 Exclude translations from the game
-  
- `--no-electron` (TODO)
+
+`--no-electron` (TODO)
 
 Exclude electron from the game
-  
- `--verbose` (TODO)
+
+`--verbose` (TODO)
 
 Display full output. Good for debugging.
 
@@ -191,14 +191,14 @@ Display full output. Good for debugging.
 
 A list of games made using this tool:
 
- - [Diablito](https://rymdkraftverk.itch.io/diablito) - A very tiny roguelike
-
----
-
-## Recipes
+- [Diablito](https://rymdkraftverk.itch.io/diablito) - A very tiny roguelike
 
 ---
 
 ## Requirements
 
 `make-web-game` uses `yarn` and `git` and requires them to be installed on your machine in order to work.
+
+---
+
+
