@@ -200,5 +200,3 @@ A list of games made using this tool:
 `make-web-game` uses `yarn` and `git` and requires them to be installed on your machine in order to work.
 
 ---
-
-

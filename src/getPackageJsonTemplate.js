@@ -9,6 +9,7 @@ module.exports = ({ projectName }) => {
       lab: 'parcel labs/index.html --no-autoinstall --no-cache',
       build: 'rm -rf dist && parcel build src/index.html --public-url ./',
       test: 'ava',
+      plop: 'plop --plopfile plop/plopfile.js',
       qa: 'tsc && xo --fix',
       'validate-ci': 'circleci config validate',
       'check-all': 'yarn lint && yarn typecheck && yarn validate-ci',

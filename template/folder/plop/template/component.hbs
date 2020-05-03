@@ -1,0 +1,13 @@
+import * as PIXI from 'pixi.js'
+
+type render = () => void
+
+const create{{ properCase name }} = (): [PIXI.Container, render] => {
+  const container = new PIXI.Container()
+
+  const render = () => {}
+
+  return [container, render]
+}
+
+export default create{{ properCase name }}
