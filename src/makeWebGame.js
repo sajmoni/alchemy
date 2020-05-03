@@ -49,7 +49,7 @@ const devDependencies = [
   // * --
   // * Translations
   '@lingui/cli@2.9.1',
-  '@babel/core@7.8.7',
+  '@babel/core@7.9.6',
   'babel-plugin-macros@2.8.0',
   '@babel/preset-env@7.9.6',
   // * --
@@ -61,6 +61,7 @@ const devDependencies = [
   'yup@0.28.4',
   '@babel/node@7.8.7',
   'muncher@0.0.13',
+  '@babel/preset-typescript@7.9.0',
   // * Labs
   'react@16.13.1',
   'react-dom@16.13.1',

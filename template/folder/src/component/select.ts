@@ -1,7 +1,10 @@
+import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 import { container, text } from '../pixi'
 
-export default ({ languages, onClick }) => {
+type render = (selectedLanguage: string) => void
+
+export default ({ languages, onClick }): [PIXI.Container, render] => {
   const component = container()
 
   const title = text('Choose language')

@@ -1,5 +1,6 @@
 import _ from 'lodash/fp'
 
+// eslint-disable-next-line import/no-unassigned-import
 import './globalVolume'
 import createSound from './createSound'
 

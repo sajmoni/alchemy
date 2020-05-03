@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
+    "lib": ["ES2020", "DOM"],
     "allowJs": true,
     "checkJs": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "noEmit": true,
     "target": "ES2017",
     "module": "commonjs",
@@ -10,11 +11,12 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
       "/*": ["./src/*"]
     }
   },
   "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist", "locale"]
 }

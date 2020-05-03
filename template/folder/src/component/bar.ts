@@ -3,13 +3,15 @@ import * as ex from 'pixi-ex'
 
 const HEIGHT = 7
 
+type render = (value: number) => void
+
 export default ({
   initialValue,
   onColor = '#ff0000',
   offColor = '#ff00ff',
   backgroundColor = '#000000',
   width = 100,
-}) => {
+}): [PIXI.Container, render] => {
   const component = new PIXI.Graphics()
 
   const paddedWidth = width + 2

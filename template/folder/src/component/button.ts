@@ -6,7 +6,7 @@ export default ({
   onClick,
   backgroundTexture = null,
   textStyle,
-}) => {
+}): [PIXI.Container] => {
   const component = new PIXI.Container()
 
   ex.makeClickable(component, () => {

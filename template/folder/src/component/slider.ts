@@ -1,7 +1,13 @@
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
-export default ({ initialValue, onMinus, onPlus }) => {
+type render = (value: string) => void
+
+export default ({
+  initialValue,
+  onMinus,
+  onPlus,
+}): [PIXI.Container, render] => {
   const component = new PIXI.Container()
 
   const minus = new PIXI.Sprite(ex.getTexture('plus-minus-0'))
