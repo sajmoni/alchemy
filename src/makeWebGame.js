@@ -155,7 +155,7 @@ module.exports = ({ projectName }) => {
             'commit',
             '--no-verify',
             '-m',
-            'Initialize project using make-js-lib',
+            'Initialize project using make-web-game',
           ])
 
           execa.sync('git', ['branch', 'release'])
