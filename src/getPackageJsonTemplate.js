@@ -8,8 +8,7 @@ module.exports = ({ projectName }) => {
       start: 'parcel src/index.html --no-autoinstall --no-cache',
       build: 'rm -rf dist && parcel build src/index.html --public-url ./',
       test: 'ava',
-      lint: 'eslint src',
-      typecheck: 'tsc',
+      qa: 'tsc && xo --fix',
       'validate-ci': 'circleci config validate',
       'check-all': 'yarn lint && yarn typecheck && yarn validate-ci',
       munch:
@@ -31,6 +30,35 @@ module.exports = ({ projectName }) => {
       trailingComma: 'all',
       semi: false,
       singleQuote: true,
+      useTabs: false,
+      bracketSpacing: true,
+    },
+    xo: {
+      extends: 'xo-react',
+      prettier: true,
+      parser: '@typescript-eslint/parser',
+      env: ['browser', 'es2020', 'node'],
+      rules: {
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/restrict-template-expressions': 'off',
+        '@typescript-eslint/prefer-readonly-parameter-types': 'off',
+        'unicorn/no-fn-reference-in-iterator': 'off',
+        'import/no-absolute-path': 'off',
+        'react/prop-types': 'off',
+        'unicorn/filename-case': 'off',
+        'capitalized-comments': 'off',
+        'dot-notation': 'off',
+        'unicorn/prefer-node-remove': 'off',
+        'import/extensions': [
+          'error',
+          'never',
+          {
+            png: 'always',
+            wav: 'always',
+          },
+        ],
+      },
     },
     husky: {
       hooks: {

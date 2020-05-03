@@ -40,9 +40,7 @@ const devDependencies = [
   'electron-packager@14.2.1',
   // * --
   // * Code quality
-  'prettier@1.19.1',
-  'eslint@6.8.0',
-  'eslint-config-prettier@6.10.0',
+  'xo@0.30.0',
   'typescript@3.8.3',
   // * --
   // * Module bundling
@@ -62,6 +60,10 @@ const devDependencies = [
   // * --
   // * Other
   'muncher@0.0.10',
+  // * Labs
+  'eslint-config-xo-react@0.23.0',
+  'eslint-plugin-react@7.19.0',
+  'eslint-plugin-react-hooks@4.0.0',
 ]
 
 module.exports = ({ projectName }) => {
