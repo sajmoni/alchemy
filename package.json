@@ -29,7 +29,7 @@
   },
   "xo": {
     "ignores": [
-      "static/template/locale/"
+      "template"
     ],
     "prettier": true,
     "env": [
