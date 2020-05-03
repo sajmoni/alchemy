@@ -1,6 +1,6 @@
-module.exports = ({ appName }) => {
+module.exports = ({ projectName }) => {
   const packageJsonTemplate = {
-    name: appName,
+    name: projectName,
     version: '0.0.0',
     private: true,
     main: './electron.js',
@@ -21,7 +21,7 @@ module.exports = ({ appName }) => {
       'elec:build':
         'rm -rf dist && parcel build src/index.html --public-url ./ --target electron',
       'elec:pack': 'yarn electron-packager . --overwrite',
-      'elec:run': `open ${appName}-darwin-x64/${appName}.app`,
+      'elec:run': `open ${projectName}-darwin-x64/${projectName}.app`,
       'elec:all': 'yarn elec:build && yarn elec:pack && yarn elec:run',
     },
     ava: {

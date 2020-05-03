@@ -1,5 +1,6 @@
 const commander = require('commander')
 const chalk = require('chalk')
+const CFonts = require('cfonts')
 
 const packageJson = require('../package.json')
 const displayNoProjectNameMessage = require('./message/noProjectName')
@@ -26,10 +27,13 @@ if (typeof projectName === 'undefined') {
   process.exit(1)
 }
 
-// TODO: Make this output look nicer
 console.log()
-console.log(`  ${packageJson.name}`)
+CFonts.say(`${packageJson.name}`, {
+  font: 'tiny',
+  colors: ['#4034eb'],
+  space: false,
+})
+console.log(` v${packageJson.version}`)
 console.log()
-console.log(`  version: ${packageJson.version}`)
 
 makeWebGame({ projectName })

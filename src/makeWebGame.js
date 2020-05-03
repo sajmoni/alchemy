@@ -2,11 +2,11 @@ const chalk = require('chalk')
 const path = require('path')
 const os = require('os')
 const fs = require('fs-extra')
+const execa = require('execa')
+const Listr = require('listr')
 
-const spawnCommand = require('./spawnCommand')
 const getPackageJsonTemplate = require('./getPackageJsonTemplate')
 const displayDoneMessage = require('./message/done')
-const tryGitInit = require('./git/init')
 
 const dependencies = [
   // * Rendering
@@ -66,76 +66,124 @@ const devDependencies = [
 
 module.exports = ({ projectName }) => {
   const rootPath = path.resolve(projectName)
-  const appName = path.basename(rootPath)
 
-  if (fs.existsSync(rootPath)) {
-    console.log()
-    console.log(
-      `${chalk.red('Game folder already exists')} ${chalk.green(rootPath)}`,
-    )
-    console.log()
-    process.exit(1)
-  }
-
-  console.log()
-  console.log(`Creating a new web game in ${chalk.green(rootPath)}`)
+  console.log(` Creating a new web game in ${chalk.green(rootPath)}`)
   console.log()
 
-  fs.mkdirSync(rootPath)
+  const tasks = new Listr([
+    {
+      title: 'Create project folder',
+      task: () => {
+        if (fs.existsSync(rootPath)) {
+          throw new Error('Project folder already exists')
+        }
 
-  const packageJsonTemplate = getPackageJsonTemplate({ appName })
+        fs.mkdirSync(rootPath)
 
-  fs.writeFileSync(
-    path.join(rootPath, 'package.json'),
-    JSON.stringify(packageJsonTemplate, null, 2) + os.EOL,
-  )
-
-  console.log('Installing dependencies.')
-  console.log()
-
-  const pathArg = ['--cwd', rootPath]
-  const defaultArgs = ['add', '--exact']
-
-  const command = 'yarn'
-  const productionArgs = defaultArgs.concat(dependencies).concat(pathArg)
-  const devArgs = defaultArgs
-    .concat('--dev')
-    .concat(devDependencies)
-    .concat(pathArg)
-
-  spawnCommand({ command, args: productionArgs })
-    .then(() => spawnCommand({ command, args: devArgs }))
-    .then(() => {
-      console.log()
-      console.log('Copying files from template')
-
-      const templateDirectory = `${__dirname}/template`
-
-      try {
-        fs.copySync(`${templateDirectory}/folder`, rootPath)
-      } catch (error) {
-        console.log(
-          `${chalk.red('  Error: Could not copy template files: ')} ${error}`,
+        const packageJsonTemplate = getPackageJsonTemplate({ projectName })
+        fs.writeFileSync(
+          path.join(rootPath, 'package.json'),
+          JSON.stringify(packageJsonTemplate, null, 2) + os.EOL,
         )
-      }
+        return true
+      },
+    },
+    {
+      title: 'Git init',
+      task: () => {
+        try {
+          // * Change directory so that Husky gets installed in the right .git folder
+          process.chdir(rootPath)
+        } catch (_) {
+          throw new Error(`Could not change to project directory: ${rootPath}`)
+        }
 
-      // * Rename gitignore to prevent npm from renaming it to .npmignore
-      // * See: https://github.com/npm/npm/issues/1862
-      fs.moveSync(
-        path.join(rootPath, 'gitignore'),
-        path.join(rootPath, '.gitignore'),
-        // @ts-ignore
-        [],
-      )
+        try {
+          execa.sync('git', ['init'])
 
-      tryGitInit({ rootPath, appName })
+          return true
+        } catch (error) {
+          throw new Error(`Git repo not initialized ${error}`)
+        }
+      },
+    },
+    {
+      title: 'Copy template files',
+      task: () => {
+        const templateDirectory = `${__dirname}/template`
 
+        try {
+          fs.copySync(`${templateDirectory}/folder`, rootPath)
+        } catch (error) {
+          throw new Error(`Could not copy template files: ${error}`)
+        }
+
+        // * Rename gitignore to prevent npm from renaming it to .npmignore
+        // * See: https://github.com/npm/npm/issues/1862
+        fs.moveSync(
+          path.join(rootPath, 'gitignore'),
+          path.join(rootPath, '.gitignore'),
+          // @ts-ignore
+          [],
+        )
+      },
+    },
+    {
+      title: 'Install dependencies',
+      task: () => {
+        const command = 'yarn'
+        const defaultArgs = ['add', '--exact']
+
+        const productionArgs = defaultArgs.concat(dependencies)
+        const devArgs = defaultArgs.concat('--dev').concat(devDependencies)
+
+        return execa(command, devArgs)
+          .then(() => execa(command, productionArgs))
+          .catch((error) => {
+            throw new Error(`Could not install dependencies, ${error}`)
+          })
+      },
+    },
+    {
+      title: 'Git commit',
+      task: () => {
+        try {
+          execa.sync('git', ['add', '-A'])
+
+          execa.sync('git', [
+            'commit',
+            '--no-verify',
+            '-m',
+            'Initialize project using make-js-lib',
+          ])
+
+          execa.sync('git', ['branch', 'release'])
+
+          return true
+        } catch (error) {
+          // * It was not possible to commit.
+          // * Maybe the commit author config is not set.
+          // * Remove the Git files to avoid a half-done state.
+          try {
+            fs.removeSync(path.join(rootPath, '.git'))
+            throw new Error(`Could not create commit ${error}`)
+          } catch (_) {
+            throw new Error(`Could not create commit ${error}`)
+          }
+        }
+      },
+    },
+  ])
+
+  tasks
+    .run()
+    .then(() => {
       displayDoneMessage({ name: projectName, rootPath })
     })
-    .catch((reason) => {
+    .catch((error) => {
       console.log()
-      console.log(chalk.red('Aborting installation.'))
-      console.log(`Command failed: ${chalk.cyan(reason.command)}`)
+      console.error(chalk.red(error))
       console.log()
+      process.exit(1)
     })
 }
