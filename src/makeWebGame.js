@@ -6,6 +6,7 @@ const execa = require('execa')
 const Listr = require('listr')
 
 const getPackageJsonTemplate = require('./getPackageJsonTemplate')
+const createFileFromTemplate = require('./createFileFromTemplate')
 const displayDoneMessage = require('./message/done')
 
 const dependencies = [
@@ -129,6 +130,12 @@ module.exports = ({ projectName }) => {
         } catch (error) {
           throw new Error(`Could not copy template files: ${error}`)
         }
+
+        createFileFromTemplate({
+          source: 'storage.template.js',
+          destination: path.join(rootPath, 'src/util/storage.js'),
+          options: { projectName },
+        })
 
         // * Rename gitignore to prevent npm from renaming it to .npmignore
         // * See: https://github.com/npm/npm/issues/1862

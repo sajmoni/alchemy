@@ -1,5 +1,4 @@
-// TODO: Make this dynamic with mustache template
-const keyPrefix = 'my-web-game'
+const keyPrefix = '{{ projectName }}'
 
 const { localStorage } = window
 
