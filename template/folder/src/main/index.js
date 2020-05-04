@@ -16,6 +16,7 @@ import { Render, TextStyle } from '../constant'
 import { bar, button } from '../component'
 import { explosion } from '../particle'
 import createSettings from '../component/settings'
+import { name as gameTitle } from '../../package.json'
 
 import { clickBlink, easeOutToPosition } from '../effect'
 
@@ -74,22 +75,19 @@ const initializeGame = () => {
     sprite.destroy()
   }, 500)
 
-  const text = new PIXI.Text(
-    i18n._(t('main.gameStarted')`Game started!`),
-    TextStyle.MAIN,
-  )
+  const text = new PIXI.Text(gameTitle, { ...TextStyle.MAIN, fontSize: 60 })
   text.filters = [new filters.CRTFilter()]
 
   ex.centerX(text, Render.GAME_WIDTH / 2)
-  ex.centerY(text, Render.GAME_HEIGHT / 2)
+  ex.centerY(text, Render.GAME_HEIGHT / 3)
 
   ex.makeResizable(text)
   container.addChild(text)
 
   const getScale = juice.sine({
-    duration: 180,
+    duration: 240,
     startValue: 1,
-    endValue: 1.2,
+    endValue: 1.15,
   })
 
   l1.repeat((counter) => {
@@ -129,7 +127,8 @@ const initializeGame = () => {
       state.application.settingsVisible = true
     },
   })
-  settingsButton.position.set(600, 600)
+  settingsButton.position.y = 600
+  ex.centerX(settingsButton, Render.GAME_WIDTH / 2)
   container.addChild(settingsButton)
 
   const [startGameButton] = button({
@@ -151,7 +150,8 @@ const initializeGame = () => {
       })
     },
   })
-  startGameButton.position.set(600, 500)
+  startGameButton.position.y = 500
+  ex.centerX(startGameButton, Render.GAME_WIDTH / 2)
   container.addChild(startGameButton)
 }
 

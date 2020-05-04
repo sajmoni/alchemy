@@ -13,7 +13,7 @@ import Sound from '../sound'
 import * as prism from '../util/prism'
 import app from '../app'
 import button from './button'
-import { fadeIn, fadeOut } from '../effect'
+import { fadeOut } from '../effect'
 
 const MAX_VOLUME = 10
 const MIN_VOLUME = 0
@@ -133,18 +133,19 @@ export default () => {
       state.application.settingsVisible = false
     },
   })
-  doneButton.position.set(CENTER_COLUMN, BUTTONS_Y)
+  doneButton.position.y = BUTTONS_Y
+  ex.centerX(doneButton, CENTER_COLUMN)
   component.addChild(doneButton)
 
   app.stage.addChild(component)
 
   const render = (visible) => {
     if (visible) {
-      component.visible = visible
-      fadeIn(component, { duration: 15 })
+      component.visible = true
+      component.alpha = 1
     } else if (visible !== component.visible) {
-      fadeOut(component, { resolveAt: 0.6, duration: 30 }).then(() => {
-        component.visible = visible
+      fadeOut(component, { resolveAt: 0.6, duration: 15 }).then(() => {
+        component.visible = false
       })
     }
   }

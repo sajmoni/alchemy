@@ -20,7 +20,6 @@ export default ({
   }
 
   const label = new PIXI.Text(labelString, textStyle)
-  label.anchor.set(0.5)
   component.addChild(label)
 
   // TODO: Pass in state? Active, disabled etc. Change label?
