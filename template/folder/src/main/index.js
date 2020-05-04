@@ -19,7 +19,7 @@ import createSettings from '../component/settings'
 
 import { clickBlink, easeOutToPosition } from '../effect'
 
-export default () => {
+const initializeGame = () => {
   const container = new PIXI.Container()
   app.stage.addChild(container)
 
@@ -154,3 +154,5 @@ export default () => {
   startGameButton.position.set(600, 500)
   container.addChild(startGameButton)
 }
+
+export default initializeGame

@@ -7,7 +7,7 @@ import MainLoop from 'mainloop.js'
 import i18n from './i18n'
 import * as prism from './util/prism'
 import app from './app'
-import game from './game'
+import initializeGame from './main'
 import state from './state'
 import debugOverlay from './util/debugOverlay'
 import autoPause from './util/autoPause'
@@ -86,7 +86,7 @@ document.fonts
 
       autoPause()
 
-      game()
+      initializeGame()
 
       l1.once(() => {
         loadingContainer.destroy()
