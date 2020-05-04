@@ -1,4 +1,4 @@
-const BASE_PATH = '../src/main/GUI'
+const BASE_PATH = '../src/main/scene'
 
 module.exports = {
   prompts: [
@@ -13,7 +13,7 @@ module.exports = {
       {
         type: 'add',
         path: `${BASE_PATH}/{{camelCase name}}.ts`,
-        templateFile: './template/component.hbs',
+        templateFile: './scene/scene.hbs',
         abortOnFail: true,
       },
     ]

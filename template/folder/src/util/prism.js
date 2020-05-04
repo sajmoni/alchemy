@@ -2,17 +2,15 @@ import onChange from 'on-change'
 
 const subscribers = []
 
-function onChangeFn(path /* value, previousValue */) {
-  const currentState = onChange.target(this)
-
+function onChangeFn(path, value, previousValue) {
   subscribers.forEach(([paths, callback]) => {
     if (paths.includes(path)) {
-      callback(currentState)
+      // TODO: Handle paths as array
+      callback(value, previousValue)
     }
   })
 }
 
-// Maybe init should return the state for it being handled in userland??
 /**
  * @param {object} initialState
  */
@@ -28,7 +26,7 @@ export const target = (state) => onChange.target(state)
 
 /**
  * @param {string[]|string} paths
- * @param {(state) => void} callback
+ * @param {(value: any, previousValue: any) => void} callback
  */
 export const subscribe = (paths, callback) => {
   const subscriber = [paths, callback]

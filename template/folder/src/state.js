@@ -1,4 +1,4 @@
-import { Resolution, Scene } from './constant'
+import { Resolution } from './constant'
 import { init } from './util/prism'
 
 export default init({
@@ -12,7 +12,7 @@ export default init({
     resolution: Resolution.NORMAL,
     settingsVisible: false,
   },
-  scene: Scene.MAIN_MENU,
+  scene: null,
   bar: 100,
   square: {
     x: 1,

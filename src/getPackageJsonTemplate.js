@@ -59,6 +59,7 @@ module.exports = ({ projectName }) => {
           {
             png: 'always',
             wav: 'always',
+            json: 'always',
           },
         ],
       },

@@ -97,7 +97,7 @@ document.fonts
         MainLoop.start()
       })
 
-      prism.subscribe(['application.paused'], ({ application: { paused } }) => {
+      prism.subscribe('application.paused', (paused) => {
         if (paused) {
           // TODO: This should probably just stop the l1.repeat main behavior
           // * Because we might want to have an animation when paused

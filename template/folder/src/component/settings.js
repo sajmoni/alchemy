@@ -115,13 +115,11 @@ export default () => {
   languagePicker.position.set(RIGHT_COLUMN, SOUND_Y)
   component.addChild(languagePicker)
 
-  prism.subscribe(['application.volume.sound'], (state) => {
-    const newVolume = getSoundVolume(state)
+  prism.subscribe('application.volume.sound', (newVolume) => {
     // @ts-ignore
     renderSoundSlider(newVolume)
   })
-  prism.subscribe(['application.volume.music'], (state) => {
-    const newVolume = getMusicVolume(state)
+  prism.subscribe('application.volume.music', (newVolume) => {
     // @ts-ignore
     renderMusicSlider(newVolume)
   })
