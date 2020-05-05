@@ -28,19 +28,11 @@ const game = () => {
     state.square.angle += 2
   })
 
-  l1.repeat(() => {
-    if (state.square.visible) {
-      state.square.visible = false
-    } else {
-      state.square.visible = true
-    }
-  }, 30)
-
-  prism.subscribe(['square.speed', 'square.angle', 'square.visible'], () => {
-    const {
-      square: { angle, x },
-    } = prism.target(state)
+  prism.subscribe('square.x', (x) => {
     sprite.x = x
+  })
+
+  prism.subscribe('square.angle', (angle) => {
     sprite.angle = angle
   })
 

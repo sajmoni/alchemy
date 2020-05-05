@@ -1,13 +1,14 @@
 import onChange from 'on-change'
 
-const subscribers = []
+const subscribers = {}
 
 function onChangeFn(path, value, previousValue) {
-  subscribers.forEach(([paths, callback]) => {
-    if (paths.includes(path)) {
-      // TODO: Handle paths as array
-      callback(value, previousValue)
-    }
+  if (!subscribers[path]) {
+    return
+  }
+
+  subscribers[path].forEach((callback) => {
+    callback(value, previousValue)
   })
 }
 
@@ -25,18 +26,19 @@ export const init = (initialState) => {
 export const target = (state) => onChange.target(state)
 
 /**
- * @param {string[]|string} paths
+ * @param {string} path
  * @param {(value: any, previousValue: any) => void} callback
  */
-export const subscribe = (paths, callback) => {
-  const subscriber = [paths, callback]
-  subscribers.push(subscriber)
+export const subscribe = (path, callback) => {
+  subscribers[path] = subscribers[path]
+    ? subscribers[path].concat(callback)
+    : [callback]
 
   const unsubscribe = () => {
     // * Mutate array for performance reasons
-    const indexToRemove = subscribers.indexOf(subscriber)
+    const indexToRemove = subscribers[path].indexOf(callback)
     if (indexToRemove >= 0) {
-      subscribers.splice(indexToRemove, 1)
+      subscribers[path].splice(indexToRemove, 1)
     }
   }
 

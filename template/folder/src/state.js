@@ -17,6 +17,5 @@ export default init({
   square: {
     x: 1,
     angle: 50,
-    visible: true,
   },
 })
