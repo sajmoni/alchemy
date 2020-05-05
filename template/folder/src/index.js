@@ -96,16 +96,6 @@ document.fonts
       app.renderer.plugins.prepare.upload(app.stage, () => {
         MainLoop.start()
       })
-
-      prism.subscribe('application.paused', (paused) => {
-        if (paused) {
-          // TODO: This should probably just stop the l1.repeat main behavior
-          // * Because we might want to have an animation when paused
-          MainLoop.stop()
-        } else {
-          MainLoop.start()
-        }
-      })
     })
   })
   .catch(() => {

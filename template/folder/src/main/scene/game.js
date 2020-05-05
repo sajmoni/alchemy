@@ -7,7 +7,7 @@ import * as prism from '/util/prism'
 import app from '../../app'
 import state from '../../state'
 import { Render } from '../../constant'
-import { bar } from '../../component'
+import { bar, pauseMenu } from '../../component'
 import { explosion } from '../../particle'
 
 const game = () => {
@@ -21,11 +21,13 @@ const game = () => {
   container.addChild(sprite)
 
   l1.repeat(() => {
-    state.square.x += 1
-  }, 4)
+    if (state.application.paused) {
+      return
+    }
 
-  l1.repeat(() => {
+    state.square.x += 0.25
     state.square.angle += 2
+    state.bar = Math.max(0, state.bar - 0.2)
   })
 
   prism.subscribe('square.x', (x) => {
@@ -41,12 +43,7 @@ const game = () => {
   })
   manaBar.position.set(200, 200)
   container.addChild(manaBar)
-  const barBehavior = l1.repeat(() => {
-    state.bar -= 1
-    if (state.bar === 0) {
-      l1.remove(barBehavior)
-    }
-  }, 10)
+
   prism.subscribe('bar', (bar) => {
     // value / max
     renderManaBar(bar / 100)
@@ -63,6 +60,15 @@ const game = () => {
   )
 
   explosionParticles.playOnceAndDestroy()
+
+  const [_pauseMenu, renderPauseMenu] = pauseMenu({
+    width: Render.GAME_WIDTH,
+    height: Render.GAME_HEIGHT,
+  })
+  prism.subscribe('application.paused', (paused) => {
+    renderPauseMenu(paused)
+  })
+  container.addChild(_pauseMenu)
 }
 
 export default game
