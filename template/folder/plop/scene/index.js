@@ -1,6 +1,7 @@
 const BASE_PATH = '../src/main/scene'
 
 module.exports = {
+  description: 'Render display objects',
   prompts: [
     {
       type: 'input',

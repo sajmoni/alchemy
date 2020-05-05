@@ -1,6 +1,7 @@
 const BASE_PATH = '../src/main/GUI'
 
 module.exports = {
+  description: 'Reusable visual component',
   prompts: [
     {
       type: 'input',
