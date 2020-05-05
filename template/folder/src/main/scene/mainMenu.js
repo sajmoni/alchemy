@@ -15,10 +15,7 @@ import { name as gameTitle } from '../../../package.json'
 
 import { clickBlink, easeOutToPosition } from '/effect'
 
-const mainMenu = ({ app }) => {
-  const container = new PIXI.Container()
-  app.stage.addChild(container)
-
+const mainMenu = ({ container }) => {
   const text = new PIXI.Text(gameTitle, { ...TextStyle.MAIN, fontSize: 60 })
   text.filters = [new filters.CRTFilter()]
 
@@ -40,7 +37,7 @@ const mainMenu = ({ app }) => {
 
   const [settings, renderSettings] = createSettings()
   // @ts-ignore
-  app.stage.addChild(settings)
+  container.addChild(settings)
 
   prism.subscribe('application.settingsVisible', (settingsVisible) => {
     // @ts-ignore
@@ -71,7 +68,6 @@ const mainMenu = ({ app }) => {
           startGameButton,
           container.children.filter((c) => c !== startGameButton),
         ).then(() => {
-          container.destroy()
           state.scene = Scene.GAME
           l1.getAll()
             .filter(({ id }) => id !== 'fullscreenFadeInOut' && id !== 'debug')

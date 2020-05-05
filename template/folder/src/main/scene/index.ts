@@ -1,3 +1,5 @@
+import * as PIXI from 'pixi.js'
+
 import * as prism from '/util/prism'
 import mainMenu from './mainMenu'
 import game from './game'
@@ -9,9 +11,18 @@ const sceneHandler = {
   [Scene.GAME]: game,
 }
 
+let container
+
 const initializeSceneHandler = () => {
   prism.subscribe('scene', (value) => {
-    sceneHandler[value]({ app })
+    if (container) {
+      container.destroy()
+    }
+
+    container = new PIXI.Container()
+    app.stage.addChild(container)
+
+    sceneHandler[value]({ container })
   })
 }
 

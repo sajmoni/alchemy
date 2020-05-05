@@ -4,16 +4,13 @@ import * as l1 from 'l1'
 import * as particles from 'pixi-particles'
 
 import * as prism from '/util/prism'
-import app from '../../app'
 import state from '../../state'
 import { Render } from '../../constant'
 import { bar, pauseMenu } from '../../component'
 import { explosion } from '../../particle'
+import SceneArgs from '/type/scene'
 
-const game = () => {
-  const container = new PIXI.Container()
-  app.stage.addChild(container)
-
+const game = ({ container }: SceneArgs) => {
   const sprite = new PIXI.Sprite(ex.getTexture('square1'))
   sprite.x = 10
   sprite.y = Render.GAME_HEIGHT / 2
