@@ -13,23 +13,25 @@ function onChangeFn(path, value, previousValue) {
 }
 
 /**
- * @param {object} initialState
+ * Enables subscribing to state changes
  */
-export const init = (initialState) => {
-  return onChange(initialState, onChangeFn)
+export const init = (state: any): any => {
+  return onChange(state, onChangeFn)
 }
 
 /**
- * Get state as a regular JavaScript object
- * @param {object} state
+ * Get state as a regular JavaScript object. Enables destructuring.
  */
-export const target = (state) => onChange.target(state)
+export const target = (state: any): any => onChange.target(state)
+
+type callback = (value: any, previousValue: any) => void
+
+type unsubscribe = () => void
 
 /**
- * @param {string} path
- * @param {(value: any, previousValue: any) => void} callback
+ * Subscribe to state changes
  */
-export const subscribe = (path, callback) => {
+export const subscribe = (path: string, callback: callback): unsubscribe => {
   subscribers[path] = subscribers[path]
     ? subscribers[path].concat(callback)
     : [callback]

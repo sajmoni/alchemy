@@ -9,7 +9,7 @@ const initializeGame = () => {
   initializeSceneHandler()
   state.scene = Scene.MAIN_MENU
 
-  const worker = new Worker('../worker/index.js')
+  const worker = new Worker('../worker/index.ts')
 
   worker.postMessage({
     type: MessageType.TO_WORKER.INITIALIZE_WORKER,
