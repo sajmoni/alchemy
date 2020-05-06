@@ -2,18 +2,18 @@ import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 import { t } from '@lingui/macro'
 
-import state from '../state'
-import { Render, Language, TextStyle } from '../constant'
-import select from './select'
-import { save } from '../util/storage'
-import { getSoundVolume, getMusicVolume } from '../selector'
-import i18n from '../i18n'
-import { slider } from '.'
-import Sound from '../sound'
-import * as prism from '../util/prism'
-import app from '../app'
-import button from './button'
-import { fadeOut } from '../effect'
+import state from '../../state'
+import { Render, Language, TextStyle } from '../../constant'
+import select from '../../component/select'
+import { save } from '/util/storage'
+import { getSoundVolume, getMusicVolume } from '../../selector'
+import i18n from '../../i18n'
+import { slider } from '../../component'
+import Sound from '../../sound'
+import * as prism from '../../util/prism'
+import app from '../../app'
+import button from '../../component/button'
+import { fadeOut } from '../../effect'
 
 const MAX_VOLUME = 10
 const MIN_VOLUME = 0
@@ -29,7 +29,6 @@ const CENTER_COLUMN = (width / 4) * 2
 const RIGHT_COLUMN = (width / 4) * 3
 
 // TODO: Skinable for different games
-// TODO: Overlay that closes the menu
 // TODO: Wipe all stored data - with confirm dialog
 // Add "Warning - Data is only stored in your browser, if you
 // erase your browser history, all data will be lost."
@@ -44,6 +43,22 @@ export default () => {
   component.width = width
   component.height = height
   component.pivot.set(CENTER_COLUMN, height / 2)
+
+  const overlay = new PIXI.Graphics()
+  overlay
+    .beginFill(ex.fromHex('#000000'), 0.5)
+    .drawRect(
+      -((Render.GAME_WIDTH - width) / 2),
+      -((Render.GAME_HEIGHT - height) / 2),
+      Render.GAME_WIDTH,
+      Render.GAME_HEIGHT,
+    )
+    .endFill()
+  ex.makeClickable(overlay, () => {
+    state.application.settingsVisible = false
+  })
+  overlay.visible = false
+  component.addChild(overlay)
 
   const background = new PIXI.Graphics()
   background
@@ -104,7 +119,11 @@ export default () => {
   component.addChild(musicSlider)
 
   const [languagePicker, renderLanguagePicker] = select({
-    languages: Object.values(Language),
+    options: Object.values(Language).map(({ label, code }) => ({
+      label,
+      value: code,
+    })),
+    title: 'Choose language',
     onClick: (languageCode) => {
       save('language', languageCode)
       window.location.reload()
@@ -140,10 +159,12 @@ export default () => {
   const render = (visible) => {
     if (visible) {
       component.visible = true
+      overlay.visible = true
       component.alpha = 1
     } else if (visible !== component.visible) {
       fadeOut(component, { resolveAt: 0.6, duration: 15 }).then(() => {
         component.visible = false
+        overlay.visible = false
       })
     }
   }

@@ -10,7 +10,7 @@ import * as prism from '/util/prism'
 import state from '/state'
 import { Render, TextStyle, Scene } from '/constant'
 import { button } from '/component'
-import createSettings from '/component/settings'
+import createSettings from '../ui/settings'
 import { name as gameTitle } from '../../../package.json'
 
 import { clickBlink, easeOutToPosition } from '/effect'
@@ -34,17 +34,6 @@ const mainMenu = ({ container }) => {
   l1.repeat((counter) => {
     text.scale.set(getScale(counter))
   })
-
-  const [settings, renderSettings] = createSettings()
-  // @ts-ignore
-  container.addChild(settings)
-
-  prism.subscribe('application.settingsVisible', (settingsVisible) => {
-    // @ts-ignore
-    renderSettings(settingsVisible)
-  })
-  // @ts-ignore
-  renderSettings(state.application.settingsVisible)
 
   const [settingsButton] = button({
     label: i18n._(t('main.settings')`Settings`),
@@ -79,6 +68,17 @@ const mainMenu = ({ container }) => {
   startGameButton.position.y = 500
   ex.centerX(startGameButton, Render.GAME_WIDTH / 2)
   container.addChild(startGameButton)
+
+  const [settings, renderSettings] = createSettings()
+  // @ts-ignore
+  container.addChild(settings)
+
+  prism.subscribe('application.settingsVisible', (settingsVisible) => {
+    // @ts-ignore
+    renderSettings(settingsVisible)
+  })
+  // @ts-ignore
+  renderSettings(state.application.settingsVisible)
 }
 
 export default mainMenu

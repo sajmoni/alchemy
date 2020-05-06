@@ -1,12 +1,19 @@
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
+type arguments = {
+  readonly label: string
+  readonly onClick: () => void
+  readonly textStyle: PIXI.TextStyle
+  readonly backgroundTexture?: PIXI.Texture
+}
+
 export default ({
   label: labelString,
   onClick,
-  backgroundTexture = null,
   textStyle,
-}): [PIXI.Container] => {
+  backgroundTexture = null,
+}: arguments): [PIXI.Container] => {
   const component = new PIXI.Container()
 
   ex.makeClickable(component, () => {

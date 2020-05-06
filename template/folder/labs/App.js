@@ -54,28 +54,30 @@ const Title = styled.div`
   user-select: none;
 `
 
-settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST
-const app = new PIXI.Application({
-  width: 800,
-  height: 600,
-})
-
-const onAssetsLoaded = () => {
-  ex.init(app)
-}
-
-app.loader.add('spritesheet/spritesheet.json')
-app.loader.load(onAssetsLoaded)
-
 const App = () => {
   const [selectedLab, setSelectedLab] = useState(undefined)
+  const [app, setApp] = useState(null)
 
   useEffect(() => {
+    settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST
+    const app = new PIXI.Application({
+      width: 800,
+      height: 600,
+    })
+
+    const onAssetsLoaded = () => {
+      ex.init(app)
+      setApp(app)
+    }
+
+    app.loader.add('spritesheet/spritesheet.json')
+    app.loader.load(onAssetsLoaded)
+
     document.querySelector('#pixi').append(app.view)
   }, [])
 
   useEffect(() => {
-    if (!selectedLab) {
+    if (!selectedLab || !app) {
       return
     }
 
@@ -89,7 +91,7 @@ const App = () => {
     } else {
       // ignore
     }
-  }, [selectedLab])
+  }, [selectedLab, app])
 
   useEffect(() => {
     const restored = storage.restore(STORAGE_KEY)

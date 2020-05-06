@@ -2,33 +2,50 @@ import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 import { container, text } from '../pixi'
 
-type render = (selectedLanguage: string) => void
+type render = (selectedValue: string) => void
 
-export default ({ languages, onClick }): [PIXI.Container, render] => {
+type Option = {
+  readonly value: string
+  readonly label: string
+}
+
+type arguments = {
+  readonly options: readonly Option[]
+  readonly onClick: (value) => void
+  readonly title: string
+}
+
+export default ({
+  options,
+  onClick,
+  title,
+}: arguments): [PIXI.Container, render] => {
   const component = container()
 
-  const title = text('Choose language')
-  component.addChild(title)
+  const titleText = text(title, new PIXI.TextStyle({ fill: 'white' }))
+  component.addChild(titleText)
 
-  const languageObjects = languages.map(({ code, label }, index) => {
-    const textObject = text(label)
+  const optionObjects = options.map(({ value, label }, index) => {
+    const textObject = text(label, new PIXI.TextStyle({ fill: 'white' }))
     textObject.y = 50 + index * 30
     ex.makeClickable(textObject, () => {
-      onClick(code)
+      onClick(value)
     })
     component.addChild(textObject)
-    return { textObject, languageCode: code }
+    return { textObject, value }
   })
 
-  const render = (selectedLanguage) => {
-    languageObjects.forEach(({ textObject, languageCode }) => {
-      if (languageCode === selectedLanguage) {
+  const render = (selectedValue) => {
+    optionObjects.forEach(({ textObject, value }) => {
+      if (value === selectedValue) {
         textObject.style.fill = 'red'
       } else {
         textObject.style.fill = 'white'
       }
     })
   }
+
+  render(options[0].value)
 
   return [component, render]
 }
