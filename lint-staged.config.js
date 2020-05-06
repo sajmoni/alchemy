@@ -1,4 +1,4 @@
 module.exports = {
-  '**/*.js?(x)': () => 'tsc',
-  'src/**/*.{js,md}': ['yarn xo --fix'],
+  'src/**/*.{js,ts}?(x)': () => 'tsc',
+  'src/**/*.{js,ts,md}': ['xo --fix'],
 }
