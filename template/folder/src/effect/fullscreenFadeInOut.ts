@@ -8,7 +8,7 @@ const DURATION = 35
 
 const ID = 'fullscreenFadeInOut'
 
-export default () =>
+export default async () =>
   new Promise((resolve) => {
     const fade = new PIXI.Graphics()
     fade.zIndex = 1

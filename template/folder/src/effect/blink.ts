@@ -1,12 +1,18 @@
 import * as l1 from 'l1'
+import * as PIXI from 'pixi.js'
 
 // * Duration in intervals
 const DEFAULT_DURATION = 5
 const DEFAULT_INTERVAL = 5
 
+type Options = {
+  readonly duration?: number
+  readonly interval?: number
+}
+
 export default (
-  displayObject,
-  { duration = DEFAULT_DURATION, interval = DEFAULT_INTERVAL } = {},
+  displayObject: PIXI.DisplayObject,
+  { duration = DEFAULT_DURATION, interval = DEFAULT_INTERVAL }: Options = {},
 ) => {
   let show = false
   const blink = l1.repeat((counter) => {

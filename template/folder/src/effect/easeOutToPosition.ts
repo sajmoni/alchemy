@@ -1,9 +1,19 @@
 import * as l1 from 'l1'
 import * as juice from 'juice.js'
+import * as PIXI from 'pixi.js'
+import { Position } from '/type/position'
 
 const DEFAULT_DURATION = 45
 
-export default (displayObject, { position, duration = DEFAULT_DURATION }) =>
+type Options = {
+  readonly position: Position
+  readonly duration?: number
+}
+
+export default async (
+  displayObject: PIXI.DisplayObject,
+  { position, duration = DEFAULT_DURATION }: Options,
+) =>
   new Promise((resolve) => {
     const getY = juice.easeOut({
       startValue: displayObject.y,

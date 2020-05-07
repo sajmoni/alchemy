@@ -46,7 +46,6 @@ module.exports = ({ projectName }) => {
         '@typescript-eslint/no-unsafe-member-access': 'off',
         '@typescript-eslint/restrict-template-expressions': 'off',
         '@typescript-eslint/prefer-readonly-parameter-types': 'off',
-        'unicorn/no-fn-reference-in-iterator': 'off',
         'import/no-absolute-path': 'off',
         'react/prop-types': 'off',
         'unicorn/filename-case': 'off',

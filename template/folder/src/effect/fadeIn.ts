@@ -1,11 +1,18 @@
 import * as l1 from 'l1'
 import * as juice from 'juice.js'
+import * as PIXI from 'pixi.js'
 
 const END_VALUE = 1
 
-export default (
-  displayObject,
-  { duration = 90, resolveAt = 0.5, endValue = END_VALUE } = {},
+type Options = {
+  readonly duration?: number
+  readonly resolveAt?: number
+  readonly endValue?: number
+}
+
+export default async (
+  displayObject: PIXI.DisplayObject,
+  { duration = 90, resolveAt = 0.5, endValue = END_VALUE }: Options = {},
 ) =>
   new Promise((resolve) => {
     const getAlpha = juice.easeOut({
@@ -25,5 +32,6 @@ export default (
         l1.remove(fadeIn)
       }
     })
+
     fadeIn.id = `fadeIn-${displayObject.name}`
   })
