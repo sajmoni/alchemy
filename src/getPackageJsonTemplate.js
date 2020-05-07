@@ -73,6 +73,7 @@ module.exports = ({ projectName }) => {
     lingui: {
       srcPathDirs: ['src'],
     },
+    browserslist: ['defaults', 'not IE 11', 'not IE_Mob 11'],
   }
 
   return packageJsonTemplate
