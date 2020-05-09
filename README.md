@@ -30,9 +30,11 @@ Generates a modular template to get started making 2D games that run in the brow
 
 ### QA
 
-- :policeman: [`xo`](https://github.com/xojs/xo) and [`tsc`](https://github.com/microsoft/TypeScript) - Ensure code quality
+- :m: [`typescript`](https://github.com/microsoft/TypeScript)
 
-- :nail_care: [`prettier`](https://github.com/prettier/prettier) - Auto-formats your code
+- :policeman: [`xo`](https://github.com/xojs/xo) - Linter
+
+- :nail_care: [`prettier`](https://github.com/prettier/prettier) - Code formatting
 
 - :chart: [`sentry`](https://sentry.io/) - Log errors (TODO)
 
@@ -40,9 +42,11 @@ Generates a modular template to get started making 2D games that run in the brow
 
 - :straight_ruler: [`ava`](https://github.com/avajs/ava) - Super simple test framework
 
+- :+1: [`yup`](https://github.com/jquense/yup) - Object schema validation
+
 ### Tooling
 
-- :zap: [`parcel`](https://github.com/parcel-bundler/parcel) - Super fast no-config module bundler
+- :zap: [`parcel`](https://github.com/parcel-bundler/parcel) - Very fast no-config module bundler
 
 - :cake: [`muncher`](https://github.com/sajmoni/muncher) - Automatically create sprite sheets from the command line
 
@@ -52,7 +56,7 @@ Generates a modular template to get started making 2D games that run in the brow
 
 - :recycle: [`plop`](https://github.com/plopjs/plop) - Micro-generator framework
 
-- :detective: [`SpectorJS`](https://github.com/BabylonJS/Spector.js) - Explore and troubleshoot your WebGL scenes
+- :detective: [`SpectorJS`](https://github.com/BabylonJS/Spector.js) - Explore and troubleshoot your WebGL scenes (TODO)
 
 ### Other
 
@@ -100,34 +104,68 @@ The output file structure will look like this:
 
 ```
 my-game/
-├── .circleci/
+├── .github/ (TODO)
 ├── asset/
 │   ├── font/
 │   ├── sound/
 │   └── sprite/
+├── labs/
+│   ├── lab/
+|   │   └── component.ts
+│   ├── App.js
+│   ├── index.html
+│   ├── index.js
+│   └── style.css
 ├── locale/
+├── plop/
+│   ├── lab/
+|   │   └── component.ts
+│   ├── App.js
+│   ├── index.html
+│   ├── index.js
+│   └── style.css
+├── script/
+│   ├── setupTests.js
+│   └── validateData.js
 ├── node_modules/
 ├── src/
-│   ├── behavior/
-│   │   ├── fadeIn.js
-│   │   └── index.js
 │   ├── component/
-│   │   ├── bar.js
-│   │   ├── button.js
-│   │   ├── index.js
-│   │   └── slider.js
+│   │   ├── bar.ts
+│   │   ├── button.ts
+│   │   ├── index.ts
+│   │   ├── pauseMenu.ts
+│   │   ├── select.ts
+│   │   └── slider.ts
 │   ├── constant/
 │   │   ├── index.js
 │   │   ├── language.js
 │   │   ├── render.js
 │   │   ├── resolution.js
 │   │   └── textStyle.js
-│   ├── game/
+│   ├── data/
+│   │   └── sample.js
+│   ├── effect/
+│   │   ├── blink.ts
+│   │   ├── clickBlink.ts
+│   │   ├── easeOutToPosition.ts
+│   │   ├── fadeIn.ts
+│   │   ├── fadeOut.ts
+│   │   ├── fullscreenFadeInOut.ts
+│   │   └── index.ts
+│   ├── input/
+│   │   ├── gamePad.ts
+│   │   ├── keyboard.ts
+│   │   └── mouse.ts
+│   ├── main/
+│   │   ├── scene/
+|   │   │   ├── game.ts
+|   │   │   ├── index.ts
+|   │   │   └── mainMenu.js
+│   │   ├── ui/
+|   │   │   └── settings.js
 │   │   └── index.js
 │   ├── particle/
 │   │   ├── explosion.js
-│   │   └── index.js
-│   ├── pixi/
 │   │   └── index.js
 │   ├── selector/
 │   │   └── index.js
@@ -135,31 +173,35 @@ my-game/
 │   │   ├── createSound.js
 │   │   ├── globalVolume.js
 │   │   └── index.js
+│   ├── type/
+│   │   └── scene.ts
 │   ├── util/
-│   │   ├── autoFullScreen.js
-│   │   ├── centerX.js
-│   │   ├── centerY.js
+│   │   ├── autoPause.js
 │   │   ├── debugOverlay.js
+│   │   ├── getDefaultLanguage.js
 │   │   ├── loading.js
-│   │   ├── prism.js
+│   │   ├── prism.ts
 │   │   └── storage.js
 │   ├── app.js
 │   ├── example.test.js
 │   ├── i18n.js
 │   ├── index.html
 │   ├── index.js
-│   ├── state.js
+│   ├── pixi.ts
+│   ├── state.ts
 │   ├── style.css
 │   └── package.json
 ├── static/
 │   └── spritesheet/
-├── .eslintrc.yml
 ├── .gitignore
+├── .babelrc
 ├── .npmrc
 ├── electron.js
+├── lint-staged.config.js
 ├── package.json
 ├── plopfile.js
 ├── README.md
+├── tsconfig.json
 └── yarn.lock
 ```
 
@@ -198,5 +240,3 @@ A list of games made using this tool:
 ## Requirements
 
 `make-web-game` uses `yarn` and `git` and requires them to be installed on your machine in order to work.
-
----

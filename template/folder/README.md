@@ -14,16 +14,19 @@ This game was initially created with [`make-web-game`](https://github.com/sajmon
 - [Documentation](#documentation)
   - [Folder structure](#folder-structure)
     - [Components](#components)
-    - [Behaviors](#behaviors)
+      - [Configuration](#configuration)
+    - [Effects](#effects)
     - [Selectors](#selectors)
+    - [Data](#data)
+    - [Main](#main)
+    - [Worker](#worker)
   - [Git branching](#git-branching)
-  - [Type check](#type-check)
+  - [QA](#qa)
   - [Generate sprite sheet](#generate-sprite-sheet)
   - [Translations](#translations)
   - [Generating a production build](#generating-a-production-build)
   - [Electron](#electron)
   - [Sentry](#sentry)
-  - [Linting](#linting)
   - [Debug overlay](#debug-overlay)
   - [Sounds](#sounds)
   - [State management](#state-management)
@@ -36,6 +39,11 @@ This game was initially created with [`make-web-game`](https://github.com/sajmon
   - [Marketing](#marketing)
   - [Useful external tools](#useful-external-tools)
   - [Useful libraries](#useful-libraries)
+    - [Randomness](#randomness)
+    - [Physics](#physics)
+    - [State machine](#state-machine)
+    - [Utils](#utils)
+    - [Events](#events)
   - [Misc](#misc)
 
 ---
@@ -44,23 +52,39 @@ This game was initially created with [`make-web-game`](https://github.com/sajmon
 
 #### Components
 
-The `component` folder is a collection of Pixi UI Components.
+The `component` folder contains a collection of Pixi UI Components.
 
 ```js
-const [playButton, renderPlayButton] = button(configuration)
+const [playButton, renderPlayButton] = button()
 
 app.stage.addChild(playButton)
 
 renderPlayButton()
 ```
 
-A component is a function that takes a `configuration` object and returns an array with two elements. The first one is a `Pixi.DisplayObject` that you need to add to a `Pixi.Container` (for example your stage). The other one is a function that you need to call every time you want to render your component based on a state change.
+A component is a function that returns an array with two elements.
 
-#### Behaviors
+- The first one is a `Pixi.DisplayObject` that you need to add to a `Pixi.Container` (for example your stage).
 
-Behaviors can manipulate your display objects in certain ways. There are several ones included in your template. Use them as inspiration for making your own behaviors.
+- The second one is a `render` function. You need to call this every time you want to re-render your component. (For example due to a state update)
 
-Included behaviors:
+##### Configuration
+
+A component can take an optional `configuration` object.
+
+```js
+const configuration = {
+  visible: true,
+}
+
+const [playButton] = button(configuration)
+```
+
+#### Effects
+
+Effects can change how your display objects look like.
+
+The template includes the following effects:
 
 - `fadeIn`
 - `fadeOut`
@@ -74,11 +98,23 @@ You should keep information about accessing your state tree in one place.
 
 This way, when you change your state tree, you only need to update it in one place, instead of spread out throughout your code base.
 
+#### Data
+
+JSON data that your game uses. Data in this folder can be validated by running `yarn validate`.
+
+#### Main
+
+Code that will run in the main thread.
+
+#### Worker
+
+Code that will run in a worker thread.
+
 ---
 
 ### Git branching
 
-There are two branches configured with corresponding `actions` on `Github` (TODO)
+There are two branches configured with corresponding Github actions workflows (TODO)
 
 A push to `master` triggers the following pipeline:
 
@@ -97,33 +133,13 @@ If a hotfix in production is needed, then it should be made on the `release` bra
 
 This should generally be avoided and only be done if its really truly needed and can't wait for next release.
 
-<!-- ---
-
-### Validate CI config
-
-#### Install circle.ci CLI
-
-`https://circleci.com/docs/2.0/local-cli/`
-
-##### MacOS
-
-`brew install circleci`
-
-#### Validate
-
-Validate config at `.circleci/config.yml`
-
-`yarn validate-ci` -->
-
 ---
 
-### Type check
+### QA
 
-`yarn typecheck`
+`yarn qa`
 
-Will check the code with the typescript compiler.
-
-_To ignore a line, add `@ts-ignore` on the line above_
+Will check the code with the `typescript` compiler and lint check with `xo`.
 
 ---
 
@@ -186,14 +202,6 @@ TODO: how to use / configure
 
 ---
 
-### Linting
-
-Linting is done by [`eslint`](https://github.com/eslint/eslint)
-
-`yarn lint`
-
----
-
 ### Debug overlay
 
 Set `DEBUG` to `true` in `src/index.js` to display an overlay with debug information.
@@ -226,16 +234,16 @@ You can subscribe to state changes with `prism`. You register a callback for the
 Example usage:
 
 ```js
-const state = {
+let state = {
   application: {
     volume: 5,
   },
 }
 
-prism.init(state)
+state = prism.init(state)
 
-prims.subscribe('application.volume', state => {
-  renderVolume(state.application.volume)
+prims.subscribe('application.volume', (volume) => {
+  renderVolume(volume)
 })
 ```
 
@@ -245,76 +253,19 @@ TODO: Link to `prism`
 
 ### Plop
 
-With [plop](https://github.com/plopjs/plop) you can auto-generate `behaviors` and `components`. You can also configure it to generate any kind of files you want.
+With [plop](https://github.com/plopjs/plop) you can create new files from the command line.
 
 ```
-yarn plop
+yarn create
 ```
 
 ---
 
 ### Web worker
 
-If you find that your game struggles to keep up with your desired frame rate, try putting some of the more performance heavy code in a `web worker`. A `web worker` is run in a separate thread and allows you to run code concurrently, which can dramatically improve your performance.
+If you find that your game struggles to keep up with your desired frame rate, try putting some of your code in the `web worker`.
 
-The worker has no access to `PixiJS` and needs to communicate with your main thread using messages.
-
-Here is a simple example:
-
-`main.js`
-
-```js
-const worker = new Worker('worker.js')
-
-worker.postMessage({
-  type: Message.TO_WORKER.INIT,
-  payload: 'ping',
-})
-
-worker.onmessage = ({ data: { type, payload } }) => {
-  switch (type) {
-    case Message.FROM_WORKER.INIT: {
-      console.log('Message from worker:', payload)
-    }
-    default:
-      break
-  }
-}
-```
-
-`worker.js`
-
-```js
-onmessage = ({ data: { type, payload } }) => {
-  switch (type) {
-    case Message.TO_WORKER.INIT: {
-      postMessage({
-        type: Message.FROM_WORKER.INIT,
-        payload: 'pong',
-      })
-    }
-    default:
-      break
-  }
-}
-```
-
-`constant/message.js`
-
-```js
-export const TO_WORKER = {
-  INIT: 'init',
-}
-
-export const FROM_WORKER = {
-  INIT: 'init',
-}
-
-export default {
-  TO_WORKER,
-  FROM_WORKER,
-}
-```
+A `web worker` is run in a separate thread and allows you to run code concurrently, which can dramatically improve your performance. The worker has no access to `PixiJS` and needs to communicate with your main thread using messages.
 
 ---
 
@@ -362,9 +313,23 @@ Hooks (TODO)
 
 ### Useful libraries
 
-[chance](https://github.com/chancejs/chancejs) - Randomness
+#### Randomness
 
-[xstate-fsm](https://github.com/davidkpiano/xstate/tree/master/packages/xstate-fsm) - Minimal finite state machine
+- [chance](https://github.com/chancejs/chancejs)
+
+- [random-js](https://github.com/ckknight/random-js)
+
+#### Physics
+
+- [matter]()
+
+#### State machine
+
+- [xstate-fsm](https://github.com/davidkpiano/xstate/tree/master/packages/xstate-fsm) - Minimal finite state machine
+
+#### Utils
+
+#### Events
 
 [tiny-toolkit](https://github.com/sajmoni/tiny-toolkit) - Useful utility functions
 
