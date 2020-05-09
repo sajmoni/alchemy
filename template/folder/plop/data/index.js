@@ -1,7 +1,7 @@
-const BASE_PATH = '../src/component'
+const BASE_PATH = '../src/data'
 
 module.exports = {
-  description: 'Reusable visual component',
+  description: 'Data',
   prompts: [
     {
       type: 'input',
@@ -14,21 +14,27 @@ module.exports = {
       {
         type: 'add',
         path: `${BASE_PATH}/{{camelCase name}}.ts`,
-        templateFile: './component/template.hbs',
+        templateFile: './data/template.hbs',
+        abortOnFail: true,
+      },
+      {
+        type: 'add',
+        path: `../src/constant/{{camelCase name}}Type.ts`,
+        templateFile: `./data/type.hbs`,
         abortOnFail: true,
       },
       {
         type: 'append',
-        path: `${BASE_PATH}/index.ts`,
+        path: `../src/constant/index.js`,
         pattern: `/* PLOP_INJECT_IMPORT */`,
-        template: `import {{camelCase name}} from './{{camelCase name}}'`,
+        template: `import {{pascalCase name}}Type from './{{camelCase name}}Type'`,
         abortOnFail: true,
       },
       {
         type: 'append',
-        path: `${BASE_PATH}/index.ts`,
+        path: `../src/constant/index.js`,
         pattern: `/* PLOP_INJECT_EXPORT */`,
-        template: `  {{camelCase name}},`,
+        template: `  {{pascalCase name}}Type,`,
       },
     ]
   },

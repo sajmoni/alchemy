@@ -1,0 +1,20 @@
+import * as yup from 'yup'
+import { {{ pascalCase name }}Type } from '../constant'
+
+export const schema = yup
+  .object({
+    type: yup.string().max(20).required(),
+    name: yup.string().max(20).required(),
+    price: yup.number().integer().positive().required(),
+  })
+  .noUnknown(true)
+
+const {{ properCase name }} = Object.freeze({
+  [{{ pascalCase name }}Type.KEY]: {
+    type: {{ pascalCase name }}Type.KEY,
+    name: 'Some data',
+    price: 100,
+  },
+})
+
+export default {{ properCase name }}

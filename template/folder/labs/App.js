@@ -4,8 +4,9 @@ import * as PIXI from 'pixi.js'
 import { settings } from 'pixi.js'
 import * as ex from 'pixi-ex'
 
-import componentLab from './lab/component'
 import * as storage from '../src/util/storage'
+/* PLOP_INJECT_IMPORT */
+import componentLab from './lab/component'
 
 const Color = {
   GRAY: '#171717',
@@ -29,8 +30,10 @@ const Menu = styled.div`
 
 const STORAGE_KEY = 'selectedLab'
 
-// TODO: Plop file to create new labs
-const lab = { components: componentLab }
+const lab = {
+  /* PLOP_INJECT_LAB */
+  components: componentLab,
+}
 const labKeys = Object.keys(lab)
 const DEFAULT_LAB = labKeys[0]
 
@@ -87,7 +90,9 @@ const App = () => {
       ;[...app.stage.children].forEach((child) => {
         child.destroy()
       })
-      renderLab(app)
+      const container = new PIXI.Container()
+      app.stage.addChild(container)
+      renderLab({ app, container })
     } else {
       // ignore
     }

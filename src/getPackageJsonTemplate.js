@@ -9,7 +9,7 @@ module.exports = ({ projectName }) => {
       lab: 'parcel labs/index.html --no-autoinstall --no-cache',
       build: 'rm -rf dist && parcel build src/index.html --public-url ./',
       test: 'ava',
-      plop: 'plop --plopfile plop/plopfile.js',
+      plop: 'plop --plopfile plop/plopfile.ts',
       qa: 'tsc && xo --fix',
       'validate-ci': 'circleci config validate',
       'check-all': 'yarn lint && yarn typecheck && yarn validate-ci',
@@ -42,6 +42,7 @@ module.exports = ({ projectName }) => {
       parser: '@typescript-eslint/parser',
       env: ['browser', 'es2020', 'node'],
       rules: {
+        '@typescript-eslint/promise-function-async': 'off',
         '@typescript-eslint/no-unsafe-call': 'off',
         '@typescript-eslint/no-unsafe-member-access': 'off',
         '@typescript-eslint/restrict-template-expressions': 'off',

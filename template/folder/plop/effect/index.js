@@ -1,7 +1,7 @@
-const BASE_PATH = '../src/component'
+const BASE_PATH = '../src/effect'
 
 module.exports = {
-  description: 'Reusable visual component',
+  description: 'Animate your display objects',
   prompts: [
     {
       type: 'input',
@@ -14,7 +14,7 @@ module.exports = {
       {
         type: 'add',
         path: `${BASE_PATH}/{{camelCase name}}.ts`,
-        templateFile: './component/template.hbs',
+        templateFile: './effect/template.hbs',
         abortOnFail: true,
       },
       {

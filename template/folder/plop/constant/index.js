@@ -1,7 +1,7 @@
-const BASE_PATH = '../src/component'
+const BASE_PATH = '../src/constant'
 
 module.exports = {
-  description: 'Reusable visual component',
+  description: 'A constant',
   prompts: [
     {
       type: 'input',
@@ -14,21 +14,21 @@ module.exports = {
       {
         type: 'add',
         path: `${BASE_PATH}/{{camelCase name}}.ts`,
-        templateFile: './component/template.hbs',
+        templateFile: './constant/template.hbs',
         abortOnFail: true,
       },
       {
         type: 'append',
-        path: `${BASE_PATH}/index.ts`,
+        path: `${BASE_PATH}/index.js`,
         pattern: `/* PLOP_INJECT_IMPORT */`,
-        template: `import {{camelCase name}} from './{{camelCase name}}'`,
+        template: `import {{pascalCase name}} from './{{camelCase name}}'`,
         abortOnFail: true,
       },
       {
         type: 'append',
-        path: `${BASE_PATH}/index.ts`,
+        path: `${BASE_PATH}/index.js`,
         pattern: `/* PLOP_INJECT_EXPORT */`,
-        template: `  {{camelCase name}},`,
+        template: `  {{pascalCase name}},`,
       },
     ]
   },

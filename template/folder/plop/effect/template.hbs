@@ -1,0 +1,38 @@
+import * as l1 from 'l1'
+import * as juice from 'juice.js'
+import * as PIXI from 'pixi.js'
+
+const END_VALUE = 1
+
+type Options = {
+  readonly duration?: number
+  readonly resolveAt?: number
+  readonly endValue?: number
+}
+
+const {{ camelCase name }} = (
+  displayObject: PIXI.DisplayObject,
+  { duration = 90, resolveAt = 0.5, endValue = END_VALUE }: Options = {},
+) =>
+  new Promise((resolve) => {
+    const getAlpha = juice.easeOut({
+      startValue: 0,
+      endValue,
+      duration,
+    })
+
+    const behavior = l1.every((time) => {
+      displayObject.alpha = getAlpha(time)
+      if (time === Math.floor(duration * resolveAt)) {
+        resolve()
+      }
+
+      return () => {
+        displayObject.alpha = endValue
+      }
+    })
+
+    behavior.id = `{{ camelCase name}}-${displayObject.name}`
+  })
+
+export default {{ camelCase name }}

@@ -1,5 +1,5 @@
 import * as PIXI from 'pixi.js'
 
-export default interface SceneArgs {
+export type SceneArgs = {
   readonly container: PIXI.Container
 }

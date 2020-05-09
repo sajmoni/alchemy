@@ -1,10 +1,7 @@
 import * as PIXI from 'pixi.js'
 import { bar, slider, button, select } from '../../src/component'
 
-const component = (app) => {
-  const container = new PIXI.Container()
-  app.stage.addChild(container)
-
+const component = ({ app, container }) => {
   // Bar
   let value = 1
   const [_bar, renderBar] = bar()

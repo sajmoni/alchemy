@@ -1,7 +1,7 @@
-const BASE_PATH = '../src/component'
+const BASE_PATH = '../labs/lab'
 
 module.exports = {
-  description: 'Reusable visual component',
+  description: 'Experiments and prototyping',
   prompts: [
     {
       type: 'input',
@@ -14,21 +14,21 @@ module.exports = {
       {
         type: 'add',
         path: `${BASE_PATH}/{{camelCase name}}.ts`,
-        templateFile: './component/template.hbs',
+        templateFile: './lab/template.hbs',
         abortOnFail: true,
       },
       {
         type: 'append',
-        path: `${BASE_PATH}/index.ts`,
+        path: `../labs/App.js`,
         pattern: `/* PLOP_INJECT_IMPORT */`,
-        template: `import {{camelCase name}} from './{{camelCase name}}'`,
+        template: `import {{camelCase name}}Lab from './lab/{{camelCase name}}'`,
         abortOnFail: true,
       },
       {
         type: 'append',
-        path: `${BASE_PATH}/index.ts`,
-        pattern: `/* PLOP_INJECT_EXPORT */`,
-        template: `  {{camelCase name}},`,
+        path: `../labs/App.js`,
+        pattern: `/* PLOP_INJECT_LAB */`,
+        template: `  {{camelCase name}}: {{camelCase name}}Lab,`,
       },
     ]
   },

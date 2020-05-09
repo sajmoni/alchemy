@@ -1,12 +1,14 @@
 import * as PIXI from 'pixi.js'
 
 import * as prism from '/util/prism'
+/* PLOP_INJECT_IMPORT */
 import mainMenu from './mainMenu'
 import game from './game'
 import { Scene } from '/constant'
 import app from '/app'
 
 const sceneHandler = {
+  /* PLOP_INJECT_SCENE */
   [Scene.MAIN_MENU]: mainMenu,
   [Scene.GAME]: game,
 }
