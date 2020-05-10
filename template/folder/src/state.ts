@@ -1,5 +1,5 @@
+import * as prism from 'state-prism'
 import { Resolution } from './constant'
-import { init } from './util/prism'
 
 type State = {
   application: {
@@ -20,7 +20,7 @@ type State = {
   }
 }
 
-const state: State = init({
+const state: State = {
   application: {
     volume: {
       sound: 1,
@@ -37,6 +37,6 @@ const state: State = init({
     x: 1,
     angle: 50,
   },
-})
+}
 
-export default state
+export default prism.init(state)

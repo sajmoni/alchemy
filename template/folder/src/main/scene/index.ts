@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
+import * as prism from 'state-prism'
 
-import * as prism from '/util/prism'
 /* PLOP_INJECT_IMPORT */
 import mainMenu from './mainMenu'
 import game from './game'
