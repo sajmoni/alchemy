@@ -15,7 +15,7 @@ const initializeGame = () => {
     type: MessageType.TO_WORKER.INITIALIZE_WORKER,
   })
 
-  l1.repeat(() => {
+  l1.forever(() => {
     worker.postMessage({
       type: MessageType.TO_WORKER.UPDATE,
       payload: {},

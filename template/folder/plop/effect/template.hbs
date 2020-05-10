@@ -30,7 +30,7 @@ const {{ camelCase name }} = (
       return () => {
         displayObject.alpha = endValue
       }
-    })
+    }, duration)
 
     behavior.id = `{{ camelCase name}}-${displayObject.name}`
   })

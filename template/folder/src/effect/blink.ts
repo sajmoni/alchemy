@@ -15,7 +15,7 @@ export default (
   { duration = DEFAULT_DURATION, interval = DEFAULT_INTERVAL }: Options = {},
 ) => {
   let show = false
-  const blink = l1.repeat((counter) => {
+  const blink = l1.forever((counter) => {
     if (show) {
       displayObject.visible = false
       show = false

@@ -144,7 +144,7 @@ if (process.env.NODE_ENV === 'development' && DEBUG) {
 
   const renderDebugOverlay = debugOverlay(debugItems)
 
-  const debug = l1.repeat(() => {
+  const debug = l1.forever(() => {
     renderDebugOverlay()
     // TODO: Enable this in the future
     // spector.captureNextFrame(app.view, true)

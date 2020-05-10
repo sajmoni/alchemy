@@ -21,17 +21,16 @@ export default async (
       duration,
     })
 
-    const fadeIn = l1.repeat((counter) => {
+    const fadeIn = l1.every((counter) => {
       displayObject.alpha = getAlpha(counter)
       if (counter === Math.floor(duration * resolveAt)) {
         resolve()
       }
 
-      if (counter === duration) {
+      return () => {
         displayObject.alpha = endValue
-        l1.remove(fadeIn)
       }
-    })
+    }, duration)
 
     fadeIn.id = `fadeIn-${displayObject.name}`
   })

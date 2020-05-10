@@ -13,8 +13,10 @@ export default async () =>
     const fade = new PIXI.Graphics()
     fade.zIndex = 1
     app.stage.addChild(fade)
-    const b = l1.repeat(fadeInOut(fade, DURATION, resolve))
-    b.id = ID
+
+    // eslint-disable-next-line unicorn/no-fn-reference-in-iterator
+    const behavior = l1.every(fadeInOut(fade, DURATION, resolve), DURATION)
+    behavior.id = ID
   })
 
 const fadeInOut = (graphics, duration, resolve) => {
@@ -38,8 +40,7 @@ const fadeInOut = (graphics, duration, resolve) => {
       resolve()
     }
 
-    if (counter === duration) {
-      l1.remove(ID)
+    return () => {
       graphics.destroy()
     }
   }

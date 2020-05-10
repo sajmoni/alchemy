@@ -10,7 +10,7 @@ type Options = {
   readonly duration?: number
 }
 
-export default async (
+export default (
   displayObject: PIXI.DisplayObject,
   { position, duration = DEFAULT_DURATION }: Options,
 ) =>
@@ -25,15 +25,14 @@ export default async (
       endValue: position.x,
       duration,
     })
-    const b = l1.repeat((counter) => {
+    const b = l1.every((counter) => {
       displayObject.y = Math.floor(getY(counter))
       displayObject.x = Math.floor(getX(counter))
 
-      if (counter === duration) {
+      return () => {
         resolve()
-        l1.remove(b)
       }
-    })
+    }, duration)
 
     b.id = `easeOutToPosition-${displayObject.name}`
   })

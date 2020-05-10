@@ -31,7 +31,7 @@ const mainMenu = ({ container }) => {
     endValue: 1.15,
   })
 
-  l1.repeat((counter) => {
+  l1.forever((counter) => {
     text.scale.set(getScale(counter))
   })
 
@@ -58,9 +58,6 @@ const mainMenu = ({ container }) => {
           container.children.filter((c) => c !== startGameButton),
         ).then(() => {
           state.scene = Scene.GAME
-          l1.getAll()
-            .filter(({ id }) => id !== 'fullscreenFadeInOut' && id !== 'debug')
-            .forEach(l1.remove)
         })
       })
     },

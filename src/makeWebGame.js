@@ -21,7 +21,7 @@ const dependencies = [
   // * --
   // * Game logic
   'juice.js@1.0.6',
-  'l1@0.6.1',
+  'l1@0.7.0-0',
   'mainloop.js@1.0.4',
   // * --
   // * Util

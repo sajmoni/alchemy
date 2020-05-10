@@ -17,7 +17,7 @@ const game = ({ container }: SceneArgs) => {
   sprite.anchor.set(0.5)
   container.addChild(sprite)
 
-  l1.repeat(() => {
+  l1.forever(() => {
     if (state.application.paused) {
       return
     }
