@@ -9,6 +9,7 @@ import { Render } from '../../constant'
 import { bar, pauseMenu } from '../../component'
 import { explosion } from '../../particle'
 import { SceneArgs } from '/type/scene'
+import { expand } from '/effect'
 
 const game = ({ container }: SceneArgs) => {
   const sprite = new PIXI.Sprite(ex.getTexture('square1'))
@@ -26,6 +27,11 @@ const game = ({ container }: SceneArgs) => {
     state.square.angle += 2
     state.bar = Math.max(0, state.bar - 0.2)
   })
+
+  l1.forever(() => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    expand(sprite)
+  }, 180)
 
   prism.subscribe('square.x', (x) => {
     sprite.x = x
