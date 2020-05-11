@@ -42,6 +42,7 @@ module.exports = ({ projectName }) => {
       parser: '@typescript-eslint/parser',
       env: ['browser', 'es2020', 'node'],
       rules: {
+        '@typescript-eslint/no-var-requires': 'off',
         '@typescript-eslint/promise-function-async': 'off',
         '@typescript-eslint/no-unsafe-call': 'off',
         '@typescript-eslint/no-unsafe-member-access': 'off',

@@ -70,7 +70,7 @@ document.fonts
     loadingBackground
       .beginFill(ex.fromHex('#000000'))
       .drawRect(0, 0, Render.GAME_WIDTH, Render.GAME_HEIGHT)
-    // .endFill()
+      .endFill()
     loadingContainer.addChild(loadingBackground)
 
     const loading = new PIXI.Text(
@@ -98,8 +98,8 @@ document.fonts
       })
     })
   })
-  .catch(() => {
-    console.error('Unable to load font')
+  .catch((error) => {
+    console.error('Error starting game:', error)
   })
 
 // * These commands can be run in the console, e.g: 'debug.state()'

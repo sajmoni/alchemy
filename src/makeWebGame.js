@@ -26,8 +26,7 @@ const dependencies = [
   // * --
   // * Util
   'lodash@4.17.15',
-  // TODO: Replace with Prism
-  'on-change@2.0.1',
+  'state-prism@0.0.1',
   // * --
   // * Translations
   '@lingui/core@2.9.1',
