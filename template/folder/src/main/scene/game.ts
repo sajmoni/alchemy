@@ -19,10 +19,6 @@ const game = ({ container }: SceneArgs) => {
   container.addChild(sprite)
 
   l1.forever(() => {
-    if (state.application.paused) {
-      return
-    }
-
     state.square.x += 0.25
     state.square.angle += 2
     state.bar = Math.max(0, state.bar - 0.2)

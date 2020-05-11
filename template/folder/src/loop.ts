@@ -1,6 +1,8 @@
 import * as l1 from 'l1'
 import MainLoop from 'mainloop.js'
+
 import app from './app'
+import state from './state'
 
 const DEBUG = true
 
@@ -10,6 +12,10 @@ let drawDurations = []
 const initializeGameLoop = () => {
   if (process.env.NODE_ENV === 'development' && DEBUG) {
     MainLoop.setUpdate((deltaTime) => {
+      if (state.application.paused) {
+        return
+      }
+
       const beforeUpdate = performance.now()
 
       // 16.6 -> 1
@@ -21,6 +27,10 @@ const initializeGameLoop = () => {
     })
   } else {
     MainLoop.setUpdate((deltaTime) => {
+      if (state.application.paused) {
+        return
+      }
+
       // 16.6 -> 1
       l1.update(deltaTime / (1000 / 60))
     })
