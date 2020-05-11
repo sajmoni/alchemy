@@ -1,12 +1,22 @@
-/**
- * items: [{
- *  label,
- *  getData,
- *  threshold,
- *  type: 'label' | 'button',
- * }]
- */
-export default (items, options = {}) => {
+enum ItemType {
+  LABEL = 'label',
+  BUTTON = 'button',
+  DIVIDER = 'divider',
+}
+
+type Item = {
+  readonly label: string
+  readonly getData: () => number | string
+  readonly threshold?: number
+  readonly type?: ItemType
+}
+
+type Options = {
+  element?: HTMLElement
+}
+
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+export default (items: readonly Item[], options: Options = {}) => {
   const {
     element: appendTo = document.body,
     // width = 200,
