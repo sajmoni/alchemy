@@ -28,6 +28,18 @@ Generates a modular template to get started making 2D games that run in the brow
 
 - :up: [`pixi-ex`](https://github.com/sajmoni/pixi-ex) - Useful utility functions
 
+### Game logic
+
+- :loop: [`mainloop`](https://github.com/IceCreamYou/MainLoop.js) - Game loop
+
+- :tropical_drink: [`juice.js`](https://github.com/rymdkraftverk/juice.js) - Adds "juice" to your animations
+
+- :one: [`level1`](https://github.com/rymdkraftverk/level1) - Trigger a function after a set amount of game updates
+
+- :star: [`state-prism`](https://github.com/sajmoni/state-prism) - State management
+
+- :sound: [`howler`](https://github.com/goldfire/howler.js/) - Preloaded sounds
+
 ### QA
 
 - :m: [`typescript`](https://github.com/microsoft/TypeScript)
@@ -58,19 +70,13 @@ Generates a modular template to get started making 2D games that run in the brow
 
 - :detective: [`SpectorJS`](https://github.com/BabylonJS/Spector.js) - Explore and troubleshoot your WebGL scenes (TODO)
 
+- :microscope: `"Labs"` - Separate webapp for experiments and prototyping
+
 ### Other
-
-- :sound: [`howler`](https://github.com/goldfire/howler.js/) - Preloaded sounds
-
-- :tropical_drink: [`juice.js`](https://github.com/rymdkraftverk/juice.js) - Adds "juice" to your animations
-
-- :one: [`level1`](https://github.com/rymdkraftverk/level1) - Trigger a function after a set amount of game updates
-
-- :loop: [`mainloop`](https://github.com/IceCreamYou/MainLoop.js) - Game loop
 
 - :earth_asia: [`lingui`](https://github.com/lingui/js-lingui) - Translations
 
-- Workflow for marketing (TODO)
+* Workflow for marketing (TODO)
 
  <!-- - state management -->
  <!-- Prism? -->
