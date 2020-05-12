@@ -69,6 +69,11 @@ export default () => {
     .lineStyle({ color: ex.fromHex('#ff00ff'), width: 2 })
     .moveTo(CENTER_COLUMN, 0)
     .lineTo(CENTER_COLUMN, height)
+
+  background.interactive = true
+  background.on('click', (event) => {
+    event.stopPropagation()
+  })
   component.addChild(background)
 
   const title = new PIXI.Text(
