@@ -27,6 +27,7 @@ const dependencies = [
   // * Util
   'lodash@4.17.15',
   'state-prism@0.0.1',
+  'mousetrap@1.6.5',
   // * --
   // * Translations
   '@lingui/core@2.9.1',
