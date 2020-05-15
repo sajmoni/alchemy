@@ -14,6 +14,7 @@ import { TextStyle, Render, Language } from './constant'
 import { restore } from './util/storage'
 import initializeGameLoop from './loop'
 import initializeDebugTools from './debug'
+import initializeObjectPool from './util/objectPool'
 
 const FONT = 'patchy-robots'
 const DEFAULT_LANGUAGE = Language.EN.code
@@ -62,6 +63,7 @@ document.fonts
 
       autoPause()
 
+      initializeObjectPool()
       initializeGame()
 
       l1.once(() => {
