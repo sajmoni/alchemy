@@ -15,6 +15,10 @@ import app from '../../app'
 import button from '../../component/button'
 import { fadeOut } from '../../effect'
 
+const Color = {
+  BACKGROUND: '#aaaaaa',
+}
+
 const MAX_VOLUME = 10
 const MIN_VOLUME = 0
 
@@ -28,7 +32,6 @@ const LEFT_COLUMN = (width / 4) * 1
 const CENTER_COLUMN = (width / 4) * 2
 const RIGHT_COLUMN = (width / 4) * 3
 
-// TODO: Skinable for different games
 // TODO: Wipe all stored data - with confirm dialog
 // Add "Warning - Data is only stored in your browser, if you
 // erase your browser history, all data will be lost."
@@ -62,7 +65,7 @@ export default () => {
 
   const background = new PIXI.Graphics()
   background
-    .beginFill(ex.fromHex('#aaaaaa'))
+    .beginFill(ex.fromHex(Color.BACKGROUND))
     .drawRect(0, 0, width, height)
     .endFill()
     // @ts-ignore

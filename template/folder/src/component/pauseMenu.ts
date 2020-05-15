@@ -21,7 +21,9 @@ const createPauseMenu = ({
     .endFill()
   container.addChild(overlay)
 
-  const text = new PIXI.Text('Paused', { fill: 'white' })
+  const text = new PIXI.Text('Paused (Click anywhere to resume)', {
+    fill: 'white',
+  })
   ex.centerX(text, width / 2)
   ex.centerY(text, height / 2)
   container.addChild(text)

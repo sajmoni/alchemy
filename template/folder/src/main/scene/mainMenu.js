@@ -51,7 +51,7 @@ const mainMenu = ({ container }) => {
     textStyle: TextStyle.MAIN,
     onClick: () => {
       easeOutToPosition(startGameButton, {
-        position: { y: 30, x: startGameButton.x },
+        position: { y: Render.GAME_HEIGHT / 2, x: startGameButton.x },
       }).then(() => {
         clickBlink(
           startGameButton,

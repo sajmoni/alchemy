@@ -2,6 +2,7 @@
 
 const loading = document.createElement('div')
 loading.innerHTML = 'Please wait'
+loading.style.fontFamily = 'Helvetica'
 loading.setAttribute('id', 'loading')
 document.querySelector('#game').append(loading)
 

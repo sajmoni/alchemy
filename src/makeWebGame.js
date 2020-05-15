@@ -11,7 +11,7 @@ const displayDoneMessage = require('./message/done')
 
 const dependencies = [
   // * Rendering
-  'pixi.js@5.2.3',
+  'pixi.js@5.2.4',
   'pixi-ex@0.0.7',
   'pixi-particles@4.2.1',
   'pixi-filters@3.1.1',
@@ -33,11 +33,12 @@ const dependencies = [
   '@lingui/core@2.9.1',
   '@lingui/macro@2.9.1',
   // * --
+  // * Electron
+  'electron@8.1.1',
 ]
 
 const devDependencies = [
   // * Electron
-  'electron@8.1.1',
   'electron-packager@14.2.1',
   // * --
   // * Code quality
@@ -64,13 +65,13 @@ const devDependencies = [
   'plop@2.6.0',
   'muncher@0.0.13',
   '@babel/preset-typescript@7.9.0',
-  '@types/node@13.13.4',
+  '@types/node@13.13.5',
   // * Labs
   'react@16.13.1',
   'react-dom@16.13.1',
   'styled-components@5.1.0',
-  '@types/react@16.9.34',
-  '@types/react-dom@16.9.7',
+  '@types/react@16.9.35',
+  '@types/react-dom@16.9.8',
   '@types/styled-components@5.1.0',
   'eslint-config-xo-react@0.23.0',
   'eslint-plugin-react@7.19.0',

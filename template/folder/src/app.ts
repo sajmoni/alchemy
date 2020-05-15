@@ -3,7 +3,8 @@ import { Render } from './constant'
 
 // * Enable to turn on pixel perfect rendering:
 // PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST
-// PIXI.settings.ROUND_PIXELS = true
+PIXI.settings.ROUND_PIXELS = true
+PIXI.settings.RESOLUTION = 2
 
 const renderer = new PIXI.Renderer({
   width: Render.GAME_WIDTH,

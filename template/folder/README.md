@@ -32,10 +32,15 @@ This game was initially created with [`make-web-game`](https://github.com/sajmon
   - [State management](#state-management)
   - [Plop](#plop)
   - [Web worker](#web-worker)
+  - [Input](#input)
+    - [Keyboard](#keyboard)
+    - [Mouse](#mouse)
+    - [GamePad](#gamepad)
   - [Performance Tips](#performance-tips)
     - [Lodash](#lodash)
     - [Draw calls](#draw-calls)
     - [Immutability](#immutability)
+  - [Object pool](#object-pool)
   - [Marketing](#marketing)
   - [Useful external tools](#useful-external-tools)
   - [Useful libraries](#useful-libraries)
@@ -44,6 +49,7 @@ This game was initially created with [`make-web-game`](https://github.com/sajmon
     - [State machine](#state-machine)
     - [Utils](#utils)
     - [Events](#events)
+  - [Useful external resources](#useful-external-resources)
   - [Misc](#misc)
 
 ---
@@ -229,11 +235,13 @@ Add sounds to `src/sound/index.js`
 
 ### State management
 
-You can subscribe to state changes with `prism`. You register a callback for the part of state you want to subscribe to.
+You can subscribe to state changes with [`state-prism`](https://github.com/sajmoni/state-prism). You register a callback for the part of state you want to subscribe to.
 
 Example usage:
 
 ```js
+import * as prism from 'state-prism'
+
 let state = {
   application: {
     volume: 5,
@@ -247,16 +255,14 @@ prims.subscribe('application.volume', (volume) => {
 })
 ```
 
-TODO: Link to `prism`
-
 ---
 
 ### Plop
 
-With [plop](https://github.com/plopjs/plop) you can create new files from the command line.
+With [`plop`](https://github.com/plopjs/plop) you can create new files from the command line.
 
 ```
-yarn create
+yarn plop
 ```
 
 ---
@@ -266,6 +272,24 @@ yarn create
 If you find that your game struggles to keep up with your desired frame rate, try putting some of your code in the `web worker`.
 
 A `web worker` is run in a separate thread and allows you to run code concurrently, which can dramatically improve your performance. The worker has no access to `PixiJS` and needs to communicate with your main thread using messages.
+
+---
+
+### Input
+
+#### Keyboard
+
+Keyboard input uses `mousetrap`
+
+TODO
+
+#### Mouse
+
+TODO
+
+#### GamePad
+
+TODO
 
 ---
 
@@ -284,6 +308,12 @@ TODO: Link to an external resource
 #### Immutability
 
 Try not to use immutability too much. Immutability has its benefits in many situations, but it can add a significant performance penalty if used in the wrong places.
+
+### Object pool
+
+Creating and destroying pixi objects can be bad for performance. It is especially bad since it will trigger Garbage Collection that might make your game lag occasionally.
+
+TODO: How to use the object pool
 
 ---
 
@@ -334,6 +364,12 @@ Hooks (TODO)
 [tiny-toolkit](https://github.com/sajmoni/tiny-toolkit) - Useful utility functions
 
 [eventemitter3](https://github.com/primus/eventemitter3) - Events
+
+---
+
+### Useful external resources
+
+[Game dev market](https://www.gamedevmarket.net/) - Buy assets for your game
 
 ---
 
