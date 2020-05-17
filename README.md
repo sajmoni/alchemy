@@ -10,8 +10,6 @@
   <img src="https://badgen.net/github/last-commit/sajmoni/make-web-game?icon=github" />
 </div>
 
----
-
 Generates a modular template to get started making 2D games that run in the browser. All libraries can be switched out for other ones that you prefer. These are just some good defaults.
 
 ---
@@ -38,8 +36,6 @@ Generates a modular template to get started making 2D games that run in the brow
 
 - :star: [`state-prism`](https://github.com/sajmoni/state-prism) - State management
 
-- :sound: [`howler`](https://github.com/goldfire/howler.js/) - Preloaded sounds
-
 ### QA
 
 - :m: [`typescript`](https://github.com/microsoft/TypeScript)
@@ -55,6 +51,8 @@ Generates a modular template to get started making 2D games that run in the brow
 - :straight_ruler: [`ava`](https://github.com/avajs/ava) - Super simple test framework
 
 - :+1: [`yup`](https://github.com/jquense/yup) - Object schema validation
+
+- :eyes: [`nano-panel`](https://github.com/sajmoni/nano-panel) - Display data when debugging
 
 ### Tooling
 
@@ -76,12 +74,9 @@ Generates a modular template to get started making 2D games that run in the brow
 
 - :earth_asia: [`lingui`](https://github.com/lingui/js-lingui) - Translations
 
-* Workflow for marketing (TODO)
+- :sound: [`howler`](https://github.com/goldfire/howler.js/) - Preloaded sounds
 
- <!-- - state management -->
- <!-- Prism? -->
-
- <!-- - Debug tools -->
+* Marketing checklist (TODO)
 
 ---
 
@@ -117,82 +112,46 @@ my-game/
 │   └── sprite/
 ├── labs/
 │   ├── lab/
-|   │   └── component.ts
 │   ├── App.js
 │   ├── index.html
 │   ├── index.js
 │   └── style.css
 ├── locale/
 ├── plop/
+│   ├── component/
+│   ├── constant/
+│   ├── data/
+│   ├── effect/
 │   ├── lab/
-|   │   └── component.ts
-│   ├── App.js
-│   ├── index.html
-│   ├── index.js
-│   └── style.css
+│   ├── scene/
+│   └── plopfile.ts
 ├── script/
 │   ├── setupTests.js
 │   └── validateData.js
 ├── node_modules/
 ├── src/
 │   ├── component/
-│   │   ├── bar.ts
-│   │   ├── button.ts
-│   │   ├── index.ts
-│   │   ├── pauseMenu.ts
-│   │   ├── select.ts
-│   │   └── slider.ts
 │   ├── constant/
-│   │   ├── index.js
-│   │   ├── language.js
-│   │   ├── render.js
-│   │   ├── resolution.js
-│   │   └── textStyle.js
 │   ├── data/
-│   │   └── sample.js
 │   ├── effect/
-│   │   ├── blink.ts
-│   │   ├── clickBlink.ts
-│   │   ├── easeOutToPosition.ts
-│   │   ├── fadeIn.ts
-│   │   ├── fadeOut.ts
-│   │   ├── fullscreenFadeInOut.ts
-│   │   └── index.ts
 │   ├── input/
-│   │   ├── gamePad.ts
-│   │   ├── keyboard.ts
-│   │   └── mouse.ts
 │   ├── main/
 │   │   ├── scene/
-|   │   │   ├── game.ts
-|   │   │   ├── index.ts
-|   │   │   └── mainMenu.js
 │   │   ├── ui/
-|   │   │   └── settings.js
 │   │   └── index.js
 │   ├── particle/
-│   │   ├── explosion.js
-│   │   └── index.js
 │   ├── selector/
-│   │   └── index.js
 │   ├── sound/
-│   │   ├── createSound.js
-│   │   ├── globalVolume.js
-│   │   └── index.js
 │   ├── type/
-│   │   └── scene.ts
 │   ├── util/
-│   │   ├── autoPause.js
-│   │   ├── debugOverlay.js
-│   │   ├── getDefaultLanguage.js
-│   │   ├── loading.js
-│   │   ├── prism.ts
-│   │   └── storage.js
-│   ├── app.js
+│   ├── worker/
+│   ├── app.ts
+│   ├── debug.ts
 │   ├── example.test.js
 │   ├── i18n.js
 │   ├── index.html
 │   ├── index.js
+│   ├── loop.ts
 │   ├── pixi.ts
 │   ├── state.ts
 │   ├── style.css
@@ -205,13 +164,12 @@ my-game/
 ├── electron.js
 ├── lint-staged.config.js
 ├── package.json
-├── plopfile.js
 ├── README.md
 ├── tsconfig.json
 └── yarn.lock
 ```
 
-## Options
+<!-- ## Options
 
 `--no-translations` (TODO)
 
@@ -223,21 +181,27 @@ Exclude electron from the game
 
 `--verbose` (TODO)
 
-Display full output. Good for debugging.
+Display full output. Good for debugging. -->
 
- <!-- ## What to do after the script is run -->
+## What you should do after the script is run
 
- <!-- - Update the project name in: `.cicleci/config.yml` -->
+- Update the project name in Github workflows.
 
- <!-- - Set sentry URL -->
+- Set Sentry URL.
 
- <!-- - Make the `release` branch protected so that you don't accidentally push to it. -->
+- Make the `release` branch protected so that you don't accidentally push to it.
+
+---
+
+## Template docs
+
+[Docs](template/folder/README.md)
 
 ---
 
 ## Showcase
 
-A list of games made using this tool:
+A list of games bootstrapped using this tool:
 
 - [Diablito](https://rymdkraftverk.itch.io/diablito) - A very tiny roguelike
 

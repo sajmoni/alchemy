@@ -36,6 +36,7 @@ This game was initially created with [`make-web-game`](https://github.com/sajmon
     - [Keyboard](#keyboard)
     - [Mouse](#mouse)
     - [GamePad](#gamepad)
+  - [Labs](#labs)
   - [Performance Tips](#performance-tips)
     - [Lodash](#lodash)
     - [Draw calls](#draw-calls)
@@ -290,6 +291,16 @@ TODO
 #### GamePad
 
 TODO
+
+---
+
+### Labs
+
+`Labs` is a separate webapp that allows you to experiment and prototype separately from your game.
+
+Run `yarn labs` to start the app.
+
+With `yarn plop` you can create new labs.
 
 ---
 
