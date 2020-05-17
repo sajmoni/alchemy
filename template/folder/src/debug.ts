@@ -1,7 +1,8 @@
 import * as l1 from 'l1'
 import * as ex from 'pixi-ex'
 import MainLoop from 'mainloop.js'
-import debugOverlay from './util/debugOverlay'
+import createPanel from 'nano-panel'
+import * as prism from 'state-prism'
 
 import app from './app'
 import Sound from './sound'
@@ -49,14 +50,39 @@ const initializeDebugTools = () => {
           return getAverageDrawDuration()
         },
       },
+      {
+        type: 'divider',
+      },
+      {
+        type: 'button',
+        label: 'State',
+        onClick: () => {
+          console.log('state:', prism.target(state))
+        },
+      },
+      {
+        type: 'button',
+        label: 'Play / Pause',
+        onClick: () => {
+          state.application.paused = !state.application.paused
+        },
+      },
+      {
+        type: 'button',
+        label: 'Mute sounds',
+        onClick: () => {
+          // TODO: Set volume to 0
+          console.log('sounds muted')
+        },
+      },
     ]
     // TODO: Enable this in the future
     // 'draw calls': () => drawCalls,
 
-    const renderDebugOverlay = debugOverlay(debugItems)
+    const renderPanel = createPanel(debugItems)
 
     const debug = l1.forever(() => {
-      renderDebugOverlay()
+      renderPanel()
       // TODO: Enable this in the future
       // spector.captureNextFrame(app.view, true)
       // spector.onCapture.add((res) => {
