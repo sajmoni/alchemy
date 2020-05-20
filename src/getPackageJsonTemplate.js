@@ -28,6 +28,7 @@ module.exports = ({ projectName }) => {
     },
     ava: {
       require: ['./script/setupTests.js'],
+      extensions: ['js', 'ts'],
     },
     prettier: {
       trailingComma: 'all',
