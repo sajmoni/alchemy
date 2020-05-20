@@ -64,8 +64,7 @@
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint src",
     "check-all": "yarn lint && yarn typecheck",
-    "release": "np --no-tests",
-    "release:prepare": "yarn clean && yarn audit && yarn build && np --preview --no-tests"
+    "release": "yarn clean && yarn qa && yarn audit && yarn build && np --no-tests"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "11.1.0",
