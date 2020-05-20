@@ -12,12 +12,12 @@ const displayDoneMessage = require('./message/done')
 const dependencies = [
   // * Rendering
   'pixi.js@5.2.4',
-  'pixi-ex@0.0.7',
+  'pixi-ex@0.0.8',
   'pixi-particles@4.2.1',
   'pixi-filters@3.1.1',
   // * --
   // * Sound
-  'howler@2.1.3',
+  'howler@2.2.0',
   // * --
   // * Game logic
   'juice.js@1.0.6',
@@ -35,7 +35,7 @@ const dependencies = [
   '@lingui/macro@2.9.1',
   // * --
   // * Electron
-  'electron@8.1.1',
+  'electron@9.0.0',
 ]
 
 const devDependencies = [
@@ -44,7 +44,7 @@ const devDependencies = [
   // * --
   // * Code quality
   'xo@0.30.0',
-  'typescript@3.8.3',
+  'typescript@3.9.3',
   // * --
   // * Module bundling
   'parcel-bundler@1.12.4',
@@ -57,16 +57,16 @@ const devDependencies = [
   '@babel/preset-env@7.9.6',
   // * --
   // * Testing
-  'ava@3.8.1',
+  'ava@3.8.2',
   '@babel/register@7.9.0',
   // * --
   // * Other
-  'yup@0.28.5',
+  'yup@0.29.0',
   '@babel/node@7.8.7',
   'plop@2.6.0',
   'muncher@0.0.13',
   '@babel/preset-typescript@7.9.0',
-  '@types/node@13.13.5',
+  '@types/node@14.0.4',
   // * Labs
   'react@16.13.1',
   'react-dom@16.13.1',
@@ -75,8 +75,8 @@ const devDependencies = [
   '@types/react-dom@16.9.8',
   '@types/styled-components@5.1.0',
   'eslint-config-xo-react@0.23.0',
-  'eslint-plugin-react@7.19.0',
-  'eslint-plugin-react-hooks@4.0.0',
+  'eslint-plugin-react@7.20.0',
+  'eslint-plugin-react-hooks@4.0.2',
 ]
 
 module.exports = ({ projectName }) => {
