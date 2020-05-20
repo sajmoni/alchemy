@@ -60,10 +60,7 @@
     "clean": "rm -rf ./example/test-game && rm -f make-web-game.tgz",
     "go": "./build-test.sh",
     "build": "rm -rf dist && rollup --config rollup.config.js",
-    "typecheck": "tsc --resolveJsonModule",
-    "format": "prettier --write \"src/**/*.js\"",
-    "lint": "eslint src",
-    "check-all": "yarn lint && yarn typecheck",
+    "qa": "tsc && xo --fix",
     "release": "yarn clean && yarn qa && yarn audit && yarn build && np --no-tests"
   },
   "devDependencies": {
