@@ -57,6 +57,7 @@
     }
   },
   "scripts": {
+    "version": "yarn build",
     "clean": "rm -rf ./example/test-game && rm -f make-web-game.tgz",
     "go": "./build-test.sh",
     "build": "rm -rf dist && rollup --config rollup.config.js",
