@@ -7,7 +7,7 @@ import * as prism from 'state-prism'
 import state from '../../state'
 import { Render } from '../../constant'
 import { bar, pauseMenu } from '../../component'
-import { explosion } from '../../particle'
+import { explosion } from '../../particles'
 import { SceneArgs } from '/type/scene'
 import { expand } from '/effect'
 

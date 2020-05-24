@@ -15,4 +15,5 @@ module.exports = ({ name, rootPath }) => {
   console.log(`   ${chalk.cyan('yarn start')}`)
   console.log()
   console.log(' Good luck!')
+  console.log()
 }
