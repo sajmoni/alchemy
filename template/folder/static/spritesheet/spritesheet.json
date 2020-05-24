@@ -1,6 +1,6 @@
 {"frames": {
 
-"plus-minus-0.png":
+"plus-minus-1.png":
 {
 	"frame": {"x":1,"y":1,"w":32,"h":32},
 	"rotated": false,
@@ -8,7 +8,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
 	"sourceSize": {"w":32,"h":32}
 },
-"plus-minus-1.png":
+"plus-minus-2.png":
 {
 	"frame": {"x":35,"y":1,"w":32,"h":32},
 	"rotated": false,
@@ -39,6 +39,6 @@
 	"format": "RGBA8888",
 	"size": {"w":136,"h":34},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:62c46a559958b5649a1ddb4b0dadea9c:16c3934335cbf656d30135412148f2e6:729adc6043343cfda41c447ce8f464d6$"
+	"smartupdate": "$TexturePacker:SmartUpdate:44c3c8b6453c663c410b53200b77b321:16c3934335cbf656d30135412148f2e6:729adc6043343cfda41c447ce8f464d6$"
 }
 }
