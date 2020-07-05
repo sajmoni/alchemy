@@ -55,7 +55,7 @@ const game = ({ container }: SceneArgs) => {
   const explosionParticles = new particles.Emitter(
     particleContainer,
     ['square1', 'square2'].map(ex.getTexture),
-    explosion,
+    explosion(),
   )
 
   explosionParticles.playOnceAndDestroy()
