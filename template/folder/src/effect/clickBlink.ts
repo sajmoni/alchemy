@@ -7,7 +7,7 @@ import fullscreenFadeInOut from './fullscreenFadeInOut'
 
 const BEHAVIORS_TO_KEEP = new Set(['fullscreenFadeInOut', 'debug'])
 
-export default async (
+const clickBlink = async (
   displayObject: PIXI.DisplayObject,
   otherObjects: readonly PIXI.DisplayObject[],
 ) => {
@@ -26,3 +26,5 @@ export default async (
         })
     })
 }
+
+export default clickBlink

@@ -9,7 +9,7 @@ type arguments = {
   readonly onPlus: () => void
 }
 
-export default ({
+const slider = ({
   initialValue,
   onMinus,
   onPlus,
@@ -38,3 +38,5 @@ export default ({
 
   return [component, render]
 }
+
+export default slider

@@ -36,7 +36,7 @@ const RIGHT_COLUMN = (width / 4) * 3
 // Add "Warning - Data is only stored in your browser, if you
 // erase your browser history, all data will be lost."
 
-export default () => {
+const settings = () => {
   const component = new PIXI.Container()
   component.zIndex = 10
   component.visible = false
@@ -200,3 +200,5 @@ const makeVolumeSlider = ({ x, y, volume, onMinus, onPlus, label }) => {
 
   return [container, volumeSliderRender]
 }
+
+export default settings

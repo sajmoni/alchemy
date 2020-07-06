@@ -10,7 +10,7 @@ type Options = {
   readonly duration?: number
 }
 
-export default (
+const easeOutToPosition = (
   displayObject: PIXI.DisplayObject,
   { position, duration = DEFAULT_DURATION }: Options,
 ) =>
@@ -36,3 +36,5 @@ export default (
 
     b.id = `easeOutToPosition-${displayObject.name}`
   })
+
+export default easeOutToPosition

@@ -61,6 +61,7 @@ const initializeGameLoop = () => {
 }
 
 const getAverage = (list: number[]) => {
+  // eslint-disable-next-line unicorn/no-reduce
   const average = list.reduce((acc, ts) => acc + ts, 0) / (list.length || 1)
 
   return average.toFixed(3)

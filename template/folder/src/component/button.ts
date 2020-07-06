@@ -8,7 +8,7 @@ type arguments = {
   readonly backgroundTexture?: PIXI.Texture
 }
 
-export default ({
+const button = ({
   label: labelString,
   onClick,
   textStyle,
@@ -38,3 +38,5 @@ export default ({
     // render,
   ]
 }
+
+export default button

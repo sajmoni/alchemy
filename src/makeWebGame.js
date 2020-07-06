@@ -11,8 +11,8 @@ const displayDoneMessage = require('./message/done')
 
 const dependencies = [
   // * Rendering
-  'pixi.js@5.2.4',
-  'pixi-ex@0.0.8',
+  'pixi.js@5.3.0',
+  'pixi-ex@0.0.9',
   'pixi-particles@4.2.1',
   'pixi-filters@3.1.1',
   // * --
@@ -21,13 +21,13 @@ const dependencies = [
   // * --
   // * Game logic
   'juice.js@1.0.6',
-  'l1@0.7.0-0',
+  'l1@0.7.0',
   'mainloop.js@1.0.4',
   // * --
   // * Util
   'lodash@4.17.15',
-  'state-prism@0.0.1',
-  'nano-panel@0.0.1',
+  'state-prism@0.0.2',
+  'nano-panel@0.0.2',
   'mousetrap@1.6.5',
   // * --
   // * Translations
@@ -35,48 +35,48 @@ const dependencies = [
   '@lingui/macro@2.9.1',
   // * --
   // * Electron
-  'electron@9.0.0',
+  'electron@9.0.5',
 ]
 
 const devDependencies = [
   // * Electron
-  'electron-packager@14.2.1',
+  'electron-packager@15.0.0',
   // * --
   // * Code quality
-  'xo@0.30.0',
-  'typescript@3.9.3',
+  'xo@0.32.1',
+  'typescript@3.9.6',
   // * --
   // * Module bundling
   'parcel-bundler@1.12.4',
-  'parcel-plugin-static-files-copy@2.3.1',
+  'parcel-plugin-static-files-copy@2.4.3',
   // * --
   // * Translations
   '@lingui/cli@2.9.1',
-  '@babel/core@7.9.6',
+  '@babel/core@7.10.4',
   'babel-plugin-macros@2.8.0',
-  '@babel/preset-env@7.9.6',
+  '@babel/preset-env@7.10.4',
   // * --
   // * Testing
-  'ava@3.8.2',
-  '@babel/register@7.9.0',
+  'ava@3.10.0',
+  '@babel/register@7.10.4',
   // * --
   // * Other
-  'yup@0.29.0',
-  '@babel/node@7.8.7',
-  'plop@2.6.0',
+  'yup@0.29.1',
+  '@babel/node@7.10.4',
+  'plop@2.7.1',
   'muncher@0.0.13',
-  '@babel/preset-typescript@7.9.0',
-  '@types/node@14.0.4',
+  '@babel/preset-typescript@7.10.4',
+  '@types/node@14.0.14',
   // * Labs
   'react@16.13.1',
   'react-dom@16.13.1',
-  'styled-components@5.1.0',
-  '@types/react@16.9.35',
+  'styled-components@5.1.1',
+  '@types/react@16.9.41',
   '@types/react-dom@16.9.8',
   '@types/styled-components@5.1.0',
   'eslint-config-xo-react@0.23.0',
-  'eslint-plugin-react@7.20.0',
-  'eslint-plugin-react-hooks@4.0.2',
+  'eslint-plugin-react@7.20.3',
+  'eslint-plugin-react-hooks@4.0.5',
 ]
 
 module.exports = ({ projectName }) => {
@@ -109,7 +109,7 @@ module.exports = ({ projectName }) => {
         try {
           // * Change directory so that Husky gets installed in the right .git folder
           process.chdir(rootPath)
-        } catch (_) {
+        } catch {
           throw new Error(`Could not change to project directory: ${rootPath}`)
         }
 
@@ -125,7 +125,7 @@ module.exports = ({ projectName }) => {
     {
       title: 'Copy template files',
       task: () => {
-        const templateDirectory = `${__dirname}/template`
+        const templateDirectory = path.join(__dirname, `/template`)
 
         try {
           fs.copySync(`${templateDirectory}/folder`, rootPath)
@@ -188,7 +188,7 @@ module.exports = ({ projectName }) => {
           try {
             fs.removeSync(path.join(rootPath, '.git'))
             throw new Error(`Could not create commit ${error}`)
-          } catch (_) {
+          } catch {
             throw new Error(`Could not create commit ${error}`)
           }
         }

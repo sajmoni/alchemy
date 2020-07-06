@@ -62,7 +62,7 @@ export const getAnimatedSprite = () => {
     'Created new PIXI.AnimatedSprite. You should probably increase the AnimatedSprite object pool!',
   )
 
-  const newAnimatedSprite = new PIXI.AnimatedSprite()
+  const newAnimatedSprite = new PIXI.AnimatedSprite([ex.getTexture('square1')])
   return newAnimatedSprite
 }
 
@@ -89,7 +89,7 @@ export const getText = () => {
   console.warn(
     'Created new PIXI.Text. You should probably increase the Text object pool!',
   )
-  const newText = new PIXI.Text()
+  const newText = new PIXI.Text('')
   return newText
 }
 

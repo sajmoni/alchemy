@@ -11,7 +11,7 @@ type Options = {
   readonly endValue?: number
 }
 
-export default async (
+const fadeOut = async (
   displayObject: PIXI.DisplayObject,
   { resolveAt = 0.5, duration = DURATION, endValue = END_VALUE }: Options = {},
 ) =>
@@ -34,3 +34,5 @@ export default async (
 
     fadeOut.id = `fadeOut-${displayObject.name}`
   })
+
+export default fadeOut

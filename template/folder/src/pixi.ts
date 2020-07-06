@@ -10,8 +10,9 @@ export const sprite = (textureName: string): PIXI.Sprite => {
 export const animatedSprite = (
   textureNames: readonly string[],
 ): PIXI.AnimatedSprite => {
-  // @ts-ignore
-  const a = new PIXI.AnimatedSprite(textureNames.map(ex.getTexture))
+  const a = new PIXI.AnimatedSprite(
+    textureNames.map((textureName) => ex.getTexture(textureName)),
+  )
   a.anchor.set(0.5)
   a.animationSpeed = 0.02
   a.play()

@@ -26,6 +26,7 @@ stage.sortableChildren = true
 
 const loader = new PIXI.Loader()
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   renderer,
   stage,

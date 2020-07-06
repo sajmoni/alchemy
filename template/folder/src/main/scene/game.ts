@@ -54,7 +54,7 @@ const game = ({ container }: SceneArgs) => {
 
   const explosionParticles = new particles.Emitter(
     particleContainer,
-    ['square1', 'square2'].map(ex.getTexture),
+    ['square1', 'square2'].map((fileName) => ex.getTexture(fileName)),
     explosion(),
   )
 

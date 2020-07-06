@@ -7,7 +7,7 @@ type Data = {
   button: number
 }
 
-const getDataFromEvent = (event: PIXI.interaction.InteractionEvent) => {
+const getDataFromEvent = (event: PIXI.InteractionEvent) => {
   const {
     data: {
       global: { x, y },

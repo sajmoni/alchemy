@@ -13,7 +13,7 @@ type arguments = {
   readonly width?: number
 }
 
-export default ({
+const bar = ({
   initialValue = 1,
   onColor = '#ff0000',
   offColor = '#ff00ff',
@@ -43,3 +43,5 @@ export default ({
 
   return [component, render]
 }
+
+export default bar

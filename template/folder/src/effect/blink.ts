@@ -10,7 +10,7 @@ type Options = {
   readonly interval?: number
 }
 
-export default (
+const blink = (
   displayObject: PIXI.DisplayObject,
   { duration = DEFAULT_DURATION, interval = DEFAULT_INTERVAL }: Options = {},
 ) => {
@@ -32,3 +32,5 @@ export default (
 
   blink.id = `blink-${displayObject.name}`
 }
+
+export default blink

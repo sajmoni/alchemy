@@ -15,7 +15,7 @@ type arguments = {
   readonly title: string
 }
 
-export default ({
+const select = ({
   options,
   onClick,
   title,
@@ -49,3 +49,5 @@ export default ({
 
   return [component, render]
 }
+
+export default select
