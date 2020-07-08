@@ -15,9 +15,6 @@ module.exports = ({ projectName }) => {
       'check-all': 'yarn lint && yarn typecheck && yarn validate-ci',
       munch:
         'muncher --input asset/sprite --output static/spritesheet/spritesheet --flip',
-      'add-locale': 'lingui add-locale',
-      extract: 'lingui extract --clean --overwrite',
-      compile: 'lingui compile',
       validate: 'babel-node ./script/validateData.js',
       'elec:start': 'electron .',
       'elec:build':
@@ -71,9 +68,6 @@ module.exports = ({ projectName }) => {
         'pre-commit': 'lint-staged',
         'pre-push': 'yarn test && yarn validate',
       },
-    },
-    lingui: {
-      srcPathDirs: ['src'],
     },
     browserslist: ['defaults', 'not IE 11', 'not IE_Mob 11'],
   }

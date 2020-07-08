@@ -1,12 +1,10 @@
 import * as PIXI from 'pixi.js'
 import * as filters from 'pixi-filters'
 import * as juice from 'juice.js'
-import { t } from '@lingui/macro'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
 import * as prism from 'state-prism'
 
-import i18n from '/i18n'
 import state from '/state'
 import { Render, TextStyle, Scene } from '/constant'
 import { button } from '/component'
@@ -36,7 +34,7 @@ const mainMenu = ({ container }) => {
   })
 
   const [settingsButton] = button({
-    label: i18n._(t('main.settings')`Settings`),
+    label: `Settings`,
     textStyle: TextStyle.MAIN,
     onClick: () => {
       state.application.settingsVisible = true
@@ -47,7 +45,7 @@ const mainMenu = ({ container }) => {
   container.addChild(settingsButton)
 
   const [startGameButton] = button({
-    label: i18n._(t('main.startGame')`Start game`),
+    label: `Start game`,
     textStyle: TextStyle.MAIN,
     onClick: () => {
       easeOutToPosition(startGameButton, {

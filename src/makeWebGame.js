@@ -30,10 +30,6 @@ const dependencies = [
   'nano-panel@0.0.2',
   'mousetrap@1.6.5',
   // * --
-  // * Translations
-  '@lingui/core@2.9.1',
-  '@lingui/macro@2.9.1',
-  // * --
   // * Electron
   'electron@9.0.5',
 ]
@@ -50,10 +46,6 @@ const devDependencies = [
   'parcel-bundler@1.12.4',
   'parcel-plugin-static-files-copy@2.4.3',
   // * --
-  // * Translations
-  '@lingui/cli@2.9.1',
-  '@babel/core@7.10.4',
-  'babel-plugin-macros@2.8.0',
   '@babel/preset-env@7.10.4',
   // * --
   // * Testing

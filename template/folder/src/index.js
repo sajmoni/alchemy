@@ -1,10 +1,8 @@
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
-import { t } from '@lingui/macro'
 import * as l1 from 'l1'
 import MainLoop from 'mainloop.js'
 
-import i18n from './i18n'
 import app from './app'
 import initializeGame from './main'
 import state from './state'
@@ -26,7 +24,6 @@ console.log(`Version: ${VERSION}`)
 document.querySelector('#game').append(app.renderer.view)
 
 const languageCode = restore('language') || DEFAULT_LANGUAGE
-i18n.activate(languageCode)
 state.application.language = languageCode
 
 app.loader.add('spritesheet/spritesheet.json')
@@ -50,10 +47,7 @@ document.fonts
       .endFill()
     loadingContainer.addChild(loadingBackground)
 
-    const loading = new PIXI.Text(
-      i18n._(t('main.loading')`Loading`),
-      TextStyle.MAIN,
-    )
+    const loading = new PIXI.Text(`Loading`, TextStyle.MAIN)
     ex.centerX(loading, Render.GAME_WIDTH / 2)
     ex.centerY(loading, Render.GAME_HEIGHT / 2)
     loadingContainer.addChild(loading)

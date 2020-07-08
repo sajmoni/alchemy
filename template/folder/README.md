@@ -23,7 +23,6 @@ This game was initially created with [`make-web-game`](https://github.com/sajmon
   - [Git branching](#git-branching)
   - [QA](#qa)
   - [Generate sprite sheet](#generate-sprite-sheet)
-  - [Translations](#translations)
   - [Generating a production build](#generating-a-production-build)
   - [Electron](#electron)
   - [Sentry](#sentry)
@@ -155,27 +154,6 @@ Will check the code with the `typescript` compiler and lint check with `xo`.
 Put your image files into the `asset/sprite` folder and run `yarn munch` to run `muncher`.
 
 [`muncher`](https://github.com/sajmoni/muncher) automatically generates your sprite sheets for you, provided that have `Texture packer` installed.
-
----
-
-### Translations
-
-Translations use [`lingui`](https://github.com/lingui/js-lingui).
-
-Example usage:
-
-```js
-import { t } from '@lingui/macro'
-import i18n from './i18n'
-
-new PIXI.Text(i18n._(t('main.gameStarted')`Game started!`)
-```
-
-`yarn extract` to generate translation files in the `locale` folder.
-
-`yarn compile` to compile translations and make them show up in the game.
-
-`yarn add-locale sv` to generate a new language.
 
 ---
 

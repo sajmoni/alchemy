@@ -72,8 +72,6 @@ Generates a modular template to get started making 2D games that run in the brow
 
 ### Other
 
-- :earth_asia: [`lingui`](https://github.com/lingui/js-lingui) - Translations
-
 - :sound: [`howler`](https://github.com/goldfire/howler.js/) - Preloaded sounds
 
 * Marketing checklist (TODO)
@@ -116,7 +114,6 @@ my-game/
 │   ├── index.html
 │   ├── index.js
 │   └── style.css
-├── locale/
 ├── plop/
 │   ├── component/
 │   ├── constant/
@@ -148,7 +145,6 @@ my-game/
 │   ├── app.ts
 │   ├── debug.ts
 │   ├── example.test.js
-│   ├── i18n.js
 │   ├── index.html
 │   ├── index.js
 │   ├── loop.ts
@@ -170,10 +166,6 @@ my-game/
 ```
 
 <!-- ## Options
-
-`--no-translations` (TODO)
-
-Exclude translations from the game
 
 `--no-electron` (TODO)
 
