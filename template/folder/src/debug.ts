@@ -30,13 +30,24 @@ const initializeDebugTools = () => {
   if (process.env.NODE_ENV === 'development' && DEBUG) {
     // const spector = new SPECTOR.Spector()
     const debugItems = [
-      { label: 'fps', getData: () => Math.round(MainLoop.getFPS()) },
-      { label: 'behaviors', getData: () => l1.getAll().length },
       {
+        type: 'label',
+        label: 'fps',
+        getData: () => Math.round(MainLoop.getFPS()),
+      },
+      { type: 'label', label: 'behaviors', getData: () => l1.getAll().length },
+      {
+        type: 'label',
         label: 'display objects',
         getData: () => ex.getAllChildren(app.stage).length,
       },
       {
+        type: 'label',
+        label: 'state subscribers',
+        getData: () => prism.getSubscriberCount(),
+      },
+      {
+        type: 'label',
         label: 'loop duration',
         threshold: 1,
         getData: () => {
@@ -44,6 +55,7 @@ const initializeDebugTools = () => {
         },
       },
       {
+        type: 'label',
         label: 'draw duration',
         threshold: 1,
         getData: () => {

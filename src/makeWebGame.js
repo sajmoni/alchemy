@@ -26,7 +26,7 @@ const dependencies = [
   // * --
   // * Util
   'lodash@4.17.15',
-  'state-prism@0.0.2',
+  'state-prism@0.0.3',
   'nano-panel@0.0.2',
   'mousetrap@1.6.5',
   // * --
