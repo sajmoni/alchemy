@@ -5,7 +5,7 @@ import './globalVolume'
 import createSound from './createSound'
 
 // Typescript erroneously reports this as an error
-// @ts-ignore
+// @ts-expect-error
 import sword01 from '../../asset/sound/Sword01.wav'
 
 const Sound = _.mapValues(createSound, {

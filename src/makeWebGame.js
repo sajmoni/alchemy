@@ -137,7 +137,7 @@ module.exports = ({ projectName }) => {
         fs.moveSync(
           path.join(rootPath, 'gitignore'),
           path.join(rootPath, '.gitignore'),
-          // @ts-ignore
+          // @ts-expect-error
           [],
         )
       },

@@ -29,7 +29,7 @@ const validate = ({ data, schema, fileName }) => {
     process.exit(1)
   }
 
-  // @ts-ignore
+  // @ts-expect-error
   _.mapValues.convert({ cap: false })((value, key) => {
     try {
       schema.validateSync(value, { strict: true })

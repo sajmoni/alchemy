@@ -3,7 +3,7 @@ import { MessageType } from '/constant'
 onmessage = ({ data: { type, payload: _ } }) => {
   switch (type) {
     case MessageType.TO_WORKER.INITIALIZE_WORKER:
-      // @ts-ignore
+      // @ts-expect-error
       postMessage({
         type: MessageType.FROM_WORKER.WORKER_INITIALIZED,
         payload: { hello: 'world' },

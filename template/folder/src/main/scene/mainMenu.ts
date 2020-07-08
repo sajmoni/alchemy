@@ -10,10 +10,10 @@ import { Render, TextStyle, Scene } from '/constant'
 import { button } from '/component'
 import createSettings from '../ui/settings'
 import { name as gameTitle } from '../../../package.json'
-
 import { clickBlink, easeOutToPosition } from '/effect'
+import { SceneArgs } from '/type/scene'
 
-const mainMenu = ({ container }) => {
+const mainMenu = ({ container }: SceneArgs) => {
   const text = new PIXI.Text(
     gameTitle,
     new PIXI.TextStyle({ ...TextStyle.MAIN, fontSize: 60 }),
@@ -68,14 +68,14 @@ const mainMenu = ({ container }) => {
   container.addChild(startGameButton)
 
   const [settings, renderSettings] = createSettings()
-  // @ts-ignore
+  // @ts-expect-error
   container.addChild(settings)
 
   prism.subscribe('application.settingsVisible', (settingsVisible) => {
-    // @ts-ignore
+    // @ts-expect-error
     renderSettings(settingsVisible)
   })
-  // @ts-ignore
+  // @ts-expect-error
   renderSettings(state.application.settingsVisible)
 }
 

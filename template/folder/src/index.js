@@ -32,7 +32,7 @@ initializeGameLoop()
 initializeDebugTools()
 
 // Experimental API's are not supported by typescript
-// @ts-ignore
+// @ts-expect-error
 document.fonts
   .load(`10pt "${FONT}"`)
   .then(() => {

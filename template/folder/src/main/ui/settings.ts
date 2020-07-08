@@ -66,7 +66,6 @@ const settings = () => {
     .beginFill(ex.fromHex(Color.BACKGROUND))
     .drawRect(0, 0, width, height)
     .endFill()
-    // @ts-ignore
     .lineStyle({ color: ex.fromHex('#ff00ff'), width: 2 })
     .moveTo(CENTER_COLUMN, 0)
     .lineTo(CENTER_COLUMN, height)
@@ -98,7 +97,6 @@ const settings = () => {
       Sound.SWORD_01.play()
     },
   })
-  // @ts-ignore
   component.addChild(soundSlider)
 
   const [musicSlider, renderMusicSlider] = makeVolumeSlider({
@@ -118,7 +116,6 @@ const settings = () => {
     },
   })
 
-  // @ts-ignore
   component.addChild(musicSlider)
 
   const [languagePicker, renderLanguagePicker] = select({
@@ -138,11 +135,9 @@ const settings = () => {
   component.addChild(languagePicker)
 
   prism.subscribe('application.volume.sound', (newVolume) => {
-    // @ts-ignore
     renderSoundSlider(newVolume)
   })
   prism.subscribe('application.volume.music', (newVolume) => {
-    // @ts-ignore
     renderMusicSlider(newVolume)
   })
 
