@@ -1,6 +1,6 @@
 import { Howl } from 'howler'
 
-const sound = ({ src, ...rest }) => {
+const sound = ({ src, ...rest }: { src: string }) => {
   const soundFile = new Howl({
     src,
     preload: true,
