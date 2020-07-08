@@ -77,7 +77,7 @@ const settings = () => {
   })
   component.addChild(background)
 
-  const title = new PIXI.Text(`Settings`, TextStyle.MAIN)
+  const title = new PIXI.Text(`Settings`, new PIXI.TextStyle(TextStyle.MAIN))
   title.anchor.set(0.5)
   title.position.set(width / 2, 50)
   component.addChild(title)
@@ -147,7 +147,7 @@ const settings = () => {
   })
 
   const [doneButton] = button({
-    textStyle: TextStyle.MAIN,
+    textStyle: new PIXI.TextStyle(TextStyle.MAIN),
     label: `Done`,
     onClick: () => {
       state.application.settingsVisible = false
@@ -180,7 +180,7 @@ const makeVolumeSlider = ({ x, y, volume, onMinus, onPlus, label }) => {
 
   container.position.set(x, y)
 
-  const text = new PIXI.Text(label, TextStyle.MAIN)
+  const text = new PIXI.Text(label, new PIXI.TextStyle(TextStyle.MAIN))
   text.anchor.set(0.5)
   text.position.set(0, -40)
   container.addChild(text)

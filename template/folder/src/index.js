@@ -47,7 +47,7 @@ document.fonts
       .endFill()
     loadingContainer.addChild(loadingBackground)
 
-    const loading = new PIXI.Text(`Loading`, TextStyle.MAIN)
+    const loading = new PIXI.Text(`Loading`, new PIXI.TextStyle(TextStyle.MAIN))
     ex.centerX(loading, Render.GAME_WIDTH / 2)
     ex.centerY(loading, Render.GAME_HEIGHT / 2)
     loadingContainer.addChild(loading)

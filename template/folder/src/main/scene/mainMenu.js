@@ -14,7 +14,10 @@ import { name as gameTitle } from '../../../package.json'
 import { clickBlink, easeOutToPosition } from '/effect'
 
 const mainMenu = ({ container }) => {
-  const text = new PIXI.Text(gameTitle, { ...TextStyle.MAIN, fontSize: 60 })
+  const text = new PIXI.Text(
+    gameTitle,
+    new PIXI.TextStyle({ ...TextStyle.MAIN, fontSize: 60 }),
+  )
   text.filters = [new filters.CRTFilter()]
 
   ex.centerX(text, Render.GAME_WIDTH / 2)
@@ -35,7 +38,7 @@ const mainMenu = ({ container }) => {
 
   const [settingsButton] = button({
     label: `Settings`,
-    textStyle: TextStyle.MAIN,
+    textStyle: new PIXI.TextStyle(TextStyle.MAIN),
     onClick: () => {
       state.application.settingsVisible = true
     },
@@ -46,7 +49,7 @@ const mainMenu = ({ container }) => {
 
   const [startGameButton] = button({
     label: `Start game`,
-    textStyle: TextStyle.MAIN,
+    textStyle: new PIXI.TextStyle(TextStyle.MAIN),
     onClick: () => {
       easeOutToPosition(startGameButton, {
         position: { y: Render.GAME_HEIGHT / 2, x: startGameButton.x },
