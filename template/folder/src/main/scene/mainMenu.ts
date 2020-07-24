@@ -3,7 +3,6 @@ import * as filters from 'pixi-filters'
 import * as juice from 'juice.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
-import * as prism from 'state-prism'
 
 import state from '/state'
 import { Render, TextStyle, Scene } from '/constant'
@@ -13,7 +12,7 @@ import { name as gameTitle } from '../../../package.json'
 import { clickBlink, easeOutToPosition } from '/effect'
 import { SceneArgs } from '/type/scene'
 
-const mainMenu = ({ container }: SceneArgs) => {
+const mainMenu = ({ container, subscribe }: SceneArgs) => {
   const text = new PIXI.Text(
     gameTitle,
     new PIXI.TextStyle({ ...TextStyle.MAIN, fontSize: 60 }),
@@ -71,7 +70,7 @@ const mainMenu = ({ container }: SceneArgs) => {
   // @ts-expect-error
   container.addChild(settings)
 
-  prism.subscribe('application.settingsVisible', (settingsVisible) => {
+  subscribe('application.settingsVisible', (settingsVisible) => {
     // @ts-expect-error
     renderSettings(settingsVisible)
   })

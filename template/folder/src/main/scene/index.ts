@@ -14,17 +14,25 @@ const sceneHandler = {
 }
 
 let container
+let unsubscribeFunctions = []
 
 const initializeSceneHandler = () => {
+  const subscribe = (path, callback) => {
+    unsubscribeFunctions.push(prism.subscribe(path, callback))
+  }
+
   prism.subscribe('scene', (value) => {
     if (container) {
       container.destroy()
     }
+    unsubscribeFunctions.forEach((unsubscribe) => {
+      unsubscribe()
+    })
 
     container = new PIXI.Container()
     app.stage.addChild(container)
 
-    sceneHandler[value]({ container })
+    sceneHandler[value]({ container, subscribe })
   })
 }
 
