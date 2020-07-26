@@ -11,8 +11,8 @@ const displayDoneMessage = require('./message/done')
 
 const dependencies = [
   // * Rendering
-  'pixi.js@5.3.0',
-  'pixi-ex@0.0.9',
+  'pixi.js@5.3.1',
+  'pixi-ex@0.0.10',
   'pixi-particles@4.2.1',
   'pixi-filters@3.1.1',
   // * --
@@ -25,7 +25,7 @@ const dependencies = [
   'mainloop.js@1.0.4',
   // * --
   // * Util
-  'lodash@4.17.15',
+  'lodash@4.17.19',
   'state-prism@0.0.3',
   'nano-panel@0.0.2',
   'mousetrap@1.6.5',
@@ -56,7 +56,7 @@ const devDependencies = [
   // * Other
   'yup@0.29.1',
   '@babel/node@7.10.4',
-  'plop@2.7.1',
+  'plop@2.7.3',
   'muncher@0.0.13',
   '@babel/preset-typescript@7.10.4',
   '@types/node@14.0.14',
@@ -66,7 +66,7 @@ const devDependencies = [
   'styled-components@5.1.1',
   '@types/react@16.9.41',
   '@types/react-dom@16.9.8',
-  '@types/styled-components@5.1.0',
+  '@types/styled-components@5.1.1',
   'eslint-config-xo-react@0.23.0',
   'eslint-plugin-react@7.20.3',
   'eslint-plugin-react-hooks@4.0.5',
