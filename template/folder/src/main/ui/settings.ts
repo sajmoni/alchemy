@@ -47,7 +47,7 @@ const settings = () => {
 
   const overlay = new PIXI.Graphics()
   overlay
-    .beginFill(ex.fromHex('#000000'), 0.5)
+    .beginFill(PIXI.utils.string2hex('#000000'), 0.5)
     .drawRect(
       -((Render.GAME_WIDTH - width) / 2),
       -((Render.GAME_HEIGHT - height) / 2),
@@ -63,10 +63,10 @@ const settings = () => {
 
   const background = new PIXI.Graphics()
   background
-    .beginFill(ex.fromHex(Color.BACKGROUND))
+    .beginFill(PIXI.utils.string2hex(Color.BACKGROUND))
     .drawRect(0, 0, width, height)
     .endFill()
-    .lineStyle({ color: ex.fromHex('#ff00ff'), width: 2 })
+    .lineStyle({ color: PIXI.utils.string2hex('#ff00ff'), width: 2 })
     .moveTo(CENTER_COLUMN, 0)
     .lineTo(CENTER_COLUMN, height)
 

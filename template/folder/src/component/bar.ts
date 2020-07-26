@@ -1,5 +1,4 @@
 import * as PIXI from 'pixi.js'
-import * as ex from 'pixi-ex'
 
 const HEIGHT = 7
 
@@ -28,13 +27,13 @@ const bar = ({
 
   const render = (value) => {
     component.clear()
-    component.beginFill(ex.fromHex(backgroundColor))
+    component.beginFill(PIXI.utils.string2hex(backgroundColor))
     component.drawRect(BAR_X, 0, paddedWidth, HEIGHT + 2)
 
-    component.beginFill(ex.fromHex(offColor))
+    component.beginFill(PIXI.utils.string2hex(offColor))
     component.drawRect(BAR_X + 1, 1, width, HEIGHT)
 
-    component.beginFill(ex.fromHex(onColor))
+    component.beginFill(PIXI.utils.string2hex(onColor))
     const valueWidth = Math.max(Math.floor(width * value), 0)
     component.drawRect(BAR_X + 1, 1, valueWidth, HEIGHT)
   }

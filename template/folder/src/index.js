@@ -42,7 +42,7 @@ document.fonts
 
     const loadingBackground = new PIXI.Graphics()
     loadingBackground
-      .beginFill(ex.fromHex('#000000'))
+      .beginFill(PIXI.utils.string2hex('#000000'))
       .drawRect(0, 0, Render.GAME_WIDTH, Render.GAME_HEIGHT)
       .endFill()
     loadingContainer.addChild(loadingBackground)

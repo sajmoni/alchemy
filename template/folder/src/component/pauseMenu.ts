@@ -16,7 +16,7 @@ const createPauseMenu = ({
 
   const overlay = new PIXI.Graphics()
   overlay
-    .beginFill(ex.fromHex('#000000'), 0.5)
+    .beginFill(PIXI.utils.string2hex('#000000'), 0.5)
     .drawRect(0, 0, width, height)
     .endFill()
   container.addChild(overlay)
