@@ -1,4 +1,4 @@
-import { MessageType } from '/constant'
+import { MessageType } from '../constant'
 
 onmessage = ({ data: { type, payload: _ } }) => {
   switch (type) {

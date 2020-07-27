@@ -1,9 +1,9 @@
 import * as l1 from 'l1'
 
 import initializeSceneHandler from './scene'
-import state from '/state'
-import { Scene } from '/constant'
-import MessageType from '/constant/messageType'
+import state from '../state'
+import { Scene } from '../constant'
+import MessageType from '../constant/messageType'
 
 const initializeGame = () => {
   initializeSceneHandler()

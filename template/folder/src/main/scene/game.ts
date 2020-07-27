@@ -7,8 +7,8 @@ import state from '../../state'
 import { Render } from '../../constant'
 import { bar, pauseMenu } from '../../component'
 import { explosion } from '../../particles'
-import { SceneArgs } from '/type/scene'
-import { expand } from '/effect'
+import { SceneArgs } from '../../type/scene'
+import { expand } from '../../effect'
 
 const game = ({ container, subscribe }: SceneArgs) => {
   const sprite = new PIXI.Sprite(ex.getTexture('square1'))

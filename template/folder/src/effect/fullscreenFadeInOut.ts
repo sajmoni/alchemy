@@ -1,7 +1,8 @@
 import * as l1 from 'l1'
 import * as PIXI from 'pixi.js'
-import app from '/app'
 import * as juice from 'juice.js'
+
+import app from '../app'
 import { Render } from '../constant'
 
 const DURATION = 35
