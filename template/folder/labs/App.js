@@ -133,7 +133,7 @@ const App = () => {
           )
         })}
       </Menu>
-      <Lab id="pixi"></Lab>
+      <Lab id="pixi" />
     </Container>
   )
 }

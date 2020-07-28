@@ -14,7 +14,7 @@ const sceneHandler = {
 }
 
 let container
-let unsubscribeFunctions = []
+const unsubscribeFunctions = []
 
 const initializeSceneHandler = () => {
   const subscribe = (path, callback) => {
@@ -25,6 +25,7 @@ const initializeSceneHandler = () => {
     if (container) {
       container.destroy()
     }
+
     unsubscribeFunctions.forEach((unsubscribe) => {
       unsubscribe()
     })

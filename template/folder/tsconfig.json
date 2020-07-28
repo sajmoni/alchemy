@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["ES2020", "DOM"],
-    "typeRoots": ["./node_modules/@types"],
+    "skipLibCheck": true,
     "allowJs": true,
     "checkJs": true,
     "jsx": "react",

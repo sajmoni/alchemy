@@ -49,17 +49,17 @@ const mainMenu = ({ container, subscribe }: SceneArgs) => {
   const [startGameButton] = button({
     label: `Start game`,
     textStyle: new PIXI.TextStyle(TextStyle.MAIN),
-    onClick: () => {
-      easeOutToPosition(startGameButton, {
+    onClick: async () => {
+      await easeOutToPosition(startGameButton, {
         position: { y: Render.GAME_HEIGHT / 2, x: startGameButton.x },
-      }).then(() => {
-        clickBlink(
-          startGameButton,
-          container.children.filter((c) => c !== startGameButton),
-        ).then(() => {
-          state.scene = Scene.GAME
-        })
       })
+
+      await clickBlink(
+        startGameButton,
+        container.children.filter((c) => c !== startGameButton),
+      )
+
+      state.scene = Scene.GAME
     },
   })
   startGameButton.position.y = 500

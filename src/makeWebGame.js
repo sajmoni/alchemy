@@ -11,7 +11,7 @@ const displayDoneMessage = require('./message/done')
 
 const dependencies = [
   // * Rendering
-  'pixi.js@5.3.1',
+  'pixi.js@5.3.2',
   'pixi-ex@0.0.10',
   'pixi-particles@4.2.1',
   'pixi-filters@3.1.1',

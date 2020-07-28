@@ -66,7 +66,7 @@ const settings = () => {
     .beginFill(PIXI.utils.string2hex(Color.BACKGROUND))
     .drawRect(0, 0, width, height)
     .endFill()
-    .lineStyle({ color: PIXI.utils.string2hex('#ff00ff'), width: 2 })
+    .lineStyle(2, PIXI.utils.string2hex('#ff00ff'))
     .moveTo(CENTER_COLUMN, 0)
     .lineTo(CENTER_COLUMN, height)
 
@@ -160,7 +160,7 @@ const settings = () => {
       overlay.visible = true
       component.alpha = 1
     } else if (visible !== component.visible) {
-      fadeOut(component, { resolveAt: 0.6, duration: 15 }).then(() => {
+      void fadeOut(component, { resolveAt: 0.6, duration: 15 }).then(() => {
         component.visible = false
         overlay.visible = false
       })
@@ -170,7 +170,14 @@ const settings = () => {
   return [component, render]
 }
 
-const makeVolumeSlider = ({ x, y, volume, onMinus, onPlus, label }) => {
+const makeVolumeSlider = ({
+  x,
+  y,
+  volume,
+  onMinus,
+  onPlus,
+  label,
+}): [PIXI.Container, (value: string) => void] => {
   const container = new PIXI.Container()
 
   container.position.set(x, y)
