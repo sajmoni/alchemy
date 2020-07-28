@@ -31,7 +31,7 @@ const dependencies = [
   'mousetrap@1.6.5',
   // * --
   // * Electron
-  'electron@9.0.5',
+  'electron@9.1.1',
 ]
 
 const devDependencies = [
@@ -40,7 +40,7 @@ const devDependencies = [
   // * --
   // * Code quality
   'xo@0.32.1',
-  'typescript@3.9.6',
+  'typescript@3.9.7',
   // * --
   // * Module bundling
   'parcel-bundler@1.12.4',
@@ -49,27 +49,27 @@ const devDependencies = [
   '@babel/preset-env@7.10.4',
   // * --
   // * Testing
-  'ava@3.10.0',
-  '@babel/register@7.10.4',
-  '@babel/core@7.10.4',
+  'ava@3.11.0',
+  '@babel/register@7.10.5',
+  '@babel/core@7.10.5',
   // * --
   // * Other
-  'yup@0.29.1',
-  '@babel/node@7.10.4',
+  'yup@0.29.2',
+  '@babel/node@7.10.5',
   'plop@2.7.3',
   'muncher@0.0.13',
   '@babel/preset-typescript@7.10.4',
-  '@types/node@14.0.14',
+  '@types/node@14.0.26',
   // * Labs
   'react@16.13.1',
   'react-dom@16.13.1',
   'styled-components@5.1.1',
-  '@types/react@16.9.41',
+  '@types/react@16.9.43',
   '@types/react-dom@16.9.8',
   '@types/styled-components@5.1.1',
   'eslint-config-xo-react@0.23.0',
-  'eslint-plugin-react@7.20.3',
-  'eslint-plugin-react-hooks@4.0.5',
+  'eslint-plugin-react@7.20.4',
+  'eslint-plugin-react-hooks@4.0.8',
 ]
 
 module.exports = ({ projectName }) => {
