@@ -9,6 +9,7 @@ import { save } from '../../util/storage'
 import { getSoundVolume, getMusicVolume } from '../../selector'
 import { slider } from '../../component'
 import Sound from '../../sound'
+import * as pixi from '../../pixi'
 import app from '../../app'
 import button from '../../component/button'
 import { fadeOut } from '../../effect'
@@ -76,8 +77,7 @@ const settings = () => {
   })
   component.addChild(background)
 
-  const title = new PIXI.Text(`Settings`, new PIXI.TextStyle(TextStyle.MAIN))
-  title.anchor.set(0.5)
+  const title = pixi.text(`Settings`, new PIXI.TextStyle(TextStyle.MAIN))
   title.position.set(width / 2, 50)
   component.addChild(title)
 
@@ -182,8 +182,7 @@ const makeVolumeSlider = ({
 
   container.position.set(x, y)
 
-  const text = new PIXI.Text(label, new PIXI.TextStyle(TextStyle.MAIN))
-  text.anchor.set(0.5)
+  const text = pixi.text(label, new PIXI.TextStyle(TextStyle.MAIN))
   text.position.set(0, -40)
   container.addChild(text)
 

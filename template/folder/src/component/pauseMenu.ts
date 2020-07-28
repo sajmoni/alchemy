@@ -1,6 +1,8 @@
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
+import * as pixi from '../pixi'
+
 type render = (paused: boolean) => void
 
 const createPauseMenu = ({
@@ -21,9 +23,12 @@ const createPauseMenu = ({
     .endFill()
   container.addChild(overlay)
 
-  const text = new PIXI.Text('Paused (Click anywhere to resume)', {
-    fill: 'white',
-  })
+  const text = pixi.text(
+    'Paused (Click anywhere to resume)',
+    new PIXI.TextStyle({
+      fill: 'white',
+    }),
+  )
   ex.centerX(text, width / 2)
   ex.centerY(text, height / 2)
   container.addChild(text)

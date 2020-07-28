@@ -1,6 +1,8 @@
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
+import * as pixi from '../pixi'
+
 type render = (value: string) => void
 
 type arguments = {
@@ -22,8 +24,7 @@ const slider = ({
   ex.makeClickable(minus, onMinus)
   component.addChild(minus)
 
-  const text = new PIXI.Text(initialValue, { fill: 'white' })
-  text.anchor.set(0.5)
+  const text = pixi.text(initialValue, { fill: 'white' })
   component.addChild(text)
 
   const plus = new PIXI.Sprite(ex.getTexture('plus-minus-2'))

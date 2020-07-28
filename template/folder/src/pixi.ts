@@ -23,9 +23,17 @@ export const text = (
   string: string,
   textStyle: PIXI.TextStyle = undefined,
 ): PIXI.Text => {
-  const t = new PIXI.Text(string, textStyle)
-  t.anchor.set(0.5)
+  const t = new PIXI.Text(string, {
+    ...textStyle,
+    // * Improve text quality
+    fontSize: textStyle.fontSize * 10,
+  })
   ex.makeResizable(t)
+
+  t.anchor.set(0.5)
+  // * Improve text quality
+  t.scale.set(0.1)
+
   return t
 }
 

@@ -4,6 +4,7 @@ import * as juice from 'juice.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
 
+import * as pixi from '../../pixi'
 import state from '../../state'
 import { Render, TextStyle, Scene } from '../../constant'
 import { button } from '../../component'
@@ -13,22 +14,22 @@ import { clickBlink, easeOutToPosition } from '../../effect'
 import { SceneArgs } from '../../type/scene'
 
 const mainMenu = ({ container, subscribe }: SceneArgs) => {
-  const text = new PIXI.Text(
+  const text = pixi.text(
     gameTitle,
     new PIXI.TextStyle({ ...TextStyle.MAIN, fontSize: 60 }),
   )
   text.filters = [new filters.CRTFilter()]
 
+  text.anchor.x = 0.4
   ex.centerX(text, Render.GAME_WIDTH / 2)
   ex.centerY(text, Render.GAME_HEIGHT / 3)
 
-  ex.makeResizable(text)
   container.addChild(text)
 
   const getScale = juice.sine({
     duration: 240,
-    startValue: 1,
-    endValue: 1.15,
+    startValue: text.scale.x,
+    endValue: text.scale.x * 1.15,
   })
 
   l1.forever((counter) => {

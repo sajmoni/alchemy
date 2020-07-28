@@ -1,6 +1,8 @@
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
+import * as pixi from '../pixi'
+
 type arguments = {
   readonly label: string
   readonly onClick: () => void
@@ -26,7 +28,8 @@ const button = ({
     component.addChild(button)
   }
 
-  const label = new PIXI.Text(labelString, textStyle)
+  const label = pixi.text(labelString, textStyle)
+  label.anchor.set(0)
   component.addChild(label)
 
   // TODO: Pass in state? Active, disabled etc. Change label?
