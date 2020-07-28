@@ -1,0 +1,82 @@
+name: Build and deploy release
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  build:
+    name: Build game
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    timeout-minutes: 3
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v1
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile
+      - name: Validate data
+        run: yarn validate
+      - name: Type Check
+        run: yarn tsc
+      - name: Lint Check
+        run: yarn xo
+      - name: Run tests
+        run: yarn test
+      - name: Build
+        run: yarn build
+      - name: Upload build
+        uses: actions/upload-artifact@v1
+        with:
+          name: game
+          path: dist
+  deploy:
+    name: Deploy game
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Download build
+        uses: actions/download-artifact@v1
+        with:
+          name: game
+      - name: Install Butler
+        run: |
+          curl --max-time 5 -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+          unzip butler.zip
+          chmod +x butler
+          ./butler -V
+      - name: Deploy to itch.io
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        run: ./butler push game rymdkraftverk/make-web-game-test:web
+  tag:
+    name: Tag release
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Combine timestamp and sha of last commit to create version
+        run: |
+          git config --global user.name 'Github Actions Pipeline'
+          git config --global user.email 'pipeline@not-a-real-email.com'
+          git tag `git show -s --format="prod-%ct-%h"`
+          git push origin --tags

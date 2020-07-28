@@ -60,7 +60,7 @@ Generates a modular template to get started making 2D games that run in the brow
 
 - :cake: [`muncher`](https://github.com/sajmoni/muncher) - Automatically create sprite sheets from the command line
 
-- :red_circle: [`GitHub actions`](https://github.com/features/actions) workflows to automatically push builds to `itch.io` (TODO)
+- :red_circle: [`GitHub actions`](https://github.com/features/actions) workflows to automatically push builds to `itch.io`
 
 - :bulb: [`electron`](https://github.com/electron/electron) - Convert your web game into a desktop application
 
@@ -177,11 +177,13 @@ Display full output. Good for debugging. -->
 
 ## What you should do after the script is run
 
-- Update the project name in Github workflows.
+- Update the itch.io project name in `.github/workflows/release.yml` on line `69`.
 
-- Set Sentry URL.
+- [Add your itch.io API key to your Github project secrets](https://itch.io/docs/butler/login.html)
 
-- Make the `release` branch protected so that you don't accidentally push to it.
+<!-- - Set Sentry URL. -->
+
+<!-- - Suggestion: Make the `release` branch protected so that you don't accidentally push to it. -->
 
 ---
 

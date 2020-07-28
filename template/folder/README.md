@@ -120,7 +120,7 @@ Code that will run in a worker thread.
 
 ### Git branching
 
-There are two branches configured with corresponding Github actions workflows (TODO)
+There are two branches configured with corresponding Github actions workflows
 
 A push to `master` triggers the following pipeline:
 
