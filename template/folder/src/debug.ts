@@ -9,9 +9,6 @@ import Sound from './sound'
 import state from './state'
 import { getAverageUpdateDuration, getAverageDrawDuration } from './loop'
 
-// TODO: Move to settings file and default from env variable
-const DEBUG = true
-
 const initializeDebugTools = () => {
   // * These commands can be run in the console, e.g: 'debug.state()'
   window['debug'] = {
@@ -27,7 +24,7 @@ const initializeDebugTools = () => {
     },
   }
 
-  if (process.env.NODE_ENV === 'development' && DEBUG) {
+  if (process.env.NODE_ENV === 'development' && process.env.DEBUG) {
     // const spector = new SPECTOR.Spector()
     const debugItems = [
       {
