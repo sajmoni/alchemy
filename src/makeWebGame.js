@@ -29,15 +29,9 @@ const dependencies = [
   'state-prism@0.0.3',
   'nano-panel@0.0.2',
   'mousetrap@1.6.5',
-  // * --
-  // * Electron
-  'electron@9.1.1',
 ]
 
 const devDependencies = [
-  // * Electron
-  'electron-packager@15.0.0',
-  // * --
   // * Code quality
   'xo@0.32.1',
   'typescript@3.9.7',
