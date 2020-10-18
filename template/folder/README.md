@@ -16,7 +16,6 @@ This game was initially created with [`make-web-game`](https://github.com/sajmon
     - [Components](#components)
       - [Configuration](#configuration)
     - [Effects](#effects)
-    - [Selectors](#selectors)
     - [Data](#data)
     - [Main](#main)
     - [Worker](#worker)
@@ -97,12 +96,6 @@ The template includes the following effects:
 - `fullScreenFadeOut`
 - `bounce`
 - `fadeOut`
-
-#### Selectors
-
-You should keep information about accessing your state tree in one place.
-
-This way, when you change your state tree, you only need to update it in one place, instead of spread out throughout your code base.
 
 #### Data
 

@@ -6,7 +6,6 @@ import state from '../../state'
 import { Render, Language, TextStyle } from '../../constant'
 import select from '../../component/select'
 import { save } from '../../util/storage'
-import { getSoundVolume, getMusicVolume } from '../../selector'
 import { slider } from '../../component'
 import Sound from '../../sound'
 import * as pixi from '../../pixi'
@@ -84,15 +83,15 @@ const settings = () => {
   const [soundSlider, renderSoundSlider] = makeVolumeSlider({
     x: LEFT_COLUMN,
     y: SOUND_Y,
-    volume: getSoundVolume(state),
+    volume: state.application.volume.sound,
     label: `Sound`,
     onMinus: () => {
-      const currentVolume = getSoundVolume(state)
+      const currentVolume = state.application.volume.sound
       state.application.volume.sound = Math.max(currentVolume - 1, MIN_VOLUME)
       Sound.SWORD_01.play()
     },
     onPlus: () => {
-      const currentVolume = getSoundVolume(state)
+      const currentVolume = state.application.volume.sound
       state.application.volume.sound = Math.min(currentVolume + 1, MAX_VOLUME)
       Sound.SWORD_01.play()
     },
@@ -100,17 +99,17 @@ const settings = () => {
   component.addChild(soundSlider)
 
   const [musicSlider, renderMusicSlider] = makeVolumeSlider({
-    volume: getMusicVolume(state),
+    volume: state.application.volume.music,
     x: LEFT_COLUMN,
     y: SOUND_Y + 100,
     label: `Music`,
     onMinus: () => {
-      const currentVolume = getMusicVolume(state)
+      const currentVolume = state.application.volume.music
       state.application.volume.music = Math.max(currentVolume - 1, MIN_VOLUME)
       // Sound.SWORD_01.play()
     },
     onPlus: () => {
-      const currentVolume = getMusicVolume(state)
+      const currentVolume = state.application.volume.music
       state.application.volume.music = Math.min(currentVolume + 1, MAX_VOLUME)
       // Sound.SWORD_01.play()
     },

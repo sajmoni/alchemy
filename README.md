@@ -137,7 +137,6 @@ my-game/
 │   │   ├── ui/
 │   │   └── index.js
 │   ├── particle/
-│   ├── selector/
 │   ├── sound/
 │   ├── type/
 │   ├── util/
