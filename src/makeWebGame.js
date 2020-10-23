@@ -48,8 +48,6 @@ const devDependencies = [
   '@babel/core@7.10.5',
   // * --
   // * Other
-  'yup@0.29.2',
-  '@babel/node@7.10.5',
   'plop@2.7.3',
   'muncher@0.0.13',
   '@babel/preset-typescript@7.10.4',

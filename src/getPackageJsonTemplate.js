@@ -13,7 +13,6 @@ module.exports = ({ projectName }) => {
       qa: 'tsc && xo --fix',
       munch:
         'muncher --input asset/sprite --output static/spritesheet/spritesheet --flip',
-      validate: 'babel-node ./script/validateData.js',
       'elec:start': 'electron .',
       'elec:build':
         'rm -rf dist && parcel build src/index.html --public-url ./ --target electron',
@@ -65,7 +64,7 @@ module.exports = ({ projectName }) => {
     husky: {
       hooks: {
         'pre-commit': 'lint-staged',
-        'pre-push': 'yarn test && yarn validate',
+        'pre-push': 'yarn test',
       },
     },
     browserslist: ['defaults', 'not IE 11', 'not IE_Mob 11'],
