@@ -50,8 +50,6 @@ Generates a modular template to get started making 2D games that run in the brow
 
 - :straight_ruler: [`ava`](https://github.com/avajs/ava) - Super simple test framework
 
-- :+1: [`yup`](https://github.com/jquense/yup) - Object schema validation
-
 - :eyes: [`nano-panel`](https://github.com/sajmoni/nano-panel) - Display data when debugging
 
 ### Tooling
