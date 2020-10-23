@@ -11,8 +11,6 @@ module.exports = ({ projectName }) => {
       test: 'ava',
       plop: 'plop --plopfile plop/plopfile.ts',
       qa: 'tsc && xo --fix',
-      'validate-ci': 'circleci config validate',
-      'check-all': 'yarn lint && yarn typecheck && yarn validate-ci',
       munch:
         'muncher --input asset/sprite --output static/spritesheet/spritesheet --flip',
       validate: 'babel-node ./script/validateData.js',
