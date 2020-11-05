@@ -14,18 +14,21 @@ body {
 }
 
 #container {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 /* This won't work with resizing */
+/* TODO: Make this dynamic? */
 canvas {
-  width: 1280px;
-  height: 720px;
+  width: 640px;
+  height: 360px;
 }
 
 @font-face {
+  /* TODO: Replace with free font */
   font-family: 'patchy-robots';
   src: url('../asset/font/patchy-robots.ttf');
 }

@@ -1,6 +1,6 @@
 enum Render {
-  GAME_WIDTH = 1280,
-  GAME_HEIGHT = 720,
+  GAME_WIDTH = 320,
+  GAME_HEIGHT = 180,
 }
 
 export default Render

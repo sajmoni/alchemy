@@ -15,7 +15,7 @@ import { SceneArgs } from '../../type/scene'
 const mainMenu = ({ container, subscribe }: SceneArgs) => {
   const text = pixi.text(
     gameTitle,
-    new PIXI.TextStyle({ ...TextStyle.MAIN, fontSize: 60 }),
+    new PIXI.TextStyle({ ...TextStyle.MAIN, fontSize: 25 }),
   )
 
   text.anchor.x = 0.4
@@ -41,7 +41,7 @@ const mainMenu = ({ container, subscribe }: SceneArgs) => {
       state.application.settingsVisible = true
     },
   })
-  settingsButton.position.y = 600
+  settingsButton.position.y = Render.GAME_HEIGHT - 20
   ex.centerX(settingsButton, Render.GAME_WIDTH / 2)
   container.addChild(settingsButton)
 
@@ -61,7 +61,7 @@ const mainMenu = ({ container, subscribe }: SceneArgs) => {
       state.scene = Scene.GAME
     },
   })
-  startGameButton.position.y = 500
+  startGameButton.position.y = Render.GAME_HEIGHT - 40
   ex.centerX(startGameButton, Render.GAME_WIDTH / 2)
   container.addChild(startGameButton)
 

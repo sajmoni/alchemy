@@ -3,9 +3,9 @@ import * as ex from 'pixi-ex'
 import * as prism from 'state-prism'
 
 import state from '../../state'
-import { Render, Language, TextStyle } from '../../constant'
-import select from '../../component/select'
-import { save } from '../../util/storage'
+import { Render, TextStyle } from '../../constant'
+// import select from '../../component/select'
+// import { save } from '../../util/storage'
 import { slider } from '../../component'
 import Sound from '../../sound'
 import * as pixi from '../../pixi'
@@ -20,15 +20,16 @@ const Color = {
 const MAX_VOLUME = 10
 const MIN_VOLUME = 0
 
-const SOUND_Y = 200
-const BUTTONS_Y = 520
+const SOUND_Y = 40
+const BUTTONS_Y = Render.GAME_HEIGHT - 10
 
 const width = Render.GAME_WIDTH * 0.6
 const height = Render.GAME_HEIGHT * 0.8
 
+// TODO: Use tiny-toolkit grid?
 const LEFT_COLUMN = (width / 4) * 1
 const CENTER_COLUMN = (width / 4) * 2
-const RIGHT_COLUMN = (width / 4) * 3
+// const RIGHT_COLUMN = (width / 4) * 3
 
 // TODO: Wipe all stored data - with confirm dialog
 // Add "Warning - Data is only stored in your browser, if you
@@ -77,7 +78,7 @@ const settings = () => {
   component.addChild(background)
 
   const title = pixi.text(`Settings`, new PIXI.TextStyle(TextStyle.MAIN))
-  title.position.set(width / 2, 50)
+  title.position.set(width / 2, 5)
   component.addChild(title)
 
   const [soundSlider, renderSoundSlider] = makeVolumeSlider({
@@ -117,21 +118,21 @@ const settings = () => {
 
   component.addChild(musicSlider)
 
-  const [languagePicker, renderLanguagePicker] = select({
-    options: Object.values(Language).map(({ label, code }) => ({
-      label,
-      value: code,
-    })),
-    title: 'Choose language',
-    onClick: (languageCode) => {
-      save('language', languageCode)
-      window.location.reload()
-    },
-  })
+  // const [languagePicker, renderLanguagePicker] = select({
+  //   options: Object.values(Language).map(({ label, code }) => ({
+  //     label,
+  //     value: code,
+  //   })),
+  //   title: 'Choose language',
+  //   onClick: (languageCode) => {
+  //     save('language', languageCode)
+  //     window.location.reload()
+  //   },
+  // })
 
-  renderLanguagePicker(state.application.language)
-  languagePicker.position.set(RIGHT_COLUMN, SOUND_Y)
-  component.addChild(languagePicker)
+  // renderLanguagePicker(state.application.language)
+  // languagePicker.position.set(RIGHT_COLUMN, SOUND_Y)
+  // component.addChild(languagePicker)
 
   prism.subscribe('application.volume.sound', (newVolume) => {
     renderSoundSlider(newVolume)

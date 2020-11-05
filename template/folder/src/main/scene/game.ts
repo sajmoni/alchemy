@@ -39,7 +39,7 @@ const game = ({ container, subscribe }: SceneArgs) => {
   const [manaBar, renderManaBar] = bar({
     initialValue: 1,
   })
-  manaBar.position.set(200, 200)
+  manaBar.position.set(50, 10)
   container.addChild(manaBar)
 
   subscribe('bar', (bar) => {
@@ -48,7 +48,7 @@ const game = ({ container, subscribe }: SceneArgs) => {
   })
 
   const particleContainer = new PIXI.Container()
-  particleContainer.position.set(400, 200)
+  particleContainer.position.set(200, 50)
   container.addChild(particleContainer)
 
   const explosionParticles = new particles.Emitter(

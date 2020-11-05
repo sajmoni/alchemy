@@ -27,6 +27,7 @@ const createPauseMenu = ({
     'Paused (Click anywhere to resume)',
     new PIXI.TextStyle({
       fill: 'white',
+      fontSize: 8,
     }),
   )
   ex.centerX(text, width / 2)
