@@ -1,5 +1,4 @@
 import * as PIXI from 'pixi.js'
-import * as filters from 'pixi-filters'
 import * as juice from 'juice.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
@@ -18,7 +17,6 @@ const mainMenu = ({ container, subscribe }: SceneArgs) => {
     gameTitle,
     new PIXI.TextStyle({ ...TextStyle.MAIN, fontSize: 60 }),
   )
-  text.filters = [new filters.CRTFilter()]
 
   text.anchor.x = 0.4
   ex.centerX(text, Render.GAME_WIDTH / 2)

@@ -28,8 +28,6 @@ Some reasons to make a browser based game instead of using other game dev tools:
 
 - :boom: [`pixi-particles`](https://github.com/pixijs/pixi-particles) - A particle system for PixiJS
 
-- :coffee: [`pixi-filter`](https://github.com/pixijs/pixi-filters) - A collection of display filters for PixiJS
-
 - :up: [`pixi-ex`](https://github.com/sajmoni/pixi-ex) - Useful utility functions
 
 ### Game logic
