@@ -11,20 +11,20 @@ const displayDoneMessage = require('./message/done')
 
 const dependencies = [
   // * Rendering
-  'pixi.js@5.3.2',
+  'pixi.js@5.3.3',
   'pixi-ex@0.0.10',
-  'pixi-particles@4.2.1',
+  'pixi-particles@4.3.0',
   // * --
   // * Sound
-  'howler@2.2.0',
+  'howler@2.2.1',
   // * --
   // * Game logic
-  'juice.js@1.0.6',
+  'juice.js@2.0.0',
   'l1@0.7.0',
   'mainloop.js@1.0.4',
   // * --
   // * Util
-  'lodash@4.17.19',
+  'lodash@4.17.20',
   'state-prism@0.0.3',
   'nano-panel@0.0.2',
   'mousetrap@1.6.5',
@@ -32,35 +32,35 @@ const dependencies = [
 
 const devDependencies = [
   // * Code quality
-  'xo@0.32.1',
-  'typescript@3.9.7',
+  'xo@0.34.2',
+  'typescript@4.0.5',
   // * --
   // * Module bundling
   'parcel-bundler@1.12.4',
-  'parcel-plugin-static-files-copy@2.4.3',
+  'parcel-plugin-static-files-copy@2.5.0',
   // * --
-  '@babel/preset-env@7.10.4',
+  '@babel/preset-env@7.12.1',
   // * --
   // * Testing
-  'ava@3.11.0',
-  '@babel/register@7.10.5',
-  '@babel/core@7.10.5',
+  'ava@3.13.0',
+  '@babel/register@7.12.1',
+  '@babel/core@7.12.3',
   // * --
   // * Other
-  'plop@2.7.3',
+  'plop@2.7.4',
   'muncher@0.0.13',
-  '@babel/preset-typescript@7.10.4',
-  '@types/node@14.0.26',
-  // * Labs
-  'react@16.13.1',
-  'react-dom@16.13.1',
-  'styled-components@5.1.1',
-  '@types/react@16.9.43',
-  '@types/react-dom@16.9.8',
-  '@types/styled-components@5.1.1',
+  '@babel/preset-typescript@7.12.1',
+  '@types/node@14.14.6',
+  // * Web - Labs and Debug tools
+  'react@17.0.1',
+  'react-dom@17.0.1',
+  'styled-components@5.2.1',
+  '@types/react@16.9.55',
+  '@types/react-dom@16.9.9',
+  '@types/styled-components@5.1.4',
   'eslint-config-xo-react@0.23.0',
-  'eslint-plugin-react@7.20.4',
-  'eslint-plugin-react-hooks@4.0.8',
+  'eslint-plugin-react@7.21.5',
+  'eslint-plugin-react-hooks@4.2.0',
 ]
 
 module.exports = ({ projectName }) => {
