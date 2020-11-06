@@ -43,6 +43,7 @@ This game was initially created with [`make-web-game`](https://github.com/sajmon
   - [Marketing](#marketing)
   - [Useful external tools](#useful-external-tools)
   - [Useful libraries](#useful-libraries)
+    - [Graphics](#graphics)
     - [Randomness](#randomness)
     - [Physics](#physics)
     - [State machine](#state-machine)
@@ -325,6 +326,22 @@ Hooks (TODO)
 
 ### Useful libraries
 
+#### Graphics
+
+- [pixi-filters](https://github.com/pixijs/pixi-filters)
+
+Example usage:
+
+```js
+import * as filters from 'pixi-filters'
+
+const text = new PIXI.Text()
+
+text.filters = [new filters.CRTFilter()]
+```
+
+ - [pixi-heaven](https://github.com/gameofbombs/pixi-heaven) - Advanced Sprite rendering options
+
 #### Randomness
 
 - [chance](https://github.com/chancejs/chancejs)
@@ -333,7 +350,7 @@ Hooks (TODO)
 
 #### Physics
 
-- [matter]()
+- [matter](https://github.com/liabru/matter-js)
 
 #### State machine
 
