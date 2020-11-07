@@ -25,7 +25,7 @@ const bar = ({
 
   const BAR_X = -(paddedWidth / 2)
 
-  const render = (value) => {
+  const render = (value: number) => {
     component.clear()
     component.beginFill(PIXI.utils.string2hex(backgroundColor))
     component.drawRect(BAR_X, 0, paddedWidth, HEIGHT + 2)

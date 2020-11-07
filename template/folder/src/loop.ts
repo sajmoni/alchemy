@@ -4,8 +4,8 @@ import MainLoop from 'mainloop.js'
 import app from './app'
 import state from './state'
 
-let updateDurations = []
-let drawDurations = []
+let updateDurations: number[] = []
+let drawDurations: number[] = []
 
 const initializeGameLoop = () => {
   if (process.env.NODE_ENV === 'development' && process.env.DEBUG) {

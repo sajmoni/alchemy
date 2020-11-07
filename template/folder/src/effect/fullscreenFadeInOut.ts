@@ -20,18 +20,18 @@ const fullscreenFadeInOut = async () =>
     behavior.id = ID
   })
 
-const fadeInOut = (graphics, duration, resolve) => {
+const fadeInOut = (graphics: PIXI.Graphics, duration: number, resolve: () => void) => {
   let hasResolved = false
   const animation = juice.parabola({
     duration,
     height: 1,
   })
-  return (counter) => {
+  return (counter: number) => {
     const alpha = animation(counter)
 
     graphics
       .clear()
-      .beginFill('black', alpha)
+      .beginFill(0x000000, alpha)
       .drawRect(0, 0, Render.GAME_WIDTH, Render.GAME_HEIGHT)
 
     // Resolve after half the duration has passed,

@@ -1,6 +1,6 @@
-import Mousetrap from 'mousetrap'
+import Mousetrap, { ExtendedKeyboardEvent } from 'mousetrap'
 
-const pressed = {}
+const pressed: Record<string, boolean> = {}
 
 /**
  * Call on each update to check if key is pressed
@@ -9,12 +9,12 @@ export const isKeyDown = (keyCode: string): boolean => {
   return pressed[keyCode]
 }
 
-function _onKeyDown(event) {
-  pressed[event] = true
+function _onKeyDown(key: string) {
+  pressed[key] = true
 }
 
-function _onKeyUp(event) {
-  pressed[event] = false
+function _onKeyUp(key: string) {
+  pressed[key] = false
 }
 
 /**
@@ -23,7 +23,7 @@ function _onKeyUp(event) {
 export function addKey(key: string): void {
   Mousetrap.bind(
     key,
-    (event) => {
+    (event: ExtendedKeyboardEvent) => {
       event.preventDefault()
       _onKeyDown(key)
     },
@@ -31,10 +31,11 @@ export function addKey(key: string): void {
   )
   Mousetrap.bind(
     key,
-    (event) => {
+    (event: ExtendedKeyboardEvent) => {
       event.preventDefault()
       _onKeyUp(key)
     },
     'keyup',
   )
 }
+  

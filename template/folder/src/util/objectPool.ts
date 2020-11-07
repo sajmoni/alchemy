@@ -96,7 +96,7 @@ export const getText = () => {
 /**
  * When done with an object, put it back into the pool
  */
-export const putBack = (container) => {
+export const putBack = (container: PIXI.Container) => {
   if (container instanceof PIXI.AnimatedSprite) {
     _animatedSprites.push(container)
   } else if (container instanceof PIXI.Sprite) {

@@ -21,7 +21,14 @@ const VERSION = process.env.VERSION || 'N/A'
 console.log(`Version: ${VERSION}`)
 // const ERROR_LOGGING = process.env.ERROR_LOGGING || false
 
-document.querySelector('#game').append(app.renderer.view)
+const GAME_SELECTOR = '#game'
+
+const gameElement = document.querySelector(GAME_SELECTOR)
+
+if (!gameElement) {
+  throw Error(`Element with id ${GAME_SELECTOR} was not found in the DOM`)
+}
+gameElement.append(app.renderer.view)
 
 const languageCode = restore('language') || DEFAULT_LANGUAGE
 state.application.language = languageCode
@@ -70,6 +77,6 @@ document.fonts
       })
     })
   })
-  .catch((error) => {
+  .catch((error: Error) => {
     console.error('Error starting game:', error)
   })

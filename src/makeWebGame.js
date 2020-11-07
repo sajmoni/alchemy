@@ -51,6 +51,10 @@ const devDependencies = [
   'muncher@0.0.13',
   '@babel/preset-typescript@7.12.1',
   '@types/node@14.14.6',
+  '@types/lodash@4.14.165',
+  '@types/howler@2.2.1',
+  '@types/mainloop.js@1.0.5',
+  '@types/mousetrap@1.6.4',
   // * Web - Labs and Debug tools
   'react@17.0.1',
   'react-dom@17.0.1',
@@ -118,8 +122,8 @@ module.exports = ({ projectName }) => {
         }
 
         createFileFromTemplate({
-          source: 'storage.template.js',
-          destination: path.join(rootPath, 'src/util/storage.js'),
+          source: 'storage.template.ts',
+          destination: path.join(rootPath, 'src/util/storage.ts'),
           options: { projectName },
         })
 
@@ -142,6 +146,7 @@ module.exports = ({ projectName }) => {
         const productionArgs = defaultArgs.concat(dependencies)
         const devArgs = defaultArgs.concat('--dev').concat(devDependencies)
 
+        // TODO: Investigate outputting each row of yarn install
         return execa(command, devArgs)
           .then(() => execa(command, productionArgs))
           .catch((error) => {

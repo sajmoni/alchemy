@@ -1,6 +1,6 @@
 import { Howl } from 'howler'
 
-const sound = ({ src, ...rest }: { src: string }) => {
+const createSound = ({ src, ...rest }: { src: string }): Howl => {
   const soundFile = new Howl({
     src,
     preload: true,
@@ -10,4 +10,4 @@ const sound = ({ src, ...rest }: { src: string }) => {
   return soundFile
 }
 
-export default sound
+export default createSound

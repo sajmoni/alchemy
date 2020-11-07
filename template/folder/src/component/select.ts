@@ -11,7 +11,7 @@ type Option = {
 
 type arguments = {
   readonly options: readonly Option[]
-  readonly onClick: (value) => void
+  readonly onClick: (value: string) => void
   readonly title: string
 }
 
@@ -35,7 +35,7 @@ const select = ({
     return { textObject, value }
   })
 
-  const render = (selectedValue) => {
+  const render = (selectedValue: string) => {
     optionObjects.forEach(({ textObject, value }) => {
       if (value === selectedValue) {
         textObject.style.fill = 'red'

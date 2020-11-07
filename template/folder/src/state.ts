@@ -7,12 +7,12 @@ type State = {
       sound: number
       music: number
     }
-    language: string
+    language?: string
     paused: boolean
     resolution: string
     settingsVisible: boolean
   }
-  scene: string
+  scene?: string
   bar: number
   square: {
     x: number
@@ -26,12 +26,12 @@ const state: State = {
       sound: 1,
       music: 1,
     },
-    language: null,
+    language: undefined,
     paused: false,
     resolution: Resolution.NORMAL,
     settingsVisible: false,
   },
-  scene: null,
+  scene: undefined,
   bar: 100,
   square: {
     x: 1,

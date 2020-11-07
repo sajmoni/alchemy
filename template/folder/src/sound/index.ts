@@ -1,4 +1,5 @@
 import _ from 'lodash/fp'
+import { Howl } from 'howler'
 
 // eslint-disable-next-line import/no-unassigned-import
 import './globalVolume'
@@ -8,7 +9,8 @@ import createSound from './createSound'
 // @ts-expect-error
 import sword01 from '../../asset/sound/Sword01.wav'
 
-const Sound = _.mapValues(createSound, {
+// @ts-expect-error
+const Sound: Record<string, Howl> = _.mapValues(createSound, {
   SWORD_01: { src: sword01, volume: 0.8 },
 })
 

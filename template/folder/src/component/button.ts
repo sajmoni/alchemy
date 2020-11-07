@@ -14,7 +14,7 @@ const button = ({
   label: labelString,
   onClick,
   textStyle,
-  backgroundTexture = null,
+  backgroundTexture = undefined,
 }: arguments): [PIXI.Container] => {
   const component = new PIXI.Container()
 

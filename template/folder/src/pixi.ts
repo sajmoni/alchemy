@@ -21,13 +21,19 @@ export const animatedSprite = (
 
 export const text = (
   string: string,
-  textStyle: PIXI.TextStyle = undefined,
+  textStyle?: PIXI.TextStyle,
 ): PIXI.Text => {
-  const t = new PIXI.Text(string, {
-    ...textStyle,
-    // * Improve text quality
-    fontSize: textStyle.fontSize * 10,
-  })
+  const t = new PIXI.Text(string)
+
+  if (textStyle) {
+    t.style = textStyle
+  }
+  
+  // * Improve text quality
+  if (t.style.fontSize) {
+    t.style.fontSize = t.style.fontSize * 10
+  }
+
   ex.makeResizable(t)
 
   t.anchor.set(0.5)

@@ -6,22 +6,23 @@ import mainMenu from './mainMenu'
 import game from './game'
 import { Scene } from '../../constant'
 import app from '../../app'
+import { SceneArgs } from '../../type/scene'
 
-const sceneHandler = {
+const sceneHandler: Record<Scene, ((sceneArgs: SceneArgs) => void)> = {
   /* PLOP_INJECT_SCENE */
   [Scene.MAIN_MENU]: mainMenu,
   [Scene.GAME]: game,
 }
 
-let container
-const unsubscribeFunctions = []
+let container: PIXI.Container
+const unsubscribeFunctions: (() => void)[] = []
 
 const initializeSceneHandler = () => {
-  const subscribe = (path, callback) => {
+  const subscribe = (path: string, callback: (value: any, previousValue: any) => void) => {
     unsubscribeFunctions.push(prism.subscribe(path, callback))
   }
 
-  prism.subscribe('scene', (value) => {
+  prism.subscribe('scene', (value: Scene) => {
     if (container) {
       container.destroy()
     }

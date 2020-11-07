@@ -9,10 +9,14 @@ import Sound from './sound'
 import state from './state'
 import { getAverageUpdateDuration, getAverageDrawDuration } from './loop'
 
+declare global {
+  interface Window { debug: any; }
+}
+
 const initializeDebugTools = () => {
   // * These commands can be run in the console, e.g: 'debug.state()'
-  window['debug'] = {
-    ...window['debug'],
+  window.debug = {
+    ...window.debug,
     state: () => state,
     info: () => ({
       'display objects': ex.getAllChildren(app.stage).length,

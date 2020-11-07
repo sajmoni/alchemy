@@ -72,7 +72,7 @@ const settings = () => {
     .lineTo(CENTER_COLUMN, height)
 
   background.interactive = true
-  background.on('click', (event) => {
+  background.on('click', (event: PIXI.InteractionEvent) => {
     event.stopPropagation()
   })
   component.addChild(background)
@@ -154,7 +154,7 @@ const settings = () => {
 
   app.stage.addChild(component)
 
-  const render = (visible) => {
+  const render = (visible: boolean) => {
     if (visible) {
       component.visible = true
       overlay.visible = true
@@ -177,6 +177,13 @@ const makeVolumeSlider = ({
   onMinus,
   onPlus,
   label,
+}: {
+  x: number,
+  y: number,
+  volume: number,
+  onMinus: () => void,
+  onPlus: () => void,
+  label: string,
 }): [PIXI.Container, (value: string) => void] => {
   const container = new PIXI.Container()
 
@@ -187,7 +194,7 @@ const makeVolumeSlider = ({
   container.addChild(text)
 
   const [volumeSlider, volumeSliderRender] = slider({
-    initialValue: volume,
+    initialValue: volume.toString(),
     onMinus,
     onPlus,
   })

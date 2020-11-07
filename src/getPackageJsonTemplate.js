@@ -47,8 +47,6 @@ module.exports = ({ projectName }) => {
         'react/prop-types': 'off',
         'unicorn/filename-case': 'off',
         'capitalized-comments': 'off',
-        'dot-notation': 'off',
-        '@typescript-eslint/dot-notation': 'off',
         'unicorn/prefer-node-remove': 'off',
         'import/extensions': [
           'error',
