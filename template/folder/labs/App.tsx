@@ -5,8 +5,6 @@ import { settings } from 'pixi.js'
 import * as ex from 'pixi-ex'
 
 import * as storage from '../src/util/storage'
-/* PLOP_INJECT_IMPORT */
-import componentLab from './lab/component'
 
 const Color = {
   GRAY: '#171717',
@@ -19,8 +17,6 @@ const Container = styled.div`
   display: flex;
 `
 
-const Lab = styled.div``
-
 const Menu = styled.div`
   background-color: ${Color.GRAY};
   color: ${Color.WHITE};
@@ -29,13 +25,6 @@ const Menu = styled.div`
 `
 
 const STORAGE_KEY = 'selectedLab'
-
-const lab = {
-  /* PLOP_INJECT_LAB */
-  components: componentLab,
-}
-const labKeys = Object.keys(lab)
-const DEFAULT_LAB = labKeys[0]
 
 const defaultPadding = css`
   padding: 10px 10px;
@@ -57,9 +46,12 @@ const Title = styled.div`
   user-select: none;
 `
 
-const App = () => {
+const App = ({ lab }: { lab: Record<string, (Lab) => void> }) => {
   const [selectedLab, setSelectedLab] = useState(undefined)
   const [app, setApp] = useState(null)
+
+  const labKeys = Object.keys(lab)
+  const DEFAULT_LAB = labKeys[0]
 
   useEffect(() => {
     settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST
@@ -133,7 +125,7 @@ const App = () => {
           )
         })}
       </Menu>
-      <Lab id="pixi" />
+      <div id="pixi" />
     </Container>
   )
 }

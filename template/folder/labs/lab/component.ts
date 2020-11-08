@@ -1,7 +1,8 @@
 import * as PIXI from 'pixi.js'
 import { bar, slider, button, select } from '../../src/component'
+import { Lab } from '../type'
 
-const component = ({ app, container }) => {
+const component = ({ app, container }: Lab) => {
   // Bar
   let value = 1
   const [_bar, renderBar] = bar()
@@ -32,7 +33,9 @@ const component = ({ app, container }) => {
     label: 'refresh',
     onClick: () => {
       container.destroy()
-      component(app)
+      const newContainer = new PIXI.Container()
+      app.stage.addChild(newContainer)
+      component({ app, container: newContainer })
     },
     textStyle: new PIXI.TextStyle({ fill: 'white' }),
   })
