@@ -37,7 +37,6 @@ state.application.language = languageCode
 app.loader.add('spritesheet/spritesheet.json')
 
 initializeGameLoop()
-initializeDebugTools()
 
 // Experimental API's are not supported by typescript
 // @ts-expect-error
@@ -65,6 +64,7 @@ document.fonts
 
       useAutoPause()
 
+      initializeDebugTools()
       initializeObjectPool()
       initializeGame()
 

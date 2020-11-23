@@ -1,7 +1,13 @@
 import * as l1 from 'l1'
+import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 import MainLoop from 'mainloop.js'
-import renderPanel, { NumericValue, Button, Divider } from 'nano-panel'
+import renderPanel, {
+  NumericValue,
+  Button,
+  Divider,
+  Checkbox,
+} from 'nano-panel'
 import * as prism from 'state-prism'
 import React from 'react'
 
@@ -33,6 +39,16 @@ const initializeDebugTools = () => {
 
   if (process.env.NODE_ENV === 'development' && process.env.DEBUG) {
     // const spector = new SPECTOR.Spector()
+
+    const gridGraphics = new PIXI.Graphics()
+    app.stage.addChild(gridGraphics)
+    ex.showGrid({
+      graphics: gridGraphics,
+      numberOfCells: 3,
+      color: 0xff00ff,
+    })
+    gridGraphics.visible = false
+
     const DebugPanel = () => (
       <>
         <NumericValue
@@ -96,6 +112,16 @@ const initializeDebugTools = () => {
           onClick={() => {
             // TODO: Set volume to 0
             console.log('sounds muted')
+          }}
+        />
+        <Checkbox
+          label={'Show grid'}
+          onClick={(checked) => {
+            if (checked) {
+              gridGraphics.visible = true
+            } else {
+              gridGraphics.visible = false
+            }
           }}
         />
       </>

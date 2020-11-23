@@ -12,7 +12,7 @@ const displayDoneMessage = require('./message/done')
 const dependencies = [
   // * Rendering
   'pixi.js@5.3.3',
-  'pixi-ex@0.0.10',
+  'pixi-ex@0.0.11',
   'pixi-particles@4.3.0',
   // * --
   // * Sound
