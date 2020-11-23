@@ -26,8 +26,9 @@ const GAME_SELECTOR = '#game'
 const gameElement = document.querySelector(GAME_SELECTOR)
 
 if (!gameElement) {
-  throw Error(`Element with id ${GAME_SELECTOR} was not found in the DOM`)
+  throw new Error(`Element with id ${GAME_SELECTOR} was not found in the DOM`)
 }
+
 gameElement.append(app.renderer.view)
 
 const languageCode = restore('language') || DEFAULT_LANGUAGE
