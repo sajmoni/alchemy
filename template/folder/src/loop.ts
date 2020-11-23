@@ -56,11 +56,11 @@ const initializeGameLoop = () => {
   })
 }
 
-const getAverage = (list: number[]) => {
+const getAverage = (list: number[]): number => {
   // eslint-disable-next-line unicorn/no-reduce
   const average = list.reduce((acc, ts) => acc + ts, 0) / (list.length || 1)
 
-  return average.toFixed(3)
+  return Number.parseFloat(average.toFixed(3))
 }
 
 export const getAverageUpdateDuration = () => {

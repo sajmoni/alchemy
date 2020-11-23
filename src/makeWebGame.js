@@ -26,7 +26,6 @@ const dependencies = [
   // * Util
   'lodash@4.17.20',
   'state-prism@0.0.3',
-  'nano-panel@0.0.2',
   'mousetrap@1.6.5',
 ]
 
@@ -47,6 +46,7 @@ const devDependencies = [
   '@babel/core@7.12.3',
   // * --
   // * Other
+  'nano-panel@0.0.3',
   'plop@2.7.4',
   'muncher@0.0.13',
   '@babel/preset-typescript@7.12.1',
