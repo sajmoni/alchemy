@@ -7,7 +7,7 @@ import app from './app'
 import initializeGame from './main'
 import state from './state'
 
-import autoPause from './util/autoPause'
+import useAutoPause from './util/useAutoPause'
 import { TextStyle, Render, Language } from './constant'
 import { restore } from './util/storage'
 import initializeGameLoop from './loop'
@@ -62,7 +62,7 @@ document.fonts
     app.loader.load(() => {
       ex.init(app)
 
-      autoPause()
+      useAutoPause()
 
       initializeObjectPool()
       initializeGame()
