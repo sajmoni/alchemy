@@ -19,19 +19,16 @@ export const animatedSprite = (
   return a
 }
 
-export const text = (
-  string: string,
-  textStyle?: PIXI.TextStyle,
-): PIXI.Text => {
+export const text = (string: string, textStyle?: PIXI.TextStyle): PIXI.Text => {
   const t = new PIXI.Text(string)
 
   if (textStyle) {
     t.style = textStyle
   }
-  
+
   // * Improve text quality
   if (t.style.fontSize) {
-    t.style.fontSize = t.style.fontSize * 10
+    t.style.fontSize *= 10
   }
 
   ex.makeResizable(t)

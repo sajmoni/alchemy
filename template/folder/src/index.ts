@@ -18,7 +18,7 @@ import initializeSceneHandler from './main/scene'
 const FONT = 'patchy-robots'
 const DEFAULT_LANGUAGE = Language.EN.code
 
-const VERSION = process.env.VERSION || 'N/A'
+const VERSION = process.env.VERSION ?? 'N/A'
 console.log(`Version: ${VERSION}`)
 // const ERROR_LOGGING = process.env.ERROR_LOGGING || false
 

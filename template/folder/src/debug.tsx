@@ -103,13 +103,7 @@ const initializeDebugTools = () => {
             value: 5,
           }}
         />
-        <StringValue
-          label="Scene"
-          warnAt={{
-            value: 5,
-          }}
-          getValue={() => state.scene}
-        />
+        <StringValue label="Scene" getValue={() => state.scene} />
         <Divider />
         <Button
           label="State"

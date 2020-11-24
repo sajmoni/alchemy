@@ -95,7 +95,7 @@ const App = ({ labData }: { labData: Record<string, (lab: Lab) => void> }) => {
     } else {
       // ignore
     }
-  }, [selectedLab, app])
+  }, [selectedLab, app, labData])
 
   useEffect(() => {
     const restored = ls.get(STORAGE_KEY)
@@ -104,7 +104,7 @@ const App = ({ labData }: { labData: Record<string, (lab: Lab) => void> }) => {
     } else {
       setSelectedLab(DEFAULT_LAB)
     }
-  }, [])
+  }, [labKeys, DEFAULT_LAB])
 
   useEffect(() => {
     if (!selectedLab) {

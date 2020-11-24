@@ -15,12 +15,15 @@ const fullscreenFadeInOut = async () =>
     fade.zIndex = 1
     app.stage.addChild(fade)
 
-    // eslint-disable-next-line unicorn/no-fn-reference-in-iterator
     const behavior = l1.every(fadeInOut(fade, DURATION, resolve), DURATION)
     behavior.id = ID
   })
 
-const fadeInOut = (graphics: PIXI.Graphics, duration: number, resolve: () => void) => {
+const fadeInOut = (
+  graphics: PIXI.Graphics,
+  duration: number,
+  resolve: () => void,
+) => {
   let hasResolved = false
   const animation = juice.parabola({
     duration,

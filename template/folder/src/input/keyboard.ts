@@ -38,4 +38,3 @@ export function addKey(key: string): void {
     'keyup',
   )
 }
-  

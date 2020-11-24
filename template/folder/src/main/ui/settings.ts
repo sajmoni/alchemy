@@ -178,12 +178,12 @@ const makeVolumeSlider = ({
   onPlus,
   label,
 }: {
-  x: number,
-  y: number,
-  volume: number,
-  onMinus: () => void,
-  onPlus: () => void,
-  label: string,
+  x: number
+  y: number
+  volume: number
+  onMinus: () => void
+  onPlus: () => void
+  label: string
 }): [PIXI.Container, (value: string) => void] => {
   const container = new PIXI.Container()
 
