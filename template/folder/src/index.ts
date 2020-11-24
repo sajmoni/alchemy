@@ -8,11 +8,12 @@ import initializeGame from './main'
 import state from './state'
 
 import useAutoPause from './util/useAutoPause'
-import { TextStyle, Render, Language } from './constant'
-import { restore } from './util/storage'
+import { TextStyle, Render, Language, Scene } from './constant'
+import * as ls from './util/storage'
 import initializeGameLoop from './loop'
 import initializeDebugTools from './debug'
 import initializeObjectPool from './util/objectPool'
+import initializeSceneHandler from './main/scene'
 
 const FONT = 'patchy-robots'
 const DEFAULT_LANGUAGE = Language.EN.code
@@ -31,7 +32,7 @@ if (!gameElement) {
 
 gameElement.append(app.renderer.view)
 
-const languageCode = restore('language') || DEFAULT_LANGUAGE
+const languageCode = ls.get('language') || DEFAULT_LANGUAGE
 state.application.language = languageCode
 
 app.loader.add('spritesheet/spritesheet.json')
@@ -66,6 +67,7 @@ document.fonts
 
       initializeDebugTools()
       initializeObjectPool()
+      initializeSceneHandler()
       initializeGame()
 
       l1.once(() => {

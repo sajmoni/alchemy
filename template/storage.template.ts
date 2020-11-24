@@ -4,19 +4,19 @@ const { localStorage } = window
 
 const prefixKey = (key: string) => `${keyPrefix}.${key}`
 
-// TODO: Rename to set
-export const save = (key: string, object: any) => {
+export const set = (key: string, object: any): void => {
   localStorage.setItem(prefixKey(key), JSON.stringify(object))
 }
 
-// TODO: Rename to get
-export const restore = (key: string): any => {
+export const get = (key: string): any => {
   const restored = localStorage.getItem(prefixKey(key))
   return restored ? JSON.parse(restored) : null
 }
 
-export const remove = (key: string) => {
+export const remove = (key: string): void => {
   localStorage.removeItem(prefixKey(key))
 }
 
-// TODO: Add clear
+export const clear = (): void => {
+  localStorage.clear()
+}

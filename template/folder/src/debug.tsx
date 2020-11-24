@@ -7,6 +7,8 @@ import renderPanel, {
   Button,
   Divider,
   Checkbox,
+  Dropdown,
+  StringValue,
 } from 'nano-panel'
 import * as prism from 'state-prism'
 import React from 'react'
@@ -15,6 +17,8 @@ import app from './app'
 import Sound from './sound'
 import state from './state'
 import { getAverageUpdateDuration, getAverageDrawDuration } from './loop'
+import { Scene } from './constant'
+import * as ls from './util/storage'
 
 declare global {
   interface Window {
@@ -48,6 +52,11 @@ const initializeDebugTools = () => {
       color: 0xff00ff,
     })
     gridGraphics.visible = false
+
+    const scenes = Object.values(Scene).map((scene) => ({
+      label: scene,
+      value: scene,
+    }))
 
     const DebugPanel = () => (
       <>
@@ -94,6 +103,13 @@ const initializeDebugTools = () => {
             value: 5,
           }}
         />
+        <StringValue
+          label="Scene"
+          warnAt={{
+            value: 5,
+          }}
+          getValue={() => state.scene}
+        />
         <Divider />
         <Button
           label="State"
@@ -115,13 +131,22 @@ const initializeDebugTools = () => {
           }}
         />
         <Checkbox
-          label={'Show grid'}
+          label="Show grid"
           onClick={(checked) => {
             if (checked) {
               gridGraphics.visible = true
             } else {
               gridGraphics.visible = false
             }
+          }}
+        />
+        <Dropdown
+          initialValue={state.scene}
+          dropdownLabel="Scene"
+          items={scenes}
+          onChange={(value) => {
+            state.scene = value as Scene
+            ls.set('scene', value)
           }}
         />
       </>

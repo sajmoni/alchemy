@@ -27,6 +27,7 @@ const dependencies = [
   'lodash@4.17.20',
   'state-prism@0.0.3',
   'mousetrap@1.6.5',
+  'dot-prop@6.0.1',
 ]
 
 const devDependencies = [
