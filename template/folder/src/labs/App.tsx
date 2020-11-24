@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styled, { css } from 'styled-components'
 import * as PIXI from 'pixi.js'
-import { settings } from 'pixi.js'
 import * as ex from 'pixi-ex'
 
-import * as storage from '../src/util/storage'
+import * as ls from '../util/storage'
+import { Lab } from './type'
 
 const Color = {
   GRAY: '#171717',
@@ -30,9 +30,9 @@ const defaultPadding = css`
   padding: 10px 10px;
 `
 
-const Button = styled.div`
-  background-color: ${({ $selected }) =>
-    $selected ? Color.BLUE : Color.LIGHTER_GRAY};
+const Button = styled.div<{ selected: boolean }>`
+  background-color: ${({ selected }) =>
+    selected ? Color.BLUE : Color.LIGHTER_GRAY};
 
   cursor: pointer;
   user-select: none;
@@ -46,15 +46,17 @@ const Title = styled.div`
   user-select: none;
 `
 
-const App = ({ lab }: { lab: Record<string, (Lab) => void> }) => {
-  const [selectedLab, setSelectedLab] = useState(undefined)
-  const [app, setApp] = useState(null)
+const PIXI_ID = 'pixi'
 
-  const labKeys = Object.keys(lab)
+const App = ({ labData }: { labData: Record<string, (lab: Lab) => void> }) => {
+  const [selectedLab, setSelectedLab] = useState<string | undefined>(undefined)
+  const [app, setApp] = useState<PIXI.Application | undefined>(undefined)
+
+  const labKeys = Object.keys(labData)
   const DEFAULT_LAB = labKeys[0]
 
   useEffect(() => {
-    settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST
+    PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST
     const app = new PIXI.Application({
       width: 800,
       height: 600,
@@ -68,7 +70,12 @@ const App = ({ lab }: { lab: Record<string, (Lab) => void> }) => {
     app.loader.add('spritesheet/spritesheet.json')
     app.loader.load(onAssetsLoaded)
 
-    document.querySelector('#pixi').append(app.view)
+    const element = document.querySelector(`#${PIXI_ID}`)
+    if (!element) {
+      throw new Error(`Couldn't find element: ${SELECTOR}`)
+    }
+
+    element.append(app.view)
   }, [])
 
   useEffect(() => {
@@ -76,7 +83,7 @@ const App = ({ lab }: { lab: Record<string, (Lab) => void> }) => {
       return
     }
 
-    const renderLab = lab[selectedLab]
+    const renderLab = labData[selectedLab]
 
     if (renderLab) {
       ;[...app.stage.children].forEach((child) => {
@@ -91,7 +98,7 @@ const App = ({ lab }: { lab: Record<string, (Lab) => void> }) => {
   }, [selectedLab, app])
 
   useEffect(() => {
-    const restored = storage.restore(STORAGE_KEY)
+    const restored = ls.get(STORAGE_KEY)
     if (restored && labKeys.includes(restored)) {
       setSelectedLab(restored)
     } else {
@@ -104,7 +111,7 @@ const App = ({ lab }: { lab: Record<string, (Lab) => void> }) => {
       return
     }
 
-    storage.save(STORAGE_KEY, selectedLab)
+    ls.set(STORAGE_KEY, selectedLab)
   }, [selectedLab])
 
   return (
@@ -115,7 +122,7 @@ const App = ({ lab }: { lab: Record<string, (Lab) => void> }) => {
           return (
             <Button
               key={labKey}
-              $selected={selectedLab === labKey}
+              selected={selectedLab === labKey}
               onClick={() => {
                 setSelectedLab(labKey)
               }}
@@ -125,7 +132,7 @@ const App = ({ lab }: { lab: Record<string, (Lab) => void> }) => {
           )
         })}
       </Menu>
-      <div id="pixi" />
+      <div id={PIXI_ID} />
     </Container>
   )
 }
