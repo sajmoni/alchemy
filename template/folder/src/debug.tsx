@@ -106,22 +106,22 @@ const initializeDebugTools = () => {
         <StringValue label="Scene" getValue={() => state.scene} />
         <Divider />
         <Button
-          label="State"
+          label="Log state"
           onClick={() => {
             console.log('state:', prism.target(state))
           }}
         />
-        <Button
-          label="Play / Pause"
-          onClick={() => {
-            state.application.paused = !state.application.paused
+        <Checkbox
+          label="Pause game"
+          onClick={(checked) => {
+            state.application.paused = checked
           }}
         />
-        <Button
+        <Checkbox
           label="Mute sounds"
-          onClick={() => {
+          onClick={(checked) => {
             // TODO: Set volume to 0
-            console.log('sounds muted')
+            console.log('sounds muted:', checked)
           }}
         />
         <Checkbox
