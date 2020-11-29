@@ -36,8 +36,9 @@ const devDependencies = [
   'typescript@4.0.5',
   // * --
   // * Module bundling
-  'parcel-bundler@1.12.4',
-  'parcel-plugin-static-files-copy@2.5.0',
+  'esbuild@0.8.16',
+  'serve-handler@6.1.3',
+  'fs-extra@9.0.1',
   // * --
   '@babel/preset-env@7.12.1',
   // * --

@@ -5,14 +5,14 @@ module.exports = ({ projectName }) => {
     private: true,
     main: './electron.js',
     scripts: {
-      start: 'parcel src/index.html --no-autoinstall --no-cache',
+      start: 'node script/serve.js',
       labs: 'parcel src/labs/index.html --no-autoinstall --no-cache',
-      build: 'rm -rf dist && parcel build src/index.html --public-url ./',
+      build: 'node script/build.js',
       test: 'ava',
       plop: 'plop --plopfile plop/plopfile.ts',
       qa: 'tsc && xo --fix',
       munch:
-        'muncher --input asset/sprite --output static/spritesheet/spritesheet --flip',
+        'muncher --input asset/sprite --output public/spritesheet/spritesheet --flip',
       'elec:start': 'electron .',
       'elec:build':
         'rm -rf dist && parcel build src/index.html --public-url ./ --target electron',

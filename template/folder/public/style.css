@@ -30,5 +30,5 @@ canvas {
 @font-face {
   /* TODO: Replace with free font */
   font-family: 'patchy-robots';
-  src: url('../asset/font/patchy-robots.ttf');
+  src: url('./font/patchy-robots.ttf');
 }

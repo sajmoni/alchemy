@@ -58,7 +58,7 @@ Some reasons to make a browser based game instead of using other game dev tools:
 
 ### Tooling
 
-- :zap: [`parcel`](https://github.com/parcel-bundler/parcel) - Very fast no-config module bundler
+- :zap: [`esbuild`](https://github.com/evanw/esbuild) - Extremely fast bundler and minifier
 
 - :cake: [`muncher`](https://github.com/sajmoni/muncher) - Automatically create sprite sheets from the command line
 
