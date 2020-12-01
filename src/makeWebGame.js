@@ -34,6 +34,8 @@ const devDependencies = [
   // * Code quality
   'xo@0.34.2',
   'typescript@4.0.5',
+  'husky@4.3.0',
+  'lint-staged@10.5.2',
   // * --
   // * Module bundling
   'esbuild@0.8.16',
