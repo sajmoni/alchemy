@@ -49,6 +49,7 @@ This game was initially created with [`make-web-game`](https://github.com/sajmon
     - [State machine](#state-machine)
     - [Utils](#utils)
     - [Events](#events)
+    - [Debug](#debug)
   - [Useful external resources](#useful-external-resources)
   - [Misc](#misc)
 
@@ -363,6 +364,10 @@ text.filters = [new filters.CRTFilter()]
 [tiny-toolkit](https://github.com/sajmoni/tiny-toolkit) - Useful utility functions
 
 [eventemitter3](https://github.com/primus/eventemitter3) - Events
+
+#### Debug
+
+[`SpectorJS`](https://github.com/BabylonJS/Spector.js) - Explore and troubleshoot your WebGL scenes
 
 ---
 

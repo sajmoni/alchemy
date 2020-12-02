@@ -42,8 +42,6 @@ const initializeDebugTools = () => {
   }
 
   if (process.env.NODE_ENV === 'development' && process.env.DEBUG) {
-    // const spector = new SPECTOR.Spector()
-
     const gridGraphics = new PIXI.Graphics()
     app.stage.addChild(gridGraphics)
     ex.showGrid({
@@ -145,8 +143,6 @@ const initializeDebugTools = () => {
         />
       </>
     )
-    // TODO: Enable this in the future
-    // 'draw calls': () => drawCalls,
 
     const SELECTOR = '#debug-panel'
     const element = document.querySelector(SELECTOR)
@@ -157,12 +153,6 @@ const initializeDebugTools = () => {
     }
 
     renderPanel(<DebugPanel />, element as HTMLElement)
-
-    // TODO: Enable this in the future
-    // spector.captureNextFrame(app.view, true)
-    // spector.onCapture.add((res) => {
-    //   drawCalls = res.commands.filter(c => c.name === 'drawElements').length
-    // })
   }
 }
 
