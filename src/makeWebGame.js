@@ -78,6 +78,9 @@ module.exports = ({ projectName }) => {
   console.log(` Creating a new web game in ${chalk.green(rootPath)}`)
   console.log()
 
+  const command = 'yarn'
+  const yarnAdd = ['add', '--exact']
+
   const tasks = new Listr([
     {
       title: 'Create project folder',
@@ -143,20 +146,19 @@ module.exports = ({ projectName }) => {
       },
     },
     {
+      title: 'Install dev dependencies',
+      task: () => {
+        const devArgs = yarnAdd.concat('--dev').concat(devDependencies)
+
+        return execa(command, devArgs, { all: true }).all
+      },
+    },
+    {
       title: 'Install dependencies',
       task: () => {
-        const command = 'yarn'
-        const defaultArgs = ['add', '--exact']
+        const productionArgs = yarnAdd.concat(dependencies)
 
-        const productionArgs = defaultArgs.concat(dependencies)
-        const devArgs = defaultArgs.concat('--dev').concat(devDependencies)
-
-        // TODO: Investigate outputting each row of yarn install
-        return execa(command, devArgs)
-          .then(() => execa(command, productionArgs))
-          .catch((error) => {
-            throw new Error(`Could not install dependencies, ${error}`)
-          })
+        return execa(command, productionArgs, { all: true }).all
       },
     },
     {
