@@ -12,8 +12,6 @@ import renderPanel, {
 } from 'nano-panel'
 import * as prism from 'state-prism'
 import React from 'react'
-// @ts-expect-error
-import * as Spector from 'spectorjs'
 
 import app from './app'
 import Sound from './sound'
@@ -44,8 +42,6 @@ const initializeDebugTools = () => {
   }
 
   if (process.env.NODE_ENV === 'development' && process.env.DEBUG) {
-    const spector = new Spector.Spector()
-
     const gridGraphics = new PIXI.Graphics()
     app.stage.addChild(gridGraphics)
     ex.showGrid({
@@ -60,13 +56,6 @@ const initializeDebugTools = () => {
       value: scene,
     }))
 
-    let drawCalls = 0
-    spector.onCapture.add((result: any) => {
-      drawCalls = result.commands.filter(
-        (command: any) => command.name === 'drawElements',
-      ).length
-    })
-
     const DebugPanel = () => (
       <>
         <NumericValue
@@ -75,11 +64,7 @@ const initializeDebugTools = () => {
             value: 59,
             when: 'below',
           }}
-          getValue={() => {
-            spector.captureNextFrame(app.renderer.view, true)
-
-            return drawCalls
-          }}
+          getValue={() => Math.round(MainLoop.getFPS())}
         />
         <NumericValue
           label="Behaviors"
@@ -124,14 +109,6 @@ const initializeDebugTools = () => {
             console.log('state:', prism.target(state))
           }}
         />
-        <Button
-          label="Capture frame"
-          onClick={() => {
-            // spector.spyCanvases()
-            // spector.displayUI()
-            spector.captureNextFrame(app.renderer.view, true)
-          }}
-        />
         <Checkbox
           label="Pause game"
           onClick={(checked) => {
@@ -166,8 +143,6 @@ const initializeDebugTools = () => {
         />
       </>
     )
-    // TODO: Enable this in the future
-    // 'draw calls': () => drawCalls,
 
     const SELECTOR = '#debug-panel'
     const element = document.querySelector(SELECTOR)

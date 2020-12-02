@@ -68,8 +68,6 @@ Some reasons to make a browser based game instead of using other game dev tools:
 
 - :recycle: [`plop`](https://github.com/plopjs/plop) - Micro-generator framework
 
-- :detective: [`SpectorJS`](https://github.com/BabylonJS/Spector.js) - Explore and troubleshoot your WebGL scenes (TODO)
-
 - :microscope: `"Labs"` - Separate webapp for experiments and prototyping
 
 ### Other
