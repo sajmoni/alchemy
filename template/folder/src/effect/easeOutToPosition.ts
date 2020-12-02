@@ -10,10 +10,10 @@ type Options = {
   readonly duration?: number
 }
 
-const easeOutToPosition = (
+const easeOutToPosition = async (
   displayObject: PIXI.DisplayObject,
   { position, duration = DEFAULT_DURATION }: Options,
-) =>
+): Promise<void> =>
   new Promise((resolve) => {
     const getY = juice.easeOut({
       startValue: displayObject.y,

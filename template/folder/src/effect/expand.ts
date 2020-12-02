@@ -9,10 +9,10 @@ type Options = {
   readonly endValue?: number
 }
 
-const expand = (
+const expand = async (
   displayObject: PIXI.DisplayObject,
   { duration = 30, endValue = END_VALUE }: Options = {},
-) =>
+): Promise<void> =>
   new Promise((resolve) => {
     const startValue = displayObject.scale.x
     const getScale = juice.parabola({

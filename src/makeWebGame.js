@@ -36,6 +36,7 @@ const devDependencies = [
   'typescript@4.0.5',
   'husky@4.3.0',
   'lint-staged@10.5.2',
+  'eslint-plugin-lodash-fp@2.2.0-a1',
   // * --
   // * Module bundling
   'esbuild@0.8.16',

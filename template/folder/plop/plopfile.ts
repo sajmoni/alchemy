@@ -1,10 +1,10 @@
-const component = require('./component')
-const scene = require('./scene')
-const constant = require('./constant')
-const data = require('./data')
-const lab = require('./lab')
-const effect = require('./effect')
-const particles = require('./particles')
+import component from './component'
+import scene from './scene'
+import constant from './constant'
+import data from './data'
+import lab from './lab'
+import effect from './effect'
+import particles from './particles'
 
 module.exports = (plop) => {
   plop.setGenerator('Component', component)
