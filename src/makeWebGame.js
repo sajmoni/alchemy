@@ -54,6 +54,7 @@ const devDependencies = [
   'nano-panel@0.0.4',
   'plop@2.7.4',
   'muncher@0.0.13',
+  'spectorjs@0.9.17',
   '@babel/preset-typescript@7.12.1',
   '@types/node@14.14.6',
   '@types/lodash@4.14.165',
