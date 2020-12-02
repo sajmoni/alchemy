@@ -25,11 +25,27 @@ const serveOptions = {
   },
 }
 
+const directoryToServe = process.argv[2]
+const bundleEntryPoint = process.argv[3]
+
+if (!directoryToServe) {
+  throw new Error('serve requires the directory to serve as an argument')
+}
+
+if (!bundleEntryPoint) {
+  throw new Error(
+    'serve requires the bundle entry point as the second argument',
+  )
+}
+
+console.log(`Serving directory: ${directoryToServe}`)
+console.log(`Bundling directory: ${bundleEntryPoint}`)
+
 const buildOptions = {
-  entryPoints: ['src/index.ts'],
+  entryPoints: [bundleEntryPoint],
   bundle: true,
   incremental: true,
-  outdir: 'public',
+  outdir: directoryToServe,
   define,
   loader: {
     '.wav': 'file',
@@ -49,7 +65,7 @@ const serveEsbuild = async () => {
 }
 
 const server = http.createServer((request, response) => {
-  return handler(request, response, { public: 'public' })
+  return handler(request, response, { public: directoryToServe })
 })
 
 serveEsbuild()

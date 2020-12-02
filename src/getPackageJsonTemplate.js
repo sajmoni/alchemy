@@ -5,8 +5,8 @@ module.exports = ({ projectName }) => {
     private: true,
     main: './electron.js',
     scripts: {
-      start: 'node script/serve.js',
-      labs: 'parcel src/labs/index.html --no-autoinstall --no-cache',
+      start: 'node script/serve.js public src/index.ts',
+      labs: 'node script/serve.js src/labs src/labs/index.tsx',
       build: 'node script/build.js',
       test: 'ava',
       plop: 'plop --plopfile plop/plopfile.ts',
