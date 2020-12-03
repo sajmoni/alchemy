@@ -20,8 +20,8 @@ const Color = {
 const MAX_VOLUME = 10
 const MIN_VOLUME = 0
 
-const SOUND_Y = 40
-const BUTTONS_Y = Render.GAME_HEIGHT - 10
+const SOUND_Y = 50
+const BUTTONS_Y = Render.GAME_HEIGHT - 55
 
 const width = Render.GAME_WIDTH * 0.6
 const height = Render.GAME_HEIGHT * 0.8
@@ -66,9 +66,6 @@ const settings = () => {
     .beginFill(PIXI.utils.string2hex(Color.BACKGROUND))
     .drawRect(0, 0, width, height)
     .endFill()
-    .lineStyle(2, PIXI.utils.string2hex('#ff00ff'))
-    .moveTo(CENTER_COLUMN, 0)
-    .lineTo(CENTER_COLUMN, height)
 
   background.interactive = true
   background.on('click', (event: PIXI.InteractionEvent) => {
@@ -77,7 +74,7 @@ const settings = () => {
   component.addChild(background)
 
   const title = pixi.text(`Settings`, new PIXI.TextStyle(TextStyle.MAIN))
-  title.position.set(width / 2, 5)
+  title.position.set(width / 2, 10)
   component.addChild(title)
 
   const [soundSlider, renderSoundSlider] = makeVolumeSlider({
@@ -101,7 +98,7 @@ const settings = () => {
   const [musicSlider, renderMusicSlider] = makeVolumeSlider({
     volume: state.application.volume.music,
     x: LEFT_COLUMN,
-    y: SOUND_Y + 100,
+    y: SOUND_Y + 50,
     label: `Music`,
     onMinus: () => {
       const currentVolume = state.application.volume.music
@@ -189,7 +186,7 @@ const makeVolumeSlider = ({
   container.position.set(x, y)
 
   const text = pixi.text(label, new PIXI.TextStyle(TextStyle.MAIN))
-  text.position.set(0, -40)
+  text.position.set(0, -20)
   container.addChild(text)
 
   const [volumeSlider, volumeSliderRender] = slider({

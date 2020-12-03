@@ -17,6 +17,7 @@ const slider = ({
   onPlus,
 }: arguments): [PIXI.Container, render] => {
   const component = new PIXI.Container()
+  component.scale.set(0.5)
 
   const minus = new PIXI.Sprite(ex.getTexture('plus-minus-1'))
   minus.x = -50

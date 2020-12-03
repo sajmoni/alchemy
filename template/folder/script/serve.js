@@ -20,9 +20,7 @@ const define = Object.fromEntries(
 
 const serveOptions = {
   port: 8000,
-  onRequest: () => {
-    console.log('Rebuilding')
-  },
+  onRequest: () => {},
 }
 
 const directoryToServe = process.argv[2]
