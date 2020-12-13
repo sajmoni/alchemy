@@ -44,6 +44,7 @@ This game was initially created with [`make-web-game`](https://github.com/sajmon
   - [Useful external tools](#useful-external-tools)
   - [Useful libraries](#useful-libraries)
     - [Graphics](#graphics)
+    - [Text](#text)
     - [Randomness](#randomness)
     - [Physics](#physics)
     - [State machine](#state-machine)
@@ -343,6 +344,10 @@ text.filters = [new filters.CRTFilter()]
 
  - [pixi-heaven](https://github.com/gameofbombs/pixi-heaven) - Advanced Sprite rendering options
 
+#### Text
+
+[pixi-multistyle-text](https://github.com/tleunen/pixi-multistyle-text) - Apply different text styles to different parts of a string
+
 #### Randomness
 
 - [chance](https://github.com/chancejs/chancejs)
@@ -359,9 +364,11 @@ text.filters = [new filters.CRTFilter()]
 
 #### Utils
 
-#### Events
-
 [tiny-toolkit](https://github.com/sajmoni/tiny-toolkit) - Useful utility functions
+
+[nanoid](https://github.com/ai/nanoid) - Unique string ID generator
+
+#### Events
 
 [eventemitter3](https://github.com/primus/eventemitter3) - Events
 
