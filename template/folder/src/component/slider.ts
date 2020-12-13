@@ -5,17 +5,17 @@ import * as pixi from '../pixi'
 
 type render = (value: string) => void
 
-type arguments = {
-  readonly initialValue: string
-  readonly onMinus: () => void
-  readonly onPlus: () => void
+type SliderOptions = {
+  initialValue: string
+  onMinus: () => void
+  onPlus: () => void
 }
 
 const slider = ({
   initialValue,
   onMinus,
   onPlus,
-}: arguments): [PIXI.Container, render] => {
+}: SliderOptions): [PIXI.Container, render] => {
   const component = new PIXI.Container()
   component.scale.set(0.5)
 

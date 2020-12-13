@@ -3,7 +3,7 @@ import * as ex from 'pixi-ex'
 
 import * as pixi from '../pixi'
 
-type arguments = {
+type ButtonOptions = {
   readonly label: string
   readonly onClick: () => void
   readonly textStyle: PIXI.TextStyle
@@ -15,7 +15,7 @@ const button = ({
   onClick,
   textStyle,
   backgroundTexture = undefined,
-}: arguments): [PIXI.Container] => {
+}: ButtonOptions): [PIXI.Container] => {
   const component = new PIXI.Container()
 
   ex.makeClickable(component, () => {

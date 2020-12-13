@@ -1,6 +1,7 @@
 import _ from 'lodash/fp'
 import { Howl } from 'howler'
 
+// eslint-disable-next-line import/no-unassigned-import
 import './globalVolume'
 import createSound from './createSound'
 

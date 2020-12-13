@@ -4,12 +4,12 @@ const HEIGHT = 7
 
 type render = (value: number) => void
 
-type arguments = {
-  readonly initialValue?: number
-  readonly onColor?: string
-  readonly offColor?: string
-  readonly backgroundColor?: string
-  readonly width?: number
+type BarOptions = {
+  initialValue?: number
+  onColor?: string
+  offColor?: string
+  backgroundColor?: string
+  width?: number
 }
 
 const bar = ({
@@ -18,7 +18,7 @@ const bar = ({
   offColor = '#ff00ff',
   backgroundColor = '#000000',
   width = 100,
-}: arguments = {}): [PIXI.Container, render] => {
+}: BarOptions = {}): [PIXI.Container, render] => {
   const component = new PIXI.Graphics()
 
   const paddedWidth = width + 2

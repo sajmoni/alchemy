@@ -5,21 +5,21 @@ import { container, text } from '../pixi'
 type render = (selectedValue: string) => void
 
 type Option = {
-  readonly value: string
-  readonly label: string
+  value: string
+  label: string
 }
 
-type arguments = {
-  readonly options: readonly Option[]
-  readonly onClick: (value: string) => void
-  readonly title: string
+type SelectOptions = {
+  options: Option[]
+  onClick: (value: string) => void
+  title: string
 }
 
 const select = ({
   options,
   onClick,
   title,
-}: arguments): [PIXI.Container, render] => {
+}: SelectOptions): [PIXI.Container, render] => {
   const component = container()
 
   const titleText = text(title, new PIXI.TextStyle({ fill: 'white' }))
