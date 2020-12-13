@@ -26,7 +26,6 @@ const BUTTONS_Y = Render.GAME_HEIGHT - 55
 const width = Render.GAME_WIDTH * 0.6
 const height = Render.GAME_HEIGHT * 0.8
 
-// TODO: Use tiny-toolkit grid?
 const LEFT_COLUMN = (width / 4) * 1
 const CENTER_COLUMN = (width / 4) * 2
 // const RIGHT_COLUMN = (width / 4) * 3

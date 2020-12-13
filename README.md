@@ -103,7 +103,7 @@ The output file structure will look like this:
 
 ```
 my-game/
-├── .github/ (TODO)
+├── .github/
 ├── asset/
 │   ├── font/
 │   ├── sound/

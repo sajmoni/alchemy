@@ -4,18 +4,20 @@ import * as ex from 'pixi-ex'
 import * as pixi from '../pixi'
 
 type ButtonOptions = {
-  readonly label: string
-  readonly onClick: () => void
-  readonly textStyle: PIXI.TextStyle
-  readonly backgroundTexture?: PIXI.Texture
+  label: string
+  onClick: () => void
+  textStyle: PIXI.TextStyle
+  backgroundTexture?: PIXI.Texture
 }
+
+type render = () => void
 
 const button = ({
   label: labelString,
   onClick,
   textStyle,
   backgroundTexture = undefined,
-}: ButtonOptions): [PIXI.Container] => {
+}: ButtonOptions): [PIXI.Container, render] => {
   const component = new PIXI.Container()
 
   ex.makeClickable(component, () => {
@@ -32,13 +34,13 @@ const button = ({
   label.anchor.set(0)
   component.addChild(label)
 
-  // TODO: Pass in state? Active, disabled etc. Change label?
-  // const render = (value) => {
-  // }
+  const render = () => {
+    // noop
+  }
 
   return [
     component,
-    // render,
+    render,
   ]
 }
 
