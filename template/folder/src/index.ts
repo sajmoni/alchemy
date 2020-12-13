@@ -35,7 +35,7 @@ gameElement.append(app.renderer.view)
 const languageCode = ls.get('language') || DEFAULT_LANGUAGE
 state.application.language = languageCode
 
-app.loader.add('spritesheet/spritesheet.json')
+app.loader.add('asset/spritesheet/spritesheet.json')
 
 initializeGameLoop()
 

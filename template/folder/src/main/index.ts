@@ -3,7 +3,8 @@ import * as l1 from 'l1'
 import MessageType from '../constant/messageType'
 
 const initializeGame = () => {
-  const worker = new Worker('../worker/index.ts')
+  // The worker is built separately so this path is the built path
+  const worker = new Worker('./worker/index.js')
 
   worker.postMessage({
     type: MessageType.TO_WORKER.INITIALIZE_WORKER,

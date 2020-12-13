@@ -39,9 +39,10 @@ const devDependencies = [
   'eslint-plugin-lodash-fp@2.2.0-a1',
   // * --
   // * Module bundling
-  'esbuild@0.8.16',
+  'esbuild@0.8.22',
   'serve-handler@6.1.3',
   'fs-extra@9.0.1',
+  'chalk@4.1.0',
   // * --
   '@babel/preset-env@7.12.1',
   // * --

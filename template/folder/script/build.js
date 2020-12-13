@@ -1,5 +1,6 @@
 const { build } = require('esbuild')
 const fs = require('fs-extra')
+const chalk = require('chalk')
 
 // TODO: Use dotenv to read env?
 const env = {
@@ -18,21 +19,28 @@ const define = Object.fromEntries(
 )
 
 const buildOptions = {
-  entryPoints: ['src/index.ts'],
+  entryPoints: ['src/index.ts', 'src/worker/index.ts'],
   bundle: true,
-  outdir: 'dist',
+  outdir: 'build',
   define,
   loader: {
     '.wav': 'file',
   },
 }
 
-build(buildOptions).catch(() => process.exit(1))
-
-try {
-  fs.copySync('public', buildOptions.outdir)
-
-  console.log(`Success! Build to ${buildOptions.outdir}`)
-} catch (error) {
-  throw new Error(`Could not copy public files: ${error}`)
+const run = async () => {
+  try {
+    await build(buildOptions)
+    fs.copySync('public/asset', `${buildOptions.outdir}/asset`)
+  
+    console.log()
+    console.log(chalk.green(`   Success!`))
+    console.log(`   Built to ${chalk.cyan(buildOptions.outdir)}`)
+    console.log()
+  } catch (error) {
+    console.log(chalk.red(`Could not copy public files: ${error}`))
+    process.exit(1)
+  }
 }
+
+run()
