@@ -11,8 +11,8 @@ const displayDoneMessage = require('./message/done')
 
 const dependencies = [
   // * Rendering
-  'pixi.js@5.3.3',
-  'pixi-ex@0.0.11',
+  'pixi.js@5.3.6',
+  'pixi-ex@0.0.12',
   'pixi-particles@4.3.0',
   // * --
   // * Sound
@@ -25,22 +25,23 @@ const dependencies = [
   // * --
   // * Util
   'lodash@4.17.20',
-  'state-prism@0.0.3',
+  'state-prism@0.0.5',
+  'tiny-toolkit@0.0.7',
   'mousetrap@1.6.5',
   'dot-prop@6.0.1',
 ]
 
 const devDependencies = [
   // * Code quality
-  'xo@0.34.2',
-  'typescript@4.0.5',
+  'xo@0.36.1',
+  'typescript@4.1.2',
   'husky@4.3.0',
   'lint-staged@10.5.2',
   'eslint-plugin-lodash-fp@2.2.0-a1',
   'eslint-plugin-fp@2.3.0',
   // * --
   // * Module bundling
-  'esbuild@0.8.22',
+  'esbuild@0.8.26',
   'serve-handler@6.1.3',
   'fs-extra@9.0.1',
   'chalk@4.1.0',

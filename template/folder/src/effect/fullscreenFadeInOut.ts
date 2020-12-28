@@ -15,7 +15,7 @@ const fullscreenFadeInOut = async () =>
     fade.zIndex = 1
     app.stage.addChild(fade)
 
-    const behavior = l1.every(fadeInOut(fade, DURATION, resolve), DURATION)
+    const behavior = l1.every(fadeInOut(fade, DURATION, resolve as () => void), DURATION)
     behavior.id = ID
   })
 
@@ -29,7 +29,7 @@ const fadeInOut = (
     duration,
     height: 1,
   })
-  return (counter: number) => {
+  return (counter: number): () => void => {
     const alpha = animation(counter)
 
     graphics

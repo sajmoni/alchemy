@@ -14,7 +14,7 @@ type Options = {
 const fadeOut = async (
   displayObject: PIXI.DisplayObject,
   { resolveAt = 0.5, duration = DURATION, endValue = END_VALUE }: Options = {},
-) =>
+): Promise<void> =>
   new Promise((resolve) => {
     const getAlpha = juice.easeOut({
       startValue: 1,
