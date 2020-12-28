@@ -43,6 +43,7 @@ const initializeDebugTools = () => {
 
   if (process.env.NODE_ENV === 'development' && process.env.DEBUG) {
     const gridGraphics = new PIXI.Graphics()
+    gridGraphics.zIndex = 1
     app.stage.addChild(gridGraphics)
     ex.showGrid({
       graphics: gridGraphics,
