@@ -2,7 +2,7 @@ import * as l1 from 'l1'
 
 import MessageType from '../constant/messageType'
 
-const initializeGame = () => {
+const initializeWorker = () => {
   // The worker is built separately so this path is the built path
   const worker = new Worker('./worker/index.js')
 
@@ -17,8 +17,7 @@ const initializeGame = () => {
     })
   })
 
-  // eslint-disable-next-line unicorn/prefer-add-event-listener
-  worker.onmessage = ({ data: { type, payload } }) => {
+  worker.addEventListener('message', ({ data: { type, payload } }) => {
     switch (type) {
       case MessageType.FROM_WORKER.WORKER_INITIALIZED:
         console.log('main: worker initialized', payload)
@@ -27,7 +26,7 @@ const initializeGame = () => {
       default:
         break
     }
-  }
+  })
 }
 
-export default initializeGame
+export default initializeWorker

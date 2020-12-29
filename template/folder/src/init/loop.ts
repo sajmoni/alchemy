@@ -1,11 +1,12 @@
 import * as l1 from 'l1'
 import MainLoop from 'mainloop.js'
+import { getAverage, roundTo } from 'tiny-toolkit'
 
-import app from './app'
-import state from './state'
+import app from '../app'
+import state from '../state'
 
-let updateDurations: number[] = []
-let drawDurations: number[] = []
+const updateDurations: number[] = []
+const drawDurations: number[] = []
 
 const initializeGameLoop = () => {
   if (process.env.NODE_ENV === 'development' && process.env.DEBUG) {
@@ -56,27 +57,16 @@ const initializeGameLoop = () => {
   })
 }
 
-const getAverage = (list: number[]): number => {
-  // eslint-disable-next-line unicorn/no-reduce
-  const average = list.reduce((acc, ts) => acc + ts, 0) / (list.length || 1)
+const makeGetAverageDuration = (list: number[]) => () => {
+  const averages = roundTo(getAverage(list), 3)
 
-  return Number.parseFloat(average.toFixed(3))
+  list.length = 0
+
+  return averages
 }
 
-export const getAverageUpdateDuration = () => {
-  const averageUpdateDuration = getAverage(updateDurations)
+export const getAverageUpdateDuration = makeGetAverageDuration(updateDurations)
 
-  updateDurations = []
-
-  return averageUpdateDuration
-}
-
-export const getAverageDrawDuration = () => {
-  const averageDrawDuration = getAverage(drawDurations)
-
-  drawDurations = []
-
-  return averageDrawDuration
-}
+export const getAverageDrawDuration = makeGetAverageDuration(drawDurations)
 
 export default initializeGameLoop

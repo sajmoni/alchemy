@@ -25,9 +25,9 @@ export const text = (string: string, textStyle?: PIXI.TextStyle): PIXI.Text => {
   if (textStyle) {
     t.style = textStyle
   }
-  
+
   ex.makeResizable(t)
-  
+
   t.anchor.set(0.5)
 
   return t

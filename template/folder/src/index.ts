@@ -4,16 +4,17 @@ import * as l1 from 'l1'
 import MainLoop from 'mainloop.js'
 
 import app from './app'
-import initializeGame from './main'
 import state from './state'
-
 import useAutoPause from './util/useAutoPause'
-import { TextStyle, Render, Language, Scene } from './constant'
+import { TextStyle, Render, Language } from './constant'
 import * as ls from './util/storage'
-import initializeGameLoop from './loop'
-import initializeDebugTools from './debug'
+
+import initializeGameLoop from './init/loop'
+import initializeDebugTools from './init/debug'
 import initializeObjectPool from './util/objectPool'
-import initializeSceneHandler from './main/scene'
+import initializeSceneHandler from './init/sceneHandler'
+import initializeWorker from './init/worker'
+import initializeSound from './init/sound'
 
 const FONT = 'patchy-robots'
 const DEFAULT_LANGUAGE = Language.EN.code
@@ -68,7 +69,8 @@ document.fonts
       initializeDebugTools()
       initializeObjectPool()
       initializeSceneHandler()
-      initializeGame()
+      initializeWorker()
+      initializeSound()
 
       l1.once(() => {
         loadingContainer.destroy()

@@ -2,6 +2,7 @@ import * as PIXI from 'pixi.js'
 import * as juice from 'juice.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
+import * as prism from 'state-prism'
 
 import * as pixi from '../../pixi'
 import state from '../../state'
@@ -12,14 +13,14 @@ import { name as gameTitle } from '../../../package.json'
 import { clickBlink, easeOutToPosition } from '../../effect'
 import { SceneArgs } from '../../type/scene'
 
-const mainMenu = ({ container, subscribe }: SceneArgs) => {
+const mainMenu = ({ container }: SceneArgs) => {
   const titleText = pixi.text(
     gameTitle,
     new PIXI.TextStyle({ ...TextStyle.MAIN, fontSize: 25 }),
   )
 
   titleText.anchor.set(0.5)
-  titleText.x =  Render.GAME_WIDTH / 2
+  titleText.x = Render.GAME_WIDTH / 2
   titleText.y = Render.GAME_HEIGHT / 3
 
   container.addChild(titleText)
@@ -66,14 +67,11 @@ const mainMenu = ({ container, subscribe }: SceneArgs) => {
   container.addChild(startGameButton)
 
   const [settings, renderSettings] = createSettings()
-  // @ts-expect-error
   container.addChild(settings)
 
-  subscribe('application.settingsVisible', (settingsVisible) => {
-    // @ts-expect-error
+  prism.subscribe('application.settingsVisible', (settingsVisible) => {
     renderSettings(settingsVisible)
   })
-  // @ts-expect-error
   renderSettings(state.application.settingsVisible)
 }
 

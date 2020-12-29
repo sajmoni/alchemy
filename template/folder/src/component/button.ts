@@ -38,10 +38,7 @@ const button = ({
     // noop
   }
 
-  return [
-    component,
-    render,
-  ]
+  return [component, render]
 }
 
 export default button

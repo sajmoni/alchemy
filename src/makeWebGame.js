@@ -20,7 +20,7 @@ const dependencies = [
   // * --
   // * Game logic
   'juice.js@2.0.0',
-  'l1@0.7.0',
+  'l1@0.7.1',
   'mainloop.js@1.0.4',
   // * --
   // * Util
@@ -41,7 +41,7 @@ const devDependencies = [
   'eslint-plugin-fp@2.3.0',
   // * --
   // * Module bundling
-  'esbuild@0.8.26',
+  'esbuild@0.8.27',
   'serve-handler@6.1.3',
   'fs-extra@9.0.1',
   'chalk@4.1.0',

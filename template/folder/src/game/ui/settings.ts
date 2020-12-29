@@ -33,7 +33,7 @@ const CENTER_COLUMN = (width / 4) * 2
 // TODO Add message: "Data is only stored in your browser, if you
 // erase your browser cache, all data will be lost."
 
-const settings = () => {
+const settings = (): [PIXI.Container, (visible: boolean) => void] => {
   const component = new PIXI.Container()
   component.zIndex = 10
   component.visible = false

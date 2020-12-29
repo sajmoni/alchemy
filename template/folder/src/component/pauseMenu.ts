@@ -30,8 +30,8 @@ const createPauseMenu = ({
       fontSize: 8,
     }),
   )
-  ex.centerX(text, width / 2)
-  ex.centerY(text, height / 2)
+  text.x = width / 2
+  text.y = height / 2
   container.addChild(text)
 
   const render = (paused: boolean) => {
