@@ -13,25 +13,25 @@ import { clickBlink, easeOutToPosition } from '../../effect'
 import { SceneArgs } from '../../type/scene'
 
 const mainMenu = ({ container, subscribe }: SceneArgs) => {
-  const text = pixi.text(
+  const titleText = pixi.text(
     gameTitle,
     new PIXI.TextStyle({ ...TextStyle.MAIN, fontSize: 25 }),
   )
 
-  text.anchor.x = 0.4
-  ex.centerX(text, Render.GAME_WIDTH / 2)
-  ex.centerY(text, Render.GAME_HEIGHT / 3)
+  titleText.anchor.set(0.5)
+  titleText.x =  Render.GAME_WIDTH / 2
+  titleText.y = Render.GAME_HEIGHT / 3
 
-  container.addChild(text)
+  container.addChild(titleText)
 
-  const getScale = juice.sine({
+  const getFontSize = juice.sine({
     duration: 240,
-    startValue: text.scale.x,
-    endValue: text.scale.x * 1.15,
+    startValue: titleText.style.fontSize,
+    endValue: titleText.style.fontSize * 1.15,
   })
 
   l1.forever((counter) => {
-    text.scale.set(getScale(counter))
+    titleText.style.fontSize = getFontSize(counter)
   })
 
   const [settingsButton] = button({
