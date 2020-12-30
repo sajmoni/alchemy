@@ -1,5 +1,5 @@
 import * as PIXI from 'pixi.js'
-import { bar, slider, button, select } from '../../component'
+import { bar, slider, button, select } from '../../ui'
 import { Lab } from '../type'
 
 const component = ({ app, container }: Lab) => {

@@ -2,8 +2,8 @@ import * as PIXI from 'pixi.js'
 import * as prism from 'state-prism'
 
 /* PLOP_INJECT_IMPORT */
-import mainMenu from '../game/scene/mainMenu'
-import game from '../game/scene/game'
+import mainMenu from '../scene/mainMenu'
+import game from '../scene/game'
 import { Scene } from '../constant'
 import app from '../app'
 import { SceneArgs } from '../type/scene'
