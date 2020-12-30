@@ -6,29 +6,39 @@ import mainMenu from '../scene/mainMenu'
 import game from '../scene/game'
 import { Scene } from '../constant'
 import app from '../app'
-import { SceneArgs } from '../type/scene'
+import { RenderScene, SceneArgs } from '../type/scene'
 import state from '../state'
 
-const sceneHandler: Record<Scene, (sceneArgs: SceneArgs) => void> = {
+const sceneHandler: Record<Scene, (sceneArgs: SceneArgs) => RenderScene | void> = {
   /* PLOP_INJECT_SCENE */
   [Scene.MAIN_MENU]: mainMenu,
   [Scene.GAME]: game,
 }
 
 let container: PIXI.Container
+let unsubscribeFunctions: prism.unsubscribe[] = []
 
 const initializeSceneHandler = () => {
   const loadScene = (scene: Scene) => {
     if (container) {
       container.destroy()
     }
+    unsubscribeFunctions.forEach((unsubscribe) => {unsubscribe()})
+    unsubscribeFunctions = []
 
     container = new PIXI.Container()
     app.stage.addChild(container)
 
-    sceneHandler[scene]({
+    const render = sceneHandler[scene]({
       container,
     })
+    
+    if (render) {
+      Object.entries(render).forEach(([path, subscribe]) => {
+        const unsubscribe = prism.subscribe(path, subscribe)
+        unsubscribeFunctions.push(unsubscribe)
+      })
+    }
   }
 
   prism.subscribe('scene', loadScene)

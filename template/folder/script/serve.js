@@ -76,11 +76,9 @@ serveEsbuild()
 
 server.listen(3000, () => {
   console.log()
-  console.log(chalk.green(`   Dev server started!`))
+  console.log(`${chalk.green(`   Dev server started at `)}${chalk.cyan('http://localhost:3000')}`)
   console.log()
   console.log(`   Serving directory: ${chalk.cyan(directoryToServe)}`)
   console.log(`   Bundle entry point: ${chalk.cyan(bundleEntryPoint)}`)
-  console.log()
-  console.log(`   Running at ${chalk.cyan('http://localhost:3000')}`)
   console.log()
 })

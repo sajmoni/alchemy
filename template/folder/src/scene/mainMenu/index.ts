@@ -2,7 +2,6 @@ import * as PIXI from 'pixi.js'
 import * as juice from 'juice.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
-import * as prism from 'state-prism'
 
 import * as pixi from '../../pixi'
 import state from '../../state'
@@ -11,9 +10,9 @@ import { button } from '../../ui'
 import createSettings from '../../ui/settings'
 import { name as gameTitle } from '../../../package.json'
 import { clickBlink, easeOutToPosition } from '../../effect'
-import { SceneArgs } from '../../type/scene'
+import { RenderScene, SceneArgs } from '../../type/scene'
 
-const mainMenu = ({ container }: SceneArgs) => {
+const mainMenu = ({ container }: SceneArgs): RenderScene | void => {
   const titleText = pixi.text(
     gameTitle,
     new PIXI.TextStyle({ ...TextStyle.MAIN, fontSize: 25 }),
@@ -69,10 +68,11 @@ const mainMenu = ({ container }: SceneArgs) => {
   const [settings, renderSettings] = createSettings()
   container.addChild(settings)
 
-  prism.subscribe('application.settingsVisible', (settingsVisible) => {
-    renderSettings(settingsVisible)
-  })
   renderSettings(state.application.settingsVisible)
+
+  return {
+    'application.settingsVisible': renderSettings
+  }
 }
 
 export default mainMenu

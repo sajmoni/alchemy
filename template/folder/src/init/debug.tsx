@@ -110,6 +110,12 @@ const initializeDebugTools = () => {
             console.log('state:', prism.target(state))
           }}
         />
+        <Button
+          label="Log subscribers"
+          onClick={() => {
+            console.log('subscribers:', prism.getSubscribers())
+          }}
+        />
         <Checkbox
           label="Pause game"
           onClick={(checked) => {

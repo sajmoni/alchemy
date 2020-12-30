@@ -2,16 +2,15 @@ import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
 import * as particles from 'pixi-particles'
-import * as prism from 'state-prism'
 
 import state from '../../state'
 import { Render } from '../../constant'
 import { bar, pauseMenu } from '../../ui'
 import { explosion } from '../../particles'
-import { SceneArgs } from '../../type/scene'
+import { RenderScene, SceneArgs } from '../../type/scene'
 import { expand } from '../../effect'
 
-const game = ({ container }: SceneArgs) => {
+const game = ({ container }: SceneArgs): RenderScene | void => {
   const sprite = new PIXI.Sprite(ex.getTexture('square1'))
   sprite.x = 10
   sprite.y = Render.GAME_HEIGHT / 2
@@ -28,24 +27,11 @@ const game = ({ container }: SceneArgs) => {
     void expand(sprite)
   }, 180)
 
-  prism.subscribe('square.x', (x) => {
-    sprite.x = x
-  })
-
-  prism.subscribe('square.angle', (angle) => {
-    sprite.angle = angle
-  })
-
   const [manaBar, renderManaBar] = bar({
     initialValue: 1,
   })
   manaBar.position.set(50, 10)
   container.addChild(manaBar)
-
-  prism.subscribe('bar', (bar) => {
-    // value / max
-    renderManaBar(bar / 100)
-  })
 
   const particleContainer = new PIXI.Container()
   particleContainer.position.set(200, 50)
@@ -63,10 +49,22 @@ const game = ({ container }: SceneArgs) => {
     width: Render.GAME_WIDTH,
     height: Render.GAME_HEIGHT,
   })
-  prism.subscribe('application.paused', (paused) => {
-    renderPauseMenu(paused)
-  })
+  
   container.addChild(_pauseMenu)
+
+  return {
+    'application.paused': renderPauseMenu,
+    'bar': (bar: number) => {
+      // value / max
+      renderManaBar(bar / 100)
+    },
+    'square.x': (x: number) => {
+      sprite.x = x
+    },
+    'square.angle': (angle: number) => {
+      sprite.angle = angle
+    }
+  }
 }
 
 export default game

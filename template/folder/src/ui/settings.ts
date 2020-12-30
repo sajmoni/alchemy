@@ -1,6 +1,5 @@
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
-import * as prism from 'state-prism'
 
 import state from '../state'
 import { Render, TextStyle } from '../constant'
@@ -129,12 +128,13 @@ const settings = (): [PIXI.Container, (visible: boolean) => void] => {
   // languagePicker.position.set(RIGHT_COLUMN, SOUND_Y)
   // component.addChild(languagePicker)
 
-  prism.subscribe('application.volume.sound', (newVolume) => {
-    renderSoundSlider(newVolume)
-  })
-  prism.subscribe('application.volume.music', (newVolume) => {
-    renderMusicSlider(newVolume)
-  })
+  // TODO: Handle this so that settings can be called without creating new subscribers
+  // prism.subscribe('application.volume.sound', (newVolume) => {
+  //   renderSoundSlider(newVolume)
+  // })
+  // prism.subscribe('application.volume.music', (newVolume) => {
+  //   renderMusicSlider(newVolume)
+  // })
 
   const [doneButton] = button({
     textStyle: new PIXI.TextStyle(TextStyle.MAIN),
