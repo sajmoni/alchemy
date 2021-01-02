@@ -13,12 +13,12 @@ import renderPanel, {
 import * as prism from 'state-prism'
 import React from 'react'
 
-import app from '../app'
-import Sound from '../sound'
-import state from '../state'
+import app from '/app'
+import Sound from '/sound'
+import state from '/state'
+import { Scene } from '/constant'
+import * as ls from '/util/storage'
 import { getAverageUpdateDuration, getAverageDrawDuration } from './loop'
-import { Scene } from '../constant'
-import * as ls from '../util/storage'
 
 declare global {
   interface Window {

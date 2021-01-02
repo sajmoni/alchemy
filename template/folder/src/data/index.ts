@@ -1,4 +1,4 @@
-import { Data as DataType } from '../type/data'
+import { Data as DataType } from '/type/data'
 
 const Data: DataType[] = [
   {

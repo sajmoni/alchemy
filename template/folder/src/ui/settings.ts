@@ -1,16 +1,17 @@
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
-import state from '../state'
-import { Render, TextStyle } from '../constant'
-// import select from '../../component/select'
-// import { save } from '../../util/storage'
+import state from '/state'
+import { Render, TextStyle } from '/constant'
+// import { save } from '/util/storage'
+import Sound from '/sound'
+import * as pixi from '/pixi'
+import app from '/app'
+import { fadeOut } from '/effect'
+
+// import select from './select'
 import { slider } from '.'
-import Sound from '../sound'
-import * as pixi from '../pixi'
-import app from '../app'
 import button from './button'
-import { fadeOut } from '../effect'
 
 const Color = {
   BACKGROUND: '#aaaaaa',

@@ -2,12 +2,12 @@ import * as PIXI from 'pixi.js'
 import * as prism from 'state-prism'
 
 /* PLOP_INJECT_IMPORT */
-import mainMenu from '../scene/mainMenu'
-import game from '../scene/game'
-import { Scene } from '../constant'
-import app from '../app'
-import { RenderScene, SceneArgs } from '../type/scene'
-import state from '../state'
+import mainMenu from '/scene/mainMenu'
+import game from '/scene/game'
+import { Scene } from '/constant'
+import app from '/app'
+import { RenderScene, SceneArgs } from '/type/scene'
+import state from '/state'
 
 const sceneHandler: Record<Scene, (sceneArgs: SceneArgs) => RenderScene | void> = {
   /* PLOP_INJECT_SCENE */

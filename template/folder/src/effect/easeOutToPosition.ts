@@ -1,7 +1,7 @@
 import * as l1 from 'l1'
 import * as juice from 'juice.js'
 import * as PIXI from 'pixi.js'
-import { Position } from '../type/position'
+import { Position } from '/type/position'
 
 const DEFAULT_DURATION = 45
 

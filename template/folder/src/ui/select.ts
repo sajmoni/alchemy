@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
-import { container, text } from '../pixi'
+
+import { container, text } from '/pixi'
 
 type render = (selectedValue: string) => void
 

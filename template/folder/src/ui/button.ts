@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
-import * as pixi from '../pixi'
+import * as pixi from '/pixi'
 
 type ButtonOptions = {
   label: string
