@@ -11,7 +11,7 @@ const displayDoneMessage = require('./message/done')
 
 const dependencies = [
   // * Rendering
-  'pixi.js@5.3.6',
+  'pixi.js@5.3.7',
   'pixi-ex@0.0.12',
   'pixi-particles@4.3.0',
   // * --
@@ -19,7 +19,7 @@ const dependencies = [
   'howler@2.2.1',
   // * --
   // * Game logic
-  'juice.js@2.0.0',
+  'juice.js@2.0.1',
   'l1@0.7.1',
   'mainloop.js@1.0.4',
   // * --
@@ -33,17 +33,16 @@ const dependencies = [
 
 const devDependencies = [
   // * Code quality
-  'xo@0.36.1',
-  'typescript@4.1.2',
-  'husky@4.3.0',
-  'lint-staged@10.5.2',
+  'xo@0.37.1',
+  'typescript@4.1.3',
+  'husky@4.3.6',
+  'lint-staged@10.5.4',
   'eslint-plugin-lodash-fp@2.2.0-a1',
   'eslint-plugin-fp@2.3.0',
   // * --
   // * Module bundling
-  'esbuild@0.8.27',
-  'serve-handler@6.1.3',
-  'fs-extra@9.0.1',
+  'esbuild@0.8.46',
+  'fs-extra@9.1.0',
   'chalk@4.1.0',
   // * --
   '@babel/preset-env@7.12.1',
@@ -58,8 +57,8 @@ const devDependencies = [
   'plop@2.7.4',
   'muncher@0.0.13',
   '@babel/preset-typescript@7.12.1',
-  '@types/node@14.14.6',
-  '@types/lodash@4.14.165',
+  '@types/node@14.14.19',
+  '@types/lodash@4.14.167',
   '@types/howler@2.2.1',
   '@types/mainloop.js@1.0.5',
   '@types/mousetrap@1.6.4',
@@ -69,7 +68,7 @@ const devDependencies = [
   'styled-components@5.2.1',
   '@types/react@16.9.55',
   '@types/react-dom@16.9.9',
-  '@types/styled-components@5.1.4',
+  '@types/styled-components@5.1.7',
   'eslint-config-xo-react@0.23.0',
   'eslint-plugin-react@7.21.5',
   'eslint-plugin-react-hooks@4.2.0',
