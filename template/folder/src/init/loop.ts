@@ -3,13 +3,14 @@ import MainLoop from 'mainloop.js'
 import { getAverage, roundTo } from 'tiny-toolkit'
 
 import app from '/app'
+import env from '/env'
 import state from '/state'
 
 const updateDurations: number[] = []
 const drawDurations: number[] = []
 
-const initializeGameLoop = () => {
-  if (process.env.NODE_ENV === 'development' && process.env.DEBUG) {
+const initializeGameLoop = (): void => {
+  if (env.DEBUG) {
     MainLoop.setUpdate((deltaTime) => {
       if (state.application.paused) {
         return

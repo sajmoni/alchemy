@@ -8,6 +8,7 @@ import state from '/state'
 import useAutoPause from '/util/useAutoPause'
 import { TextStyle, Render, Language } from '/constant'
 import * as ls from '/util/storage'
+import env from './env'
 
 import initializeGameLoop from '/init/loop'
 import initializeDebugTools from '/init/debug'
@@ -19,8 +20,7 @@ import initializeSound from '/init/sound'
 const FONT = 'patchy-robots'
 const DEFAULT_LANGUAGE = Language.EN.code
 
-const VERSION = process.env.VERSION ?? 'N/A'
-console.log(`Version: ${VERSION}`)
+console.log(`Version: ${env.VERSION}`)
 // const ERROR_LOGGING = process.env.ERROR_LOGGING || false
 
 const GAME_SELECTOR = '#game'

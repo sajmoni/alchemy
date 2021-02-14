@@ -1,23 +1,7 @@
+#!/usr/bin/env node
+
 const { serve, build } = require('esbuild')
-const handler = require('serve-handler')
-const http = require('http')
 const chalk = require('chalk')
-
-// TODO: Use dotenv to read env?
-const env = {
-  NODE_ENV: 'development',
-  // TODO: Decide what do to with VERSION
-  VERSION: 1,
-  DEBUG: true,
-}
-// TODO: Typesafety for process.env
-// https://stackoverflow.com/questions/45194598/using-process-env-in-typescript
-
-const define = Object.fromEntries(
-  Object.entries(env).map(([key, value]) => {
-    return [`process.env.${key}`, JSON.stringify(value)]
-  }),
-)
 
 const directoryToServe = process.argv[2]
 const bundleEntryPoint = process.argv[3]
@@ -28,12 +12,15 @@ if (!directoryToServe) {
 }
 
 if (!bundleEntryPoint) {
-  console.log(chalk.red('serve requires the bundle entry point as the second argument'))
+  console.log(
+    chalk.red('serve requires the bundle entry point as the second argument'),
+  )
   process.exit(1)
 }
 
 const serveOptions = {
   port: 8000,
+  servedir: directoryToServe,
   onRequest: () => {
     // Might be able to change this once web workers are supported in esbuild
     build({
@@ -49,7 +36,9 @@ const buildOptions = {
   bundle: true,
   incremental: true,
   outdir: directoryToServe,
-  define,
+  define: {
+    'process.env.NODE_ENV': '"development"',
+  },
   loader: {
     '.wav': 'file',
   },
@@ -62,23 +51,18 @@ const serveEsbuild = async () => {
   })
   const esbuildUrl = `http://${serveResult.host}:${serveResult.port}`
   console.log(
-    `   esbuild serving javascript on ${chalk.cyan(esbuildUrl)}`,
+    `${chalk.green(`   Dev server started at `)}${chalk.cyan(
+      chalk.cyan(esbuildUrl),
+    )}`,
   )
+  console.log()
   await serveResult.wait
   serveResult.stop()
 }
 
-const server = http.createServer((request, response) => {
-  return handler(request, response, { public: directoryToServe })
-})
-
 serveEsbuild()
 
-server.listen(3000, () => {
-  console.log()
-  console.log(`${chalk.green(`   Dev server started at `)}${chalk.cyan('http://localhost:3000')}`)
-  console.log()
-  console.log(`   Serving directory: ${chalk.cyan(directoryToServe)}`)
-  console.log(`   Bundle entry point: ${chalk.cyan(bundleEntryPoint)}`)
-  console.log()
-})
+console.log()
+console.log(`   Serving directory: ${chalk.cyan(directoryToServe)}`)
+console.log(`   Bundle entry point: ${chalk.cyan(bundleEntryPoint)}`)
+console.log()

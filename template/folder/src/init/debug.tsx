@@ -19,6 +19,7 @@ import state from '/state'
 import { Scene } from '/constant'
 import * as ls from '/util/storage'
 import { getAverageUpdateDuration, getAverageDrawDuration } from './loop'
+import env from '/env'
 
 declare global {
   interface Window {
@@ -41,7 +42,7 @@ const initializeDebugTools = () => {
     },
   }
 
-  if (process.env.NODE_ENV === 'development' && process.env.DEBUG) {
+  if (env.DEBUG) {
     const gridGraphics = new PIXI.Graphics()
     gridGraphics.zIndex = 1
     app.stage.addChild(gridGraphics)
