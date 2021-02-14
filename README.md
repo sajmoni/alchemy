@@ -12,11 +12,11 @@
 
 Generates a modular template to get started making 2D games that run in the browser. All libraries can be switched out for other ones that you prefer. These are just some good defaults.
 
-Some reasons to make a browser based game instead of using other game dev tools:
+Some reasons to make a browser based game:
 
-  - :muscle: You are already comfortable using JavaScript / TypeScript
+  - :rocket: You want to use TypeScript / JavaScript
   - :package: All packages on `npm` are available
-  - :globe_with_meridians: Very easy to distribute (for example by uploading the build to itch.io)
+  - :globe_with_meridians: Very easy to distribute (for example by uploading the build to [`itch.io`](https://itch.io/))
 
 ---
 
@@ -164,10 +164,6 @@ my-game/
 ```
 
 <!-- ## Options
-
-`--no-electron` (TODO)
-
-Exclude electron from the game
 
 `--verbose` (TODO)
 
