@@ -64,23 +64,23 @@
     "release": "yarn clean && yarn qa && yarn audit && yarn build && np --no-tests"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "16.0.0",
+    "@rollup/plugin-commonjs": "17.1.0",
     "@rollup/plugin-json": "4.1.0",
     "husky": "4.3.0",
-    "lint-staged": "10.5.1",
-    "np": "7.0.0",
-    "rollup": "2.33.1",
+    "lint-staged": "10.5.4",
+    "np": "7.4.0",
+    "rollup": "2.39.0",
     "rollup-plugin-copy": "3.3.0",
-    "typescript": "4.0.5",
-    "xo": "0.34.2"
+    "typescript": "4.1.5",
+    "xo": "0.37.1"
   },
   "dependencies": {
-    "cfonts": "2.8.6",
+    "cfonts": "2.9.1",
     "chalk": "4.1.0",
-    "commander": "6.2.0",
-    "execa": "4.1.0",
-    "fs-extra": "9.0.1",
+    "commander": "7.0.0",
+    "execa": "5.0.0",
+    "fs-extra": "9.1.0",
     "listr": "0.14.3",
-    "mustache": "4.0.1"
+    "mustache": "4.1.0"
   }
 }

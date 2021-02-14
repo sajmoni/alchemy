@@ -6,7 +6,7 @@ import lab from './lab'
 import effect from './effect'
 import particles from './particles'
 
-module.exports = (plop) => {
+module.exports = (plop): void => {
   plop.setGenerator('Component', component)
   plop.setGenerator('Scene', scene)
   plop.setGenerator('Constant', constant)
