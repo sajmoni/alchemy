@@ -34,7 +34,7 @@ const button = ({
   label.anchor.set(0)
   component.addChild(label)
 
-  const render = () => {
+  const render = (): void => {
     // noop
   }
 

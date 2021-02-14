@@ -1,6 +1,6 @@
 import { MessageType } from '/constant'
 
-onmessage = ({ data: { type, payload: _ } }) => {
+onmessage = ({ data: { type, payload: _ } }): void => {
   switch (type) {
     case MessageType.TO_WORKER.INITIALIZE_WORKER:
       // @ts-expect-error

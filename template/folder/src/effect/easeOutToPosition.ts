@@ -29,7 +29,7 @@ const easeOutToPosition = async (
       displayObject.y = Math.floor(getY(counter))
       displayObject.x = Math.floor(getX(counter))
 
-      return () => {
+      return (): void => {
         resolve()
       }
     }, duration)

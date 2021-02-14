@@ -27,7 +27,7 @@ const fadeIn = async (
         resolve()
       }
 
-      return () => {
+      return (): void => {
         displayObject.alpha = endValue
       }
     }, duration)

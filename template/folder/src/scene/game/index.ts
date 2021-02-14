@@ -49,21 +49,21 @@ const game = ({ container }: SceneArgs): RenderScene | void => {
     width: Render.GAME_WIDTH,
     height: Render.GAME_HEIGHT,
   })
-  
+
   container.addChild(_pauseMenu)
 
   return {
     'application.paused': renderPauseMenu,
-    'bar': (bar: number) => {
+    bar: (bar: number): void => {
       // value / max
       renderManaBar(bar / 100)
     },
-    'square.x': (x: number) => {
+    'square.x': (x: number): void => {
       sprite.x = x
     },
-    'square.angle': (angle: number) => {
+    'square.angle': (angle: number): void => {
       sprite.angle = angle
-    }
+    },
   }
 }
 

@@ -4,7 +4,7 @@ import dotProp from 'dot-prop'
 import * as ls from '/util/storage'
 import { Resolution, Scene } from '/constant'
 
-type State = {
+export type State = {
   application: {
     volume: {
       sound: number
@@ -54,7 +54,7 @@ const DATA_TO_LOAD_FROM_STORAGE: LoadData[] = [
   },
 ]
 
-const loadDataFromStorage = () => {
+const loadDataFromStorage = (): void => {
   DATA_TO_LOAD_FROM_STORAGE.forEach(({ path, defaultValue }) => {
     const restoredValue = ls.get(path)
     dotProp.set(state, path, restoredValue ?? defaultValue)

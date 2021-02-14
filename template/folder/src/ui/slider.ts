@@ -34,7 +34,7 @@ const slider = ({
   plus.x = 50
   component.addChild(plus)
 
-  const render = (value: string) => {
+  const render = (value: string): void => {
     text.text = value
   }
 

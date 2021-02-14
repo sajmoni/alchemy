@@ -43,6 +43,7 @@ module.exports = ({ projectName }) => {
       plugins: ['lodash-fp', 'fp'],
       env: ['browser', 'es2020', 'node'],
       rules: {
+        '@typescript-eslint/explicit-function-return-type': 'off',
         'fp/no-arguments': 'error',
         'fp/no-class': 'error',
         'fp/no-delete': 'error',
@@ -69,6 +70,14 @@ module.exports = ({ projectName }) => {
           },
         ],
       },
+      overrides: [
+        {
+          files: ['**/*.ts', '**/*.tsx'],
+          rules: {
+            '@typescript-eslint/explicit-function-return-type': 'error',
+          },
+        },
+      ],
     },
     husky: {
       hooks: {

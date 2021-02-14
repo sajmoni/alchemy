@@ -9,11 +9,11 @@ export const isKeyDown = (keyCode: string): boolean => {
   return pressed[keyCode]
 }
 
-function _onKeyDown(key: string) {
+function _onKeyDown(key: string): void {
   pressed[key] = true
 }
 
-function _onKeyUp(key: string) {
+function _onKeyUp(key: string): void {
   pressed[key] = false
 }
 

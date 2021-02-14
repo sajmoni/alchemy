@@ -15,7 +15,7 @@ import React from 'react'
 
 import app from '/app'
 import Sound from '/sound'
-import state from '/state'
+import state, { State } from '/state'
 import { Scene } from '/constant'
 import * as ls from '/util/storage'
 import { getAverageUpdateDuration, getAverageDrawDuration } from './loop'
@@ -27,17 +27,19 @@ declare global {
   }
 }
 
-const initializeDebugTools = () => {
+type ConsoleInfo = Record<string, any>
+
+const initializeDebugTools = (): void => {
   // * These commands can be run in the console, e.g: 'debug.state()'
   window.debug = {
     ...window.debug,
-    state: () => state,
-    info: () => ({
+    state: (): State => state,
+    info: (): ConsoleInfo => ({
       'display objects': ex.getAllChildren(app.stage).length,
       'amount of behaviors': l1.getAll().length,
       behaviors: l1.getAll(),
     }),
-    sound: () => {
+    sound: (): void => {
       Sound.SWORD_01.play()
     },
   }
@@ -58,7 +60,7 @@ const initializeDebugTools = () => {
       value: scene,
     }))
 
-    const DebugPanel = () => (
+    const DebugPanel = (): JSX.Element => (
       <>
         <NumericValue
           label="FPS"
@@ -66,25 +68,25 @@ const initializeDebugTools = () => {
             value: 59,
             when: 'below',
           }}
-          getValue={() => Math.round(MainLoop.getFPS())}
+          getValue={(): number => Math.round(MainLoop.getFPS())}
         />
         <NumericValue
           label="Behaviors"
-          getValue={() => l1.getAll().length}
+          getValue={(): number => l1.getAll().length}
           warnAt={{
             value: 99,
           }}
         />
         <NumericValue
           label="Display objects"
-          getValue={() => ex.getAllChildren(app.stage).length}
+          getValue={(): number => ex.getAllChildren(app.stage).length}
           warnAt={{
             value: 999,
           }}
         />
         <NumericValue
           label="State subscribers"
-          getValue={() => prism.getSubscriberCount()}
+          getValue={(): number => prism.getSubscriberCount()}
           warnAt={{
             value: 99,
           }}
@@ -103,36 +105,36 @@ const initializeDebugTools = () => {
             value: 5,
           }}
         />
-        <StringValue label="Scene" getValue={() => state.scene} />
+        <StringValue label="Scene" getValue={(): string => state.scene} />
         <Divider />
         <Button
           label="Log state"
-          onClick={() => {
+          onClick={(): void => {
             console.log('state:', prism.target(state))
           }}
         />
         <Button
           label="Log subscribers"
-          onClick={() => {
+          onClick={(): void => {
             console.log('subscribers:', prism.getSubscribers())
           }}
         />
         <Checkbox
           label="Pause game"
-          onClick={(checked) => {
+          onClick={(checked): void => {
             state.application.paused = checked
           }}
         />
         <Checkbox
           label="Mute sounds"
-          onClick={(checked) => {
+          onClick={(checked): void => {
             // TODO: Set volume to 0
             console.log('sounds muted:', checked)
           }}
         />
         <Checkbox
           label="Show grid"
-          onClick={(checked) => {
+          onClick={(checked): void => {
             if (checked) {
               gridGraphics.visible = true
             } else {
@@ -144,7 +146,7 @@ const initializeDebugTools = () => {
           initialValue={state.scene}
           dropdownLabel="Scene"
           items={scenes}
-          onChange={(value) => {
+          onChange={(value): void => {
             state.scene = value as Scene
             ls.set('scene', value)
           }}

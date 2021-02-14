@@ -150,7 +150,7 @@ const settings = (): [PIXI.Container, (visible: boolean) => void] => {
 
   app.stage.addChild(component)
 
-  const render = (visible: boolean) => {
+  const render = (visible: boolean): void => {
     if (visible) {
       component.visible = true
       overlay.visible = true

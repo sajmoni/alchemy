@@ -58,7 +58,7 @@ const initializeGameLoop = (): void => {
   })
 }
 
-const makeGetAverageDuration = (list: number[]) => () => {
+const makeGetAverageDuration = (list: number[]) => (): number => {
   const averages = roundTo(getAverage(list), 3)
 
   list.length = 0

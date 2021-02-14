@@ -25,7 +25,7 @@ const initializeObjectPool = ({
   containers = 100,
   graphics = 100,
   texts = 100,
-}: ObjectPoolOptions = {}) => {
+}: ObjectPoolOptions = {}): void => {
   _.times(() => {
     const as = new PIXI.AnimatedSprite([ex.getTexture('square1')])
     _animatedSprites.push(as)
@@ -52,7 +52,7 @@ const initializeObjectPool = ({
   }, texts)
 }
 
-export const getAnimatedSprite = () => {
+export const getAnimatedSprite = (): PIXI.AnimatedSprite => {
   const as = _animatedSprites.pop()
   if (as) {
     return as
@@ -66,7 +66,7 @@ export const getAnimatedSprite = () => {
   return newAnimatedSprite
 }
 
-export const getSprite = () => {
+export const getSprite = (): PIXI.Sprite => {
   const s = _sprites.pop()
   if (s) {
     return s
@@ -80,7 +80,7 @@ export const getSprite = () => {
   return newSprite
 }
 
-export const getText = () => {
+export const getText = (): PIXI.Text => {
   const t = _texts.pop()
   if (t) {
     return t
@@ -96,7 +96,7 @@ export const getText = () => {
 /**
  * When done with an object, put it back into the pool
  */
-export const putBack = (container: PIXI.Container) => {
+export const putBack = (container: PIXI.Container): void => {
   if (container instanceof PIXI.AnimatedSprite) {
     _animatedSprites.push(container)
   } else if (container instanceof PIXI.Sprite) {

@@ -10,27 +10,29 @@ type Options = {
   readonly interval?: number
 }
 
-const blink = (
+const blink = async (
   displayObject: PIXI.DisplayObject,
   { duration = DEFAULT_DURATION, interval = DEFAULT_INTERVAL }: Options = {},
-) => {
-  let show = false
-  const blink = l1.forever((counter) => {
-    if (show) {
-      displayObject.visible = false
-      show = false
-    } else {
-      displayObject.visible = true
-      show = true
-    }
+): Promise<void> =>
+  new Promise((resolve) => {
+    let show = false
+    const blink = l1.forever((counter) => {
+      if (show) {
+        displayObject.visible = false
+        show = false
+      } else {
+        displayObject.visible = true
+        show = true
+      }
 
-    if (counter === duration * interval) {
-      l1.remove(blink)
-      displayObject.visible = true
-    }
-  }, interval)
+      if (counter === duration * interval) {
+        l1.remove(blink)
+        displayObject.visible = true
+        resolve()
+      }
+    }, interval)
 
-  blink.id = `blink-${displayObject.name}`
-}
+    blink.id = `blink-${displayObject.name}`
+  })
 
 export default blink

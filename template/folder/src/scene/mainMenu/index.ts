@@ -71,7 +71,7 @@ const mainMenu = ({ container }: SceneArgs): RenderScene | void => {
   renderSettings(state.application.settingsVisible)
 
   return {
-    'application.settingsVisible': renderSettings
+    'application.settingsVisible': renderSettings,
   }
 }
 

@@ -10,8 +10,8 @@ const BEHAVIORS_TO_KEEP = new Set(['fullscreenFadeInOut', 'debug'])
 const clickBlink = async (
   displayObject: PIXI.DisplayObject,
   otherObjects: readonly PIXI.DisplayObject[],
-) => {
-  blink(displayObject)
+): Promise<void> => {
+  void blink(displayObject)
   return Promise.all(
     otherObjects.map(async (otherObject) => {
       return fadeOut(otherObject)

@@ -33,7 +33,7 @@ const createPauseMenu = ({
   text.y = height / 2
   container.addChild(text)
 
-  const render = (paused: boolean) => {
+  const render = (paused: boolean): void => {
     if (paused) {
       container.visible = true
     } else {

@@ -9,7 +9,7 @@ const DURATION = 35
 
 const ID = 'fullscreenFadeInOut'
 
-const fullscreenFadeInOut = async () =>
+const fullscreenFadeInOut = async (): Promise<void> =>
   new Promise((resolve) => {
     const fade = new PIXI.Graphics()
     fade.zIndex = 1
@@ -22,11 +22,13 @@ const fullscreenFadeInOut = async () =>
     behavior.id = ID
   })
 
+type FadeInOutReturnType = (counter: number) => () => void
+
 const fadeInOut = (
   graphics: PIXI.Graphics,
   duration: number,
   resolve: () => void,
-) => {
+): FadeInOutReturnType => {
   let hasResolved = false
   const animation = juice.parabola({
     duration,
@@ -47,7 +49,7 @@ const fadeInOut = (
       resolve()
     }
 
-    return () => {
+    return (): void => {
       graphics.destroy()
     }
   }

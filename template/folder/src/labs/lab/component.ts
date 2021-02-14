@@ -4,7 +4,7 @@ import { bar, slider, button, select } from '/ui'
 
 import { Lab } from '../type'
 
-const component = ({ app, container }: Lab) => {
+const component = ({ app, container }: Lab): void => {
   // Bar
   let value = 1
   const [_bar, renderBar] = bar()

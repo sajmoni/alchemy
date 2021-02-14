@@ -25,7 +25,7 @@ const expand = async (
       const scale = getScale(time)
       displayObject.scale.set(scale)
 
-      return () => {
+      return (): void => {
         displayObject.scale.set(startValue)
         resolve()
       }

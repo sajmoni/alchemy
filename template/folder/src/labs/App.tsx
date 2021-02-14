@@ -31,7 +31,7 @@ const defaultPadding = css`
 `
 
 const Button = styled.div<{ selected: boolean }>`
-  background-color: ${({ selected }) =>
+  background-color: ${({ selected }): string =>
     selected ? Color.BLUE : Color.LIGHTER_GRAY};
 
   cursor: pointer;
@@ -48,7 +48,11 @@ const Title = styled.div`
 
 const PIXI_ID = 'pixi'
 
-const App = ({ labData }: { labData: Record<string, (lab: Lab) => void> }) => {
+const App = ({
+  labData,
+}: {
+  labData: Record<string, (lab: Lab) => void>
+}): JSX.Element => {
   const [selectedLab, setSelectedLab] = useState<string | undefined>(undefined)
   const [app, setApp] = useState<PIXI.Application | undefined>(undefined)
 
@@ -62,12 +66,12 @@ const App = ({ labData }: { labData: Record<string, (lab: Lab) => void> }) => {
       height: 600,
     })
 
-    const onAssetsLoaded = () => {
+    const onAssetsLoaded = (): void => {
       ex.init(app)
       setApp(app)
     }
 
-    app.loader.add('spritesheet/spritesheet.json')
+    app.loader.add('asset/spritesheet/spritesheet.json')
     app.loader.load(onAssetsLoaded)
 
     const element = document.querySelector(`#${PIXI_ID}`)
@@ -98,7 +102,7 @@ const App = ({ labData }: { labData: Record<string, (lab: Lab) => void> }) => {
   }, [selectedLab, app, labData])
 
   useEffect(() => {
-    const restored = ls.get(STORAGE_KEY)
+    const restored = ls.get(STORAGE_KEY) as string
     if (restored && labKeys.includes(restored)) {
       setSelectedLab(restored)
     } else {
@@ -123,7 +127,7 @@ const App = ({ labData }: { labData: Record<string, (lab: Lab) => void> }) => {
             <Button
               key={labKey}
               selected={selectedLab === labKey}
-              onClick={() => {
+              onClick={(): void => {
                 setSelectedLab(labKey)
               }}
             >

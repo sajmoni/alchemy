@@ -36,7 +36,7 @@ const select = ({
     return { textObject, value }
   })
 
-  const render = (selectedValue: string) => {
+  const render = (selectedValue: string): void => {
     optionObjects.forEach(({ textObject, value }) => {
       if (value === selectedValue) {
         textObject.style.fill = 'red'

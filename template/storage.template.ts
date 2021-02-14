@@ -2,13 +2,13 @@ const keyPrefix = '{{ projectName }}'
 
 const { localStorage } = window
 
-const prefixKey = (key: string) => `${keyPrefix}.${key}`
+const prefixKey = (key: string): string => `${keyPrefix}.${key}`
 
 export const set = (key: string, object: any): void => {
   localStorage.setItem(prefixKey(key), JSON.stringify(object))
 }
 
-export const get = (key: string): any => {
+export const get = (key: string): unknown => {
   const restored = localStorage.getItem(prefixKey(key))
   return restored ? JSON.parse(restored) : null
 }

@@ -1,14 +1,14 @@
 import state from '/state'
 
-const pause = () => {
+const pause = (): void => {
   state.application.paused = true
 }
 
-const play = () => {
+const play = (): void => {
   state.application.paused = false
 }
 
-const autoPauseIfTabInactive = () => {
+const autoPauseIfTabInactive = (): void => {
   window.addEventListener('visibilitychange', () => {
     if (document.hidden) {
       pause()
@@ -18,12 +18,12 @@ const autoPauseIfTabInactive = () => {
   })
 }
 
-const autoPauseIfWindowNotFocused = () => {
+const autoPauseIfWindowNotFocused = (): void => {
   window.addEventListener('blur', pause)
   window.addEventListener('focus', play)
 }
 
-const useAutoPause = () => {
+const useAutoPause = (): void => {
   autoPauseIfTabInactive()
   autoPauseIfWindowNotFocused()
 }
