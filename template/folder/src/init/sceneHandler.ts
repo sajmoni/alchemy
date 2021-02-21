@@ -4,7 +4,7 @@ import * as prism from 'state-prism'
 /* PLOP_INJECT_IMPORT */
 import mainMenu from '/scene/mainMenu'
 import game from '/scene/game'
-import { Scene } from '/constant'
+import { Scene } from '/enum'
 import app from '/app'
 import { RenderScene, SceneArgs } from '/type/scene'
 import state from '/state'

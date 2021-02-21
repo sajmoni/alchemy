@@ -6,7 +6,7 @@ import MainLoop from 'mainloop.js'
 import app from '/app'
 import state from '/state'
 import useAutoPause from '/util/useAutoPause'
-import { TextStyle, Render, Language } from '/constant'
+import { TextStyle, Render, Language } from '/enum'
 import * as ls from '/util/storage'
 import env from './env'
 

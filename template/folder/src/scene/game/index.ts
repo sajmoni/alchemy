@@ -4,13 +4,13 @@ import * as l1 from 'l1'
 import * as particles from 'pixi-particles'
 
 import state from '/state'
-import { Render } from '/constant'
+import { Render } from '/enum'
 import { bar, pauseMenu } from '/ui'
 import { explosion } from '/particles'
 import { RenderScene, SceneArgs } from '/type/scene'
 import { expand } from '/effect'
 
-const game = ({ container }: SceneArgs): RenderScene | void => {
+const game = ({ container }: SceneArgs): RenderScene => {
   const sprite = new PIXI.Sprite(ex.getTexture('square1'))
   sprite.x = 10
   sprite.y = Render.GAME_HEIGHT / 2

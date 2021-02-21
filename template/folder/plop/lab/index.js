@@ -6,7 +6,7 @@ module.exports = {
     {
       type: 'input',
       name: 'name',
-      message: 'Enter name (camelCase):',
+      message: 'Enter name:',
     },
   ],
   actions: () => {
@@ -19,14 +19,14 @@ module.exports = {
       },
       {
         type: 'append',
-        path: `../labs/App.js`,
+        path: `../labs/index.ts`,
         pattern: `/* PLOP_INJECT_IMPORT */`,
         template: `import {{camelCase name}}Lab from './lab/{{camelCase name}}'`,
         abortOnFail: true,
       },
       {
         type: 'append',
-        path: `../labs/App.js`,
+        path: `../labs/index.ts`,
         pattern: `/* PLOP_INJECT_LAB */`,
         template: `  {{camelCase name}}: {{camelCase name}}Lab,`,
       },

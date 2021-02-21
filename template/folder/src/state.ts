@@ -2,7 +2,7 @@ import * as prism from 'state-prism'
 import dotProp from 'dot-prop'
 
 import * as ls from '/util/storage'
-import { Resolution, Scene } from '/constant'
+import { Resolution, Scene } from '/enum'
 
 export type State = {
   application: {

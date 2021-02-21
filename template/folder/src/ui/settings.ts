@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
 import state from '/state'
-import { Render, TextStyle } from '/constant'
+import { Render, TextStyle } from '/enum'
 // import { save } from '/util/storage'
 import Sound from '/sound'
 import * as pixi from '/pixi'

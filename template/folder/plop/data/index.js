@@ -19,20 +19,20 @@ module.exports = {
       },
       {
         type: 'add',
-        path: `../src/constant/{{camelCase name}}Type.ts`,
+        path: `${BASE_PATH}/{{camelCase name}}Type.ts`,
         templateFile: `./data/type.hbs`,
         abortOnFail: true,
       },
       {
         type: 'append',
-        path: `../src/constant/index.js`,
+        path: `${BASE_PATH}/index.js`,
         pattern: `/* PLOP_INJECT_IMPORT */`,
         template: `import {{pascalCase name}}Type from './{{camelCase name}}Type'`,
         abortOnFail: true,
       },
       {
         type: 'append',
-        path: `../src/constant/index.js`,
+        path: `${BASE_PATH}/index.js`,
         pattern: `/* PLOP_INJECT_EXPORT */`,
         template: `  {{pascalCase name}}Type,`,
       },

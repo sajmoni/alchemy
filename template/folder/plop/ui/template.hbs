@@ -2,10 +2,9 @@ import * as PIXI from 'pixi.js'
 
 type render = () => void
 
-{{!-- TODO: New name for this --}}
-type arguments = {}
+type {{ pascalCase name }}Options = {}
 
-const create{{ properCase name }} = ({}: arguments): [PIXI.Container, render] => {
+const create{{ properCase name }} = ({}: {{ pascalCase name }}Options): [PIXI.Container, render] => {
   const container = new PIXI.Container()
 
   const render = () => {}

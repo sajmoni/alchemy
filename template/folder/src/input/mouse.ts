@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
 
-import { Mouse } from '/constant'
+import { Mouse } from '/enum'
 
 type Data = {
   x: number

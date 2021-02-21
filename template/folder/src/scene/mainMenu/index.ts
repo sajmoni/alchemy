@@ -5,14 +5,14 @@ import * as l1 from 'l1'
 
 import * as pixi from '/pixi'
 import state from '/state'
-import { Render, TextStyle, Scene } from '/constant'
+import { Render, TextStyle, Scene } from '/enum'
 import { button } from '/ui'
 import createSettings from '/ui/settings'
 import { name as gameTitle } from '/../package.json'
 import { clickBlink, easeOutToPosition } from '/effect'
 import { RenderScene, SceneArgs } from '/type/scene'
 
-const mainMenu = ({ container }: SceneArgs): RenderScene | void => {
+const mainMenu = ({ container }: SceneArgs): RenderScene => {
   const titleText = pixi.text(
     gameTitle,
     new PIXI.TextStyle({ ...TextStyle.MAIN, fontSize: 25 }),

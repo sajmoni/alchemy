@@ -1,12 +1,12 @@
-const BASE_PATH = '../src/constant'
+const BASE_PATH = '../src/ui'
 
 module.exports = {
-  description: 'A constant',
+  description: 'Reusable UI component',
   prompts: [
     {
       type: 'input',
       name: 'name',
-      message: 'Enter name (camelCase):',
+      message: 'Enter name:',
     },
   ],
   actions: () => {
@@ -14,21 +14,21 @@ module.exports = {
       {
         type: 'add',
         path: `${BASE_PATH}/{{camelCase name}}.ts`,
-        templateFile: './constant/template.hbs',
+        templateFile: './ui/template.hbs',
         abortOnFail: true,
       },
       {
         type: 'append',
-        path: `${BASE_PATH}/index.js`,
+        path: `${BASE_PATH}/index.ts`,
         pattern: `/* PLOP_INJECT_IMPORT */`,
-        template: `import {{pascalCase name}} from './{{camelCase name}}'`,
+        template: `import {{camelCase name}} from './{{camelCase name}}'`,
         abortOnFail: true,
       },
       {
         type: 'append',
-        path: `${BASE_PATH}/index.js`,
+        path: `${BASE_PATH}/index.ts`,
         pattern: `/* PLOP_INJECT_EXPORT */`,
-        template: `  {{pascalCase name}},`,
+        template: `  {{camelCase name}},`,
       },
     ]
   },
