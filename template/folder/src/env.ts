@@ -1,7 +1,7 @@
 export type Env = {
   DEBUG: boolean
   VERSION: string
-  NODE_ENV: string
+  NODE_ENV: 'development' | 'production'
 }
 
 const production: Env = {
