@@ -32,8 +32,6 @@ jobs:
       - name: Install
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn install --frozen-lockfile
-      - name: Validate data
-        run: yarn validate
       - name: Type Check
         run: yarn tsc
       - name: Lint Check
@@ -46,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: game
-          path: dist
+          path: build
   deploy:
     name: Deploy game
     needs: build
