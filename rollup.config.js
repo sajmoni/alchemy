@@ -11,6 +11,7 @@ export default {
     banner: '#!/usr/bin/env node',
     file: `${OUTPUT_FOLDER}/bundle.js`,
     format: 'cjs',
+    exports: 'default',
   },
   external: [
     'commander',
