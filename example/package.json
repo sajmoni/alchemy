@@ -5,7 +5,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "refresh": "yarn cache clean && yarn add file:../make-web-game.tgz",
+    "refresh": "yarn cache clean make-web-game && rm -rf $(yarn cache dir)/.tmp && yarn add file:../make-web-game.tgz",
     "test-game": "rm -rf test-game && yarn make-web-game test-game",
     "test-all-use-cases": "./test-all-use-cases.sh"
   },
