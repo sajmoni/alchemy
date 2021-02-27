@@ -197,4 +197,5 @@ A list of games bootstrapped using this tool:
 
 ## Requirements
 
-`make-web-game` uses `yarn` and `git` and requires them to be installed on your machine in order to work.
+ - `yarn`: `v1.x`
+ - `git`: `>=v2.28.0`

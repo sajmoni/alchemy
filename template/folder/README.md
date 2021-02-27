@@ -118,20 +118,20 @@ Code that will run in a worker thread.
 
 There are two branches configured with corresponding Github actions workflows
 
-A push to `master` triggers the following pipeline:
+A push to `main` triggers the following pipeline:
 
 - Run all tests, linting and typecheck
 - Build and publish to stage-project on `itch.io`.
-- Increase version number and push it as a tag to `master`
+- Increase version number and push it as a tag to `main`
 
 A push to `release`, triggers the following pipeline
 
 - Run all tests, linting and typecheck
 - Build and publish to production-project on `itch.io`.
-- Increases version number and pushes it as a tag to `master`
+- Increases version number and pushes it as a tag to `main`
 - Generate draft patch notes (?)
 
-If a hotfix in production is needed, then it should be made on the `release` branch and immediately cherry picked to `master`.
+If a hotfix in production is needed, then it should be made on the `release` branch and immediately cherry picked to `main`.
 
 This should generally be avoided and only be done if its really truly needed and can't wait for next release.
 

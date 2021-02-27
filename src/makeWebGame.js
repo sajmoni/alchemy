@@ -112,7 +112,7 @@ module.exports = ({ projectName }) => {
         }
 
         try {
-          execa.sync('git', ['init'])
+          execa.sync('git', ['init', '-b', 'main'])
 
           return true
         } catch (error) {

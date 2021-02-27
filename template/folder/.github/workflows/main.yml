@@ -1,8 +1,8 @@
-name: Run QA on Master
+name: Run QA on Main
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
