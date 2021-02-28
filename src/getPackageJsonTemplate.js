@@ -11,8 +11,7 @@ module.exports = ({ projectName }) => {
       test: 'ava',
       plop: 'plop --plopfile plop/plopfile.ts',
       qa: 'tsc && xo --fix',
-      munch:
-        'muncher --input asset/sprite --output public/spritesheet/spritesheet --flip',
+      ase: './aseprite.sh',
       'elec:start': 'electron .',
       'elec:build':
         'rm -rf dist && parcel build src/index.html --public-url ./ --target electron',

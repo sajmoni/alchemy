@@ -19,7 +19,7 @@ const slider = ({
   const component = new PIXI.Container()
   component.scale.set(0.5)
 
-  const minus = new PIXI.Sprite(ex.getTexture('plus-minus-1'))
+  const minus = new PIXI.Sprite(ex.getTexture('plus-minus-0'))
   minus.x = -50
   minus.anchor.set(0.5)
   ex.makeClickable(minus, onMinus)
@@ -28,7 +28,7 @@ const slider = ({
   const text = pixi.text(initialValue, new PIXI.TextStyle({ fill: 'white' }))
   component.addChild(text)
 
-  const plus = new PIXI.Sprite(ex.getTexture('plus-minus-2'))
+  const plus = new PIXI.Sprite(ex.getTexture('plus-minus-1'))
   plus.anchor.set(0.5)
   ex.makeClickable(plus, onPlus)
   plus.x = 50

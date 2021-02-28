@@ -60,8 +60,6 @@ Some reasons to make a browser based game:
 
 - :zap: [`esbuild`](https://github.com/evanw/esbuild) - Extremely fast bundler and minifier
 
-- :cake: [`muncher`](https://github.com/sajmoni/muncher) - Automatically create sprite sheets from the command line
-
 - :red_circle: [`GitHub actions`](https://github.com/features/actions) workflows to automatically push builds to `itch.io`
 
 - :bulb: [`electron`](https://github.com/electron/electron) - Convert your web game into a desktop application

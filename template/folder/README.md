@@ -147,9 +147,7 @@ Will check the code with the `typescript` compiler and lint check with `xo`.
 
 ### Generate sprite sheet
 
-Put your image files into the `asset/sprite` folder and run `yarn munch` to run `muncher`.
-
-[`muncher`](https://github.com/sajmoni/muncher) automatically generates your sprite sheets for you, provided that have `Texture packer` installed.
+Put your image files into the `asset/sprite` folder and run `yarn ase`.
 
 ---
 

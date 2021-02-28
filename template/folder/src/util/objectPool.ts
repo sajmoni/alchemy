@@ -27,7 +27,7 @@ const initializeObjectPool = ({
   texts = 100,
 }: ObjectPoolOptions = {}): void => {
   _.times(() => {
-    const as = new PIXI.AnimatedSprite([ex.getTexture('square1')])
+    const as = new PIXI.AnimatedSprite([ex.getTexture('square1-0')])
     _animatedSprites.push(as)
   }, animatedSprites)
 
@@ -62,7 +62,9 @@ export const getAnimatedSprite = (): PIXI.AnimatedSprite => {
     'Created new PIXI.AnimatedSprite. You should probably increase the AnimatedSprite object pool!',
   )
 
-  const newAnimatedSprite = new PIXI.AnimatedSprite([ex.getTexture('square1')])
+  const newAnimatedSprite = new PIXI.AnimatedSprite([
+    ex.getTexture('square1-0'),
+  ])
   return newAnimatedSprite
 }
 

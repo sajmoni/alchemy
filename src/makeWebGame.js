@@ -55,7 +55,6 @@ const devDependencies = [
   // * Other
   'nano-panel@0.0.4',
   'plop@2.7.4',
-  'muncher@0.0.13',
   '@babel/preset-typescript@7.12.1',
   '@types/node@14.14.19',
   '@types/lodash@4.14.167',
