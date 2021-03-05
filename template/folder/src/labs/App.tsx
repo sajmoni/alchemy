@@ -71,7 +71,7 @@ const App = ({
       setApp(app)
     }
 
-    app.loader.add('asset/spritesheet/spritesheet.json')
+    app.loader.add('asset/spritesheet/data.json')
     app.loader.load(onAssetsLoaded)
 
     const element = document.querySelector(`#${PIXI_ID}`)

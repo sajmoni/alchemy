@@ -4,7 +4,7 @@ import App from './App'
 import { Lab } from './type'
 
 const initializeLabs = (labData: Record<string, (lab: Lab) => void>): void => {
-  ReactDOM.render(<App labData={labData} />, document.querySelector('#game'))
+  ReactDOM.render(<App labData={labData} />, document.querySelector('#labs'))
 }
 
 export default initializeLabs

@@ -22,7 +22,7 @@ body {
 
 /* This won't work with resizing */
 /* TODO: Make this dynamic? */
-canvas {
+#game {
   width: 640px;
   height: 360px;
 }
