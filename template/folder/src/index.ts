@@ -10,12 +10,12 @@ import { TextStyle, Render, Language } from '/enum'
 import * as ls from '/util/storage'
 import env from './env'
 
-import initializeGameLoop from '/init/loop'
-import initializeDebugTools from '/init/debug'
+import initializeGameLoop from './core/loop'
+import initializeDebugTools from './core/debug'
 import initializeObjectPool from '/util/objectPool'
-import initializeSceneHandler from '/init/sceneHandler'
-import initializeWorker from '/init/worker'
-import initializeSound from '/init/sound'
+import initializeSceneHandler from './core/sceneHandler'
+import initializeWorker from './core/worker'
+import initializeSound from './core/sound'
 
 const FONT = 'patchy-robots'
 const DEFAULT_LANGUAGE = Language.EN.code
