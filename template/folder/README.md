@@ -13,11 +13,11 @@ This game was initially created with [`make-web-game`](https://github.com/sajmon
 - [My web game](#my-web-game)
 - [Documentation](#documentation)
   - [Folder structure](#folder-structure)
-    - [Components](#components)
+    - [ui](#ui)
       - [Configuration](#configuration)
     - [Effects](#effects)
     - [Data](#data)
-    - [Main](#main)
+    - [Scene](#scene)
     - [Worker](#worker)
   - [Git branching](#git-branching)
   - [QA](#qa)
@@ -32,8 +32,6 @@ This game was initially created with [`make-web-game`](https://github.com/sajmon
   - [Web worker](#web-worker)
   - [Input](#input)
     - [Keyboard](#keyboard)
-    - [Mouse](#mouse)
-    - [GamePad](#gamepad)
   - [Labs](#labs)
   - [Performance Tips](#performance-tips)
     - [Lodash](#lodash)
@@ -58,9 +56,17 @@ This game was initially created with [`make-web-game`](https://github.com/sajmon
 
 ### Folder structure
 
-#### Components
+#### ui
 
-The `component` folder contains a collection of Pixi UI Components.
+The `ui` folder contains a collection of Pixi UI Components.
+
+A UI Component is a function that returns an `array` with two elements.
+
+- The first one is a `Pixi.DisplayObject` that you need to add to a `Pixi.Container` (for example your stage).
+
+- The second one is a `render` function. Call this whenever you want to re-render your component. (For example due to a state update)
+
+*Example*
 
 ```js
 const [playButton, renderPlayButton] = button()
@@ -69,12 +75,6 @@ app.stage.addChild(playButton)
 
 renderPlayButton()
 ```
-
-A component is a function that returns an array with two elements.
-
-- The first one is a `Pixi.DisplayObject` that you need to add to a `Pixi.Container` (for example your stage).
-
-- The second one is a `render` function. You need to call this every time you want to re-render your component. (For example due to a state update)
 
 ##### Configuration
 
@@ -102,11 +102,13 @@ The template includes the following effects:
 
 #### Data
 
-JSON data that your game uses. Data in this folder can be validated by running `yarn validate`.
+JSON data that your game uses.
 
-#### Main
+#### Scene
 
-Code that will run in the main thread.
+Put `scenes` here.
+
+A `Scene` has the following type signature:
 
 #### Worker
 
@@ -177,16 +179,15 @@ Electron allows you to create an executable file for PC and Mac. This can then b
 
 Sentry captures exceptions and errors in your game and uploads them to `sentry.io`.
 
-TODO: how to use / configure
-
 ---
 
 ### Debug overlay
 
-Set `DEBUG` to `true` in `src/index.js` to display an overlay with debug information.
+Set `DEBUG` to `true` in `src/env.ts` to display an overlay with debug information.
+
 This overlay can be customized to show any information you want.
 
-TODO: Link to nano-overlay
+[Docs](https://github.com/sajmoni/nano-panel)
 
 ---
 
@@ -197,12 +198,12 @@ Sounds are preloaded with `Howler`.
 Example usage:
 
 ```js
-import Sound from './sound'
+import Sound from '/sound'
 
 Sound.SWORD_01.play()
 ```
 
-Add sounds to `src/sound/index.js`
+Add sound files to `public/asset` and reference them in `src/sound/index.ts`
 
 ---
 
@@ -252,17 +253,7 @@ A `web worker` is run in a separate thread and allows you to run code concurrent
 
 #### Keyboard
 
-Keyboard input uses `mousetrap`
-
-TODO
-
-#### Mouse
-
-TODO
-
-#### GamePad
-
-TODO
+Keyboard input uses [`mousetrap`](https://github.com/ccampbell/mousetrap)
 
 ---
 
@@ -284,9 +275,7 @@ Be careful when using `lodash`. Though it is a very useful and convenient tool, 
 
 #### Draw calls
 
-Try to keep your `draw calls` low. Inspect your scene with `SpectorJS` occasionally to verify.
-
-TODO: Link to an external resource
+Try to keep your `draw calls` low. You can inspect your game with [`SpectorJS`](https://github.com/BabylonJS/Spector.js) occasionally to verify.
 
 #### Immutability
 
@@ -294,23 +283,13 @@ Try not to use immutability too much. Immutability has its benefits in many situ
 
 ### Object pool
 
-Creating and destroying pixi objects can be bad for performance. It is especially bad since it will trigger Garbage Collection that might make your game lag occasionally.
-
-TODO: How to use the object pool
+Creating and destroying pixi objects can be bad for performance. It is especially bad since it will trigger Garbage Collection that might make your game lag occasionally. Try to reuse your pixi display objects instead of creating new ones. 
 
 ---
 
 ### Marketing
 
 - Install [Gifski](https://sindresorhus.com/gifski) to generate GIFs on Mac.
-
-Screenshots (TODO)
-
-Game play videos / trailers (TODO)
-
-Pitch (One sentence, Paragraph and long) (TODO)
-
-Hooks (TODO)
 
 ---
 
@@ -362,8 +341,6 @@ text.filters = [new filters.CRTFilter()]
 
 #### Utils
 
-[tiny-toolkit](https://github.com/sajmoni/tiny-toolkit) - Useful utility functions
-
 [nanoid](https://github.com/ai/nanoid) - Unique string ID generator
 
 #### Events
@@ -383,7 +360,5 @@ text.filters = [new filters.CRTFilter()]
 ---
 
 ### Misc
-
-- Content in the `static` folder will be copied over to `dist` without being bundled. This is used for sprite sheets.
 
 - For pixel perfect rendering: uncomment lines in `src/app.js`
