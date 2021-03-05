@@ -65,13 +65,18 @@ const mainMenu = ({ container }: SceneArgs): RenderScene => {
   ex.centerX(startGameButton, Render.GAME_WIDTH / 2)
   container.addChild(startGameButton)
 
-  const [settings, renderSettings] = createSettings()
+  const [
+    settings,
+    { renderSettings, renderSoundSlider, renderMusicSlider },
+  ] = createSettings()
   container.addChild(settings)
 
   renderSettings(state.application.settingsVisible)
 
   return {
     'application.settingsVisible': renderSettings,
+    'application.volume.music': renderMusicSlider,
+    'application.volume.sound': renderSoundSlider,
   }
 }
 

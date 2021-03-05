@@ -33,7 +33,14 @@ const CENTER_COLUMN = (width / 4) * 2
 // TODO Add message: "Data is only stored in your browser, if you
 // erase your browser cache, all data will be lost."
 
-const settings = (): [PIXI.Container, (visible: boolean) => void] => {
+const settings = (): [
+  PIXI.Container,
+  {
+    renderSettings: (visible: boolean) => void
+    renderSoundSlider: any
+    renderMusicSlider: any
+  },
+] => {
   const component = new PIXI.Container()
   component.zIndex = 10
   component.visible = false
@@ -129,14 +136,6 @@ const settings = (): [PIXI.Container, (visible: boolean) => void] => {
   // languagePicker.position.set(RIGHT_COLUMN, SOUND_Y)
   // component.addChild(languagePicker)
 
-  // TODO: Handle this so that settings can be called without creating new subscribers
-  // prism.subscribe('application.volume.sound', (newVolume) => {
-  //   renderSoundSlider(newVolume)
-  // })
-  // prism.subscribe('application.volume.music', (newVolume) => {
-  //   renderMusicSlider(newVolume)
-  // })
-
   const [doneButton] = button({
     textStyle: new PIXI.TextStyle(TextStyle.MAIN),
     label: `Done`,
@@ -150,7 +149,7 @@ const settings = (): [PIXI.Container, (visible: boolean) => void] => {
 
   app.stage.addChild(component)
 
-  const render = (visible: boolean): void => {
+  const renderSettings = (visible: boolean): void => {
     if (visible) {
       component.visible = true
       overlay.visible = true
@@ -163,7 +162,7 @@ const settings = (): [PIXI.Container, (visible: boolean) => void] => {
     }
   }
 
-  return [component, render]
+  return [component, { renderSettings, renderSoundSlider, renderMusicSlider }]
 }
 
 const makeVolumeSlider = ({
