@@ -11,7 +11,7 @@ const displayDoneMessage = require('./message/done')
 
 const dependencies = [
   // * Rendering
-  'pixi.js@5.3.7',
+  'pixi.js@6.0.0',
   'pixi-ex@0.0.12',
   'pixi-particles@4.3.0',
   // * --
@@ -24,7 +24,7 @@ const dependencies = [
   'mainloop.js@1.0.4',
   // * --
   // * Util
-  'lodash@4.17.20',
+  'lodash@4.17.21',
   'state-prism@0.0.5',
   'tiny-toolkit@0.0.7',
   'mousetrap@1.6.5',
@@ -41,14 +41,14 @@ const devDependencies = [
   'eslint-plugin-fp@2.3.0',
   // * --
   // * Module bundling
-  'esbuild@0.8.46',
+  'esbuild@0.8.56',
   'fs-extra@9.1.0',
   'chalk@4.1.0',
   // * --
   '@babel/preset-env@7.12.1',
   // * --
   // * Testing
-  'ava@3.13.0',
+  'ava@3.15.0',
   '@babel/register@7.12.1',
   '@babel/core@7.12.3',
   // * --
