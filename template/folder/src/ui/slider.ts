@@ -3,6 +3,8 @@ import * as ex from 'pixi-ex'
 
 import * as pixi from '/pixi'
 
+const iconDistance = 25
+
 type render = (value: string) => void
 
 type SliderOptions = {
@@ -19,20 +21,21 @@ const slider = ({
   const component = new PIXI.Container()
 
   const minus = new PIXI.Sprite(ex.getTexture('plus-minus-1'))
-  minus.x = -50
-  minus.scale.set(2)
+  minus.x = -iconDistance
   minus.anchor.set(0.5)
   ex.makeClickable(minus, onMinus)
   component.addChild(minus)
 
-  const text = pixi.text(initialValue, new PIXI.TextStyle({ fill: 'white' }))
+  const text = pixi.text(
+    initialValue,
+    new PIXI.TextStyle({ fill: 'white', fontSize: 16 }),
+  )
   component.addChild(text)
 
   const plus = new PIXI.Sprite(ex.getTexture('plus-minus-0'))
-  plus.scale.set(2)
   plus.anchor.set(0.5)
   ex.makeClickable(plus, onPlus)
-  plus.x = 50
+  plus.x = iconDistance
   component.addChild(plus)
 
   const render = (value: string): void => {

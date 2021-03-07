@@ -53,7 +53,7 @@ const settings = (): [
 
   const overlay = new PIXI.Graphics()
   overlay
-    .beginFill(PIXI.utils.string2hex('#000000'), 0.5)
+    .beginFill(PIXI.utils.string2hex('#000000'), 0.8)
     .drawRect(
       -((Render.GAME_WIDTH - width) / 2),
       -((Render.GAME_HEIGHT - height) / 2),
