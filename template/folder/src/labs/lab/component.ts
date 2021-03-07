@@ -21,11 +21,11 @@ const component = ({ app, container }: Lab): void => {
     initialValue: sliderValue.toString(),
     onMinus: () => {
       sliderValue -= 1
-      renderSlider(sliderValue.toString())
+      renderSlider(sliderValue)
     },
     onPlus: () => {
       sliderValue += 1
-      renderSlider(sliderValue.toString())
+      renderSlider(sliderValue)
     },
   })
   _slider.position.set(200, 400)

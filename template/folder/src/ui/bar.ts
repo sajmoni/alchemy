@@ -1,8 +1,8 @@
 import * as PIXI from 'pixi.js'
 
-const HEIGHT = 7
+import { UIComponent } from '/type/ui'
 
-type render = (value: number) => void
+const HEIGHT = 7
 
 type BarOptions = {
   initialValue?: number
@@ -18,7 +18,7 @@ const bar = ({
   offColor = '#ff00ff',
   backgroundColor = '#000000',
   width = 100,
-}: BarOptions = {}): [PIXI.Container, render] => {
+}: BarOptions = {}): UIComponent<number> => {
   const component = new PIXI.Graphics()
 
   const paddedWidth = width + 2

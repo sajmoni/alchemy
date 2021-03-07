@@ -2,8 +2,7 @@ import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
 import { container, text } from '/pixi'
-
-type render = (selectedValue: string) => void
+import { UIComponent } from '/type/ui'
 
 type Option = {
   value: string
@@ -20,7 +19,7 @@ const select = ({
   options,
   onClick,
   title,
-}: SelectOptions): [PIXI.Container, render] => {
+}: SelectOptions): UIComponent<string> => {
   const component = container()
 
   const titleText = text(title, new PIXI.TextStyle({ fill: 'white' }))

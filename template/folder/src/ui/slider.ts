@@ -2,10 +2,9 @@ import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
 import * as pixi from '/pixi'
+import { UIComponent } from '/type/ui'
 
 const iconDistance = 25
-
-type render = (value: string) => void
 
 type SliderOptions = {
   initialValue: string
@@ -17,7 +16,7 @@ const slider = ({
   initialValue,
   onMinus,
   onPlus,
-}: SliderOptions): [PIXI.Container, render] => {
+}: SliderOptions): UIComponent<number> => {
   const component = new PIXI.Container()
 
   const minus = new PIXI.Sprite(ex.getTexture('plus-minus-1'))
@@ -38,8 +37,8 @@ const slider = ({
   plus.x = iconDistance
   component.addChild(plus)
 
-  const render = (value: string): void => {
-    text.text = value
+  const render = (value: number): void => {
+    text.text = value.toString()
   }
 
   return [component, render]

@@ -1,8 +1,7 @@
 import * as PIXI from 'pixi.js'
 
 import * as pixi from '/pixi'
-
-type render = (paused: boolean) => void
+import { UIComponent } from '/type/ui'
 
 const createPauseMenu = ({
   width,
@@ -10,7 +9,7 @@ const createPauseMenu = ({
 }: {
   width: number
   height: number
-}): [PIXI.Container, render] => {
+}): UIComponent<boolean> => {
   const container = new PIXI.Container()
   container.zIndex = 1
   container.visible = false

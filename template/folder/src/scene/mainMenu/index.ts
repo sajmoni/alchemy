@@ -26,8 +26,8 @@ const mainMenu = ({ container }: SceneArgs): RenderScene => {
 
   const getFontSize = juice.sine({
     duration: 240,
-    startValue: titleText.style.fontSize,
-    endValue: titleText.style.fontSize * 1.15,
+    startValue: titleText.style.fontSize as number,
+    endValue: (titleText.style.fontSize as number) * 1.15,
   })
 
   l1.forever((counter) => {

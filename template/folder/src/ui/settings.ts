@@ -8,10 +8,10 @@ import Sound from '/sound'
 import * as pixi from '/pixi'
 import app from '/app'
 import { fadeOut } from '/effect'
-
 // import select from './select'
 import { slider } from '.'
 import button from './button'
+import { UIComponent } from '/type/ui'
 
 const Color = {
   BACKGROUND: '#aaaaaa',
@@ -37,8 +37,8 @@ const settings = (): [
   PIXI.Container,
   {
     renderSettings: (visible: boolean) => void
-    renderSoundSlider: any
-    renderMusicSlider: any
+    renderSoundSlider: (volume: number) => void
+    renderMusicSlider: (volume: number) => void
   },
 ] => {
   const component = new PIXI.Container()
@@ -179,7 +179,7 @@ const makeVolumeSlider = ({
   onMinus: () => void
   onPlus: () => void
   label: string
-}): [PIXI.Container, (value: string) => void] => {
+}): UIComponent<number> => {
   const container = new PIXI.Container()
 
   container.position.set(x, y)

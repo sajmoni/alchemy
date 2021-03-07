@@ -2,6 +2,7 @@ import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
 import * as pixi from '/pixi'
+import { UIComponent } from '/type/ui'
 
 type ButtonOptions = {
   label: string
@@ -10,14 +11,12 @@ type ButtonOptions = {
   backgroundTexture?: PIXI.Texture
 }
 
-type render = () => void
-
 const button = ({
   label: labelString,
   onClick,
   textStyle,
   backgroundTexture = undefined,
-}: ButtonOptions): [PIXI.Container, render] => {
+}: ButtonOptions): UIComponent<void> => {
   const component = new PIXI.Container()
 
   ex.makeClickable(component, () => {
