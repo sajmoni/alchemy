@@ -1,5 +1,5 @@
 body {
-  font-family: 'patchy-robots' sans-serif;
+  font-family: 'Press Start 2P' sans-serif;
   background-color: black;
   margin: 0px;
 }
@@ -29,6 +29,6 @@ body {
 
 @font-face {
   /* TODO: Replace with free font */
-  font-family: 'patchy-robots';
-  src: url('./font/patchy-robots.ttf');
+  font-family: 'Press Start 2P';
+  src: url('./font/PressStart2P-Regular.ttf');
 }

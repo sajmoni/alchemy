@@ -1,6 +1,6 @@
 const TextStyle = {
   MAIN: {
-    fontFamily: 'helvetica',
+    fontFamily: 'Press Start 2P',
     fill: 'white',
     fontSize: 12,
   },

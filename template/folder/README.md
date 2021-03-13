@@ -66,7 +66,7 @@ A UI Component is a function that returns an `array` with two elements.
 
 - The second one is a `render` function. Call this whenever you want to re-render your component. (For example due to a state update)
 
-*Example*
+_Example_
 
 ```js
 const [playButton, renderPlayButton] = button()
@@ -283,7 +283,7 @@ Try not to use immutability too much. Immutability has its benefits in many situ
 
 ### Object pool
 
-Creating and destroying pixi objects can be bad for performance. It is especially bad since it will trigger Garbage Collection that might make your game lag occasionally. Try to reuse your pixi display objects instead of creating new ones. 
+Creating and destroying pixi objects can be bad for performance. It is especially bad since it will trigger Garbage Collection that might make your game lag occasionally. Try to reuse your pixi display objects instead of creating new ones.
 
 ---
 
@@ -319,7 +319,7 @@ const text = new PIXI.Text()
 text.filters = [new filters.CRTFilter()]
 ```
 
- - [pixi-heaven](https://github.com/gameofbombs/pixi-heaven) - Advanced Sprite rendering options
+- [pixi-heaven](https://github.com/gameofbombs/pixi-heaven) - Advanced Sprite rendering options
 
 #### Text
 
