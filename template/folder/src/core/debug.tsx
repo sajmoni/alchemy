@@ -9,9 +9,10 @@ import renderPanel, {
   Checkbox,
   Dropdown,
   StringValue,
+  Panel,
 } from 'nano-panel'
 import * as prism from 'state-prism'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import app from '/app'
 import Sound from '/sound'
@@ -60,99 +61,116 @@ const initializeDebugTools = (): void => {
       value: scene,
     }))
 
-    const DebugPanel = (): JSX.Element => (
-      <>
-        <NumericValue
-          label="FPS"
-          warnAt={{
-            value: 59,
-            when: 'below',
-          }}
-          getValue={(): number => Math.round(MainLoop.getFPS())}
-        />
-        <NumericValue
-          label="Behaviors"
-          getValue={(): number => l1.getAll().length}
-          warnAt={{
-            value: 99,
-          }}
-        />
-        <NumericValue
-          label="Display objects"
-          getValue={(): number => ex.getAllChildren(app.stage).length}
-          warnAt={{
-            value: 999,
-          }}
-        />
-        <NumericValue
-          label="State subscribers"
-          getValue={(): number => prism.getSubscriberCount()}
-          warnAt={{
-            value: 99,
-          }}
-        />
-        <NumericValue
-          label="Loop duration"
-          getValue={getAverageUpdateDuration}
-          warnAt={{
-            value: 5,
-          }}
-        />
-        <NumericValue
-          label="Draw duration"
-          getValue={getAverageDrawDuration}
-          warnAt={{
-            value: 5,
-          }}
-        />
-        <StringValue label="Scene" getValue={(): string => state.scene} />
-        <Divider />
-        <Button
-          label="Log state"
-          onClick={(): void => {
-            console.log('state:', prism.target(state))
-          }}
-        />
-        <Button
-          label="Log subscribers"
-          onClick={(): void => {
-            console.log('subscribers:', prism.getSubscribers())
-          }}
-        />
-        <Checkbox
-          label="Pause game"
-          onClick={(checked): void => {
-            state.application.paused = checked
-          }}
-        />
-        <Checkbox
-          label="Mute sounds"
-          onClick={(checked): void => {
-            // TODO: Set volume to 0
-            console.log('sounds muted:', checked)
-          }}
-        />
-        <Checkbox
-          label="Show grid"
-          onClick={(checked): void => {
-            if (checked) {
-              gridGraphics.visible = true
-            } else {
-              gridGraphics.visible = false
-            }
-          }}
-        />
-        <Dropdown
-          initialValue={state.scene}
-          dropdownLabel="Scene"
-          items={scenes}
-          onChange={(value): void => {
-            state.scene = value as Scene
-            ls.set('scene', value)
-          }}
-        />
-      </>
-    )
+    const DebugPanel = (): JSX.Element => {
+      const [paused, setPaused] = useState(state.application.paused)
+      const [muteSounds] = useState(false)
+      const [showGrid, setShowGrid] = useState(false)
+      const [scene, setScene] = useState(state.scene)
+      useEffect(() => {
+        prism.subscribe('application.paused', setPaused)
+        prism.subscribe('scene', setScene)
+      }, [])
+
+      useEffect(() => {
+        if (showGrid) {
+          gridGraphics.visible = true
+        } else {
+          gridGraphics.visible = false
+        }
+      }, [showGrid])
+
+      return (
+        <Panel>
+          <NumericValue
+            label="FPS"
+            warnAt={{
+              value: 59,
+              when: 'below',
+            }}
+            getValue={(): number => Math.round(MainLoop.getFPS())}
+          />
+          <NumericValue
+            label="Behaviors"
+            getValue={(): number => l1.getAll().length}
+            warnAt={{
+              value: 99,
+            }}
+          />
+          <NumericValue
+            label="Display objects"
+            getValue={(): number => ex.getAllChildren(app.stage).length}
+            warnAt={{
+              value: 999,
+            }}
+          />
+          <NumericValue
+            label="State subscribers"
+            getValue={(): number => prism.getSubscriberCount()}
+            warnAt={{
+              value: 99,
+            }}
+          />
+          <NumericValue
+            label="Loop duration"
+            getValue={getAverageUpdateDuration}
+            warnAt={{
+              value: 5,
+            }}
+          />
+          <NumericValue
+            label="Draw duration"
+            getValue={getAverageDrawDuration}
+            warnAt={{
+              value: 5,
+            }}
+          />
+          <StringValue label="Scene" getValue={(): string => state.scene} />
+          <Divider />
+          <Button
+            label="Log state"
+            onClick={(): void => {
+              console.log('state:', prism.target(state))
+            }}
+          />
+          <Button
+            label="Log subscribers"
+            onClick={(): void => {
+              console.log('subscribers:', prism.getSubscribers())
+            }}
+          />
+          <Checkbox
+            label="Pause game"
+            checked={paused}
+            onClick={(checked): void => {
+              state.application.paused = checked
+            }}
+          />
+          <Checkbox
+            label="Mute sounds"
+            checked={muteSounds}
+            onClick={(checked): void => {
+              // TODO
+            }}
+          />
+          <Checkbox
+            label="Show grid"
+            checked={showGrid}
+            onClick={(checked): void => {
+              setShowGrid(checked)
+            }}
+          />
+          <Dropdown
+            value={scene}
+            dropdownLabel="Scene"
+            items={scenes}
+            onChange={(value): void => {
+              state.scene = value as Scene
+              ls.set('scene', value)
+            }}
+          />
+        </Panel>
+      )
+    }
 
     const SELECTOR = '#debug-panel'
     const element = document.querySelector(SELECTOR)

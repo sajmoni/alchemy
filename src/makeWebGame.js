@@ -53,7 +53,7 @@ const devDependencies = [
   '@babel/core@7.12.3',
   // * --
   // * Other
-  'nano-panel@0.0.4',
+  'nano-panel@0.0.5',
   'plop@2.7.4',
   '@babel/preset-typescript@7.12.1',
   '@types/node@14.14.19',
