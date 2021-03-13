@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import styled, { css } from 'styled-components'
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
@@ -56,7 +56,7 @@ const App = ({
   const [selectedLab, setSelectedLab] = useState<string | undefined>(undefined)
   const [app, setApp] = useState<PIXI.Application | undefined>(undefined)
 
-  const labKeys = Object.keys(labData)
+  const labKeys = useMemo(() => Object.keys(labData), [labData])
   const DEFAULT_LAB = labKeys[0]
 
   useEffect(() => {
@@ -108,7 +108,7 @@ const App = ({
     } else {
       setSelectedLab(DEFAULT_LAB)
     }
-  }, [labKeys, DEFAULT_LAB])
+  }, [DEFAULT_LAB])
 
   useEffect(() => {
     if (!selectedLab) {

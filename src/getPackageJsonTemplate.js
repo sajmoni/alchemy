@@ -6,7 +6,7 @@ module.exports = ({ projectName }) => {
     main: './electron.js',
     scripts: {
       start: 'node script/serve.js public src/index.ts',
-      labs: 'node script/serve.js public src/labs/index.tsx',
+      labs: 'node script/serve.js public src/labs/index.ts',
       build: 'node script/build.js',
       test: 'ava',
       plop: 'plop --plopfile plop/plopfile.ts',

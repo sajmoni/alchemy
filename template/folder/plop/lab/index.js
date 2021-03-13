@@ -1,4 +1,4 @@
-const BASE_PATH = '../labs/lab'
+const BASE_PATH = '../src/labs'
 
 module.exports = {
   description: 'Experiments and prototyping',
@@ -13,20 +13,20 @@ module.exports = {
     return [
       {
         type: 'add',
-        path: `${BASE_PATH}/{{camelCase name}}.ts`,
+        path: `${BASE_PATH}/lab/{{camelCase name}}.ts`,
         templateFile: './lab/template.hbs',
         abortOnFail: true,
       },
       {
         type: 'append',
-        path: `../labs/index.ts`,
+        path: `${BASE_PATH}/index.ts`,
         pattern: `/* PLOP_INJECT_IMPORT */`,
         template: `import {{camelCase name}}Lab from './lab/{{camelCase name}}'`,
         abortOnFail: true,
       },
       {
         type: 'append',
-        path: `../labs/index.ts`,
+        path: `${BASE_PATH}/index.ts`,
         pattern: `/* PLOP_INJECT_LAB */`,
         template: `  {{camelCase name}}: {{camelCase name}}Lab,`,
       },
