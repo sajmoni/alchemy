@@ -34,7 +34,7 @@ const easeOutToPosition = async (
       }
     }, duration)
 
-    b.id = `easeOutToPosition-${displayObject.name}`
+    b.id = `easeOutToPosition-${displayObject.name ?? ''}`
   })
 
 export default easeOutToPosition

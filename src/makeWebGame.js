@@ -34,42 +34,42 @@ const dependencies = [
 const devDependencies = [
   // * Code quality
   'xo@0.37.1',
-  'typescript@4.1.3',
+  'typescript@4.2.3',
   'husky@4.3.6',
   'lint-staged@10.5.4',
   'eslint-plugin-lodash-fp@2.2.0-a1',
   'eslint-plugin-fp@2.3.0',
   // * --
   // * Module bundling
-  'esbuild@0.8.56',
+  'esbuild@0.9.2',
   'fs-extra@9.1.0',
   'chalk@4.1.0',
   // * --
-  '@babel/preset-env@7.12.1',
+  '@babel/preset-env@7.13.10',
   // * --
   // * Testing
   'ava@3.15.0',
-  '@babel/register@7.12.1',
-  '@babel/core@7.12.3',
+  '@babel/register@7.13.8',
+  '@babel/core@7.13.10',
   // * --
   // * Other
   'nano-panel@0.0.5',
   'plop@2.7.4',
-  '@babel/preset-typescript@7.12.1',
-  '@types/node@14.14.19',
-  '@types/lodash@4.14.167',
+  '@babel/preset-typescript@7.13.0',
+  '@types/node@14.14.34',
+  '@types/lodash@4.14.168',
   '@types/howler@2.2.1',
   '@types/mainloop.js@1.0.5',
-  '@types/mousetrap@1.6.4',
+  '@types/mousetrap@1.6.5',
   // * Web - Labs and Debug tools
   'react@17.0.1',
   'react-dom@17.0.1',
   'styled-components@5.2.1',
-  '@types/react@16.9.55',
-  '@types/react-dom@16.9.9',
-  '@types/styled-components@5.1.7',
-  'eslint-config-xo-react@0.23.0',
-  'eslint-plugin-react@7.21.5',
+  '@types/react@17.0.3',
+  '@types/react-dom@17.0.2',
+  '@types/styled-components@5.1.8',
+  'eslint-config-xo-react@0.24.0',
+  'eslint-plugin-react@7.22.0',
   'eslint-plugin-react-hooks@4.2.0',
 ]
 

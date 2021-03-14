@@ -31,7 +31,7 @@ const expand = async (
       }
     }, duration)
 
-    behavior.id = `expand-${displayObject.name}`
+    behavior.id = `expand-${displayObject.name ?? ''}`
   })
 
 export default expand

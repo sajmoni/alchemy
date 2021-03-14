@@ -108,7 +108,7 @@ const App = ({
     } else {
       setSelectedLab(DEFAULT_LAB)
     }
-  }, [DEFAULT_LAB])
+  }, [labKeys, DEFAULT_LAB])
 
   useEffect(() => {
     if (!selectedLab) {

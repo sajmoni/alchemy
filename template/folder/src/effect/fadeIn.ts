@@ -32,7 +32,7 @@ const fadeIn = async (
       }
     }, duration)
 
-    fadeIn.id = `fadeIn-${displayObject.name}`
+    fadeIn.id = `fadeIn-${displayObject.name ?? ''}`
   })
 
 export default fadeIn

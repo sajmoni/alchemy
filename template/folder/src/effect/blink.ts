@@ -32,7 +32,7 @@ const blink = async (
       }
     }, interval)
 
-    blink.id = `blink-${displayObject.name}`
+    blink.id = `blink-${displayObject.name ?? ''}`
   })
 
 export default blink

@@ -32,7 +32,7 @@ const fadeOut = async (
       }
     }, duration)
 
-    fadeOut.id = `fadeOut-${displayObject.name}`
+    fadeOut.id = `fadeOut-${displayObject.name ?? ''}`
   })
 
 export default fadeOut
