@@ -17,7 +17,7 @@ import initializeSceneHandler from './core/sceneHandler'
 import initializeWorker from './core/worker'
 import initializeSound from './core/sound'
 
-const FONT = 'patchy-robots'
+const FONT = 'Press Start 2P'
 const DEFAULT_LANGUAGE = Language.EN.code
 
 console.log(`Version: ${env.VERSION}`)
@@ -40,39 +40,48 @@ app.loader.add('asset/spritesheet/data.json')
 
 initializeGameLoop()
 
-const loadingContainer = new PIXI.Container()
-loadingContainer.zIndex = 9999
-app.stage.addChild(loadingContainer)
+// Experimental API's are not supported by typescript
+// @ts-expect-error
+document.fonts
+  .load(`10pt "${FONT}"`)
+  .then(() => {
+    const loadingContainer = new PIXI.Container()
+    loadingContainer.zIndex = 9999
+    app.stage.addChild(loadingContainer)
 
-const loadingBackground = new PIXI.Graphics()
-loadingBackground
-  .beginFill(PIXI.utils.string2hex('#000000'))
-  .drawRect(0, 0, Render.GAME_WIDTH, Render.GAME_HEIGHT)
-  .endFill()
-loadingContainer.addChild(loadingBackground)
+    const loadingBackground = new PIXI.Graphics()
+    loadingBackground
+      .beginFill(PIXI.utils.string2hex('#000000'))
+      .drawRect(0, 0, Render.GAME_WIDTH, Render.GAME_HEIGHT)
+      .endFill()
+    loadingContainer.addChild(loadingBackground)
 
-const loading = new PIXI.Text(`Loading`, new PIXI.TextStyle(TextStyle.MAIN))
-ex.centerX(loading, Render.GAME_WIDTH / 2)
-ex.centerY(loading, Render.GAME_HEIGHT / 2)
-loadingContainer.addChild(loading)
+    const loading = new PIXI.Text(`Loading`, new PIXI.TextStyle(TextStyle.MAIN))
+    ex.centerX(loading, Render.GAME_WIDTH / 2)
+    ex.centerY(loading, Render.GAME_HEIGHT / 2)
+    loadingContainer.addChild(loading)
 
-app.loader.load(() => {
-  ex.init(app)
+    app.loader.load(() => {
+      ex.init(app)
 
-  useAutoPause()
+      useAutoPause()
 
-  initializeDebugTools()
-  initializeObjectPool()
-  initializeSceneHandler()
-  initializeWorker()
-  initializeSound()
+      initializeDebugTools()
+      initializeObjectPool()
+      initializeSceneHandler()
+      initializeWorker()
+      initializeSound()
 
-  l1.once(() => {
-    loadingContainer.destroy()
+      l1.once(() => {
+        loadingContainer.destroy()
+      })
+
+      // * Attempt to improve performance
+      app.renderer.plugins.prepare.upload(app.stage, () => {
+        MainLoop.start()
+      })
+    })
   })
-
-  // * Attempt to improve performance
-  app.renderer.plugins.prepare.upload(app.stage, () => {
-    MainLoop.start()
+  .catch((error: Error) => {
+    console.error('Error starting game:', error)
   })
-})
