@@ -41,7 +41,7 @@ const initializeDebugTools = (): void => {
       behaviors: l1.getAll(),
     }),
     sound: (): void => {
-      Sound.SWORD_01.play()
+      Sound.COIN.play()
     },
   }
 

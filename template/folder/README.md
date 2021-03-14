@@ -200,7 +200,7 @@ Example usage:
 ```js
 import Sound from '/sound'
 
-Sound.SWORD_01.play()
+Sound.COIN.play()
 ```
 
 Add sound files to `public/asset` and reference them in `src/sound/index.ts`
