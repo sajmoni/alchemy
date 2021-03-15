@@ -29,6 +29,9 @@ const dependencies = [
   'tiny-toolkit@0.0.7',
   'mousetrap@1.6.5',
   'dot-prop@6.0.1',
+  // * Monitoring
+  '@sentry/browser@6.2.2',
+  '@sentry/tracing@6.2.2',
 ]
 
 const devDependencies = [
@@ -53,7 +56,7 @@ const devDependencies = [
   '@babel/core@7.13.10',
   // * --
   // * Other
-  'nano-panel@0.0.6',
+  'nano-panel@0.0.7',
   'plop@2.7.4',
   '@babel/preset-typescript@7.13.0',
   '@types/node@14.14.34',

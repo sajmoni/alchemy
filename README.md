@@ -10,7 +10,9 @@
   <img src="https://badgen.net/github/last-commit/sajmoni/make-web-game?icon=github" />
 </div>
 
-Generates a `TypeScript` template to make a 2D browser game using `Pixi.js`.
+---
+
+Generates a template to make a 2D browser game using `PixiJS` and `TypeScript`.
 
 ---
 
@@ -42,7 +44,7 @@ Generates a `TypeScript` template to make a 2D browser game using `Pixi.js`.
 
 - :nail_care: [`prettier`](https://github.com/prettier/prettier)
 
-<!-- - :chart: [`sentry`](https://sentry.io/) - Log errors (TODO) -->
+- :chart: [`sentry`](https://sentry.io/)
 
 - :no_entry_sign: :poop: [`lint-staged`](https://github.com/okonet/lint-staged) + :dog: [`husky`](https://github.com/typicode/husky)
 
@@ -149,9 +151,9 @@ my-game/
 
 - [Add your itch.io API key to your Github project secrets](https://itch.io/docs/butler/login.html)
 
-<!-- - Set Sentry URL. -->
+- Set Sentry DSN in `src/index.ts` at line `25`.
 
-<!-- - Suggestion: Make the `release` branch protected so that you don't accidentally push to it. -->
+- Suggestion: Make the `release` branch protected so that you don't accidentally push to it.
 
 ---
 

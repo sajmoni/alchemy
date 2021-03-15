@@ -10,6 +10,7 @@ import app from '/app'
 import { RenderScene, SceneArgs } from '/type/scene'
 import state from '/state'
 import env from '/env'
+import handleError from '/util/handleError'
 
 const sceneHandler: Record<Scene, (sceneArgs: SceneArgs) => RenderScene> = {
   /* PLOP_INJECT_SCENE */
@@ -50,7 +51,13 @@ const initializeSceneHandler = (): void => {
     })
   }
 
-  prism.subscribe('scene', loadScene)
+  prism.subscribe('scene', (scene) => {
+    try {
+      loadScene(scene)
+    } catch (error) {
+      handleError('Error loading scene', error)
+    }
+  })
   loadScene(state.scene)
 }
 

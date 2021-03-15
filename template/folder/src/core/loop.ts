@@ -1,13 +1,24 @@
 import * as l1 from 'l1'
 import MainLoop from 'mainloop.js'
+import { truncateSync } from 'node:fs'
 import { getAverage, roundTo } from 'tiny-toolkit'
 
 import app from '/app'
 import env from '/env'
 import state from '/state'
+import handleError from '/util/handleError'
 
 const updateDurations: number[] = []
 const drawDurations: number[] = []
+
+const update = (deltaTime: number): void => {
+  try {
+    // 16.6 -> 1
+    l1.update(deltaTime / (1000 / 60))
+  } catch (error) {
+    handleError('Error in core loop', error)
+  }
+}
 
 const initializeGameLoop = (): void => {
   if (env.DEBUG) {
@@ -18,8 +29,7 @@ const initializeGameLoop = (): void => {
 
       const beforeUpdate = performance.now()
 
-      // 16.6 -> 1
-      l1.update(deltaTime / (1000 / 60))
+      update(deltaTime)
 
       const afterUpdate = performance.now()
       const loopDuration = afterUpdate - beforeUpdate
@@ -41,8 +51,7 @@ const initializeGameLoop = (): void => {
         return
       }
 
-      // 16.6 -> 1
-      l1.update(deltaTime / (1000 / 60))
+      update(deltaTime)
     })
 
     MainLoop.setDraw(() => {

@@ -14,6 +14,7 @@ export type State = {
     paused: boolean
     resolution: string
     settingsVisible: boolean
+    error?: string
   }
   scene: Scene
   bar: number
@@ -33,6 +34,7 @@ const state: State = {
     paused: false,
     resolution: Resolution.NORMAL,
     settingsVisible: false,
+    error: undefined,
   },
   scene: Scene.MAIN_MENU,
   bar: 100,

@@ -10,6 +10,7 @@ import renderPanel, {
   Dropdown,
   StringValue,
   Panel,
+  Snackbar,
 } from 'nano-panel'
 import * as prism from 'state-prism'
 import React, { useState, useEffect } from 'react'
@@ -66,8 +67,11 @@ const initializeDebugTools = (): void => {
       const [muteSounds] = useState(false)
       const [showGrid, setShowGrid] = useState(false)
       const [scene, setScene] = useState(state.scene)
+      const [notification, setNotification] = useState(undefined)
+
       useEffect(() => {
         prism.subscribe('application.paused', setPaused)
+        prism.subscribe('application.error', setNotification)
         prism.subscribe('scene', setScene)
       }, [])
 
@@ -81,6 +85,12 @@ const initializeDebugTools = (): void => {
 
       return (
         <Panel>
+          <Snackbar
+            value={notification}
+            onClose={() => {
+              state.application.error = undefined
+            }}
+          />
           <NumericValue
             label="FPS"
             warnAt={{

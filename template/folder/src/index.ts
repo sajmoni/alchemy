@@ -2,6 +2,8 @@ import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
 import MainLoop from 'mainloop.js'
+import * as Sentry from '@sentry/browser'
+import { Integrations } from '@sentry/tracing'
 
 import app from '/app'
 import state from '/state'
@@ -16,6 +18,18 @@ import initializeObjectPool from '/util/objectPool'
 import initializeSceneHandler from './core/sceneHandler'
 import initializeWorker from './core/worker'
 import initializeSound from './core/sound'
+import handleError from './util/handleError'
+
+Sentry.init({
+  dsn: '',
+  integrations: [new Integrations.BrowserTracing()],
+  environment: env.NODE_ENV,
+  autoSessionTracking: true,
+  // Set tracesSampleRate to 1.0 to capture 100%
+  // of transactions for performance monitoring.
+  // We recommend adjusting this value in production
+  tracesSampleRate: 1.0,
+})
 
 const FONT = 'Press Start 2P'
 const DEFAULT_LANGUAGE = Language.EN.code
@@ -62,26 +76,30 @@ document.fonts
     loadingContainer.addChild(loading)
 
     app.loader.load(() => {
-      ex.init(app)
+      try {
+        ex.init(app)
 
-      useAutoPause()
+        useAutoPause()
 
-      initializeDebugTools()
-      initializeObjectPool()
-      initializeSceneHandler()
-      initializeWorker()
-      initializeSound()
+        initializeDebugTools()
+        initializeObjectPool()
+        initializeSceneHandler()
+        initializeWorker()
+        initializeSound()
 
-      l1.once(() => {
-        loadingContainer.destroy()
-      })
+        l1.once(() => {
+          loadingContainer.destroy()
+        })
 
-      // * Attempt to improve performance
-      app.renderer.plugins.prepare.upload(app.stage, () => {
-        MainLoop.start()
-      })
+        // * Attempt to improve performance
+        app.renderer.plugins.prepare.upload(app.stage, () => {
+          MainLoop.start()
+        })
+      } catch (error) {
+        handleError('Error on init', error)
+      }
     })
   })
   .catch((error: Error) => {
-    console.error('Error starting game:', error)
+    handleError('Error loading font', error)
   })
