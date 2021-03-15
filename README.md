@@ -10,69 +10,51 @@
   <img src="https://badgen.net/github/last-commit/sajmoni/make-web-game?icon=github" />
 </div>
 
-Generates a modular template to get started making 2D games that run in the browser. All libraries can be switched out for other ones that you prefer. These are just some good defaults.
-
-Some reasons to make a browser based game:
-
-  - :rocket: You want to use TypeScript / JavaScript
-  - :package: All packages on `npm` are available
-  - :globe_with_meridians: Very easy to distribute (for example by uploading the build to [`itch.io`](https://itch.io/))
+Generates a `TypeScript` template to make a 2D browser game using `Pixi.js`.
 
 ---
 
 ## :sparkles: Includes
 
-### Rendering
+### Rendering and game logic
 
-- :tv: [`PixiJS`](https://github.com/pixijs/pixi.js) - The best WebGL library for 2D graphics
+- :tv: [`PixiJS`](https://github.com/pixijs/pixi.js)
 
-- :boom: [`pixi-particles`](https://github.com/pixijs/pixi-particles) - A particle system for PixiJS
+- :boom: [`pixi-particles`](https://github.com/pixijs/pixi-particles)
 
-- :up: [`pixi-ex`](https://github.com/sajmoni/pixi-ex) - Useful utility functions
+- :up: [`pixi-ex`](https://github.com/sajmoni/pixi-ex)
 
-### Game logic
+- :loop: [`mainloop`](https://github.com/IceCreamYou/MainLoop.js)
 
-- :loop: [`mainloop`](https://github.com/IceCreamYou/MainLoop.js) - Game loop
+- :tropical_drink: [`juice.js`](https://github.com/rymdkraftverk/juice.js)
 
-- :tropical_drink: [`juice.js`](https://github.com/rymdkraftverk/juice.js) - Adds "juice" to your animations
+- :one: [`level1`](https://github.com/rymdkraftverk/level1)
 
-- :one: [`level1`](https://github.com/rymdkraftverk/level1) - Trigger a function after a set amount of game updates
+- :star: [`state-prism`](https://github.com/sajmoni/state-prism)
 
-- :star: [`state-prism`](https://github.com/sajmoni/state-prism) - State management
-
-### QA
-
-- :m: [`typescript`](https://github.com/microsoft/TypeScript)
-
-- :policeman: [`xo`](https://github.com/xojs/xo) - Linter
-
-- :nail_care: [`prettier`](https://github.com/prettier/prettier) - Code formatting
-
-- :chart: [`sentry`](https://sentry.io/) - Log errors (TODO)
-
-- :no_entry_sign: :poop: [`lint-staged`](https://github.com/okonet/lint-staged) + :dog: [`husky`](https://github.com/typicode/husky) - Ensure code quality on each git commit and push
-
-- :straight_ruler: [`ava`](https://github.com/avajs/ava) - Super simple test framework
-
-- :eyes: [`nano-panel`](https://github.com/sajmoni/nano-panel) - Display data when debugging
+- :sound: [`howler`](https://github.com/goldfire/howler.js/)
 
 ### Tooling
 
-- :zap: [`esbuild`](https://github.com/evanw/esbuild) - Extremely fast bundler and minifier
+- :m: [`typescript`](https://github.com/microsoft/TypeScript)
 
-- :red_circle: [`GitHub actions`](https://github.com/features/actions) workflows to automatically push builds to `itch.io`
+- :policeman: [`xo`](https://github.com/xojs/xo)
 
-- :bulb: [`electron`](https://github.com/electron/electron) - Convert your web game into a desktop application
+- :nail_care: [`prettier`](https://github.com/prettier/prettier)
 
-- :recycle: [`plop`](https://github.com/plopjs/plop) - Micro-generator framework
+<!-- - :chart: [`sentry`](https://sentry.io/) - Log errors (TODO) -->
 
-- :microscope: `"Labs"` - Separate webapp for experiments and prototyping
+- :no_entry_sign: :poop: [`lint-staged`](https://github.com/okonet/lint-staged) + :dog: [`husky`](https://github.com/typicode/husky)
 
-### Other
+- :straight_ruler: [`ava`](https://github.com/avajs/ava)
 
-- :sound: [`howler`](https://github.com/goldfire/howler.js/) - Preloaded sounds
+- :eyes: [`nano-panel`](https://github.com/sajmoni/nano-panel)
 
-* Marketing checklist (TODO)
+- :zap: [`esbuild`](https://github.com/evanw/esbuild)
+
+- :red_circle: [`GitHub actions workflows`](https://github.com/features/actions)
+
+- :recycle: [`plop`](https://github.com/plopjs/plop)
 
 ---
 
@@ -161,12 +143,6 @@ my-game/
 └── yarn.lock
 ```
 
-<!-- ## Options
-
-`--verbose` (TODO)
-
-Display full output. Good for debugging. -->
-
 ## What you should do after the script is run
 
 - Update the itch.io project name in `.github/workflows/release.yml` on line `69`.
@@ -189,11 +165,11 @@ Display full output. Good for debugging. -->
 
 A list of games bootstrapped using this tool:
 
-- [Diablito](https://rymdkraftverk.itch.io/diablito) - A very tiny roguelike
+- [Diablito](https://rymdkraftverk.itch.io/diablito) _A very tiny roguelike_
 
 ---
 
 ## Requirements
 
- - `yarn`: `v1.x`
- - `git`: `>=v2.28.0`
+- `yarn`: `v1.x`
+- `git`: `>=v2.28.0`
