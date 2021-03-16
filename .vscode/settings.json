@@ -1,0 +1,9 @@
+{
+  "xo.enable": true,
+  "xo.format.enable": true,
+  "xo.options": {
+    "rules": {
+      "ava/no-only-test": "off"
+    }
+  }
+}
