@@ -1,4 +1,4 @@
-const BASE_PATH = '../src/main/scene'
+const BASE_PATH = '../src/scene'
 
 module.exports = {
   description: 'Render display objects',
@@ -13,7 +13,7 @@ module.exports = {
     return [
       {
         type: 'add',
-        path: `${BASE_PATH}/{{camelCase name}}.ts`,
+        path: `${BASE_PATH}/{{camelCase name}}/index.ts`,
         templateFile: './scene/scene.hbs',
         abortOnFail: true,
       },
@@ -21,18 +21,18 @@ module.exports = {
         type: 'append',
         path: `../src/enum/scene.ts`,
         pattern: `/* PLOP_INJECT_SCENE */`,
-        template: `  {{ constantCase name }}: '{{ camelCase name }}',`,
+        template: `  {{ constantCase name }} = '{{ camelCase name }}',`,
         abortOnFail: true,
       },
       {
         type: 'append',
-        path: `../src/sceneHandler.ts`,
+        path: `../src/core/sceneHandler.ts`,
         pattern: `/* PLOP_INJECT_IMPORT */`,
-        template: `import {{ camelCase name }} from './{{ camelCase name }}'`,
+        template: `import {{ camelCase name }} from '/scene/{{ camelCase name }}'`,
       },
       {
         type: 'append',
-        path: `../src/sceneHandler.ts`,
+        path: `../src/core/sceneHandler.ts`,
         pattern: `/* PLOP_INJECT_SCENE */`,
         template: `  [Scene.{{ constantCase name }}]: {{ camelCase name }},`,
       },
