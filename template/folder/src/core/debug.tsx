@@ -2,7 +2,7 @@ import * as l1 from 'l1'
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 import MainLoop from 'mainloop.js'
-import renderPanel, {
+import {
   NumericValue,
   Button,
   Divider,
@@ -14,6 +14,7 @@ import renderPanel, {
 } from 'nano-panel'
 import * as prism from 'state-prism'
 import React, { useState, useEffect } from 'react'
+import ReactDOM from 'react-dom'
 
 import app from '/app'
 import Sound from '/sound'
@@ -154,7 +155,7 @@ const initializeDebugTools = (): void => {
           <Checkbox
             label="Mute sounds"
             checked={muteSounds}
-            onClick={(checked): void => {
+            onClick={(_checked): void => {
               // TODO
             }}
           />
@@ -186,7 +187,7 @@ const initializeDebugTools = (): void => {
       )
     }
 
-    renderPanel(<DebugPanel />, element as HTMLElement)
+    ReactDOM.render(<DebugPanel />, element as HTMLElement)
   }
 }
 
