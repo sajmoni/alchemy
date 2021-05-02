@@ -11,7 +11,7 @@ const displayDoneMessage = require('./message/done')
 
 const dependencies = [
   // * Rendering
-  'pixi.js@6.0.0',
+  'pixi.js@6.0.2',
   'pixi-ex@0.0.12',
   'pixi-particles@4.3.0',
   // * --
@@ -26,27 +26,27 @@ const dependencies = [
   // * Util
   'lodash@4.17.21',
   'state-prism@0.0.5',
-  'tiny-toolkit@0.0.7',
+  'tiny-toolkit@0.0.8',
   'mousetrap@1.6.5',
   'dot-prop@6.0.1',
   // * Monitoring
-  '@sentry/browser@6.2.2',
-  '@sentry/tracing@6.2.2',
+  '@sentry/browser@6.3.5',
+  '@sentry/tracing@6.3.5',
 ]
 
 const devDependencies = [
   // * Code quality
-  'xo@0.37.1',
-  'typescript@4.2.3',
+  'xo@0.39.1',
+  'typescript@4.2.4',
   'husky@4.3.6',
   'lint-staged@10.5.4',
   'eslint-plugin-lodash-fp@2.2.0-a1',
   'eslint-plugin-fp@2.3.0',
   // * --
   // * Module bundling
-  'esbuild@0.9.2',
+  'esbuild@0.11.17',
   'fs-extra@9.1.0',
-  'chalk@4.1.0',
+  'chalk@4.1.1',
   // * --
   '@babel/preset-env@7.13.10',
   // * --
@@ -56,7 +56,7 @@ const devDependencies = [
   '@babel/core@7.13.10',
   // * --
   // * Other
-  'nano-panel@0.0.7',
+  'nano-panel@0.0.10',
   'plop@2.7.4',
   '@babel/preset-typescript@7.13.0',
   '@types/node@14.14.34',
@@ -65,14 +65,14 @@ const devDependencies = [
   '@types/mainloop.js@1.0.5',
   '@types/mousetrap@1.6.5',
   // * Web - Labs and Debug tools
-  'react@17.0.1',
-  'react-dom@17.0.1',
-  'styled-components@5.2.1',
+  'react@17.0.2',
+  'react-dom@17.0.2',
+  'styled-components@5.2.3',
   '@types/react@17.0.3',
   '@types/react-dom@17.0.2',
   '@types/styled-components@5.1.8',
-  'eslint-config-xo-react@0.24.0',
-  'eslint-plugin-react@7.22.0',
+  'eslint-config-xo-react@0.25.0',
+  'eslint-plugin-react@7.23.2',
   'eslint-plugin-react-hooks@4.2.0',
 ]
 
