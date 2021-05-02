@@ -45,6 +45,7 @@ const devDependencies = [
   // * --
   // * Module bundling
   'esbuild@0.11.17',
+  'open@8.0.6',
   'fs-extra@9.1.0',
   'chalk@4.1.1',
   // * --

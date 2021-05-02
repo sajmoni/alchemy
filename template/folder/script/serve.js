@@ -2,6 +2,7 @@
 
 const { serve, build } = require('esbuild')
 const chalk = require('chalk')
+const open = require('open')
 
 const directoryToServe = process.argv[2]
 const bundleEntryPoint = process.argv[3]
@@ -35,6 +36,7 @@ const buildOptions = {
   entryPoints: [bundleEntryPoint],
   bundle: true,
   incremental: true,
+  sourcemap: true,
   outdir: directoryToServe,
   define: {
     'process.env.NODE_ENV': '"development"',
@@ -56,8 +58,7 @@ const serveEsbuild = async () => {
     )}`,
   )
   console.log()
-  await serveResult.wait
-  serveResult.stop()
+  await open(esbuildUrl)
 }
 
 serveEsbuild()
