@@ -1,6 +1,8 @@
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
+import { TextStyle } from './enum'
+
 export const sprite = (textureName: string): PIXI.Sprite => {
   const s = new PIXI.Sprite(ex.getTexture(textureName))
   s.anchor.set(0.5)
@@ -22,9 +24,7 @@ export const animatedSprite = (
 export const text = (string: string, textStyle?: PIXI.TextStyle): PIXI.Text => {
   const t = new PIXI.Text(string)
 
-  if (textStyle) {
-    t.style = textStyle
-  }
+  t.style = textStyle ? textStyle : new PIXI.TextStyle(TextStyle.MAIN)
 
   ex.makeResizable(t)
 

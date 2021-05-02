@@ -76,11 +76,7 @@ const initializeDebugTools = (): void => {
       }, [])
 
       useEffect(() => {
-        if (showGrid) {
-          gridGraphics.visible = true
-        } else {
-          gridGraphics.visible = false
-        }
+        gridGraphics.visible = showGrid
       }, [showGrid])
 
       return (
