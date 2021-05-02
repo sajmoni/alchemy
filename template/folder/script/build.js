@@ -49,11 +49,7 @@ const run = async () => {
   try {
     await build(buildOptions)
     await Promise.all([
-      fs.copy(
-        'public/asset',
-        `${buildOptions.outdir}/asset
-      `,
-      ),
+      fs.copy('public/asset', `${buildOptions.outdir}/asset`),
       fs.copy('public/index.html', `${buildOptions.outdir}/index.html`),
     ])
 
