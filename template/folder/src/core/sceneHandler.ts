@@ -27,9 +27,10 @@ const initializeSceneHandler = (): void => {
       container.destroy()
     }
 
-    unsubscribeFunctions.forEach((unsubscribe) => {
+    for (const unsubscribe of unsubscribeFunctions) {
       unsubscribe()
-    })
+    }
+
     unsubscribeFunctions = []
 
     container = new PIXI.Container()

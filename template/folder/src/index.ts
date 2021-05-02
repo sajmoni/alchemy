@@ -28,7 +28,7 @@ Sentry.init({
   // Set tracesSampleRate to 1.0 to capture 100%
   // of transactions for performance monitoring.
   // We recommend adjusting this value in production
-  tracesSampleRate: 1.0,
+  tracesSampleRate: 1,
 })
 
 const FONT = 'Press Start 2P'
@@ -95,7 +95,7 @@ document.fonts
         app.renderer.plugins.prepare.upload(app.stage, () => {
           MainLoop.start()
         })
-      } catch (error) {
+      } catch (error: unknown) {
         handleError('Error on init', error)
       }
     })

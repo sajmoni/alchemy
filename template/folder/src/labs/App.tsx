@@ -90,9 +90,10 @@ const App = ({
     const renderLab = labData[selectedLab]
 
     if (renderLab) {
-      ;[...app.stage.children].forEach((child) => {
+      for (const child of [...app.stage.children]) {
         child.destroy()
-      })
+      }
+
       const container = new PIXI.Container()
       app.stage.addChild(container)
       renderLab({ app, container })

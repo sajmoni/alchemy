@@ -19,11 +19,11 @@ const clickBlink = async (
   )
     .then(fullscreenFadeInOut)
     .then(() => {
-      l1.getAll()
-        .filter(({ id }) => id && !BEHAVIORS_TO_KEEP.has(id))
-        .forEach((behavior) => {
-          l1.remove(behavior)
-        })
+      for (const behavior of l1
+        .getAll()
+        .filter(({ id }) => id && !BEHAVIORS_TO_KEEP.has(id))) {
+        l1.remove(behavior)
+      }
     })
 }
 

@@ -15,7 +15,7 @@ const update = (deltaTime: number): void => {
   try {
     // 16.6 -> 1
     l1.update(deltaTime / (1000 / 60))
-  } catch (error) {
+  } catch (error: unknown) {
     handleError('Error in core loop', error)
   }
 }
