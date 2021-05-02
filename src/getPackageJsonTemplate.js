@@ -48,7 +48,6 @@ module.exports = ({ projectName }) => {
         'fp/no-delete': 'error',
         'fp/no-events': 'error',
         'fp/no-get-set': 'error',
-        'fp/no-loops': 'error',
         'fp/no-mutating-assign': 'error',
         'fp/no-proxy': 'error',
         'fp/no-this': 'error',
