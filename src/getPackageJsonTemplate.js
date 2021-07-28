@@ -20,8 +20,8 @@ module.exports = ({ projectName }) => {
       'elec:all': 'yarn elec:build && yarn elec:pack && yarn elec:run',
     },
     ava: {
-      require: ['./script/setupTests.js'],
-      extensions: ['js', 'ts'],
+      require: ['ts-node/register'],
+      extensions: ['ts'],
     },
     prettier: {
       trailingComma: 'all',

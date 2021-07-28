@@ -42,24 +42,17 @@ const devDependencies = [
   'lint-staged@10.5.4',
   'eslint-plugin-lodash-fp@2.2.0-a1',
   'eslint-plugin-fp@2.3.0',
-  // * --
   // * Module bundling
   'esbuild@0.11.17',
   'open@8.0.6',
   'fs-extra@9.1.0',
   'chalk@4.1.1',
-  // * --
-  '@babel/preset-env@7.13.10',
-  // * --
   // * Testing
   'ava@3.15.0',
-  '@babel/register@7.13.8',
-  '@babel/core@7.13.10',
-  // * --
+  'ts-node@10.0.0',
   // * Other
   'nano-panel@0.0.10',
   'plop@2.7.4',
-  '@babel/preset-typescript@7.13.0',
   '@types/node@14.14.34',
   '@types/lodash@4.14.168',
   '@types/howler@2.2.1',
