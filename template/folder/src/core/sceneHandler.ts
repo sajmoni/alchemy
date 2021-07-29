@@ -40,7 +40,7 @@ const initializeSceneHandler = (): void => {
       container,
     })
 
-    Object.entries(render).forEach(([path, subscribe]) => {
+    for (const [path, subscribe] of Object.entries(render)) {
       if (env.NODE_ENV === 'development' && !dotProp.has(state, path)) {
         console.error(
           `SceneHandler: Path "${path}" was returned from scene "${scene}" but does not exist in state`,
@@ -49,13 +49,13 @@ const initializeSceneHandler = (): void => {
 
       const unsubscribe = prism.subscribe(path, subscribe)
       unsubscribeFunctions.push(unsubscribe)
-    })
+    }
   }
 
-  prism.subscribe('scene', (scene) => {
+  prism.subscribe('scene', (scene: Scene) => {
     try {
       loadScene(scene)
-    } catch (error) {
+    } catch (error: unknown) {
       handleError('Error loading scene', error)
     }
   })
