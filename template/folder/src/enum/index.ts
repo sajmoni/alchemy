@@ -6,6 +6,7 @@ import TextStyle from './textStyle'
 import Scene from './scene'
 import MessageType from './messageType'
 import Mouse from './mouse'
+import Key from './key'
 
 export {
   /* PLOP_INJECT_EXPORT */
@@ -16,4 +17,5 @@ export {
   Scene,
   MessageType,
   Mouse,
+  Key,
 }

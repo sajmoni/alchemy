@@ -1,6 +1,36 @@
-import Mousetrap, { ExtendedKeyboardEvent } from 'mousetrap'
+import tinykeys from 'tinykeys'
 
 const pressed: Record<string, boolean> = {}
+
+const createKey = (key: string) => {
+  tinykeys(
+    window,
+    {
+      [key]: () => {
+        _onKeyUp(key)
+      },
+    },
+    { event: 'keyup' },
+  )
+
+  tinykeys(
+    window,
+    {
+      [key]: () => {
+        _onKeyDown(key)
+      },
+    },
+    { event: 'keydown' },
+  )
+}
+
+const initializeKeyboardInput = (keys: string[]) => {
+  for (const key of keys) {
+    createKey(key)
+  }
+}
+
+export default initializeKeyboardInput
 
 /**
  * Call on each update to check if key is pressed
@@ -15,26 +45,4 @@ function _onKeyDown(key: string): void {
 
 function _onKeyUp(key: string): void {
   pressed[key] = false
-}
-
-/**
- * Enables a key to be used with `isKeyDown`
- */
-export function addKey(key: string): void {
-  Mousetrap.bind(
-    key,
-    (event: ExtendedKeyboardEvent) => {
-      event.preventDefault()
-      _onKeyDown(key)
-    },
-    'keydown',
-  )
-  Mousetrap.bind(
-    key,
-    (event: ExtendedKeyboardEvent) => {
-      event.preventDefault()
-      _onKeyUp(key)
-    },
-    'keyup',
-  )
 }

@@ -27,7 +27,7 @@ const dependencies = [
   'lodash@4.17.21',
   'state-prism@0.0.5',
   'tiny-toolkit@0.0.8',
-  'mousetrap@1.6.5',
+  'tinykeys@1.2.0',
   'dot-prop@6.0.1',
   // * Monitoring
   '@sentry/browser@6.3.5',
@@ -57,7 +57,6 @@ const devDependencies = [
   '@types/lodash@4.14.168',
   '@types/howler@2.2.1',
   '@types/mainloop.js@1.0.5',
-  '@types/mousetrap@1.6.5',
   // * Web - Labs and Debug tools
   'react@17.0.2',
   'react-dom@17.0.2',

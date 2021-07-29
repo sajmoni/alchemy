@@ -8,7 +8,7 @@ import { Integrations } from '@sentry/tracing'
 import app from '/app'
 import state from '/state'
 import useAutoPause from '/util/useAutoPause'
-import { TextStyle, Render, Language } from '/enum'
+import { TextStyle, Render, Language, Key } from '/enum'
 import * as ls from '/util/storage'
 import env from './env'
 
@@ -18,6 +18,7 @@ import initializeObjectPool from '/util/objectPool'
 import initializeSceneHandler from './core/sceneHandler'
 import initializeWorker from './core/worker'
 import initializeSound from './core/sound'
+import initializeKeyboardInput from './input/keyboard'
 import handleError from './util/handleError'
 
 Sentry.init({
@@ -86,6 +87,7 @@ document.fonts
         initializeSceneHandler()
         initializeWorker()
         initializeSound()
+        initializeKeyboardInput([Key.UP, Key.DOWN, Key.LEFT, Key.RIGHT])
 
         l1.once(() => {
           loadingContainer.destroy()
