@@ -46,8 +46,7 @@
         "error",
         "never",
         {
-          "png": "always",
-          "wav": "always"
+          "json": "always"
         }
       ]
     }
