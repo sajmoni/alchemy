@@ -1,6 +1,5 @@
 import * as l1 from 'l1'
 import MainLoop from 'mainloop.js'
-import { truncateSync } from 'node:fs'
 import { getAverage, roundTo } from 'tiny-toolkit'
 
 import app from '/app'

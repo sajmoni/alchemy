@@ -28,7 +28,6 @@ body {
 }
 
 @font-face {
-  /* TODO: Replace with free font */
   font-family: 'Press Start 2P';
   src: url('./font/PressStart2P-Regular.ttf');
 }
