@@ -1,10 +1,13 @@
-import { Data as DataType } from '/type/data'
+export type Data = {
+  name: string
+  price: number
+}
 
-const Data: DataType[] = [
+export const data: Data[] = [
   {
     name: 'Some data',
     price: 100,
   },
 ]
 
-export default Data
+export default data
