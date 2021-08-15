@@ -87,7 +87,7 @@ document.fonts
         initializeSceneHandler()
         initializeWorker()
         initializeSound()
-        initializeKeyboardInput([Key.UP, Key.DOWN, Key.LEFT, Key.RIGHT])
+        initializeKeyboardInput(Object.values(Key))
 
         l1.once(() => {
           loadingContainer.destroy()
