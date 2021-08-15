@@ -74,9 +74,10 @@ const App = ({
     app.loader.add('asset/spritesheet/data.json')
     app.loader.load(onAssetsLoaded)
 
-    const element = document.querySelector(`#${PIXI_ID}`)
+    const selector = `#${PIXI_ID}`
+    const element = document.querySelector(selector)
     if (!element) {
-      throw new Error(`Couldn't find element: ${SELECTOR}`)
+      throw new Error(`Couldn't find element: ${selector}`)
     }
 
     element.append(app.view)
