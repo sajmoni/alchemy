@@ -11,12 +11,12 @@ const displayDoneMessage = require('./message/done')
 
 const dependencies = [
   // * Rendering
-  'pixi.js@6.0.2',
+  'pixi.js@6.1.2',
   'pixi-ex@0.0.12',
-  'pixi-particles@4.3.0',
+  'pixi-particles@4.3.1',
   // * --
   // * Sound
-  'howler@2.2.1',
+  'howler@2.2.3',
   // * --
   // * Game logic
   'juice.js@2.0.1',
@@ -26,12 +26,12 @@ const dependencies = [
   // * Util
   'lodash@4.17.21',
   'state-prism@0.0.5',
-  'tiny-toolkit@0.0.8',
+  'tiny-toolkit@0.0.9',
   'tinykeys@1.2.0',
   'dot-prop@6.0.1',
   // * Monitoring
-  '@sentry/browser@6.3.5',
-  '@sentry/tracing@6.3.5',
+  '@sentry/browser@6.11.0',
+  '@sentry/tracing@6.11.0',
 ]
 
 const devDependencies = [
