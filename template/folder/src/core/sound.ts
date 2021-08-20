@@ -1,8 +1,10 @@
 import { Howler } from 'howler'
-import * as prism from 'state-prism'
+import { subscribeKey } from 'valtio/utils'
+
+import state from '/state'
 
 const initializeSound = (): void => {
-  prism.subscribe('application.volume.sound', (volume) => {
+  subscribeKey(state.application.volume, 'sound', (volume) => {
     Howler.volume(volume * 0.1)
   })
 }

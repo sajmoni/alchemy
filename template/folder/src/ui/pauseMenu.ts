@@ -1,7 +1,8 @@
 import * as PIXI from 'pixi.js'
+import { subscribeKey } from 'valtio/utils'
 
 import * as pixi from '/pixi'
-import { UIComponent } from '/type/ui'
+import state from '/state'
 
 const createPauseMenu = ({
   width,
@@ -9,7 +10,7 @@ const createPauseMenu = ({
 }: {
   width: number
   height: number
-}): UIComponent<boolean> => {
+}): PIXI.Container => {
   const container = new PIXI.Container()
   container.zIndex = 1
   container.visible = false
@@ -36,7 +37,9 @@ const createPauseMenu = ({
     container.visible = paused
   }
 
-  return [container, render]
+  subscribeKey(state.application, 'paused', render)
+
+  return container
 }
 
 export default createPauseMenu

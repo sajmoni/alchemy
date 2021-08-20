@@ -26,13 +26,13 @@ Generates a template to make a 2D browser game using `PixiJS` and `TypeScript`.
 
 - :up: [`pixi-ex`](https://github.com/sajmoni/pixi-ex)
 
+- :pill: [`valtio`](https://github.com/pmndrs/valtio)
+
 - :loop: [`mainloop`](https://github.com/IceCreamYou/MainLoop.js)
 
 - :tropical_drink: [`juice.js`](https://github.com/rymdkraftverk/juice.js)
 
 - :one: [`level1`](https://github.com/rymdkraftverk/level1)
-
-- :star: [`state-prism`](https://github.com/sajmoni/state-prism)
 
 - :sound: [`howler`](https://github.com/goldfire/howler.js/)
 

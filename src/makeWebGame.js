@@ -10,54 +10,52 @@ const createFileFromTemplate = require('./createFileFromTemplate')
 const displayDoneMessage = require('./message/done')
 
 const dependencies = [
-  // * Rendering
+  // Rendering
   'pixi.js@6.1.2',
   'pixi-ex@0.0.12',
   'pixi-particles@4.3.1',
-  // * --
-  // * Sound
+  // Sound
   'howler@2.2.3',
-  // * --
-  // * Game logic
+  // Game logic
   'juice.js@2.0.1',
   'l1@0.7.1',
   'mainloop.js@1.0.4',
-  // * --
-  // * Util
+  // Util
   'lodash@4.17.21',
-  'state-prism@0.0.5',
+  'valtio@1.2.1',
   'tiny-toolkit@0.0.9',
   'tinykeys@1.2.0',
   'dot-prop@6.0.1',
-  // * Monitoring
+  // Monitoring
   '@sentry/browser@6.11.0',
   '@sentry/tracing@6.11.0',
 ]
 
 const devDependencies = [
-  // * Code quality
+  // Code quality
   'xo@0.39.1',
   'typescript@4.2.4',
   'husky@4.3.6',
   'lint-staged@10.5.4',
   'eslint-plugin-lodash-fp@2.2.0-a1',
   'eslint-plugin-fp@2.3.0',
-  // * Module bundling
+  // Module bundling
   'esbuild@0.11.17',
   'open@8.0.6',
   'fs-extra@9.1.0',
   'chalk@4.1.1',
-  // * Testing
+  // Testing
   'ava@3.15.0',
   'ts-node@10.0.0',
-  // * Other
+  // Other
   'nano-panel@0.0.10',
   'plop@2.7.4',
+  // Types
   '@types/node@14.14.34',
   '@types/lodash@4.14.168',
   '@types/howler@2.2.1',
   '@types/mainloop.js@1.0.5',
-  // * Web - Labs and Debug tools
+  // Web - Labs and Debug tools
   'react@17.0.2',
   'react-dom@17.0.2',
   'styled-components@5.2.3',
@@ -100,7 +98,7 @@ module.exports = ({ projectName }) => {
       title: 'Git init',
       task: () => {
         try {
-          // * Change directory so that Husky gets installed in the right .git folder
+          // Change directory so that Husky gets installed in the right .git folder
           process.chdir(rootPath)
         } catch {
           throw new Error(`Could not change to project directory: ${rootPath}`)
@@ -132,8 +130,8 @@ module.exports = ({ projectName }) => {
           options: { projectName },
         })
 
-        // * Rename gitignore to prevent npm from renaming it to .npmignore
-        // * See: https://github.com/npm/npm/issues/1862
+        // Rename gitignore to prevent npm from renaming it to .npmignore
+        // See: https://github.com/npm/npm/issues/1862
         fs.moveSync(
           path.join(rootPath, 'gitignore'),
           path.join(rootPath, '.gitignore'),
@@ -175,9 +173,9 @@ module.exports = ({ projectName }) => {
 
           return true
         } catch (error) {
-          // * It was not possible to commit.
-          // * Maybe the commit author config is not set.
-          // * Remove the Git files to avoid a half-done state.
+          // It was not possible to commit.
+          // Maybe the commit author config is not set.
+          // Remove the Git files to avoid a half-done state.
           try {
             fs.removeSync(path.join(rootPath, '.git'))
             throw new Error(`Could not create commit ${error}`)

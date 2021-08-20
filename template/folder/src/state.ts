@@ -1,5 +1,5 @@
-import * as prism from 'state-prism'
 import dotProp from 'dot-prop'
+import { proxy } from 'valtio'
 
 import * as ls from '/util/storage'
 import { Resolution, Scene } from '/enum'
@@ -65,4 +65,4 @@ const loadDataFromStorage = (): void => {
 
 loadDataFromStorage()
 
-export default prism.init(state)
+export default proxy(state)

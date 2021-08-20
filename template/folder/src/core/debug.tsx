@@ -12,9 +12,10 @@ import {
   Panel,
   Snackbar,
 } from 'nano-panel'
-import * as prism from 'state-prism'
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
+import { snapshot } from 'valtio'
+import { subscribeKey } from 'valtio/utils'
 
 import app from '/app'
 import Sound from '/sound'
@@ -71,9 +72,9 @@ const initializeDebugTools = (): void => {
       const [notification, setNotification] = useState(undefined)
 
       useEffect(() => {
-        prism.subscribe('application.paused', setPaused)
-        prism.subscribe('application.error', setNotification)
-        prism.subscribe('scene', setScene)
+        subscribeKey(state.application, 'paused', setPaused)
+        subscribeKey(state.application, 'error', setNotification)
+        subscribeKey(state, 'scene', setScene)
       }, [])
 
       useEffect(() => {
@@ -111,13 +112,6 @@ const initializeDebugTools = (): void => {
             }}
           />
           <NumericValue
-            label="State subscribers"
-            getValue={(): number => prism.getSubscriberCount()}
-            warnAt={{
-              value: 99,
-            }}
-          />
-          <NumericValue
             label="Loop duration"
             getValue={getAverageUpdateDuration}
             warnAt={{
@@ -136,13 +130,7 @@ const initializeDebugTools = (): void => {
           <Button
             label="Log state"
             onClick={(): void => {
-              console.log('state:', prism.target(state))
-            }}
-          />
-          <Button
-            label="Log subscribers"
-            onClick={(): void => {
-              console.log('subscribers:', prism.getSubscribers())
+              console.log('state:', snapshot(state))
             }}
           />
           <Checkbox

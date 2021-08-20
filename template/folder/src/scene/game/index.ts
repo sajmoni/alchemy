@@ -2,15 +2,17 @@ import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
 import * as particles from 'pixi-particles'
+import { subscribe } from 'valtio'
+import { subscribeKey } from 'valtio/utils'
 
 import state from '/state'
 import { Render } from '/enum'
 import { bar, pauseMenu } from '/ui'
 import { explosion } from '/particles'
-import { RenderScene, SceneArgs } from '/type/scene'
+import { SceneArgs } from '/type/scene'
 import { expand } from '/effect'
 
-const game = ({ container }: SceneArgs): RenderScene => {
+const game = ({ container }: SceneArgs): void => {
   const sprite = new PIXI.Sprite(ex.getTexture('square1-0'))
   sprite.x = 10
   sprite.y = Render.GAME_HEIGHT / 2
@@ -23,12 +25,20 @@ const game = ({ container }: SceneArgs): RenderScene => {
     state.bar = Math.max(0, state.bar - 0.2)
   })
 
+  subscribe(state.square, () => {
+    sprite.x = state.square.x
+    sprite.angle = state.square.angle
+  })
+
   l1.forever(() => {
     void expand(sprite)
   }, 180)
 
   const [manaBar, renderManaBar] = bar({
     initialValue: 1,
+  })
+  subscribeKey(state, 'bar', (bar) => {
+    renderManaBar(bar / 100)
   })
   manaBar.position.set(50, 10)
   container.addChild(manaBar)
@@ -45,26 +55,12 @@ const game = ({ container }: SceneArgs): RenderScene => {
 
   explosionParticles.playOnceAndDestroy()
 
-  const [_pauseMenu, renderPauseMenu] = pauseMenu({
+  const _pauseMenu = pauseMenu({
     width: Render.GAME_WIDTH,
     height: Render.GAME_HEIGHT,
   })
 
   container.addChild(_pauseMenu)
-
-  return {
-    'application.paused': renderPauseMenu,
-    bar: (bar: number): void => {
-      // value / max
-      renderManaBar(bar / 100)
-    },
-    'square.x': (x: number): void => {
-      sprite.x = x
-    },
-    'square.angle': (angle: number): void => {
-      sprite.angle = angle
-    },
-  }
 }
 
 export default game

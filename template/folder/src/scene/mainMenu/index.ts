@@ -2,6 +2,7 @@ import * as PIXI from 'pixi.js'
 import * as juice from 'juice.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
+import { subscribeKey } from 'valtio/utils'
 
 import * as pixi from '/pixi'
 import state from '/state'
@@ -10,9 +11,9 @@ import { button } from '/ui'
 import createSettings from '/ui/settings'
 import { name as gameTitle } from '/../package.json'
 import { clickBlink, easeOutToPosition } from '/effect'
-import { RenderScene, SceneArgs } from '/type/scene'
+import { SceneArgs } from '/type/scene'
 
-const mainMenu = ({ container }: SceneArgs): RenderScene => {
+const mainMenu = ({ container }: SceneArgs): void => {
   const titleText = pixi.text(
     gameTitle,
     new PIXI.TextStyle({ ...TextStyle.MAIN, fontSize: 25 }),
@@ -65,19 +66,15 @@ const mainMenu = ({ container }: SceneArgs): RenderScene => {
   ex.centerX(startGameButton, Render.GAME_WIDTH / 2)
   container.addChild(startGameButton)
 
-  const [
-    settings,
-    { renderSettings, renderSoundSlider, renderMusicSlider },
-  ] = createSettings()
+  const [settings, { renderSettings, renderSoundSlider, renderMusicSlider }] =
+    createSettings()
   container.addChild(settings)
 
   renderSettings(state.application.settingsVisible)
 
-  return {
-    'application.settingsVisible': renderSettings,
-    'application.volume.music': renderMusicSlider,
-    'application.volume.sound': renderSoundSlider,
-  }
+  subscribeKey(state.application, 'settingsVisible', renderSettings)
+  subscribeKey(state.application.volume, 'music', renderMusicSlider)
+  subscribeKey(state.application.volume, 'sound', renderSoundSlider)
 }
 
 export default mainMenu
