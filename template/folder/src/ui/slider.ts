@@ -19,7 +19,7 @@ const slider = ({
 }: SliderOptions): UIComponent<number> => {
   const component = new PIXI.Container()
 
-  const minus = new PIXI.Sprite(ex.getTexture('plus-minus-1'))
+  const minus = new PIXI.Sprite(ex.getTexture('plus-minus-2'))
   minus.x = -iconDistance
   minus.anchor.set(0.5)
   ex.makeClickable(minus, onMinus)
@@ -31,7 +31,7 @@ const slider = ({
   )
   component.addChild(text)
 
-  const plus = new PIXI.Sprite(ex.getTexture('plus-minus-0'))
+  const plus = new PIXI.Sprite(ex.getTexture('plus-minus-1'))
   plus.anchor.set(0.5)
   ex.makeClickable(plus, onPlus)
   plus.x = iconDistance

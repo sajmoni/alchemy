@@ -13,7 +13,7 @@ import { SceneArgs } from '/type/scene'
 import { expand } from '/effect'
 
 const game = ({ container }: SceneArgs): void => {
-  const sprite = new PIXI.Sprite(ex.getTexture('square1-0'))
+  const sprite = new PIXI.Sprite(ex.getTexture('square-1'))
   sprite.x = 10
   sprite.y = Render.GAME_HEIGHT / 2
   sprite.anchor.set(0.5)
@@ -49,7 +49,7 @@ const game = ({ container }: SceneArgs): void => {
 
   const explosionParticles = new particles.Emitter(
     particleContainer,
-    ['square1-0'].map((fileName) => ex.getTexture(fileName)),
+    ['square-1'].map((fileName) => ex.getTexture(fileName)),
     explosion(),
   )
 
