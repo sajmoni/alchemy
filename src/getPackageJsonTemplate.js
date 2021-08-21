@@ -39,7 +39,7 @@ module.exports = ({ projectName }) => {
       extends: 'xo-react',
       prettier: true,
       parser: '@typescript-eslint/parser',
-      plugins: ['lodash-fp', 'fp'],
+      plugins: ['fp'],
       env: ['browser', 'es2020', 'node'],
       rules: {
         'fp/no-arguments': 'error',
@@ -51,7 +51,6 @@ module.exports = ({ projectName }) => {
         'fp/no-proxy': 'error',
         'fp/no-this': 'error',
         'fp/no-valueof-field': 'error',
-        'lodash-fp/consistent-compose': ['error', 'flow'],
         'import/no-absolute-path': 'off',
         'react/prop-types': 'off',
         'unicorn/filename-case': 'off',

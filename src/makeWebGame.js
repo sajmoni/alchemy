@@ -21,7 +21,6 @@ const dependencies = [
   'l1@0.7.1',
   'mainloop.js@1.0.4',
   // Util
-  'lodash@4.17.21',
   'valtio@1.2.1',
   'tiny-toolkit@0.0.9',
   'tinykeys@1.2.0',
@@ -37,7 +36,6 @@ const devDependencies = [
   'typescript@4.2.4',
   'husky@4.3.6',
   'lint-staged@10.5.4',
-  'eslint-plugin-lodash-fp@2.2.0-a1',
   'eslint-plugin-fp@2.3.0',
   // Module bundling
   'esbuild@0.11.17',
@@ -52,7 +50,6 @@ const devDependencies = [
   'plop@2.7.4',
   // Types
   '@types/node@14.14.34',
-  '@types/lodash@4.14.168',
   '@types/howler@2.2.1',
   '@types/mainloop.js@1.0.5',
   // Web - Labs and Debug tools

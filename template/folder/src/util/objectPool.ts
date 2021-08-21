@@ -1,4 +1,3 @@
-import _ from 'lodash/fp'
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
@@ -26,30 +25,30 @@ const initializeObjectPool = ({
   graphics = 100,
   texts = 100,
 }: ObjectPoolOptions = {}): void => {
-  _.times(() => {
+  for (let index = 0; index < animatedSprites; index++) {
     const as = new PIXI.AnimatedSprite([ex.getTexture('square1-0')])
     _animatedSprites.push(as)
-  }, animatedSprites)
+  }
 
-  _.times(() => {
+  for (let index = 0; index < sprites; index++) {
     const s = new PIXI.Sprite()
     _sprites.push(s)
-  }, sprites)
+  }
 
-  _.times(() => {
+  for (let index = 0; index < containers; index++) {
     const c = new PIXI.Container()
     _containers.push(c)
-  }, containers)
+  }
 
-  _.times(() => {
+  for (let index = 0; index < graphics; index++) {
     const g = new PIXI.Graphics()
     _graphics.push(g)
-  }, graphics)
+  }
 
-  _.times(() => {
+  for (let index = 0; index < texts; index++) {
     const t = new PIXI.Text('')
     _texts.push(t)
-  }, texts)
+  }
 }
 
 export const getAnimatedSprite = (): PIXI.AnimatedSprite => {
