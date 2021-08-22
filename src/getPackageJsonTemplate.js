@@ -5,8 +5,9 @@ module.exports = ({ projectName }) => {
     private: true,
     main: './electron.js',
     scripts: {
-      start: 'node script/serve.js public src/index.ts',
-      labs: 'node script/serve.js public src/labs/index.ts',
+      start: 'yarn game && yarn labs',
+      game: 'node script/serve.js public src/index.ts 8000',
+      labs: 'node script/serve.js public src/labs/index.ts 8001',
       build: 'node script/build.js',
       test: 'ava',
       plop: 'plop --plopfile plop/plopfile.ts',

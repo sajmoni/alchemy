@@ -6,6 +6,7 @@ const open = require('open')
 
 const directoryToServe = process.argv[2]
 const bundleEntryPoint = process.argv[3]
+const port = Number.parseInt(process.argv[4], 10)
 
 if (!directoryToServe) {
   console.log(chalk.red('serve requires the directory to serve as an argument'))
@@ -20,7 +21,7 @@ if (!bundleEntryPoint) {
 }
 
 const serveOptions = {
-  port: 8000,
+  port,
   servedir: directoryToServe,
   onRequest: () => {
     // Might be able to change this once web workers are supported in esbuild
