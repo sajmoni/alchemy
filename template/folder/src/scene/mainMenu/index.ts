@@ -2,13 +2,12 @@ import * as PIXI from 'pixi.js'
 import * as juice from 'juice.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
-import { subscribeKey } from 'valtio/utils'
 
 import * as pixi from '/pixi'
 import state from '/state'
 import { Render, TextStyle, Scene } from '/enum'
-import { button } from '/ui'
-import createSettings from '/ui/settings'
+import { button } from '/ui/fragment'
+import { settings } from '/ui/view'
 import { name as gameTitle } from '/../package.json'
 import { clickBlink, easeOutToPosition } from '/effect'
 import { SceneArgs } from '/type/scene'
@@ -66,15 +65,8 @@ const mainMenu = ({ container }: SceneArgs): void => {
   ex.centerX(startGameButton, Render.GAME_WIDTH / 2)
   container.addChild(startGameButton)
 
-  const [settings, { renderSettings, renderSoundSlider, renderMusicSlider }] =
-    createSettings()
-  container.addChild(settings)
-
-  renderSettings(state.application.settingsVisible)
-
-  subscribeKey(state.application, 'settingsVisible', renderSettings)
-  subscribeKey(state.application.volume, 'music', renderMusicSlider)
-  subscribeKey(state.application.volume, 'sound', renderSoundSlider)
+  const _settings = settings()
+  container.addChild(_settings)
 }
 
 export default mainMenu
