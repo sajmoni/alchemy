@@ -12,6 +12,7 @@ import { fadeOut } from '/effect'
 import { slider } from '.'
 import button from './button'
 import { UIComponent } from '/type/ui'
+import sound from '/sound'
 
 const Color = {
   BACKGROUND: '#aaaaaa',
@@ -91,12 +92,12 @@ const settings = (): [
     onMinus: () => {
       const currentVolume = state.application.volume.sound
       state.application.volume.sound = Math.max(currentVolume - 1, MIN_VOLUME)
-      Sound.COIN.play()
+      sound.coin.play()
     },
     onPlus: () => {
       const currentVolume = state.application.volume.sound
       state.application.volume.sound = Math.min(currentVolume + 1, MAX_VOLUME)
-      Sound.COIN.play()
+      sound.coin.play()
     },
   })
   component.addChild(soundSlider)
@@ -109,12 +110,10 @@ const settings = (): [
     onMinus: () => {
       const currentVolume = state.application.volume.music
       state.application.volume.music = Math.max(currentVolume - 1, MIN_VOLUME)
-      // Sound.COIN.play()
     },
     onPlus: () => {
       const currentVolume = state.application.volume.music
       state.application.volume.music = Math.min(currentVolume + 1, MAX_VOLUME)
-      // Sound.COIN.play()
     },
   })
 

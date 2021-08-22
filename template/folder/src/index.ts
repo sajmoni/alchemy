@@ -4,6 +4,8 @@ import * as l1 from 'l1'
 import MainLoop from 'mainloop.js'
 import * as Sentry from '@sentry/browser'
 import { Integrations } from '@sentry/tracing'
+import { subscribeKey } from 'valtio/utils'
+import { Howler } from 'howler'
 
 import app from '/app'
 import state from '/state'
@@ -17,7 +19,6 @@ import initializeDebugTools from './core/debug'
 import initializeObjectPool from '/util/objectPool'
 import initializeSceneHandler from './core/sceneHandler'
 import initializeWorker from './core/worker'
-import initializeSound from './core/sound'
 import initializeKeyboardInput from './input/keyboard'
 import handleError from './util/handleError'
 
@@ -86,8 +87,11 @@ document.fonts
         initializeObjectPool()
         initializeSceneHandler()
         initializeWorker()
-        initializeSound()
         initializeKeyboardInput(Object.values(Key))
+
+        subscribeKey(state.application.volume, 'sound', (volume) => {
+          Howler.volume(volume * 0.1)
+        })
 
         l1.once(() => {
           loadingContainer.destroy()
