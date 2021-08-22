@@ -1,5 +1,5 @@
 import { Howl, HowlOptions } from 'howler'
-import sounds from '../public/asset/sound/sounds.json'
+import sounds from './sounds.json'
 
 const soundPath = (fileName: string): string => `./asset/sound/${fileName}`
 

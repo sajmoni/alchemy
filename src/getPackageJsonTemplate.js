@@ -9,6 +9,7 @@ module.exports = ({ projectName }) => {
       game: 'node script/serve.js public src/index.ts 8000',
       labs: 'node script/serve.js public src/labs/index.ts 8001',
       build: 'node script/build.js',
+      sound: 'node script/loadSounds.js',
       test: 'ava',
       plop: 'plop --plopfile plop/plopfile.ts',
       qa: 'tsc && xo --fix',
