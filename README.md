@@ -1,4 +1,4 @@
-<h1 align="center" style="background-color: black; color:red; padding: 10px 0 15px 0">
+<h1 align="center" >
   make-web-game
 </h1>
 <h4 align="center">
@@ -86,10 +86,13 @@ The output file structure will look like this:
 ```
 my-game/
 ├── .github/
-├── asset/
-│   ├── font/
-│   ├── sound/
-│   └── sprite/
+├── public/
+│   ├── index.html
+│   └── asset/
+│       ├── style.css
+│       ├── font/
+│       ├── sound/
+│       └── spritesheet/
 ├── labs/
 │   ├── lab/
 │   ├── App.js
@@ -105,35 +108,29 @@ my-game/
 │   ├── scene/
 │   └── plopfile.ts
 ├── script/
-│   └── setupTests.js
-├── node_modules/
+│   ├── build.js
+│   ├── loadSounds.js
+│   └── serve.js
 ├── src/
-│   ├── component/
-│   ├── constant/
+│   ├── ui/
+│   │   ├── fragment/
+│   │   └── view/
+│   ├── enum/
 │   ├── data/
 │   ├── effect/
 │   ├── input/
-│   ├── main/
-│   │   ├── scene/
-│   │   ├── ui/
-│   │   └── index.js
+│   ├── scene/
 │   ├── particle/
-│   ├── sound/
 │   ├── type/
 │   ├── util/
 │   ├── worker/
 │   ├── app.ts
-│   ├── debug.ts
-│   ├── example.test.js
-│   ├── index.html
-│   ├── index.js
-│   ├── loop.ts
+│   ├── env.ts
+│   ├── index.ts
 │   ├── pixi.ts
 │   ├── state.ts
-│   ├── style.css
-│   └── package.json
-├── static/
-│   └── spritesheet/
+│   └── sounds.json
+├── .aseprite.sh
 ├── .gitignore
 ├── .babelrc
 ├── .npmrc
@@ -173,5 +170,4 @@ A list of games bootstrapped using this tool:
 
 ## Requirements
 
-- `yarn`: `v1.x`
-- `git`: `>=v2.28.0`
+- `git >=v2.28.0`
