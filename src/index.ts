@@ -1,10 +1,13 @@
-const commander = require('commander')
-const chalk = require('chalk')
-const CFonts = require('cfonts')
+#!/usr/bin/env node
 
-const packageJson = require('../package.json')
-const displayNoProjectNameMessage = require('./message/noProjectName')
-const makeWebGame = require('./makeWebGame')
+import commander from 'commander'
+import chalk from 'chalk'
+import CFonts from 'cfonts'
+
+// @ts-ignore
+import packageJson from '../package.json'
+import displayNoProjectNameMessage from './message/noProjectName'
+import makeWebGame from './makeWebGame'
 
 let projectName
 

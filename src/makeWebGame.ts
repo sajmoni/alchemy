@@ -1,13 +1,13 @@
-const chalk = require('chalk')
-const path = require('path')
-const os = require('os')
-const fs = require('fs-extra')
-const execa = require('execa')
-const Listr = require('listr')
+import chalk from 'chalk'
+import path from 'path'
+import os from 'os'
+import fs from 'fs-extra'
+import execa from 'execa'
+import Listr from 'listr'
 
-const getPackageJsonTemplate = require('./getPackageJsonTemplate')
-const createFileFromTemplate = require('./createFileFromTemplate')
-const displayDoneMessage = require('./message/done')
+import getPackageJsonTemplate from './getPackageJsonTemplate'
+import createFileFromTemplate from './createFileFromTemplate'
+import displayDoneMessage from './message/done'
 
 const dependencies = [
   // Rendering
@@ -20,7 +20,6 @@ const dependencies = [
   'juice.js@2.0.1',
   'l1@0.7.1',
   'mainloop.js@1.0.4',
-  // Util
   'valtio@1.2.1',
   'tiny-toolkit@0.0.9',
   'tinykeys@1.2.0',
@@ -64,7 +63,7 @@ const devDependencies = [
   'eslint-plugin-react-hooks@4.2.0',
 ]
 
-module.exports = ({ projectName }) => {
+const makeWebGame = ({ projectName }) => {
   const rootPath = path.resolve(projectName)
 
   console.log(` Creating a new web game in ${chalk.green(rootPath)}`)
@@ -113,7 +112,7 @@ module.exports = ({ projectName }) => {
     {
       title: 'Copy template files',
       task: () => {
-        const templateDirectory = path.join(__dirname, `/template`)
+        const templateDirectory = path.join(__dirname, `/../template`)
 
         try {
           fs.copySync(`${templateDirectory}/folder`, rootPath)
@@ -122,7 +121,7 @@ module.exports = ({ projectName }) => {
         }
 
         createFileFromTemplate({
-          source: 'storage.template.ts',
+          source: `${templateDirectory}/storage.template.ts`,
           destination: path.join(rootPath, 'src/util/storage.ts'),
           options: { projectName },
         })
@@ -132,7 +131,6 @@ module.exports = ({ projectName }) => {
         fs.moveSync(
           path.join(rootPath, 'gitignore'),
           path.join(rootPath, '.gitignore'),
-          // @ts-expect-error
           [],
         )
       },
@@ -196,3 +194,5 @@ module.exports = ({ projectName }) => {
       process.exit(1)
     })
 }
+
+export default makeWebGame

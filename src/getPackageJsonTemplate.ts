@@ -1,4 +1,4 @@
-module.exports = ({ projectName }) => {
+const getPackageJsonTemplate = ({ projectName }) => {
   const packageJsonTemplate = {
     name: projectName,
     version: '0.0.0',
@@ -80,3 +80,5 @@ module.exports = ({ projectName }) => {
 
   return packageJsonTemplate
 }
+
+export default getPackageJsonTemplate

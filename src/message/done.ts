@@ -1,6 +1,6 @@
-const chalk = require('chalk')
+import chalk from 'chalk'
 
-module.exports = ({ name, rootPath }) => {
+const done = ({ name, rootPath }) => {
   console.log()
   console.log(
     ` ${chalk.green('Success!')} Created ${chalk.cyan(name)} at ${chalk.cyan(
@@ -17,3 +17,5 @@ module.exports = ({ name, rootPath }) => {
   console.log(' Good luck!')
   console.log()
 }
+
+export default done

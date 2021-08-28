@@ -1,6 +1,6 @@
-const chalk = require('chalk')
+import chalk from 'chalk'
 
-module.exports = ({ program }) => {
+const noProjectName = ({ program }) => {
   console.log()
   console.error('Please specify the project directory:')
   console.log(
@@ -15,3 +15,5 @@ module.exports = ({ program }) => {
   )
   console.log()
 }
+
+export default noProjectName
