@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
 import * as pixi from '/pixi'
-import { UIComponent } from '/type/ui'
+import { Fragment } from '/type'
 
 const iconDistance = 25
 
@@ -16,7 +16,7 @@ const slider = ({
   initialValue,
   onMinus,
   onPlus,
-}: SliderOptions): UIComponent<number> => {
+}: SliderOptions): Fragment<number> => {
   const component = new PIXI.Container()
 
   const minus = new PIXI.Sprite(ex.getTexture('plus-minus-2'))

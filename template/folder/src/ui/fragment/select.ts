@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
 import { container, text } from '/pixi'
-import { UIComponent } from '/type/ui'
+import { Fragment } from '/type'
 
 type Option = {
   value: string
@@ -19,7 +19,7 @@ const select = ({
   options,
   onClick,
   title,
-}: SelectOptions): UIComponent<string> => {
+}: SelectOptions): Fragment<string> => {
   const component = container()
 
   const titleText = text(title, new PIXI.TextStyle({ fill: 'white' }))

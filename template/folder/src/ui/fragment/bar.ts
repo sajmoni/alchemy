@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
 
-import { UIComponent } from '/type/ui'
+import { Fragment } from '/type'
 
 const HEIGHT = 7
 
@@ -18,7 +18,7 @@ const bar = ({
   offColor = '#ff00ff',
   backgroundColor = '#000000',
   width = 100,
-}: BarOptions = {}): UIComponent<number> => {
+}: BarOptions = {}): Fragment<number> => {
   const component = new PIXI.Graphics()
 
   const paddedWidth = width + 2

@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
 import * as pixi from '/pixi'
-import { UIComponent } from '/type/ui'
+import { Fragment } from '/type'
 
 type ButtonOptions = {
   label: string
@@ -16,7 +16,7 @@ const button = ({
   onClick,
   textStyle,
   backgroundTexture = undefined,
-}: ButtonOptions): UIComponent<void> => {
+}: ButtonOptions): Fragment<void> => {
   const component = new PIXI.Container()
 
   ex.makeClickable(component, () => {
