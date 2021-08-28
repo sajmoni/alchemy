@@ -12,7 +12,7 @@ const done = ({ name, rootPath }) => {
   console.log()
   console.log(chalk.cyan(`   cd ${name}`))
   console.log()
-  console.log(`   ${chalk.cyan('yarn start')}`)
+  console.log(`   ${chalk.cyan('npm start')}`)
   console.log()
   console.log(' Good luck!')
   console.log()

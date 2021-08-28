@@ -69,8 +69,8 @@ const makeWebGame = ({ projectName }) => {
   console.log(` Creating a new web game in ${chalk.green(rootPath)}`)
   console.log()
 
-  const command = 'yarn'
-  const yarnAdd = ['add', '--exact']
+  const command = 'npm'
+  const npmInstall = ['install', '--save-exact']
 
   const tasks = new Listr([
     {
@@ -138,7 +138,7 @@ const makeWebGame = ({ projectName }) => {
     {
       title: 'Install dev dependencies',
       task: () => {
-        const devArgs = yarnAdd.concat('--dev').concat(devDependencies)
+        const devArgs = npmInstall.concat('--dev').concat(devDependencies)
 
         return execa(command, devArgs, { all: true }).all
       },
@@ -146,7 +146,7 @@ const makeWebGame = ({ projectName }) => {
     {
       title: 'Install dependencies',
       task: () => {
-        const productionArgs = yarnAdd.concat(dependencies)
+        const productionArgs = npmInstall.concat(dependencies)
 
         return execa(command, productionArgs, { all: true }).all
       },

@@ -139,7 +139,7 @@ my-game/
 ├── package.json
 ├── README.md
 ├── tsconfig.json
-└── yarn.lock
+└── package-lock.json
 ```
 
 ## What you should do after the script is run

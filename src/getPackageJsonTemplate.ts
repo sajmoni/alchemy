@@ -5,7 +5,7 @@ const getPackageJsonTemplate = ({ projectName }) => {
     private: true,
     main: './electron.js',
     scripts: {
-      start: 'yarn game && yarn labs',
+      start: 'npm run game && npm run labs',
       game: 'node script/serve.js public src/index.ts 8000',
       labs: 'node script/serve.js public src/labs/index.ts 8001',
       build: 'node script/build.js',
@@ -17,9 +17,9 @@ const getPackageJsonTemplate = ({ projectName }) => {
       'elec:start': 'electron .',
       'elec:build':
         'rm -rf dist && parcel build src/index.html --public-url ./ --target electron',
-      'elec:pack': 'yarn electron-packager . --overwrite',
+      'elec:pack': 'npx electron-packager . --overwrite',
       'elec:run': `open ${projectName}-darwin-x64/${projectName}.app`,
-      'elec:all': 'yarn elec:build && yarn elec:pack && yarn elec:run',
+      'elec:all': 'npm run elec:build && npm run elec:pack && npm run elec:run',
     },
     ava: {
       require: ['ts-node/register'],
@@ -72,7 +72,7 @@ const getPackageJsonTemplate = ({ projectName }) => {
     husky: {
       hooks: {
         'pre-commit': 'lint-staged',
-        'pre-push': 'yarn test',
+        'pre-push': 'npm test',
       },
     },
     browserslist: ['defaults', 'not IE 11', 'not IE_Mob 11'],

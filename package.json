@@ -53,12 +53,12 @@
     }
   },
   "scripts": {
-    "version": "yarn build",
+    "version": "npm run build",
     "clean": "rm -rf ./test-game",
     "go": "./build-test.sh",
     "build": "rm -rf dist && tsc",
     "qa": "tsc && xo --fix",
-    "release": "yarn clean && yarn qa && yarn build && np --no-tests"
+    "release": "npm run clean && npm run qa && npm run build && np --no-tests"
   },
   "devDependencies": {
     "husky": "4.3.0",
