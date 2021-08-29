@@ -20,8 +20,8 @@ const dependencies = [
   'juice.js@2.0.1',
   'l1@0.7.1',
   'mainloop.js@1.0.4',
-  'valtio@1.2.1',
-  'tiny-toolkit@0.0.9',
+  'valtio@1.2.2',
+  'tiny-toolkit@0.0.10',
   'tinykeys@1.2.0',
   'dot-prop@6.0.1',
   // Monitoring
@@ -37,7 +37,7 @@ const devDependencies = [
   'lint-staged@10.5.4',
   'eslint-plugin-fp@2.3.0',
   // Module bundling
-  'esbuild@0.11.17',
+  'esbuild@0.12.24',
   'open@8.0.6',
   'fs-extra@9.1.0',
   'chalk@4.1.1',
@@ -49,7 +49,7 @@ const devDependencies = [
   'plop@2.7.4',
   // Types
   '@types/node@14.14.34',
-  '@types/howler@2.2.1',
+  '@types/howler@2.2.3',
   '@types/mainloop.js@1.0.5',
   // Web - Labs and Debug tools
   'react@17.0.2',
