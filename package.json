@@ -36,6 +36,11 @@
       "node"
     ],
     "rules": {
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "@typescript-eslint/no-implicit-any-catch": "off",
+      "unicorn/prefer-module": "off",
       "@typescript-eslint/restrict-template-expressions": "off",
       "@typescript-eslint/ban-ts-comment": "off",
       "import/no-unassigned-import": "off",
