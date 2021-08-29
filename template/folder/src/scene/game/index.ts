@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
-import * as particles from 'pixi-particles'
+import * as particles from '@pixi/particle-emitter'
 import { subscribe } from 'valtio'
 import { subscribeKey } from 'valtio/utils'
 
@@ -48,13 +48,8 @@ const game = ({ container }: SceneArgs): void => {
   particleContainer.position.set(200, 50)
   container.addChild(particleContainer)
 
-  const explosionParticles = new particles.Emitter(
-    particleContainer,
-    ['square-1'].map((fileName) => ex.getTexture(fileName)),
-    explosion(),
-  )
-
-  explosionParticles.playOnceAndDestroy()
+  // eslint-disable-next-line no-new
+  new particles.Emitter(particleContainer, explosion())
 
   const _pauseMenu = pauseMenu({
     width: Render.GAME_WIDTH,

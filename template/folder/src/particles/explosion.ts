@@ -1,86 +1,96 @@
-import { EmitterConfig } from 'pixi-particles'
+import * as ex from 'pixi-ex'
+import { EmitterConfigV3 } from '@pixi/particle-emitter'
 
-const explosion = (): EmitterConfig => ({
-  alpha: {
-    list: [
-      {
-        value: 0.8,
-        time: 0,
-      },
-      {
-        value: 0.1,
-        time: 1,
-      },
-    ],
-    isStepped: false,
-  },
-  scale: {
-    list: [
-      {
-        value: 1,
-        time: 0,
-      },
-      {
-        value: 0.3,
-        time: 1,
-      },
-    ],
-    isStepped: false,
-  },
-  color: {
-    list: [
-      {
-        value: 'fb1010',
-        time: 0,
-      },
-      {
-        value: 'f5b830',
-        time: 1,
-      },
-    ],
-    isStepped: false,
-  },
-  speed: {
-    list: [
-      {
-        value: 200,
-        time: 0,
-      },
-      {
-        value: 100,
-        time: 1,
-      },
-    ],
-    isStepped: false,
-  },
-  startRotation: {
-    min: 0,
-    max: 360,
-  },
-  rotationSpeed: {
-    min: 0,
-    max: 0,
-  },
+const explosion = (): EmitterConfigV3 => ({
   lifetime: {
-    min: 0.5,
-    max: 0.5,
+    min: 0.8,
+    max: 0.8,
   },
-  frequency: 0.008,
-  spawnChance: 1,
-  particlesPerWave: 1,
-  emitterLifetime: 0.31,
+  particlesPerWave: 8,
+  frequency: 0.2,
+  emitterLifetime: 0.41,
+  autoUpdate: true,
   maxParticles: 1000,
+  addAtBack: false,
   pos: {
     x: 0,
     y: 0,
   },
-  addAtBack: false,
-  spawnType: 'circle',
-  spawnCircle: {
-    x: 0,
-    y: 0,
-    r: 10,
-  },
+  behaviors: [
+    {
+      type: 'alpha',
+      config: {
+        alpha: {
+          list: [
+            {
+              time: 0,
+              value: 0.8,
+            },
+            {
+              time: 1,
+              value: 0.7,
+            },
+          ],
+        },
+      },
+    },
+    {
+      type: 'moveSpeedStatic',
+      config: {
+        min: 200,
+        max: 200,
+      },
+    },
+    {
+      type: 'scale',
+      config: {
+        scale: {
+          list: [
+            {
+              time: 0,
+              value: 1,
+            },
+            {
+              time: 1,
+              value: 0.3,
+            },
+          ],
+        },
+        minMult: 1,
+      },
+    },
+    {
+      type: 'color',
+      config: {
+        color: {
+          list: [
+            {
+              time: 0,
+              value: 'e3f9ff',
+            },
+            {
+              time: 1,
+              value: '0ec8f8',
+            },
+          ],
+        },
+      },
+    },
+    {
+      type: 'spawnBurst',
+      config: {
+        start: 0,
+        spacing: 45,
+        distance: 0,
+      },
+    },
+    {
+      type: 'textureSingle',
+      config: {
+        texture: ex.getTexture('square-1'),
+      },
+    },
+  ],
 })
 
 export default explosion
