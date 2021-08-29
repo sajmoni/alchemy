@@ -1,5 +1,15 @@
-const getPackageJsonTemplate = ({ projectName }) => {
-  const packageJsonTemplate = {
+import { PackageJson } from 'type-fest'
+
+type ExtendedPackageJson = PackageJson & {
+  ava: any
+  prettier: any
+  xo: any
+  husky: any
+  browserslist: any
+}
+
+const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
+  const packageJsonTemplate: ExtendedPackageJson = {
     name: projectName,
     version: '0.0.0',
     private: true,
