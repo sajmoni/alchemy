@@ -141,7 +141,7 @@ const makeWebGame = ({ projectName }: { projectName: string }) => {
     {
       title: 'Install dev dependencies',
       task: () => {
-        const devArgs = npmInstall.concat('--dev').concat(devDependencies)
+        const devArgs = npmInstall.concat('--save-dev').concat(devDependencies)
 
         return execa(command, devArgs, { all: true }).all
       },
