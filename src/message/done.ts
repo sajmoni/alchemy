@@ -1,6 +1,6 @@
 import chalk from 'chalk'
 
-const done = ({ name, rootPath }) => {
+const done = ({ name, rootPath }: { name: string; rootPath: string }) => {
   console.log()
   console.log(
     ` ${chalk.green('Success!')} Created ${chalk.cyan(name)} at ${chalk.cyan(

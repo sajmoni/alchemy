@@ -1,8 +1,10 @@
+import path from 'node:path'
+import os from 'node:os'
+import process from 'node:process'
 import chalk from 'chalk'
-import path from 'path'
-import os from 'os'
 import fs from 'fs-extra'
 import execa from 'execa'
+// @ts-expect-error Will switch to listr2
 import Listr from 'listr'
 
 import getPackageJsonTemplate from './getPackageJsonTemplate'
@@ -63,7 +65,7 @@ const devDependencies = [
   'eslint-plugin-react-hooks@4.2.0',
 ]
 
-const makeWebGame = ({ projectName }) => {
+const makeWebGame = ({ projectName }: { projectName: string }) => {
   const rootPath = path.resolve(projectName)
 
   console.log(` Creating a new web game in ${chalk.green(rootPath)}`)
@@ -72,6 +74,7 @@ const makeWebGame = ({ projectName }) => {
   const command = 'npm'
   const npmInstall = ['install', '--save-exact']
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const tasks = new Listr([
     {
       title: 'Create project folder',
@@ -104,7 +107,7 @@ const makeWebGame = ({ projectName }) => {
           execa.sync('git', ['init', '-b', 'main'])
 
           return true
-        } catch (error) {
+        } catch (error: any) {
           throw new Error(`Git repo not initialized ${error}`)
         }
       },
@@ -131,6 +134,7 @@ const makeWebGame = ({ projectName }) => {
         fs.moveSync(
           path.join(rootPath, 'gitignore'),
           path.join(rootPath, '.gitignore'),
+          // @ts-expect-error
           [],
         )
       },
@@ -167,7 +171,7 @@ const makeWebGame = ({ projectName }) => {
           execa.sync('git', ['branch', 'release'])
 
           return true
-        } catch (error) {
+        } catch (error: any) {
           // It was not possible to commit.
           // Maybe the commit author config is not set.
           // Remove the Git files to avoid a half-done state.
@@ -187,11 +191,11 @@ const makeWebGame = ({ projectName }) => {
     .then(() => {
       displayDoneMessage({ name: projectName, rootPath })
     })
-    .catch((error) => {
+    .catch((error: any) => {
       console.log()
       console.error(chalk.red(error))
       console.log()
-      process.exit(1)
+      throw new Error(error)
     })
 }
 

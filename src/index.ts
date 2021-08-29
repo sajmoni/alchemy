@@ -1,10 +1,11 @@
 #!/usr/bin/env node
-
+import process from 'node:process'
 import commander from 'commander'
 import chalk from 'chalk'
+// @ts-expect-error No types for this lib
 import CFonts from 'cfonts'
 
-// @ts-ignore
+// @ts-expect-error
 import packageJson from '../package.json'
 import displayNoProjectNameMessage from './message/noProjectName'
 import makeWebGame from './makeWebGame'
@@ -26,7 +27,7 @@ const program = new commander.Command(packageJson.name)
   .parse(process.argv)
 
 if (typeof projectName === 'undefined') {
-  displayNoProjectNameMessage({ program })
+  displayNoProjectNameMessage({ programName: program.name() })
   process.exit(1)
 }
 

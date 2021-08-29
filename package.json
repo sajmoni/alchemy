@@ -59,6 +59,8 @@
     "release": "npm run clean && npm run qa && npm run build && np --no-tests"
   },
   "devDependencies": {
+    "@types/fs-extra": "9.0.12",
+    "@types/mustache": "4.1.2",
     "husky": "4.3.0",
     "lint-staged": "11.1.2",
     "np": "7.5.0",
