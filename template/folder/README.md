@@ -1,70 +1,62 @@
-<!-- omit in toc -->
+<!-- TODO: Insert project name here -->
 
-## My web game
+## My web game <!-- omit in toc -->
 
-This game was initially created with [`make-web-game`](https://github.com/sajmoni/make-web-game)
+## Index <!-- omit in toc -->
 
----
-
-<!-- omit in toc -->
-
-## Documentation
-
-- [My web game](#my-web-game)
-- [Documentation](#documentation)
-  - [Folder structure](#folder-structure)
-    - [ui](#ui)
-      - [Configuration](#configuration)
-    - [Effects](#effects)
-    - [Data](#data)
-    - [Scene](#scene)
-    - [Worker](#worker)
-  - [Git branching](#git-branching)
-  - [QA](#qa)
-  - [Generate sprite sheet](#generate-sprite-sheet)
-  - [Generating a production build](#generating-a-production-build)
-  - [Electron](#electron)
-  - [Sentry](#sentry)
-  - [Debug overlay](#debug-overlay)
-  - [Sounds](#sounds)
-  - [State management](#state-management)
-  - [Plop](#plop)
-  - [Web worker](#web-worker)
-  - [Input](#input)
-    - [Keyboard](#keyboard)
-  - [Labs](#labs)
-  - [Performance Tips](#performance-tips)
-    - [Lodash](#lodash)
-    - [Draw calls](#draw-calls)
-    - [Immutability](#immutability)
-  - [Object pool](#object-pool)
-  - [Marketing](#marketing)
-  - [Useful external tools](#useful-external-tools)
-  - [Useful libraries](#useful-libraries)
-    - [Graphics](#graphics)
-    - [Text](#text)
-    - [Randomness](#randomness)
-    - [Physics](#physics)
-    - [State machine](#state-machine)
-    - [Utils](#utils)
-    - [Events](#events)
-    - [Debug](#debug)
-  - [Useful external resources](#useful-external-resources)
-  - [Misc](#misc)
+- [Folder structure](#folder-structure)
+  - [ui/fragment](#uifragment)
+  - [Effects](#effects)
+  - [Data](#data)
+  - [Scene](#scene)
+  - [Worker](#worker)
+- [Git branching](#git-branching)
+- [QA](#qa)
+- [Generate sprite sheet](#generate-sprite-sheet)
+- [Generating a production build](#generating-a-production-build)
+- [Electron](#electron)
+- [Sentry](#sentry)
+- [Debug overlay](#debug-overlay)
+- [Sounds](#sounds)
+- [State management](#state-management)
+- [Plop](#plop)
+- [Web worker](#web-worker)
+- [Input](#input)
+  - [Keyboard](#keyboard)
+- [Labs](#labs)
+- [Performance Tips](#performance-tips)
+  - [Lodash](#lodash)
+  - [Draw calls](#draw-calls)
+  - [Immutability](#immutability)
+- [Object pool](#object-pool)
+- [Marketing](#marketing)
+- [Useful external tools](#useful-external-tools)
+- [Useful libraries](#useful-libraries)
+  - [Graphics](#graphics)
+  - [Text](#text)
+  - [Randomness](#randomness)
+  - [Physics](#physics)
+  - [State machine](#state-machine)
+  - [Utils](#utils)
+  - [Events](#events)
+  - [Debug](#debug)
+- [Useful external resources](#useful-external-resources)
+- [Guides](#guides)
+  - [Pixel perfect rendering](#pixel-perfect-rendering)
 
 ---
 
 ### Folder structure
 
-#### ui
+#### ui/fragment
 
-The `ui` folder contains a collection of Pixi UI Components.
+The `fragment` folder contains `reusable` ui components.
 
-A UI Component is a function that returns an `array` with two elements.
+A `fragment` is a function that returns two thins:
 
-- The first one is a `Pixi.DisplayObject` that you need to add to a `Pixi.Container` (for example your stage).
+1. A `Pixi.DisplayObject` that you need to add as a child to another `Pixi.DisplayObject`.
 
-- The second one is a `render` function. Call this whenever you want to re-render your component. (For example due to a state update)
+2. A `render` function. Call this whenever you want to re-render your component. (For example due to a state update)
 
 _Example_
 
@@ -76,9 +68,11 @@ app.stage.addChild(playButton)
 renderPlayButton()
 ```
 
-##### Configuration
+_Create a new one with `npm run plop`_
 
-A component can take an optional `configuration` object.
+**Configuration**
+
+A `fragment` can take an optional `configuration` object.
 
 ```js
 const configuration = {
@@ -90,23 +84,17 @@ const [playButton] = button(configuration)
 
 #### Effects
 
-Effects can change how your display objects look like.
+Effects change how your display objects look.
 
-The template includes the following effects:
+TODO: More info here
 
-- `fadeIn`
-- `fadeOut`
-- `fullScreenFadeOut`
-- `bounce`
-- `fadeOut`
+_Create a new one with `npm run plop`_
 
 #### Data
 
-JSON data that your game uses.
+Data that your game uses. For example `equipment`, `items`, `enemies` etc.
 
 #### Scene
-
-Put `scenes` here.
 
 A `Scene` has the following type signature:
 
@@ -141,21 +129,21 @@ This should generally be avoided and only be done if its really truly needed and
 
 ### QA
 
-`yarn qa`
+`npm run qa`
 
-Will check the code with the `typescript` compiler and lint check with `xo`.
+Will type check the code `typescript` and lint check with `xo`.
 
 ---
 
 ### Generate sprite sheet
 
-Put your image files into the `asset/sprite` folder and run `yarn ase`.
+Put your `aseprite` files into the `asset/sprite` folder and run `npm run ase`.
 
 ---
 
 ### Generating a production build
 
-`yarn build`
+`npm run build`
 
 ---
 
@@ -198,33 +186,26 @@ Sounds are preloaded with `Howler`.
 Example usage:
 
 ```js
-import Sound from '/sound'
+import sound from '/sound'
 
-Sound.COIN.play()
+sound.coin.play()
 ```
 
-Add sound files to `public/asset` and reference them in `src/sound/index.ts`
+Add sound files to `public/asset/sound` and run `npm run sound` to be able to use them.
 
 ---
 
 ### State management
 
-You can subscribe to state changes with [`state-prism`](https://github.com/sajmoni/state-prism). You register a callback for the part of state you want to subscribe to.
+You can subscribe to state changes with [`valtio`](). You register a callback for the part of state you want to subscribe to.
 
 Example usage:
 
 ```js
-import * as prism from 'state-prism'
+import { subscribeKey } from 'valtio'
+import state from '/state'
 
-let state = {
-  application: {
-    volume: 5,
-  },
-}
-
-state = prism.init(state)
-
-prims.subscribe('application.volume', (volume) => {
+subscribeKey(state.application, 'volume', (volume) => {
   renderVolume(volume)
 })
 ```
@@ -236,7 +217,7 @@ prims.subscribe('application.volume', (volume) => {
 With [`plop`](https://github.com/plopjs/plop) you can create new files from the command line.
 
 ```
-yarn plop
+npm run plop
 ```
 
 ---
@@ -253,7 +234,9 @@ A `web worker` is run in a separate thread and allows you to run code concurrent
 
 #### Keyboard
 
-Keyboard input uses [`mousetrap`](https://github.com/ccampbell/mousetrap)
+Keyboard input uses [`tinykeys`]()
+
+TODO: How to use
 
 ---
 
@@ -261,9 +244,11 @@ Keyboard input uses [`mousetrap`](https://github.com/ccampbell/mousetrap)
 
 `Labs` is a separate webapp that allows you to experiment and prototype separately from your game.
 
-Run `yarn labs` to start the app.
+Run `npm run labs` to start the app.
 
-With `yarn plop` you can create new labs.
+With `npm run plop` you can create new labs.
+
+Labs run on `localhost:8001`
 
 ---
 
@@ -289,7 +274,7 @@ Creating and destroying pixi objects can be bad for performance. It is especiall
 
 ### Marketing
 
-- Install [Gifski](https://sindresorhus.com/gifski) to generate GIFs on Mac.
+- Use [Gifski](https://sindresorhus.com/gifski) to generate GIFs on Mac.
 
 ---
 
@@ -359,6 +344,8 @@ text.filters = [new filters.CRTFilter()]
 
 ---
 
-### Misc
+### Guides
 
-- For pixel perfect rendering: uncomment lines in `src/app.js`
+#### Pixel perfect rendering
+
+Uncomment lines in `src/app.js`.
