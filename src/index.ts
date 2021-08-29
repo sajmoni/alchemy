@@ -5,7 +5,8 @@ import chalk from 'chalk'
 // @ts-expect-error No types for this lib
 import CFonts from 'cfonts'
 
-// @ts-expect-error
+// eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
+// @ts-ignore
 import packageJson from '../package.json'
 import displayNoProjectNameMessage from './message/noProjectName'
 import makeWebGame from './makeWebGame'
