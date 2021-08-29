@@ -10,7 +10,7 @@ import { button } from '/ui/fragment'
 import { settings } from '/ui/view'
 import { name as gameTitle } from '/../package.json'
 import { clickBlink, easeOutToPosition } from '/effect'
-import { SceneArgs } from '/type/scene'
+import { SceneArgs } from '/type'
 
 const mainMenu = ({ container }: SceneArgs): void => {
   const titleText = pixi.text(

@@ -10,7 +10,7 @@ import { Render } from '/enum'
 import { bar } from '/ui/fragment'
 import { pauseMenu } from '/ui/view'
 import { explosion } from '/particles'
-import { SceneArgs } from '/type/scene'
+import { SceneArgs } from '/type'
 import { expand } from '/effect'
 
 const game = ({ container }: SceneArgs): void => {
