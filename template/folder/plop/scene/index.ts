@@ -1,6 +1,6 @@
 const BASE_PATH = '../src/scene'
 
-module.exports = {
+const scene = {
   description: 'Render display objects',
   prompts: [
     {
@@ -39,3 +39,5 @@ module.exports = {
     ]
   },
 }
+
+export default scene

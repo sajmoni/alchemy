@@ -1,12 +1,12 @@
-const BASE_PATH = '../src/effect'
+const BASE_PATH = '../src/particles'
 
-module.exports = {
-  description: 'Animate your display objects',
+const particles = {
+  description: 'Particle effect config',
   prompts: [
     {
       type: 'input',
       name: 'name',
-      message: 'Enter name (camelCase):',
+      message: 'Enter name:',
     },
   ],
   actions: () => {
@@ -14,7 +14,7 @@ module.exports = {
       {
         type: 'add',
         path: `${BASE_PATH}/{{camelCase name}}.ts`,
-        templateFile: './effect/template.hbs',
+        templateFile: './particles/template.hbs',
         abortOnFail: true,
       },
       {
@@ -33,3 +33,5 @@ module.exports = {
     ]
   },
 }
+
+export default particles

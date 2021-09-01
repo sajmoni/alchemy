@@ -1,0 +1,11 @@
+import * as PIXI from 'pixi.js'
+
+type {{ pascalCase name }}Options = {}
+
+const create{{ properCase name }} = ({}: {{ pascalCase name }}Options): PIXI.Container => {
+  const container = new PIXI.Container()
+
+  return container
+}
+
+export default create{{ properCase name }}
