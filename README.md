@@ -108,6 +108,7 @@ my-game/
 │   ├── scene/
 │   └── plopfile.ts
 ├── script/
+│   ├── aseprite.sh
 │   ├── build.js
 │   ├── loadSounds.js
 │   └── serve.js
@@ -130,7 +131,6 @@ my-game/
 │   ├── pixi.ts
 │   ├── state.ts
 │   └── sounds.json
-├── .aseprite.sh
 ├── .gitignore
 ├── .babelrc
 ├── .npmrc

@@ -23,7 +23,7 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
       test: 'ava',
       plop: 'plop --plopfile plop/plopfile.ts',
       qa: 'tsc && xo --fix',
-      ase: './aseprite.sh',
+      ase: './script/aseprite.sh',
       'elec:start': 'electron .',
       'elec:build':
         'rm -rf dist && parcel build src/index.html --public-url ./ --target electron',
