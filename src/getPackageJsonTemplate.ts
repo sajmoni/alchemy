@@ -32,7 +32,7 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
       'elec:all': 'npm run elec:build && npm run elec:pack && npm run elec:run',
     },
     ava: {
-      require: ['ts-node/register'],
+      require: ['esbuild-runner/register'],
       extensions: ['ts'],
     },
     prettier: {

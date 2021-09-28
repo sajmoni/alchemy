@@ -45,7 +45,7 @@ const devDependencies = [
   'chalk@4.1.1',
   // Testing
   'ava@3.15.0',
-  'ts-node@10.0.0',
+  'esbuild-runner@2.2.1',
   // Other
   'nano-panel@0.0.10',
   'plop@2.7.4',
