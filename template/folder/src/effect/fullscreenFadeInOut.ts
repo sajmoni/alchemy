@@ -2,8 +2,8 @@ import * as l1 from 'l1'
 import * as PIXI from 'pixi.js'
 import * as juice from 'juice.js'
 
-import app from '/app'
-import { Render } from '/enum'
+import app from '~/app'
+import { Render } from '~/enum'
 
 const DURATION = 35
 

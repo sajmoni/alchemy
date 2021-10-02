@@ -5,13 +5,13 @@ import * as particles from '@pixi/particle-emitter'
 import { subscribe } from 'valtio'
 import { subscribeKey } from 'valtio/utils'
 
-import state from '/state'
-import { Render } from '/enum'
+import state from '~/state'
+import { Render } from '~/enum'
 import { bar } from '../../fragment'
-import { pauseMenu } from '/view'
-import { explosion } from '/particles'
-import { SceneArgs } from '/type'
-import { expand } from '/effect'
+import { pauseMenu } from '~/view'
+import { explosion } from '~/particles'
+import { SceneArgs } from '~/type'
+import { expand } from '~/effect'
 
 const game = ({ container }: SceneArgs): void => {
   const sprite = new PIXI.Sprite(ex.getTexture('square-1'))

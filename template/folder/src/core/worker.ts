@@ -1,7 +1,7 @@
 import * as l1 from 'l1'
 
 import Worker from '../worker/index.ts?worker'
-import MessageType from '/enum/messageType'
+import MessageType from '~/enum/messageType'
 
 const initializeWorker = (): void => {
   // The worker is built separately so this path is the built path

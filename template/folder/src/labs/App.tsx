@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
-import * as ls from '/util/storage'
+import * as ls from '~/util/storage'
 import { Lab } from './type'
 
 const Color = {

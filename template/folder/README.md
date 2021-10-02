@@ -186,7 +186,7 @@ Sounds are preloaded with `Howler`.
 Example usage:
 
 ```js
-import sound from '/sound'
+import sound from '~/sound'
 
 sound.coin.play()
 ```
@@ -203,7 +203,7 @@ Example usage:
 
 ```js
 import { subscribeKey } from 'valtio'
-import state from '/state'
+import state from '~/state'
 
 subscribeKey(state.application, 'volume', (volume) => {
   renderVolume(volume)

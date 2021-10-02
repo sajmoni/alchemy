@@ -1,8 +1,8 @@
 import dotProp from 'dot-prop'
 import { proxy } from 'valtio'
 
-import * as ls from '/util/storage'
-import { Resolution, Scene } from '/enum'
+import * as ls from '~/util/storage'
+import { Resolution, Scene } from '~/enum'
 
 export type State = {
   application: {

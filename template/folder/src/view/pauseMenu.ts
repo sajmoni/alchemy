@@ -1,8 +1,8 @@
 import * as PIXI from 'pixi.js'
 import { subscribeKey } from 'valtio/utils'
 
-import * as pixi from '/pixi'
-import state from '/state'
+import * as pixi from '~/pixi'
+import state from '~/state'
 
 const createPauseMenu = ({
   width,

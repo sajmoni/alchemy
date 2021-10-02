@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
 
-import { bar, slider, button, select } from '/ui'
+import { bar, slider, button, select } from '~/fragment'
 
 import { Lab } from '../type'
 

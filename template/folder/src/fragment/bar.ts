@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
 
-import { Fragment } from '/type'
+import { Fragment } from '~/type'
 
 const HEIGHT = 7
 

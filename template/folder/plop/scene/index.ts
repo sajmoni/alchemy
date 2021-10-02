@@ -28,7 +28,7 @@ const scene = {
         type: 'append',
         path: `../src/core/sceneHandler.ts`,
         pattern: `/* PLOP_INJECT_IMPORT */`,
-        template: `import {{ camelCase name }} from '/scene/{{ camelCase name }}'`,
+        template: `import {{ camelCase name }} from '~/scene/{{ camelCase name }}'`,
       },
       {
         type: 'append',

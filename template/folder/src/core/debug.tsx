@@ -17,13 +17,13 @@ import ReactDOM from 'react-dom'
 import { snapshot } from 'valtio'
 import { subscribeKey } from 'valtio/utils'
 
-import app from '/app'
-import Sound from '/sound'
-import state, { State } from '/state'
-import { Scene } from '/enum'
-import * as ls from '/util/storage'
+import app from '~/app'
+import Sound from '~/sound'
+import state, { State } from '~/state'
+import { Scene } from '~/enum'
+import * as ls from '~/util/storage'
 import { getAverageUpdateDuration, getAverageDrawDuration } from './loop'
-import env from '/env'
+import env from '~/env'
 
 declare global {
   interface Window {

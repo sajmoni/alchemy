@@ -3,14 +3,14 @@ import * as juice from 'juice.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
 
-import * as pixi from '/pixi'
-import state from '/state'
-import { Render, TextStyle, Scene } from '/enum'
+import * as pixi from '~/pixi'
+import state from '~/state'
+import { Render, TextStyle, Scene } from '~/enum'
 import { button } from '../../fragment'
-import { settings } from '/view'
-import { name as gameTitle } from '/../package.json'
-import { clickBlink, easeOutToPosition } from '/effect'
-import { SceneArgs } from '/type'
+import { settings } from '~/view'
+import { name as gameTitle } from '~/../package.json'
+import { clickBlink, easeOutToPosition } from '~/effect'
+import { SceneArgs } from '~/type'
 
 const mainMenu = ({ container }: SceneArgs): void => {
   const titleText = pixi.text(

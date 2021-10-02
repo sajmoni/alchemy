@@ -1,8 +1,8 @@
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
-import * as pixi from '/pixi'
-import { Fragment } from '/type'
+import * as pixi from '~/pixi'
+import { Fragment } from '~/type'
 
 type ButtonOptions = {
   label: string

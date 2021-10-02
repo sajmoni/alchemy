@@ -1,8 +1,8 @@
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
-import { container, text } from '/pixi'
-import { Fragment } from '/type'
+import { container, text } from '~/pixi'
+import { Fragment } from '~/type'
 
 type Option = {
   value: string

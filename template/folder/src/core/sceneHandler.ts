@@ -2,15 +2,15 @@ import * as PIXI from 'pixi.js'
 import { subscribeKey } from 'valtio/utils'
 
 /* PLOP_INJECT_IMPORT */
-import mainMenu from '/scene/mainMenu'
-import game from '/scene/game'
+import mainMenu from '~/scene/mainMenu'
+import game from '~/scene/game'
 
-import { Scene } from '/enum'
-import app from '/app'
-import { SceneArgs } from '/type'
-import state from '/state'
-import env from '/env'
-import handleError from '/util/handleError'
+import { Scene } from '~/enum'
+import app from '~/app'
+import { SceneArgs } from '~/type'
+import state from '~/state'
+import env from '~/env'
+import handleError from '~/util/handleError'
 
 const sceneHandler: Record<Scene, (sceneArgs: SceneArgs) => void> = {
   /* PLOP_INJECT_SCENE */

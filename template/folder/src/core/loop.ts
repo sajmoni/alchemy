@@ -2,10 +2,10 @@ import * as l1 from 'l1'
 import MainLoop from 'mainloop.js'
 import { getAverage, roundTo } from 'tiny-toolkit'
 
-import app from '/app'
-import env from '/env'
-import state from '/state'
-import handleError from '/util/handleError'
+import app from '~/app'
+import env from '~/env'
+import state from '~/state'
+import handleError from '~/util/handleError'
 
 const updateDurations: number[] = []
 const drawDurations: number[] = []
