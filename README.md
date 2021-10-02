@@ -40,6 +40,8 @@ Generates a template to make a 2D browser game using `PixiJS` and `TypeScript`.
 
 - :m: [`typescript`](https://github.com/microsoft/TypeScript)
 
+- :zap: [`vite`](https://github.com/vitejs/vite)
+
 - :policeman: [`xo`](https://github.com/xojs/xo)
 
 - :nail_care: [`prettier`](https://github.com/prettier/prettier)
@@ -51,8 +53,6 @@ Generates a template to make a 2D browser game using `PixiJS` and `TypeScript`.
 - :straight_ruler: [`ava`](https://github.com/avajs/ava)
 
 - :eyes: [`nano-panel`](https://github.com/sajmoni/nano-panel)
-
-- :zap: [`esbuild`](https://github.com/evanw/esbuild)
 
 - :red_circle: [`GitHub actions workflows`](https://github.com/features/actions)
 
