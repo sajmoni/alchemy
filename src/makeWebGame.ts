@@ -39,10 +39,7 @@ const devDependencies = [
   'lint-staged@10.5.4',
   'eslint-plugin-fp@2.3.0',
   // Module bundling
-  'esbuild@0.12.24',
-  'open@8.0.6',
-  'fs-extra@9.1.0',
-  'chalk@4.1.1',
+  'vite@2.3.2',
   // Testing
   'ava@3.15.0',
   'esbuild-runner@2.2.1',

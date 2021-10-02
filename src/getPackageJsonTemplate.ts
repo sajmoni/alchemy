@@ -15,10 +15,11 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
     private: true,
     main: './electron.js',
     scripts: {
-      start: 'npm run game && npm run labs',
+      start: 'vite --open',
+      build: 'vite build',
+      preview: 'vite preview --open',
       game: 'node script/serve.js public src/index.ts 8000',
       labs: 'node script/serve.js public src/labs/index.ts 8001',
-      build: 'node script/build.js',
       sound: 'node script/loadSounds.js',
       test: 'ava',
       plop: 'plop --plopfile plop/plopfile.ts',
