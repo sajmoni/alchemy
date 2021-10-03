@@ -1,13 +1,12 @@
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
-import * as pixi from '~/pixi'
 import { Fragment } from '~/type'
 
 type ButtonOptions = {
   label: string
   onClick: () => void
-  textStyle: PIXI.TextStyle
+  textStyle: Partial<PIXI.ITextStyle>
   backgroundTexture?: PIXI.Texture
 }
 
@@ -29,9 +28,8 @@ const button = ({
     component.addChild(button)
   }
 
-  const label = pixi.text(labelString, textStyle)
+  const label = ex.text(component, textStyle, labelString)
   label.anchor.set(0)
-  component.addChild(label)
 
   const render = (): void => {
     // noop

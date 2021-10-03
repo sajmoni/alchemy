@@ -3,26 +3,24 @@ import * as juice from 'juice.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
 
-import * as pixi from '~/pixi'
 import state from '~/state'
 import { Render, TextStyle, Scene } from '~/enum'
-import { button } from '../../fragment'
+import { button } from '~/fragment'
 import { settings } from '~/view'
 import { name as gameTitle } from '~/../package.json'
 import { clickBlink, easeOutToPosition } from '~/effect'
 import { SceneArgs } from '~/type'
 
 const mainMenu = ({ container }: SceneArgs): void => {
-  const titleText = pixi.text(
+  const titleText = ex.text(
+    container,
+    { ...TextStyle.MAIN, fontSize: 25 },
     gameTitle,
-    new PIXI.TextStyle({ ...TextStyle.MAIN, fontSize: 25 }),
   )
 
   titleText.anchor.set(0.5)
   titleText.x = Render.GAME_WIDTH / 2
   titleText.y = Render.GAME_HEIGHT / 3
-
-  container.addChild(titleText)
 
   const getFontSize = juice.sine({
     duration: 240,
@@ -36,7 +34,7 @@ const mainMenu = ({ container }: SceneArgs): void => {
 
   const [settingsButton] = button({
     label: `Settings`,
-    textStyle: new PIXI.TextStyle(TextStyle.MAIN),
+    textStyle: TextStyle.MAIN,
     onClick: () => {
       state.application.settingsVisible = true
     },

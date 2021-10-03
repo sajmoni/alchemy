@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js'
+import * as ex from 'pixi-ex'
 import { subscribeKey } from 'valtio/utils'
 
-import * as pixi from '~/pixi'
 import state from '~/state'
 
 const createPauseMenu = ({
@@ -22,16 +22,16 @@ const createPauseMenu = ({
     .endFill()
   container.addChild(overlay)
 
-  const text = pixi.text(
-    'Paused (Click anywhere to resume)',
-    new PIXI.TextStyle({
+  const text = ex.text(
+    container,
+    {
       fill: 'white',
       fontSize: 8,
-    }),
+    },
+    'Paused (Click anywhere to resume)',
   )
   text.x = width / 2
   text.y = height / 2
-  container.addChild(text)
 
   const render = (paused: boolean): void => {
     container.visible = paused

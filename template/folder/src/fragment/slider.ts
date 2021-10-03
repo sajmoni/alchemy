@@ -1,7 +1,6 @@
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
-import * as pixi from '~/pixi'
 import { Fragment } from '~/type'
 
 const iconDistance = 25
@@ -25,11 +24,7 @@ const slider = ({
   ex.makeClickable(minus, onMinus)
   component.addChild(minus)
 
-  const text = pixi.text(
-    initialValue,
-    new PIXI.TextStyle({ fill: 'white', fontSize: 16 }),
-  )
-  component.addChild(text)
+  const text = ex.text(component, { fill: 'white', fontSize: 16 }, initialValue)
 
   const plus = new PIXI.Sprite(ex.getTexture('plus-minus-1'))
   plus.anchor.set(0.5)

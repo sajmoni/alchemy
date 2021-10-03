@@ -6,13 +6,11 @@ import state from '~/state'
 import { Render, TextStyle } from '~/enum'
 // import { save } from '~/util/storage'
 import Sound from '~/sound'
-import * as pixi from '~/pixi'
 import app from '~/app'
 import { fadeOut } from '~/effect'
 // import select from './select'
-import { slider } from '../fragment'
-import button from '../fragment/button'
-import { UIComponent } from '~/type/ui'
+import { slider, button } from '~/fragment'
+import { Fragment } from '~/type'
 import sound from '~/sound'
 
 const Color = {
@@ -74,9 +72,8 @@ const settings = (): PIXI.Container => {
   })
   component.addChild(background)
 
-  const title = pixi.text(`Settings`, new PIXI.TextStyle(TextStyle.MAIN))
+  const title = ex.text(component, TextStyle.MAIN, `Settings`)
   title.position.set(width / 2, 10)
-  component.addChild(title)
 
   const [soundSlider, renderSoundSlider] = makeVolumeSlider({
     x: LEFT_COLUMN,
@@ -178,14 +175,13 @@ const makeVolumeSlider = ({
   onMinus: () => void
   onPlus: () => void
   label: string
-}): UIComponent<number> => {
+}): Fragment<number> => {
   const container = new PIXI.Container()
 
   container.position.set(x, y)
 
-  const text = pixi.text(label, new PIXI.TextStyle(TextStyle.MAIN))
+  const text = ex.text(container, TextStyle.MAIN, label)
   text.position.set(0, -20)
-  container.addChild(text)
 
   const [volumeSlider, volumeSliderRender] = slider({
     initialValue: volume.toString(),

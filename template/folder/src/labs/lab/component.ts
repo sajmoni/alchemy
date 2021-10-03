@@ -39,7 +39,7 @@ const component = ({ app, container }: Lab): void => {
       app.stage.addChild(newContainer)
       component({ app, container: newContainer })
     },
-    textStyle: new PIXI.TextStyle({ fill: 'white' }),
+    textStyle: { fill: 'white' },
   })
   refresh.position.set(10, 10)
   container.addChild(refresh)

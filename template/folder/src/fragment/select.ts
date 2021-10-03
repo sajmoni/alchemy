@@ -1,7 +1,6 @@
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 
-import { container, text } from '~/pixi'
 import { Fragment } from '~/type'
 
 type Option = {
@@ -20,18 +19,16 @@ const select = ({
   onClick,
   title,
 }: SelectOptions): Fragment<string> => {
-  const component = container()
+  const component = new PIXI.Container()
 
-  const titleText = text(title, new PIXI.TextStyle({ fill: 'white' }))
-  component.addChild(titleText)
+  const titleText = ex.text(component, { fill: 'white' }, title)
 
   const optionObjects = options.map(({ value, label }, index) => {
-    const textObject = text(label, new PIXI.TextStyle({ fill: 'white' }))
+    const textObject = ex.text(component, { fill: 'white' }, label)
     textObject.y = 50 + index * 30
     ex.makeClickable(textObject, () => {
       onClick(value)
     })
-    component.addChild(textObject)
     return { textObject, value }
   })
 
