@@ -19,10 +19,10 @@ const dependencies = [
   // Sound
   'howler@2.2.3',
   // Game logic
-  'juice.js@2.0.1',
+  'juice.js@2.0.2',
   'l1@0.7.1',
   'mainloop.js@1.0.4',
-  'valtio@1.2.2',
+  'valtio@1.2.4',
   'tiny-toolkit@0.0.10',
   'tinykeys@1.2.0',
   'dot-prop@6.0.1',
@@ -34,12 +34,12 @@ const dependencies = [
 const devDependencies = [
   // Code quality
   'xo@0.39.1',
-  'typescript@4.2.4',
+  'typescript@4.4.3',
   'husky@4.3.6',
   'lint-staged@10.5.4',
   'eslint-plugin-fp@2.3.0',
   // Module bundling
-  'vite@2.3.2',
+  'vite@2.6.2',
   // Testing
   'ava@3.15.0',
   'esbuild-runner@2.2.1',
@@ -53,7 +53,7 @@ const devDependencies = [
   // Web - Labs and Debug tools
   'react@17.0.2',
   'react-dom@17.0.2',
-  'styled-components@5.2.3',
+  'styled-components@5.3.1',
   '@types/react@17.0.3',
   '@types/react-dom@17.0.2',
   '@types/styled-components@5.1.8',
