@@ -30,9 +30,9 @@ Generates a template to make a 2D browser game using `PixiJS` and `TypeScript`.
 
 - :loop: [`mainloop`](https://github.com/IceCreamYou/MainLoop.js)
 
-- :tropical_drink: [`juice.js`](https://github.com/rymdkraftverk/juice.js)
+- :tropical_drink: [`juice.js`](https://github.com/rymdkraftverk/juice.js)\*
 
-- :one: [`level1`](https://github.com/rymdkraftverk/level1)
+- :one: [`level1`](https://github.com/rymdkraftverk/level1)\*
 
 - :sound: [`howler`](https://github.com/goldfire/howler.js/)
 
@@ -52,11 +52,13 @@ Generates a template to make a 2D browser game using `PixiJS` and `TypeScript`.
 
 - :straight_ruler: [`ava`](https://github.com/avajs/ava)
 
-- :eyes: [`nano-panel`](https://github.com/sajmoni/nano-panel)
+- :eyes: [`nano-panel`](https://github.com/sajmoni/nano-panel)\*
 
 - :red_circle: [`GitHub actions workflows`](https://github.com/features/actions)
 
 - :recycle: [`plop`](https://github.com/plopjs/plop)
+
+* = made by me
 
 ---
 
@@ -79,67 +81,6 @@ _Usage with `npx` ensures that you are always using the latest version_
 
 ```
 npx make-web-game my-game
-```
-
-The output file structure will look like this:
-
-```
-my-game/
-├── .github/
-├── public/
-│   ├── index.html
-│   └── asset/
-│       ├── style.css
-│       ├── font/
-│       ├── sound/
-│       └── spritesheet/
-├── labs/
-│   ├── lab/
-│   ├── App.js
-│   ├── index.html
-│   ├── index.js
-│   └── style.css
-├── plop/
-│   ├── component/
-│   ├── constant/
-│   ├── data/
-│   ├── effect/
-│   ├── lab/
-│   ├── scene/
-│   └── plopfile.ts
-├── script/
-│   ├── aseprite.sh
-│   ├── build.js
-│   ├── loadSounds.js
-│   └── serve.js
-├── src/
-│   ├── ui/
-│   │   ├── fragment/
-│   │   └── view/
-│   ├── enum/
-│   ├── data/
-│   ├── effect/
-│   ├── input/
-│   ├── scene/
-│   ├── particle/
-│   ├── type/
-│   ├── util/
-│   ├── worker/
-│   ├── app.ts
-│   ├── env.ts
-│   ├── index.ts
-│   ├── pixi.ts
-│   ├── state.ts
-│   └── sounds.json
-├── .gitignore
-├── .babelrc
-├── .npmrc
-├── electron.js
-├── lint-staged.config.js
-├── package.json
-├── README.md
-├── tsconfig.json
-└── package-lock.json
 ```
 
 ## What you should do after the script is run

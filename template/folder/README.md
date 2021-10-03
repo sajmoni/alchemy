@@ -5,16 +5,16 @@
 ## Index <!-- omit in toc -->
 
 - [Folder structure](#folder-structure)
-  - [ui/fragment](#uifragment)
-  - [Effects](#effects)
-  - [Data](#data)
-  - [Scene](#scene)
-  - [Worker](#worker)
+  - [fragment](#fragment)
+- [view](#view)
+  - [effect](#effect)
+  - [data](#data)
+  - [scene](#scene)
+  - [worker](#worker)
 - [Git branching](#git-branching)
 - [QA](#qa)
 - [Generate sprite sheet](#generate-sprite-sheet)
 - [Generating a production build](#generating-a-production-build)
-- [Electron](#electron)
 - [Sentry](#sentry)
 - [Debug overlay](#debug-overlay)
 - [Sounds](#sounds)
@@ -48,13 +48,13 @@
 
 ### Folder structure
 
-#### ui/fragment
+#### fragment
 
 The `fragment` folder contains `reusable` ui components.
 
-A `fragment` is a function that returns two thins:
+A `fragment` is a function that returns two things:
 
-1. A `Pixi.DisplayObject` that you need to add as a child to another `Pixi.DisplayObject`.
+1. A `PIXI.Container` that you need to add as a child to another `PIXI.Container`.
 
 2. A `render` function. Call this whenever you want to re-render your component. (For example due to a state update)
 
@@ -70,35 +70,45 @@ renderPlayButton()
 
 _Create a new one with `npm run plop`_
 
-**Configuration**
+### view
 
-A `fragment` can take an optional `configuration` object.
+A `view` is like a `fragment` that contains it's own re-render logic. Therefore
+they should only be created once.
+
+They return a `PIXI.Container`.
+
+_Example_
 
 ```js
-const configuration = {
-  visible: true,
-}
+const _settingsMenu = settingsMenu()
 
-const [playButton] = button(configuration)
+app.stage.addChild(_settingsMenu)
 ```
 
-#### Effects
+#### effect
 
-Effects change how your display objects look.
-
-TODO: More info here
+Effects change how your `PIXI.Component`s look.
 
 _Create a new one with `npm run plop`_
 
-#### Data
+_example_
+
+```js
+await fadeOut(component, { resolveAt: 0.6, duration: 15 })
+```
+
+#### data
 
 Data that your game uses. For example `equipment`, `items`, `enemies` etc.
 
-#### Scene
+#### scene
 
-A `Scene` has the following type signature:
+A `scene` is a function that renders stuff. You can switch scenes by setting
+the `scene` property in `state`.
 
-#### Worker
+_Create a new one with `npm run plop`_
+
+#### worker
 
 Code that will run in a worker thread.
 
@@ -111,15 +121,15 @@ There are two branches configured with corresponding Github actions workflows
 A push to `main` triggers the following pipeline:
 
 - Run all tests, linting and typecheck
-- Build and publish to stage-project on `itch.io`.
-- Increase version number and push it as a tag to `main`
+<!-- - Build and publish to stage-project on `itch.io`.
+- Increase version number and push it as a tag to `main` -->
 
 A push to `release`, triggers the following pipeline
 
 - Run all tests, linting and typecheck
 - Build and publish to production-project on `itch.io`.
 - Increases version number and pushes it as a tag to `main`
-- Generate draft patch notes (?)
+<!-- - Generate draft patch notes -->
 
 If a hotfix in production is needed, then it should be made on the `release` branch and immediately cherry picked to `main`.
 
@@ -147,7 +157,8 @@ Put your `aseprite` files into the `asset/sprite` folder and run `npm run ase`.
 
 ---
 
-### Electron
+<!-- TODO -->
+<!-- ### Electron
 
 Electron allows you to create an executable file for PC and Mac. This can then be sold on Steam or other digital stores.
 
@@ -159,7 +170,7 @@ Electron allows you to create an executable file for PC and Mac. This can then b
 
 `elec:run` - Execute the binary
 
-`elec:all` - Run `build`, `pack` and `run`
+`elec:all` - Run `build`, `pack` and `run` -->
 
 ---
 
@@ -191,13 +202,14 @@ import sound from '~/sound'
 sound.coin.play()
 ```
 
-Add sound files to `public/asset/sound` and run `npm run sound` to be able to use them.
+Add sound files to `src/public/asset/sound` and run `npm run sound` to be able to use them.
 
 ---
 
 ### State management
 
-You can subscribe to state changes with [`valtio`](). You register a callback for the part of state you want to subscribe to.
+You can subscribe to state changes with [`valtio`](https://github.com/pmndrs/valtio).
+You register a callback for the part of state you want to subscribe to.
 
 Example usage:
 
@@ -234,9 +246,7 @@ A `web worker` is run in a separate thread and allows you to run code concurrent
 
 #### Keyboard
 
-Keyboard input uses [`tinykeys`]()
-
-TODO: How to use
+Keyboard input uses [`tinykeys`](https://github.com/jamiebuilds/tinykeys)
 
 ---
 
@@ -248,7 +258,7 @@ Run `npm run labs` to start the app.
 
 With `npm run plop` you can create new labs.
 
-Labs run on `localhost:8001`
+Labs run on `localhost:3001`
 
 ---
 
