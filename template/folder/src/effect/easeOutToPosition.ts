@@ -25,16 +25,19 @@ const easeOutToPosition = async (
       endValue: position.x,
       duration,
     })
-    const b = l1.every((counter) => {
-      displayObject.y = Math.floor(getY(counter))
-      displayObject.x = Math.floor(getX(counter))
 
-      return (): void => {
-        resolve()
-      }
-    }, duration)
+    l1.every(
+      (counter) => {
+        displayObject.y = Math.floor(getY(counter))
+        displayObject.x = Math.floor(getX(counter))
 
-    b.id = `easeOutToPosition-${displayObject.name ?? ''}`
+        return (): void => {
+          resolve()
+        }
+      },
+      duration,
+      { id: `easeOutToPosition-${displayObject.name ?? ''}` },
+    )
   })
 
 export default easeOutToPosition

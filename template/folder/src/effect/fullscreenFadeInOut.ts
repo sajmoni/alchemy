@@ -18,8 +18,10 @@ const fullscreenFadeInOut = async (): Promise<void> =>
     const behavior = l1.every(
       fadeInOut(fade, DURATION, resolve as () => void),
       DURATION,
+      {
+        id: ID,
+      },
     )
-    behavior.id = ID
   })
 
 type FadeInOutReturnType = (counter: number) => () => void

@@ -16,7 +16,7 @@ const initializeWorker = (): void => {
       type: MessageType.TO_WORKER.UPDATE,
       payload: {},
     })
-  })
+  }, 1)
 
   worker.addEventListener('message', ({ data: { type, payload } }) => {
     switch (type) {

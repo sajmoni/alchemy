@@ -16,23 +16,26 @@ const blink = async (
 ): Promise<void> =>
   new Promise((resolve) => {
     let show = false
-    const blink = l1.forever((counter) => {
-      if (show) {
-        displayObject.visible = false
-        show = false
-      } else {
-        displayObject.visible = true
-        show = true
-      }
 
-      if (counter === duration * interval) {
-        l1.remove(blink)
-        displayObject.visible = true
-        resolve()
-      }
-    }, interval)
+    l1.forever(
+      (counter) => {
+        if (show) {
+          displayObject.visible = false
+          show = false
+        } else {
+          displayObject.visible = true
+          show = true
+        }
 
-    blink.id = `blink-${displayObject.name ?? ''}`
+        if (counter === duration * interval) {
+          l1.remove(blink)
+          displayObject.visible = true
+          resolve()
+        }
+      },
+      interval,
+      { id: `blink-${displayObject.name ?? ''}` },
+    )
   })
 
 export default blink

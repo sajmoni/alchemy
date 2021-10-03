@@ -95,7 +95,7 @@ document.fonts
 
         l1.once(() => {
           loadingContainer.destroy()
-        })
+        }, 1)
 
         // * Attempt to improve performance
         app.renderer.plugins.prepare.upload(app.stage, () => {

@@ -21,18 +21,21 @@ const fadeOut = async (
       endValue,
       duration,
     })
-    const fadeOut = l1.every((counter) => {
-      displayObject.alpha = getAlpha(counter)
-      if (counter === Math.floor(duration * resolveAt)) {
-        resolve()
-      }
 
-      return (): void => {
-        displayObject.alpha = endValue
-      }
-    }, duration)
+    l1.every(
+      (counter) => {
+        displayObject.alpha = getAlpha(counter)
+        if (counter === Math.floor(duration * resolveAt)) {
+          resolve()
+        }
 
-    fadeOut.id = `fadeOut-${displayObject.name ?? ''}`
+        return (): void => {
+          displayObject.alpha = endValue
+        }
+      },
+      duration,
+      { id: `fadeOut-${displayObject.name ?? ''}` },
+    )
   })
 
 export default fadeOut

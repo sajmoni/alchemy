@@ -24,7 +24,7 @@ const game = ({ container }: SceneArgs): void => {
     state.square.x += 0.25
     state.square.angle += 2
     state.bar = Math.max(0, state.bar - 0.2)
-  })
+  }, 1)
 
   subscribe(state.square, () => {
     sprite.x = state.square.x

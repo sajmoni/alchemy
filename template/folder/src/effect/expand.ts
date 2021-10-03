@@ -21,17 +21,19 @@ const expand = async (
       duration,
     })
 
-    const behavior = l1.every((time) => {
-      const scale = getScale(time)
-      displayObject.scale.set(scale)
+    l1.every(
+      (time) => {
+        const scale = getScale(time)
+        displayObject.scale.set(scale)
 
-      return (): void => {
-        displayObject.scale.set(startValue)
-        resolve()
-      }
-    }, duration)
-
-    behavior.id = `expand-${displayObject.name ?? ''}`
+        return (): void => {
+          displayObject.scale.set(startValue)
+          resolve()
+        }
+      },
+      duration,
+      { id: `expand-${displayObject.name ?? ''}` },
+    )
   })
 
 export default expand

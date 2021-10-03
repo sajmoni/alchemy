@@ -30,7 +30,7 @@ const mainMenu = ({ container }: SceneArgs): void => {
 
   l1.forever((counter) => {
     titleText.style.fontSize = getFontSize(counter)
-  })
+  }, 1)
 
   const [settingsButton] = button({
     label: `Settings`,
