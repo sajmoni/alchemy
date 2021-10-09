@@ -1,10 +1,9 @@
 import * as l1 from 'l1'
 
-import Worker from '../worker/index.ts?worker'
 import MessageType from '~/enum/messageType'
+import Worker from '../worker/index.ts?worker'
 
 const initializeWorker = (): void => {
-  // The worker is built separately so this path is the built path
   const worker = new Worker()
 
   worker.postMessage({
