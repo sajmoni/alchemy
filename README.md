@@ -22,9 +22,9 @@ Generates a template to make a 2D browser game using `PixiJS` and `TypeScript`.
 
 - :tv: [`PixiJS`](https://github.com/pixijs/pixi.js)
 
-- :boom: [`pixi-particles`](https://github.com/pixijs/pixi-particles)
+- :boom: [`@pixi/particle-emitter`](https://github.com/pixijs/particle-emitter)
 
-- :up: [`pixi-ex`](https://github.com/sajmoni/pixi-ex)
+- :up: [`pixi-ex`](https://github.com/sajmoni/pixi-ex)\*
 
 - :pill: [`valtio`](https://github.com/pmndrs/valtio)
 
@@ -58,7 +58,7 @@ Generates a template to make a 2D browser game using `PixiJS` and `TypeScript`.
 
 - :recycle: [`plop`](https://github.com/plopjs/plop)
 
-* = made by me
+\* = made by me
 
 ---
 

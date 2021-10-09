@@ -40,6 +40,7 @@
   - [Utils](#utils)
   - [Events](#events)
   - [Debug](#debug)
+  - [Steam integration](#steam-integration)
 - [Useful external resources](#useful-external-resources)
 - [Guides](#guides)
   - [Pixel perfect rendering](#pixel-perfect-rendering)
@@ -340,11 +341,17 @@ text.filters = [new filters.CRTFilter()]
 
 #### Events
 
-[eventemitter3](https://github.com/primus/eventemitter3) - Events
+[eventemitter3](https://github.com/primus/eventemitter3)
 
 #### Debug
 
 [`SpectorJS`](https://github.com/BabylonJS/Spector.js) - Explore and troubleshoot your WebGL scenes
+
+[`debug`](https://github.com/visionmedia/debug) - A better console.log
+
+#### Steam integration
+
+[`greenworks`](https://github.com/greenheartgames/greenworks)
 
 ---
 
