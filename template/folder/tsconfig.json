@@ -12,7 +12,7 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
-    "types": ["vite/client"],
+    "types": ["vite/client", "node"],
     "baseUrl": "./src",
     "paths": {
       "~/*": ["./*"]

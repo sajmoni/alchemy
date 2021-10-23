@@ -44,7 +44,7 @@ const initializeDebugTools = (): void => {
       behaviors: l1.getAll(),
     }),
     sound: (): void => {
-      Sound.COIN.play()
+      Sound.coin.play()
     },
   }
 
@@ -69,7 +69,9 @@ const initializeDebugTools = (): void => {
       const [muteSounds] = useState(false)
       const [showGrid, setShowGrid] = useState(false)
       const [scene, setScene] = useState(state.scene)
-      const [notification, setNotification] = useState(undefined)
+      const [notification, setNotification] = useState<string | undefined>(
+        undefined,
+      )
 
       useEffect(() => {
         subscribeKey(state.application, 'paused', setPaused)

@@ -56,8 +56,6 @@ app.loader.add('/asset/spritesheet/data.json')
 
 initializeGameLoop()
 
-// Experimental API's are not supported by typescript
-// @ts-expect-error
 document.fonts
   .load(`10pt "${FONT}"`)
   .then(() => {

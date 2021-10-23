@@ -16,6 +16,7 @@ const blink = async (
 ): Promise<void> =>
   new Promise((resolve) => {
     let show = false
+    const id = `blink-${displayObject.name ?? ''}`
 
     l1.forever(
       (counter) => {
@@ -28,13 +29,13 @@ const blink = async (
         }
 
         if (counter === duration * interval) {
-          l1.remove(blink)
+          l1.remove(id)
           displayObject.visible = true
           resolve()
         }
       },
       interval,
-      { id: `blink-${displayObject.name ?? ''}` },
+      { id },
     )
   })
 
