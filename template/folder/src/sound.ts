@@ -12,9 +12,12 @@ const soundEntries = Object.entries(sounds) as Array<[SoundName, HowlOptions]>
 const fromEntries = (
   entries: Array<[SoundName, Howl]>,
 ): Record<SoundName, Howl> => {
-  return entries.reduce((acc, [soundName, howl]) => {
+  // eslint-disable-next-line unicorn/prefer-object-from-entries, unicorn/no-array-reduce
+  const returnValue = entries.reduce((acc, [soundName, howl]) => {
     return { ...acc, [soundName]: howl }
-  }, {} as Record<SoundName, Howl>)
+  }, {})
+
+  return returnValue as Record<SoundName, Howl>
 }
 
 const sound: Record<SoundName, Howl> = fromEntries(

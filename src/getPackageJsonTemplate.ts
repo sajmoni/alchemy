@@ -23,7 +23,7 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
       sound: 'node script/loadSounds.js',
       test: 'ava',
       plop: 'plop --plopfile plop/plopfile.ts',
-      qa: 'tsc && xo --fix',
+      qa: 'tsc && xo src --fix',
       ase: './script/aseprite.sh',
       'elec:start': 'electron .',
       'elec:build':
@@ -55,6 +55,8 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
       plugins: ['fp'],
       env: ['browser', 'es2020', 'node'],
       rules: {
+        'node/prefer-global/process': 'off',
+        'unicorn/no-array-method-this-argument': 'off',
         'fp/no-arguments': 'error',
         'fp/no-class': 'error',
         'fp/no-delete': 'error',

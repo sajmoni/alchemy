@@ -1,7 +1,5 @@
 const keyPrefix = '{{ projectName }}'
 
-const { localStorage } = window
-
 const prefixKey = (key: string): string => `${keyPrefix}.${key}`
 
 export const set = (key: string, object: any): void => {
