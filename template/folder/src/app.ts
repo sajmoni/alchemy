@@ -11,11 +11,6 @@ const renderer = new PIXI.Renderer({
   height: Render.GAME_HEIGHT,
   // * Enable to turn on pixel perfect rendering:
   // antialias: false,
-  // * Can be enabled once a background image exists
-  // * This might increase performance
-  // clearBeforeRender: false,
-  // preserveDrawingBuffer: true,
-  //
   backgroundColor: 0x000077,
 })
 

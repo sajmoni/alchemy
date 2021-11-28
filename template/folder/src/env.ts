@@ -17,6 +17,7 @@ const development: Env = {
 }
 
 const useProductionOrDevelopment = (): Env => {
+  // eslint-disable-next-line node/prefer-global/process
   if (process.env.NODE_ENV === 'production') {
     return production
   }
