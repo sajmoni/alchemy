@@ -2,4 +2,3 @@ node_modules
 dist
 .DS_Store
 tsconfig.lint.json
-public/worker/index.js
