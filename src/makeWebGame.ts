@@ -37,7 +37,6 @@ const devDependencies = [
   'typescript@4.4.3',
   'husky@4.3.6',
   'lint-staged@10.5.4',
-  'eslint-plugin-fp@2.3.0',
   // Module bundling
   'vite@2.6.2',
   // Testing
