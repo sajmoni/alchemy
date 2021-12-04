@@ -9,7 +9,6 @@ import { Scene } from '~/enum'
 import app from '~/app'
 import { SceneArgs } from '~/type'
 import state from '~/state'
-import env from '~/env'
 import handleError from '~/util/handleError'
 
 const sceneHandler: Record<Scene, (sceneArgs: SceneArgs) => void> = {

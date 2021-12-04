@@ -11,17 +11,10 @@ type Option = {
 type SelectOptions = {
   options: Option[]
   onClick: (value: string) => void
-  title: string
 }
 
-const select = ({
-  options,
-  onClick,
-  title,
-}: SelectOptions): Fragment<string> => {
+const select = ({ options, onClick }: SelectOptions): Fragment<string> => {
   const component = new PIXI.Container()
-
-  const titleText = ex.text(component, { fill: 'white' }, title)
 
   const optionObjects = options.map(({ value, label }, index) => {
     const textObject = ex.text(component, { fill: 'white' }, label)
@@ -38,7 +31,9 @@ const select = ({
     }
   }
 
-  render(options[0].value)
+  if (options.length > 0) {
+    render(options[0].value)
+  }
 
   return [component, render]
 }

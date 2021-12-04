@@ -5,10 +5,8 @@ import { subscribeKey } from 'valtio/utils'
 import state from '~/state'
 import { Render, TextStyle } from '~/enum'
 // import { save } from '~/util/storage'
-import Sound from '~/sound'
 import app from '~/app'
 import { fadeOut } from '~/effect'
-// import select from './select'
 import { slider, button } from '~/fragment'
 import { Fragment } from '~/type'
 import sound from '~/sound'
@@ -109,22 +107,6 @@ const settings = (): PIXI.Container => {
   })
 
   component.addChild(musicSlider)
-
-  // const [languagePicker, renderLanguagePicker] = select({
-  //   options: Object.values(Language).map(({ label, code }) => ({
-  //     label,
-  //     value: code,
-  //   })),
-  //   title: 'Choose language',
-  //   onClick: (languageCode) => {
-  //     save('language', languageCode)
-  //     window.location.reload()
-  //   },
-  // })
-
-  // renderLanguagePicker(state.application.language)
-  // languagePicker.position.set(RIGHT_COLUMN, SOUND_Y)
-  // component.addChild(languagePicker)
 
   const [doneButton] = button({
     textStyle: new PIXI.TextStyle(TextStyle.MAIN),

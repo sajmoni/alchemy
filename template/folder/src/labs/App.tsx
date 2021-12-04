@@ -91,7 +91,7 @@ const App = ({
     const renderLab = labData[selectedLab]
 
     if (renderLab) {
-      for (const child of [...app.stage.children]) {
+      for (const child of app.stage.children) {
         child.destroy()
       }
 
