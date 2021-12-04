@@ -20,7 +20,7 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
       game: 'vite --open',
       build: 'vite build',
       preview: 'vite preview --open',
-      sound: 'node script/loadSounds.js',
+      sound: 'node -r esbuild-runner/register script/loadSounds.ts',
       test: 'ava',
       plop: 'plop --plopfile plop/plopfile.ts',
       qa: 'tsc && xo src --fix',
