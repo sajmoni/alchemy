@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react'
 import styled, { css } from 'styled-components'
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
+import * as l1 from 'l1'
 
 import * as ls from '~/util/storage'
 import { Lab } from './type'
@@ -80,6 +81,9 @@ const App = ({
       throw new Error(`Couldn't find element: ${selector}`)
     }
 
+    app.ticker.add((deltaTime) => {
+      l1.update(deltaTime)
+    })
     element.append(app.view)
   }, [])
 
