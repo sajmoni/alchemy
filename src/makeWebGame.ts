@@ -45,6 +45,7 @@ const devDependencies = [
   // Other
   'nano-panel@0.0.10',
   'plop@2.7.4',
+  'fs-extra@10.0.0',
   // Types
   '@types/node@14.14.34',
   '@types/howler@2.2.3',
