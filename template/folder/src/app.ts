@@ -1,10 +1,16 @@
 import * as PIXI from 'pixi.js'
+import env from './env'
 import { Render } from '~/enum'
 
 // * Enable to turn on pixel perfect rendering:
 // PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST
 PIXI.settings.ROUND_PIXELS = true
 PIXI.settings.RESOLUTION = 2
+
+// Reduces clutter in the console during development
+if (env.NODE_ENV === 'development') {
+  PIXI.utils.skipHello()
+}
 
 const renderer = new PIXI.Renderer({
   width: Render.GAME_WIDTH,
