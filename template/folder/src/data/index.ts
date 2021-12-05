@@ -3,7 +3,7 @@ export type Data = {
   price: number
 }
 
-export const data: Data[] = [
+const data: Data[] = [
   {
     name: 'Some data',
     price: 100,
