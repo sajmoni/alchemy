@@ -125,6 +125,12 @@ const makeWebGame = ({ projectName }: { projectName: string }) => {
           options: { projectName },
         })
 
+        createFileFromTemplate({
+          source: `${templateDirectory}/README.template.md`,
+          destination: path.join(rootPath, 'README.md'),
+          options: { projectName },
+        })
+
         // Rename gitignore to prevent npm from renaming it to .npmignore
         // See: https://github.com/npm/npm/issues/1862
         fs.moveSync(

@@ -1,6 +1,4 @@
-<!-- TODO: Insert project name here -->
-
-## My web game <!-- omit in toc -->
+# {{ projectName }} <!-- omit in toc -->
 
 ## Index <!-- omit in toc -->
 
