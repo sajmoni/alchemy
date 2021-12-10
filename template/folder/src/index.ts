@@ -16,7 +16,6 @@ import env from './env'
 
 import initializeGameLoop from './core/loop'
 import initializeDebugTools from './core/debug'
-import initializeObjectPool from '~/util/objectPool'
 import initializeSceneHandler from './core/sceneHandler'
 import initializeWorker from './core/worker'
 import initializeKeyboardInput from './input/keyboard'
@@ -82,7 +81,6 @@ document.fonts
         useAutoPause()
 
         initializeDebugTools()
-        initializeObjectPool()
         initializeSceneHandler()
         initializeWorker()
         initializeKeyboardInput(Object.values(Key))
