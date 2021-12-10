@@ -7,7 +7,7 @@ import { subscribeKey } from 'valtio/utils'
 
 import state from '~/state'
 import { Render } from '~/enum'
-import { bar } from '../../fragment'
+import { bar } from '~/fragment'
 import { pauseMenu } from '~/view'
 import { explosion } from '~/particles'
 import { SceneArgs } from '~/type'
