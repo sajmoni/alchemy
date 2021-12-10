@@ -1,4 +1,3 @@
-import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
 import * as particles from '@pixi/particle-emitter'
@@ -12,13 +11,13 @@ import { pauseMenu } from '~/view'
 import { explosion } from '~/particles'
 import { SceneArgs } from '~/type'
 import { expand } from '~/effect'
+import getTexture from '~/util/getTexture'
 
 const game = ({ container }: SceneArgs): void => {
-  const sprite = new PIXI.Sprite(ex.getTexture('square-1'))
+  const sprite = ex.sprite(container, getTexture('square-1.png'))
   sprite.x = 10
   sprite.y = Render.GAME_HEIGHT / 2
   sprite.anchor.set(0.5)
-  container.addChild(sprite)
 
   l1.forever(() => {
     state.square.x += 0.25

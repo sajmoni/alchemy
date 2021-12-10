@@ -1,5 +1,6 @@
 import * as ex from 'pixi-ex'
 import { EmitterConfigV3 } from '@pixi/particle-emitter'
+import getTexture from '~/util/getTexture'
 
 const explosion = (): EmitterConfigV3 => ({
   lifetime: {
@@ -87,7 +88,7 @@ const explosion = (): EmitterConfigV3 => ({
     {
       type: 'textureSingle',
       config: {
-        texture: ex.getTexture('square-1'),
+        texture: getTexture('square-1.png'),
       },
     },
   ],
