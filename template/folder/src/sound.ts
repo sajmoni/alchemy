@@ -28,7 +28,7 @@ const sound: Record<SoundName, Howl> = fromEntries(
         preload: true,
         src: soundPath(howlOptions.src as string),
       })
-      return [key as SoundName, value as Howl]
+      return [key, value]
     },
   ),
 )

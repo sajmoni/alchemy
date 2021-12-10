@@ -26,10 +26,6 @@ const height = Render.GAME_HEIGHT * 0.8
 
 const LEFT_COLUMN = (width / 4) * 1
 const CENTER_COLUMN = (width / 4) * 2
-// const RIGHT_COLUMN = (width / 4) * 3
-
-// TODO Add message: "Data is only stored in your browser, if you
-// erase your browser cache, all data will be lost."
 
 const settings = (): PIXI.Container => {
   const component = new PIXI.Container()

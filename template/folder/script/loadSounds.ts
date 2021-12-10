@@ -17,12 +17,14 @@ const getNameFromFilename = (fileName: string): string =>
 const run = async () => {
   const soundsFilePath = path.join(__dirname, '../src/sounds.json')
 
-  const [soundFiles, soundsUnparsed]: [string[], string] = await Promise.all([
+  const [soundFiles, soundsUnparsed]: [string[], Buffer] = await Promise.all([
     fs.readdir(path.join(__dirname, '../src/public/asset/sound')),
     fs.readFileSync(soundsFilePath),
   ])
 
-  const sounds: Record<string, HowlOptions> = JSON.parse(soundsUnparsed)
+  const sounds: Record<string, HowlOptions> = JSON.parse(
+    soundsUnparsed.toString(),
+  )
   const soundValues = Object.values(sounds)
 
   const newSoundFiles = soundFiles.filter(
