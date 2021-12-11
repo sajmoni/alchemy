@@ -38,7 +38,7 @@ const settings = (): PIXI.Container => {
   component.height = height
   component.pivot.set(CENTER_COLUMN, height / 2)
 
-  const overlay = new PIXI.Graphics()
+  const overlay = ex.graphics(component)
   overlay
     .beginFill(PIXI.utils.string2hex('#000000'), 0.8)
     .drawRect(
@@ -54,7 +54,7 @@ const settings = (): PIXI.Container => {
   overlay.visible = false
   component.addChild(overlay)
 
-  const background = new PIXI.Graphics()
+  const background = ex.graphics(component)
   background
     .beginFill(PIXI.utils.string2hex(Color.BACKGROUND))
     .drawRect(0, 0, width, height)
@@ -64,7 +64,6 @@ const settings = (): PIXI.Container => {
   background.on('click', (event: PIXI.InteractionEvent) => {
     event.stopPropagation()
   })
-  component.addChild(background)
 
   const title = ex.text(component, TextStyle.MAIN, `Settings`)
   title.position.set(width / 2, 10)

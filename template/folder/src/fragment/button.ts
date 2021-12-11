@@ -23,9 +23,8 @@ const button = ({
   })
 
   if (backgroundTexture) {
-    const button = new PIXI.Sprite(backgroundTexture)
+    const button = ex.sprite(component, backgroundTexture)
     button.anchor.set(0.5)
-    component.addChild(button)
   }
 
   const label = ex.text(component, textStyle, labelString)

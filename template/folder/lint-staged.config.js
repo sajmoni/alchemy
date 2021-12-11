@@ -12,6 +12,6 @@ const typeCheckStagedFiles = (stagedFilenames) => {
 }
 
 module.exports = {
-  'src/**/*.{js,ts,tsx}?(x)': typeCheckStagedFiles,
+  'src/**/*.{js,ts,tsx}': typeCheckStagedFiles,
   'src/**/*.{js,ts,tsx,md}': 'xo --fix',
 }

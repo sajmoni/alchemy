@@ -71,6 +71,7 @@ const makeWebGame = ({ projectName }: { projectName: string }) => {
   const command = 'npm'
   const npmInstall = ['install', '--save-exact']
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
   const tasks = new Listr([
     {
       title: 'Create project folder',
@@ -86,7 +87,6 @@ const makeWebGame = ({ projectName }: { projectName: string }) => {
           path.join(rootPath, 'package.json'),
           JSON.stringify(packageJsonTemplate, null, 2) + os.EOL,
         )
-        return true
       },
     },
     {
@@ -101,10 +101,8 @@ const makeWebGame = ({ projectName }: { projectName: string }) => {
 
         try {
           execa.sync('git', ['init', '-b', 'main'])
-
-          return true
         } catch (error: any) {
-          throw new Error(`Git repo not initialized ${error}`)
+          throw new Error(`Git repo not initialized: ${error.message}`)
         }
       },
     },
@@ -115,8 +113,8 @@ const makeWebGame = ({ projectName }: { projectName: string }) => {
 
         try {
           fs.copySync(`${templateDirectory}/folder`, rootPath)
-        } catch (error) {
-          throw new Error(`Could not copy template files: ${error}`)
+        } catch (error: any) {
+          throw new Error(`Could not copy template files: ${error.message}`)
         }
 
         createFileFromTemplate({
@@ -136,8 +134,6 @@ const makeWebGame = ({ projectName }: { projectName: string }) => {
         fs.moveSync(
           path.join(rootPath, 'gitignore'),
           path.join(rootPath, '.gitignore'),
-          // @ts-expect-error
-          [],
         )
       },
     },

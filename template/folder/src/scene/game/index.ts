@@ -43,9 +43,8 @@ const game = ({ container }: SceneArgs): void => {
   manaBar.position.set(50, 10)
   container.addChild(manaBar)
 
-  const particleContainer = new PIXI.Container()
+  const particleContainer = ex.container(container)
   particleContainer.position.set(200, 50)
-  container.addChild(particleContainer)
 
   // eslint-disable-next-line no-new
   new particles.Emitter(particleContainer, explosion())
