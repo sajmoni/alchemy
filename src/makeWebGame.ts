@@ -13,7 +13,7 @@ import displayDoneMessage from './message/done'
 
 const dependencies = [
   // Rendering
-  'pixi.js@6.1.3',
+  'pixi.js@6.2.0',
   'pixi-ex@0.2.0-0',
   '@pixi/particle-emitter@5.0.2',
   // Sound
@@ -22,9 +22,9 @@ const dependencies = [
   'juice.js@2.0.2',
   'l1@0.8.0',
   'mainloop.js@1.0.4',
-  'valtio@1.2.4',
-  'tiny-toolkit@0.0.10',
-  'tinykeys@1.2.0',
+  'valtio@1.2.7',
+  'tiny-toolkit@0.0.13',
+  'tinykeys@1.3.0',
   'dot-prop@6.0.1',
   // Monitoring
   '@sentry/browser@6.11.0',
@@ -33,12 +33,12 @@ const dependencies = [
 
 const devDependencies = [
   // Code quality
-  'xo@0.39.1',
-  'typescript@4.4.3',
+  'xo@0.47.0',
+  'typescript@4.5.3',
   'husky@4.3.6',
   'lint-staged@10.5.4',
   // Module bundling
-  'vite@2.6.2',
+  'vite@2.7.1',
   // Testing
   'ava@3.15.0',
   'esbuild-runner@2.2.1',
@@ -53,7 +53,7 @@ const devDependencies = [
   // Web - Labs and Debug tools
   'react@17.0.2',
   'react-dom@17.0.2',
-  'styled-components@5.3.1',
+  'styled-components@5.3.3',
   '@types/react@17.0.3',
   '@types/react-dom@17.0.2',
   '@types/styled-components@5.1.8',
