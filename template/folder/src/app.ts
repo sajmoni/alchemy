@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js'
+
 import env from './env'
 import { Render } from '~/enum'
 

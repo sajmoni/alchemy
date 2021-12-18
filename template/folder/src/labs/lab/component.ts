@@ -51,7 +51,6 @@ const component = ({ app, container }: Lab): void => {
       { value: '2', label: 'Option 2' },
       { value: '3', label: 'Option 3' },
     ],
-    title: 'Select option',
     onClick: (value) => {
       selectedValue = value
       renderSelect(selectedValue)

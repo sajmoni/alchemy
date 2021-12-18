@@ -10,7 +10,7 @@ import { Howler } from 'howler'
 import app from '~/app'
 import state from '~/state'
 import useAutoPause from '~/util/useAutoPause'
-import { TextStyle, Render, Language, Key } from '~/enum'
+import { Language, Key } from '~/enum'
 import * as ls from '~/util/storage'
 import env from './env'
 
@@ -20,6 +20,7 @@ import initializeSceneHandler from './core/sceneHandler'
 import initializeWorker from './core/worker'
 import initializeKeyboardInput from './input/keyboard'
 import handleError from './util/handleError'
+import createFullscreenLoading from './view/fullscreenLoading'
 
 Sentry.init({
   dsn: '',
@@ -35,7 +36,9 @@ Sentry.init({
 const FONT = 'Press Start 2P'
 const DEFAULT_LANGUAGE = Language.EN.code
 
-console.log(`Version: ${env.VERSION}`)
+if (env.VERSION) {
+  console.log(`Version: ${env.VERSION}`)
+}
 // const ERROR_LOGGING = process.env.ERROR_LOGGING || false
 
 const GAME_SELECTOR = '#game'
@@ -58,21 +61,8 @@ initializeGameLoop()
 document.fonts
   .load(`10pt "${FONT}"`)
   .then(() => {
-    const loadingContainer = new PIXI.Container()
-    loadingContainer.zIndex = 9999
-    app.stage.addChild(loadingContainer)
-
-    const loadingBackground = new PIXI.Graphics()
-    loadingBackground
-      .beginFill(PIXI.utils.string2hex('#000000'))
-      .drawRect(0, 0, Render.GAME_WIDTH, Render.GAME_HEIGHT)
-      .endFill()
-    loadingContainer.addChild(loadingBackground)
-
-    const loading = new PIXI.Text(`Loading`, new PIXI.TextStyle(TextStyle.MAIN))
-    ex.centerX(loading, Render.GAME_WIDTH / 2)
-    ex.centerY(loading, Render.GAME_HEIGHT / 2)
-    loadingContainer.addChild(loading)
+    const fullscreenLoading = createFullscreenLoading()
+    app.stage.addChild(fullscreenLoading)
 
     app.loader.load(() => {
       try {
@@ -90,13 +80,10 @@ document.fonts
         })
 
         l1.once(() => {
-          loadingContainer.destroy()
+          fullscreenLoading.destroy()
         }, 1)
 
-        // * Attempt to improve performance
-        app.renderer.plugins.prepare.upload(app.stage, () => {
-          MainLoop.start()
-        })
+        MainLoop.start()
       } catch (error: unknown) {
         handleError('Error on init', error)
       }

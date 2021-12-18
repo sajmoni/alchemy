@@ -25,13 +25,19 @@ import * as ls from '~/util/storage'
 import { getAverageUpdateDuration, getAverageDrawDuration } from './loop'
 import env from '~/env'
 
-declare global {
-  interface Window {
-    debug: any
-  }
+type ConsoleInfo = Record<string, any>
+
+type Debug = {
+  state: () => State
+  info: () => ConsoleInfo
+  sound: () => void
 }
 
-type ConsoleInfo = Record<string, any>
+declare global {
+  interface Window {
+    debug: Debug
+  }
+}
 
 const initializeDebugTools = (): void => {
   // * These commands can be run in the console, e.g: 'debug.state()'

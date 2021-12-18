@@ -1,6 +1,6 @@
-import * as PIXI from 'pixi.js'
+import { Application, Container } from 'pixi.js'
 
 export type Lab = {
-  app: any
-  container: PIXI.Container
+  app: Application
+  container: Container
 }

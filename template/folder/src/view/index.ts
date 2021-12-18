@@ -1,9 +1,3 @@
-/* PLOP_INJECT_IMPORT */
-import pauseMenu from './pauseMenu'
-import settings from './settings'
-
-export {
-  /* PLOP_INJECT_EXPORT */
-  settings,
-  pauseMenu,
-}
+export { default as pauseMenu } from './pauseMenu'
+export { default as settings } from './settings'
+export { default as fullscreenLoading } from './fullscreenLoading'

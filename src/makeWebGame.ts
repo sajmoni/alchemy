@@ -23,8 +23,11 @@ const dependencies = [
   'l1@0.8.0',
   'mainloop.js@1.0.4',
   'valtio@1.2.7',
-  'tiny-toolkit@0.0.13',
   'tinykeys@1.3.0',
+  // Utils
+  'tiny-toolkit@0.1.0',
+  'math-avg@1.0.0',
+  'round-to@5.0.0',
   'dot-prop@6.0.1',
   // Monitoring
   '@sentry/browser@6.11.0',
@@ -34,11 +37,11 @@ const dependencies = [
 const devDependencies = [
   // Code quality
   'xo@0.47.0',
-  'typescript@4.5.3',
+  'typescript@4.5.4',
   'husky@4.3.6',
   'lint-staged@10.5.4',
   // Module bundling
-  'vite@2.7.1',
+  'vite@2.7.3',
   // Testing
   'ava@3.15.0',
   'esbuild-runner@2.2.1',

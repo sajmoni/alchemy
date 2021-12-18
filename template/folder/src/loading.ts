@@ -1,18 +1,15 @@
 // Shows a simple loading screen before the game has loaded
+const loading = () => {
+  const element = document.querySelector('#loading')
+  if (!element) {
+    throw new Error(`Couldn't find element: #loading`)
+  }
 
-const loading = document.createElement('div')
-loading.innerHTML = 'Please wait'
-loading.style.fontFamily = 'Helvetica'
-loading.setAttribute('id', 'loading')
-
-const SELECTOR = '#game'
-const element = document.querySelector(SELECTOR)
-if (!element) {
-  throw new Error(`Couldn't find element: ${SELECTOR}`)
+  document.addEventListener('DOMContentLoaded', () => {
+    element.remove()
+  })
 }
 
-element.append(loading)
+loading()
 
-document.addEventListener('DOMContentLoaded', () => {
-  loading.remove()
-})
+export default loading

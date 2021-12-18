@@ -15,13 +15,9 @@ const fullscreenFadeInOut = async (): Promise<void> =>
     fade.zIndex = 1
     app.stage.addChild(fade)
 
-    const behavior = l1.every(
-      fadeInOut(fade, DURATION, resolve as () => void),
-      DURATION,
-      {
-        id: ID,
-      },
-    )
+    l1.every(fadeInOut(fade, DURATION, resolve as () => void), DURATION, {
+      id: ID,
+    })
   })
 
 type FadeInOutReturnType = (counter: number) => () => void
