@@ -1,4 +1,7 @@
 import tinykeys from 'tinykeys'
+import * as l1 from 'l1'
+
+import { Key } from '~/enum'
 
 const pressed: Record<string, boolean> = {}
 
@@ -45,4 +48,41 @@ function _onKeyDown(key: string): void {
 
 function _onKeyUp(key: string): void {
   pressed[key] = false
+}
+export const debouncedKey = (
+  key: Key,
+  callback: () => void,
+  debounceTime: number,
+): (() => void) => {
+  let timer = debounceTime
+
+  const unsubscribe = tinykeys(
+    window,
+    {
+      [key]: () => {
+        timer = 0
+      },
+    },
+    { event: 'keyup' },
+  )
+
+  const onUpdate = () => {
+    if (isKeyDown(key) && timer === 0) {
+      callback()
+      timer = debounceTime
+    }
+
+    if (timer > 0) {
+      timer -= 1
+    }
+  }
+
+  const behavior = l1.forever(onUpdate, 1)
+
+  const remove = () => {
+    l1.remove(behavior)
+    unsubscribe()
+  }
+
+  return remove
 }
