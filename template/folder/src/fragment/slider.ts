@@ -19,14 +19,14 @@ const slider = ({
 }: SliderOptions): Fragment<number> => {
   const component = new PIXI.Container()
 
-  const minus = ex.sprite(component, getTexture('plus-minus-2.png'))
+  const minus = ex.sprite(component, getTexture('plus-minus-2'))
   minus.x = -iconDistance
   minus.anchor.set(0.5)
   ex.makeClickable(minus, onMinus)
 
   const text = ex.text(component, { fill: 'white', fontSize: 16 }, initialValue)
 
-  const plus = ex.sprite(component, getTexture('plus-minus-1.png'))
+  const plus = ex.sprite(component, getTexture('plus-minus-1'))
   plus.anchor.set(0.5)
   ex.makeClickable(plus, onPlus)
   plus.x = iconDistance

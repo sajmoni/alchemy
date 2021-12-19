@@ -14,7 +14,7 @@ import { expand } from '~/effect'
 import getTexture from '~/util/getTexture'
 
 const game = ({ container }: SceneArgs): void => {
-  const sprite = ex.sprite(container, getTexture('square-1.png'))
+  const sprite = ex.sprite(container, getTexture('square-1'))
   sprite.x = 10
   sprite.y = Render.GAME_HEIGHT / 2
   sprite.anchor.set(0.5)

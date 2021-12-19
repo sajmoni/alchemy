@@ -88,7 +88,7 @@ const explosion = (): EmitterConfigV3 => ({
     {
       type: 'textureSingle',
       config: {
-        texture: getTexture('square-1.png'),
+        texture: getTexture('square-1'),
       },
     },
   ],
