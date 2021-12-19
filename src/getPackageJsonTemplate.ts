@@ -13,7 +13,6 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
     name: projectName,
     version: '0.0.0',
     private: true,
-    main: './electron.js',
     scripts: {
       start: 'npm run game && npm run labs',
       labs: 'vite --open --port 3001 --config vite-labs.config.ts',
