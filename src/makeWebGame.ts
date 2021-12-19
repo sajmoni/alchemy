@@ -132,8 +132,8 @@ const makeWebGame = ({ projectName }: { projectName: string }) => {
           options: { projectName },
         })
 
-        // Rename gitignore to prevent npm from renaming it to .npmignore
-        // See: https://github.com/npm/npm/issues/1862
+        fs.moveSync(path.join(rootPath, 'npmrc'), path.join(rootPath, '.npmrc'))
+
         fs.moveSync(
           path.join(rootPath, 'gitignore'),
           path.join(rootPath, '.gitignore'),
