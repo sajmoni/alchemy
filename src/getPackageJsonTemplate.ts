@@ -14,9 +14,8 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
     version: '0.0.0',
     private: true,
     scripts: {
-      start: 'npm run game && npm run labs',
+      start: 'vite --open',
       labs: 'vite --open --port 3001 --config vite-labs.config.ts',
-      game: 'vite --open',
       build: 'vite build',
       preview: 'vite preview --open',
       sound: 'node -r esbuild-runner/register script/loadSounds.ts',
