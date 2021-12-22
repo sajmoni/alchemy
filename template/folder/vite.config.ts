@@ -6,6 +6,7 @@ export default defineConfig({
   build: {
     outDir: '../dist',
     cssCodeSplit: false,
+    emptyOutDir: true,
   },
   resolve: {
     alias: {
