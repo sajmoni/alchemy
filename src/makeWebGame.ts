@@ -41,7 +41,7 @@ const devDependencies = [
   'husky@4.3.6',
   'lint-staged@10.5.4',
   // Module bundling
-  'vite@2.7.3',
+  'vite@2.7.6',
   // Testing
   'ava@3.15.0',
   'esbuild-runner@2.2.1',
