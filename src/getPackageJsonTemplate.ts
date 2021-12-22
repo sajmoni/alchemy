@@ -42,7 +42,6 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
       bracketSpacing: true,
     },
     xo: {
-      extends: 'xo-react',
       prettier: true,
       parser: '@typescript-eslint/parser',
       env: ['browser', 'es2020', 'node'],
@@ -50,7 +49,6 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
         'node/prefer-global/process': 'off',
         'unicorn/no-array-method-this-argument': 'off',
         'import/no-absolute-path': 'off',
-        'react/prop-types': 'off',
         'unicorn/filename-case': 'off',
         'capitalized-comments': 'off',
         'unicorn/prefer-node-remove': 'off',

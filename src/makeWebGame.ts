@@ -60,9 +60,6 @@ const devDependencies = [
   '@types/react@17.0.3',
   '@types/react-dom@17.0.2',
   '@types/styled-components@5.1.8',
-  'eslint-config-xo-react@0.25.0',
-  'eslint-plugin-react@7.23.2',
-  'eslint-plugin-react-hooks@4.2.0',
 ]
 
 const makeWebGame = ({ projectName }: { projectName: string }) => {
