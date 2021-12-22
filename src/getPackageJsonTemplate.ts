@@ -42,11 +42,6 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
       bracketSpacing: true,
     },
     xo: {
-      ignores: [
-        'public/worker/index.js',
-        'build/index.js',
-        'build/worker/index.js',
-      ],
       extends: 'xo-react',
       prettier: true,
       parser: '@typescript-eslint/parser',

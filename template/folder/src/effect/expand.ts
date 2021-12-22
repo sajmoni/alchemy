@@ -2,8 +2,6 @@ import * as l1 from 'l1'
 import * as juice from 'juice.js'
 import * as PIXI from 'pixi.js'
 
-const END_VALUE = 1
-
 type Options = {
   readonly duration?: number
   readonly endValue?: number
@@ -11,7 +9,7 @@ type Options = {
 
 const expand = async (
   displayObject: PIXI.DisplayObject,
-  { duration = 30, endValue = END_VALUE }: Options = {},
+  { duration = 30, endValue = 1 }: Options = {},
 ): Promise<void> =>
   new Promise((resolve) => {
     const startValue = displayObject.scale.x

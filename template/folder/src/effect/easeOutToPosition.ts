@@ -4,8 +4,6 @@ import * as PIXI from 'pixi.js'
 
 import { Position } from '~/type'
 
-const DEFAULT_DURATION = 45
-
 type Options = {
   readonly position: Position
   readonly duration?: number
@@ -13,7 +11,7 @@ type Options = {
 
 const easeOutToPosition = async (
   displayObject: PIXI.DisplayObject,
-  { position, duration = DEFAULT_DURATION }: Options,
+  { position, duration = 45 }: Options,
 ): Promise<void> =>
   new Promise((resolve) => {
     const getY = juice.easeOut({
