@@ -1,13 +1,6 @@
 /* PLOP_INJECT_IMPORT */
-import bar from './bar'
-import slider from './slider'
-import button from './button'
-import select from './select'
 
-export {
-  /* PLOP_INJECT_EXPORT */
-  bar,
-  slider,
-  button,
-  select,
-}
+export { default as bar } from './bar'
+export { default as slider } from './slider'
+export { default as select } from './select'
+export { default as button } from './button'

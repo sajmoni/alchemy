@@ -1,19 +1,9 @@
 /* PLOP_INJECT_IMPORT */
-import expand from './expand'
-import fadeIn from './fadeIn'
-import fadeOut from './fadeOut'
-import blink from './blink'
-import clickBlink from './clickBlink'
-import fullscreenFadeInOut from './fullscreenFadeInOut'
-import easeOutToPosition from './easeOutToPosition'
 
-export {
-  /* PLOP_INJECT_EXPORT */
-  expand,
-  fadeIn,
-  fadeOut,
-  blink,
-  clickBlink,
-  fullscreenFadeInOut,
-  easeOutToPosition,
-}
+export { default as expand } from './expand'
+export { default as fadeIn } from './fadeIn'
+export { default as blink } from './blink'
+export { default as fadeOut } from './fadeOut'
+export { default as fullscreenFadeInOut } from './fullscreenFadeInOut'
+export { default as clickBlink } from './clickBlink'
+export { default as easeOutToPosition } from './easeOutToPosition'

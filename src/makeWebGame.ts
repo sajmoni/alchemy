@@ -13,7 +13,7 @@ import displayDoneMessage from './message/done'
 
 const dependencies = [
   // Rendering
-  'pixi.js@6.2.0',
+  'pixi.js@6.2.1',
   'pixi-ex@0.2.0-0',
   '@pixi/particle-emitter@5.0.2',
   // Sound
@@ -26,8 +26,8 @@ const dependencies = [
   'tinykeys@1.3.0',
   // Utils
   'tiny-toolkit@0.1.0',
-  'math-avg@1.0.0',
-  'round-to@5.0.0',
+  'math-avg@2.0.0',
+  'round-to@6.0.0',
   'dot-prop@6.0.1',
   // Monitoring
   '@sentry/browser@6.11.0',

@@ -1,21 +1,10 @@
 /* PLOP_INJECT_IMPORT */
-import Language from './language'
-import Render from './render'
-import Resolution from './resolution'
-import TextStyle from './textStyle'
-import Scene from './scene'
-import MessageType from './messageType'
-import Mouse from './mouse'
-import Key from './key'
 
-export {
-  /* PLOP_INJECT_EXPORT */
-  Language,
-  Render,
-  Resolution,
-  TextStyle,
-  Scene,
-  MessageType,
-  Mouse,
-  Key,
-}
+export { default as Language } from './language'
+export { default as Render } from './render'
+export { default as TextStyle } from './textStyle'
+export { default as Resolution } from './resolution'
+export { default as MessageType } from './messageType'
+export { default as Scene } from './scene'
+export { default as Key } from './key'
+export { default as Mouse } from './mouse'

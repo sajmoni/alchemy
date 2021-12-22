@@ -1,4 +1,3 @@
-import * as ex from 'pixi-ex'
 import { EmitterConfigV3 } from '@pixi/particle-emitter'
 import getTexture from '~/util/getTexture'
 

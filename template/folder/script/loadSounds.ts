@@ -1,10 +1,10 @@
 #!/usr/bin/env node
+import path from 'node:path'
+import os from 'node:os'
+import { Buffer } from 'node:buffer'
 
 import fs from 'fs-extra'
 import { HowlOptions } from 'howler'
-
-import path from 'node:path'
-import os from 'node:os'
 
 const getNameFromFilename = (fileName: string): string =>
   fileName.slice(0, fileName.lastIndexOf('.'))
@@ -78,4 +78,4 @@ const run = async () => {
   }
 }
 
-run()
+void run()

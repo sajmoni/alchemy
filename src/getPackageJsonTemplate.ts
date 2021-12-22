@@ -46,6 +46,9 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
       parser: '@typescript-eslint/parser',
       env: ['browser', 'es2020', 'node'],
       rules: {
+        'import/order': 'off',
+        '@typescript-eslint/naming-convention': 'off',
+        'unicorn/prefer-module': 'off',
         'node/prefer-global/process': 'off',
         'unicorn/no-array-method-this-argument': 'off',
         'import/no-absolute-path': 'off',

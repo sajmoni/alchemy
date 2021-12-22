@@ -1,6 +1,6 @@
 import * as l1 from 'l1'
 import MainLoop from 'mainloop.js'
-import roundTo from 'round-to'
+import { roundTo } from 'round-to'
 import mathAverage from 'math-avg'
 
 import app from '~/app'
