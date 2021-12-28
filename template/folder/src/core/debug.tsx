@@ -72,7 +72,6 @@ const initializeDebugTools = (): void => {
 
     const DebugPanel = (): JSX.Element => {
       const [paused, setPaused] = useState(state.application.paused)
-      const [muteSounds] = useState(false)
       const [showGrid, setShowGrid] = useState(false)
       const [scene, setScene] = useState(state.scene)
       const [notification, setNotification] = useState<string | undefined>(
@@ -146,13 +145,6 @@ const initializeDebugTools = (): void => {
             checked={paused}
             onClick={(checked): void => {
               state.application.paused = checked
-            }}
-          />
-          <Checkbox
-            label="Mute sounds"
-            checked={muteSounds}
-            onClick={(_checked): void => {
-              // TODO
             }}
           />
           <Checkbox
