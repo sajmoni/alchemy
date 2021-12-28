@@ -1,5 +1,5 @@
 body {
-  font-family: 'Press Start 2P' sans-serif;
+  font-family: 'Press Start 2P', sans-serif;
   background-color: black;
   margin: 0px;
 }
@@ -9,8 +9,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 500px;
-  font-size: 48px;
+  height: 100vh;
+  font-size: 28px;
 }
 
 #container {

@@ -63,6 +63,11 @@ document.fonts
     const fullscreenLoading = createFullscreenLoading()
     app.stage.addChild(fullscreenLoading)
 
+    // Only show loading screen if loading is slow
+    l1.once(() => {
+      fullscreenLoading.visible = true
+    }, 15)
+
     app.loader.load(() => {
       try {
         ex.init(app)
