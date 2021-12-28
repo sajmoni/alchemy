@@ -9,7 +9,7 @@ import { Howler } from 'howler'
 import app from '~/app'
 import state from '~/state'
 import useAutoPause from '~/util/useAutoPause'
-import { Language, Key } from '~/enum'
+import { Language, Key, Render } from '~/enum'
 import * as ls from '~/util/storage'
 import env from './env'
 
@@ -42,13 +42,15 @@ if (env.VERSION) {
 
 const GAME_SELECTOR = '#game'
 
-const gameElement = document.querySelector(GAME_SELECTOR)
+const gameElement: HTMLElement | null = document.querySelector(GAME_SELECTOR)
 
 if (!gameElement) {
   throw new Error(`Element with id ${GAME_SELECTOR} was not found in the DOM`)
 }
 
 gameElement.append(app.renderer.view)
+gameElement.style.width = `${Render.GAME_WIDTH * 2}px`
+gameElement.style.height = `${Render.GAME_HEIGHT * 2}px`
 
 const languageCode = (ls.get('language') as string) || DEFAULT_LANGUAGE
 state.application.language = languageCode

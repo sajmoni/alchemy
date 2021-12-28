@@ -20,13 +20,6 @@ body {
   align-items: center;
 }
 
-/* This won't work with resizing */
-/* TODO: Make this dynamic? */
-#game {
-  width: 640px;
-  height: 360px;
-}
-
 @font-face {
   font-family: 'Press Start 2P';
   src: url('./asset/font/PressStart2P-Regular.ttf');
