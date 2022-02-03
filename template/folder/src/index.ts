@@ -9,8 +9,7 @@ import { Howler } from 'howler'
 import app from '~/app'
 import state from '~/state'
 import useAutoPause from '~/util/useAutoPause'
-import { Language, Key, Render } from '~/enum'
-import * as ls from '~/util/storage'
+import { Key, Render } from '~/enum'
 import env from './env'
 
 import initializeGameLoop from './core/loop'
@@ -20,6 +19,7 @@ import initializeWorker from './core/worker'
 import initializeKeyboardInput from './input/keyboard'
 import handleError from './util/handleError'
 import createFullscreenLoading from './view/fullscreenLoading'
+import { language } from './db'
 
 Sentry.init({
   dsn: '',
@@ -33,7 +33,6 @@ Sentry.init({
 })
 
 const FONT = 'Press Start 2P'
-const DEFAULT_LANGUAGE = Language.EN.code
 
 if (env.VERSION) {
   console.log(`Version: ${env.VERSION}`)
@@ -52,8 +51,7 @@ gameElement.append(app.renderer.view)
 gameElement.style.width = `${Render.GAME_WIDTH * 2}px`
 gameElement.style.height = `${Render.GAME_HEIGHT * 2}px`
 
-const languageCode = (ls.get('language') as string) || DEFAULT_LANGUAGE
-state.application.language = languageCode
+state.application.language = language.get()
 
 app.loader.add('/asset/spritesheet/data.json')
 

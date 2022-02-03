@@ -28,7 +28,6 @@ const dependencies = [
   'tiny-toolkit@0.1.0',
   'math-avg@2.0.0',
   'round-to@6.0.0',
-  'dot-prop@6.0.1',
   // Monitoring
   '@sentry/browser@6.11.0',
   '@sentry/tracing@6.11.0',
@@ -118,12 +117,6 @@ const makeWebGame = ({ projectName }: { projectName: string }) => {
         }
 
         createFileFromTemplate({
-          source: `${templateDirectory}/storage.template.ts`,
-          destination: path.join(rootPath, 'src/util/storage.ts'),
-          options: { projectName },
-        })
-
-        createFileFromTemplate({
           source: `${templateDirectory}/README.template.md`,
           destination: path.join(rootPath, 'README.md'),
           options: { projectName },
@@ -167,8 +160,6 @@ const makeWebGame = ({ projectName }: { projectName: string }) => {
           ])
 
           execa.sync('git', ['branch', 'release'])
-
-          return true
         } catch (error: any) {
           // It was not possible to commit.
           // Maybe the commit author config is not set.

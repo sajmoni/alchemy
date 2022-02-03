@@ -21,9 +21,9 @@ import app from '~/app'
 import Sound from '~/sound'
 import state, { State } from '~/state'
 import { Scene } from '~/enum'
-import * as ls from '~/util/storage'
 import { getAverageUpdateDuration, getAverageDrawDuration } from './loop'
 import env from '~/env'
+import { scene as storedScene } from '~/db'
 
 type ConsoleInfo = Record<string, any>
 
@@ -160,7 +160,7 @@ const initializeDebugTools = (): void => {
             items={scenes}
             onChange={(value): void => {
               state.scene = value as Scene
-              ls.set('scene', value)
+              storedScene.set(state.scene)
             }}
           />
         </Panel>

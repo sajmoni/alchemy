@@ -1,8 +1,8 @@
 import dotProp from 'dot-prop'
 import { proxy } from 'valtio'
 
-import * as ls from '~/util/storage'
 import { Resolution, Scene } from '~/enum'
+import { scene } from './db'
 
 export type State = {
   application: {
@@ -44,23 +44,8 @@ const state: State = {
   },
 }
 
-type LoadData = {
-  path: string
-  defaultValue: string | number
-}
-
-const DATA_TO_LOAD_FROM_STORAGE: LoadData[] = [
-  {
-    path: 'scene',
-    defaultValue: Scene.MAIN_MENU,
-  },
-]
-
 const loadDataFromStorage = (): void => {
-  for (const { path, defaultValue } of DATA_TO_LOAD_FROM_STORAGE) {
-    const restoredValue = ls.get(path)
-    dotProp.set(state, path, restoredValue ?? defaultValue)
-  }
+  state.scene = scene.get()
 }
 
 loadDataFromStorage()
