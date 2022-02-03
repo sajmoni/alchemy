@@ -1,4 +1,3 @@
-import dotProp from 'dot-prop'
 import { proxy } from 'valtio'
 
 import { Resolution, Scene } from '~/enum'
