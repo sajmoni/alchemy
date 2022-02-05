@@ -2,9 +2,10 @@
 
 ## Index <!-- omit in toc -->
 
+- [Commands](#commands)
 - [Folder structure](#folder-structure)
   - [fragment](#fragment)
-- [view](#view)
+  - [view](#view)
   - [effect](#effect)
   - [data](#data)
   - [scene](#scene)
@@ -26,7 +27,7 @@
   - [Lodash](#lodash)
   - [Draw calls](#draw-calls)
   - [Immutability](#immutability)
-- [Object pool](#object-pool)
+  - [Object pool](#object-pool)
 - [Marketing](#marketing)
 - [Useful external tools](#useful-external-tools)
 - [Useful libraries](#useful-libraries)
@@ -41,13 +42,33 @@
   - [Steam integration](#steam-integration)
 - [Useful external resources](#useful-external-resources)
 - [Guides](#guides)
-  - [Pixel perfect rendering](#pixel-perfect-rendering)
+    - [Pixel perfect rendering](#pixel-perfect-rendering)
 
 ---
 
-### Folder structure
+## Commands
 
-#### fragment
+`npm start` - Start the local development server
+
+`npm run labs` - Start the `labs` server
+
+`npm run build` - Build the game for production
+
+`npm run preview` - Preview the production build
+
+`npm run sound` - Make sound files available in the code
+
+`npm test` - Run unit tests
+
+`npm run plop` - Generate files
+
+`npm run qa` - Run type and lint checks
+
+`npm run ase` - Generate sprite sheet
+
+## Folder structure
+
+### fragment
 
 The `fragment` folder contains `reusable` ui components.
 
@@ -84,7 +105,7 @@ const _settingsMenu = settingsMenu()
 app.stage.addChild(_settingsMenu)
 ```
 
-#### effect
+### effect
 
 Effects change how your `PIXI.Component`s look.
 
@@ -96,24 +117,24 @@ _example_
 await fadeOut(component, { resolveAt: 0.6, duration: 15 })
 ```
 
-#### data
+### data
 
 Data that your game uses. For example `equipment`, `items`, `enemies` etc.
 
-#### scene
+### scene
 
 A `scene` is a function that renders stuff. You can switch scenes by setting
 the `scene` property in `state`.
 
 _Create a new one with `npm run plop`_
 
-#### worker
+### worker
 
 Code that will run in a worker thread.
 
 ---
 
-### Git branching
+## Git branching
 
 There are two branches configured with corresponding Github actions workflows
 
@@ -136,7 +157,7 @@ This should generally be avoided and only be done if its really truly needed and
 
 ---
 
-### QA
+## QA
 
 `npm run qa`
 
@@ -144,19 +165,18 @@ Will type check the code `typescript` and lint check with `xo`.
 
 ---
 
-### Generate sprite sheet
+## Generate sprite sheet
 
-Put your `aseprite` files into the `asset/sprite` folder and run `npm run ase`.
+Put your `aseprite` or `png` files into the `asset/sprite` folder and run `npm run ase`.
 
 ---
 
-### Generating a production build
+## Generating a production build
 
 `npm run build`
 
 ---
 
-<!-- TODO -->
 <!-- ### Electron
 
 Electron allows you to create an executable file for PC and Mac. This can then be sold on Steam or other digital stores.
@@ -173,13 +193,13 @@ Electron allows you to create an executable file for PC and Mac. This can then b
 
 ---
 
-### Sentry
+## Sentry
 
 Sentry captures exceptions and errors in your game and uploads them to `sentry.io`.
 
 ---
 
-### Debug overlay
+## Debug overlay
 
 Set `DEBUG` to `true` in `src/env.ts` to display an overlay with debug information.
 
@@ -189,7 +209,7 @@ This overlay can be customized to show any information you want.
 
 ---
 
-### Sounds
+## Sounds
 
 Sounds are preloaded with `Howler`.
 
@@ -205,7 +225,7 @@ Add sound files to `src/public/asset/sound` and run `npm run sound` to be able t
 
 ---
 
-### State management
+## State management
 
 You can subscribe to state changes with [`valtio`](https://github.com/pmndrs/valtio).
 You register a callback for the part of state you want to subscribe to.
@@ -223,7 +243,7 @@ subscribeKey(state.application, 'volume', (volume) => {
 
 ---
 
-### Plop
+## Plop
 
 With [`plop`](https://github.com/plopjs/plop) you can create new files from the command line.
 
@@ -233,23 +253,23 @@ npm run plop
 
 ---
 
-### Web worker
+## Web worker
 
 If you find that your game struggles to keep up with your desired frame rate, try putting some of your code in the `web worker`.
 
-A `web worker` is run in a separate thread and allows you to run code concurrently, which can dramatically improve your performance. The worker has no access to `PixiJS` and needs to communicate with your main thread using messages.
+A `web worker` is run in a separate thread and allows you to run code concurrently, which can greatly improve your game's performance. The worker has no access to `PixiJS` and needs to communicate with your main thread using messages.
 
 ---
 
-### Input
+## Input
 
-#### Keyboard
+### Keyboard
 
 Keyboard input uses [`tinykeys`](https://github.com/jamiebuilds/tinykeys)
 
 ---
 
-### Labs
+## Labs
 
 `Labs` is a separate webapp that allows you to experiment and prototype separately from your game.
 
@@ -261,17 +281,17 @@ Labs run on `localhost:3001`
 
 ---
 
-### Performance Tips
+## Performance Tips
 
-#### Lodash
+### Lodash
 
-Be careful when using `lodash`. Though it is a very useful and convenient tool, it should not be included in your games "critical paths" (code that is run very often) since it often adds a significant performance penalty.
+Be careful when using `lodash` and similar libraries. Though it is a very useful and convenient tool, it should not be included in your games "critical paths" (code that is run very often) since it often adds a significant performance penalty.
 
-#### Draw calls
+### Draw calls
 
 Try to keep your `draw calls` low. You can inspect your game with [`SpectorJS`](https://github.com/BabylonJS/Spector.js) occasionally to verify.
 
-#### Immutability
+### Immutability
 
 Try not to use immutability too much. Immutability has its benefits in many situations, but it can add a significant performance penalty if used in the wrong places.
 
@@ -281,13 +301,13 @@ Creating and destroying pixi objects can be bad for performance. It is especiall
 
 ---
 
-### Marketing
+## Marketing
 
 - Use [Gifski](https://sindresorhus.com/gifski) to generate GIFs on Mac.
 
 ---
 
-### Useful external tools
+## Useful external tools
 
 [Pixi TextStyle generator](https://pixijs.io/pixi-text-style)
 
@@ -297,11 +317,11 @@ Creating and destroying pixi objects can be bad for performance. It is especiall
 
 ---
 
-### Useful libraries
+## Useful libraries
 
-#### Graphics
+### Graphics
 
-- [pixi-filters](https://github.com/pixijs/pixi-filters)
+[pixi-filters](https://github.com/pixijs/pixi-filters)
 
 Example usage:
 
@@ -313,54 +333,54 @@ const text = new PIXI.Text()
 text.filters = [new filters.CRTFilter()]
 ```
 
-- [pixi-heaven](https://github.com/gameofbombs/pixi-heaven) - Advanced Sprite rendering options
+[pixi-heaven](https://github.com/gameofbombs/pixi-heaven)
 
-#### Text
+### Text
 
-[pixi-multistyle-text](https://github.com/tleunen/pixi-multistyle-text) - Apply different text styles to different parts of a string
+[pixi-multistyle-text](https://github.com/tleunen/pixi-multistyle-text)
 
-#### Randomness
+### Randomness
 
-- [chance](https://github.com/chancejs/chancejs)
+[randoma](https://github.com/sindresorhus/randoma)
 
-- [random-js](https://github.com/ckknight/random-js)
+### Physics
 
-#### Physics
+[matter](https://github.com/liabru/matter-js)
 
-- [matter](https://github.com/liabru/matter-js)
+### State machine
 
-#### State machine
+[xstate-fsm](https://github.com/davidkpiano/xstate/tree/master/packages/xstate-fsm)
 
-- [xstate-fsm](https://github.com/davidkpiano/xstate/tree/master/packages/xstate-fsm) - Minimal finite state machine
+### Utils
 
-#### Utils
+[uuid](https://github.com/uuidjs/uuid)
 
-[nanoid](https://github.com/ai/nanoid) - Unique string ID generator
-
-#### Events
+### Events
 
 [eventemitter3](https://github.com/primus/eventemitter3)
 
-#### Debug
+[emittery](https://github.com/sindresorhus/emittery)
 
-[`SpectorJS`](https://github.com/BabylonJS/Spector.js) - Explore and troubleshoot your WebGL scenes
+### Debug
 
-[`debug`](https://github.com/visionmedia/debug) - A better console.log
+[`SpectorJS`](https://github.com/BabylonJS/Spector.js)
 
-#### Steam integration
+[`debug`](https://github.com/visionmedia/debug)
+
+### Steam integration
 
 [`greenworks`](https://github.com/greenheartgames/greenworks)
 
 ---
 
-### Useful external resources
+## Useful external resources
 
-[Game dev market](https://www.gamedevmarket.net/) - Buy assets for your game
+[Game dev market](https://www.gamedevmarket.net/)
 
 ---
 
-### Guides
+## Guides
 
 #### Pixel perfect rendering
 
-Uncomment lines in `src/app.js`.
+Uncomment lines in `src/app.ts`.
