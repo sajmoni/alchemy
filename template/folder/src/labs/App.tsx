@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components'
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
+import { createCommand } from 'typed-ls'
 
-import * as ls from '~/util/storage'
 import { Lab } from './type'
 
 const Color = {
@@ -24,8 +24,6 @@ const Menu = styled.div`
   height: 100vh;
   width: 260px;
 `
-
-const STORAGE_KEY = 'selectedLab'
 
 const defaultPadding = css`
   padding: 10px 10px;
@@ -59,6 +57,7 @@ const App = ({
 
   const labKeys = useMemo(() => Object.keys(labData), [labData])
   const DEFAULT_LAB = labKeys[0]
+  const storedSelectedLab = createCommand('selectedLab', DEFAULT_LAB)
 
   useEffect(() => {
     PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST
@@ -108,7 +107,7 @@ const App = ({
   }, [selectedLab, app, labData])
 
   useEffect(() => {
-    const restored = ls.get(STORAGE_KEY) as string
+    const restored = storedSelectedLab.get()
     if (restored && labKeys.includes(restored)) {
       setSelectedLab(restored)
     } else {
@@ -121,7 +120,7 @@ const App = ({
       return
     }
 
-    ls.set(STORAGE_KEY, selectedLab)
+    storedSelectedLab.set(selectedLab)
   }, [selectedLab])
 
   return (

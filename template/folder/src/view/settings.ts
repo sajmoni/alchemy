@@ -4,7 +4,6 @@ import { subscribeKey } from 'valtio/utils'
 
 import state from '~/state'
 import { Render, TextStyle } from '~/enum'
-// import { save } from '~/util/storage'
 import app from '~/app'
 import { fadeOut } from '~/effect'
 import { slider, button } from '~/fragment'

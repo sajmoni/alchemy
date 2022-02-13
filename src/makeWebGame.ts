@@ -28,6 +28,7 @@ const dependencies = [
   'tiny-toolkit@0.1.0',
   'math-avg@2.0.0',
   'round-to@6.0.0',
+  'typed-ls@0.0.1',
   // Monitoring
   '@sentry/browser@6.11.0',
   '@sentry/tracing@6.11.0',

@@ -1,5 +1,6 @@
+import { createCommand } from 'typed-ls'
+
 import { Language, Scene } from '~/enum'
-import { createCommand } from '~/util/storage'
 
 export const language = createCommand<string>('language', Language.EN.code)
 
