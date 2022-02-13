@@ -70,7 +70,6 @@ const makeWebGame = ({ projectName }: { projectName: string }) => {
   const command = 'npm'
   const npmInstall = ['install', '--save-exact']
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
   const tasks = new Listr([
     {
       title: 'Create project folder',
