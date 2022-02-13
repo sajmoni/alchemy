@@ -58,11 +58,8 @@ const initializeDebugTools = (): void => {
     const gridGraphics = new PIXI.Graphics()
     gridGraphics.zIndex = 1
     app.stage.addChild(gridGraphics)
-    ex.showGrid({
-      graphics: gridGraphics,
-      numberOfCells: 3,
-      color: 0xff00ff,
-    })
+    gridGraphics.lineStyle(2, 0xff00ff)
+    ex.showGrid(gridGraphics, 3)
     gridGraphics.visible = false
 
     const scenes = Object.values(Scene).map((scene) => ({

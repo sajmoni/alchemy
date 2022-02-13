@@ -14,7 +14,7 @@ import displayDoneMessage from './message/done'
 const dependencies = [
   // Rendering
   'pixi.js@6.2.1',
-  'pixi-ex@0.2.0-0',
+  'pixi-ex@0.2.0',
   '@pixi/particle-emitter@5.0.2',
   // Sound
   'howler@2.2.3',
