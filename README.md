@@ -14,11 +14,32 @@
 
 Generates a template to make a 2D browser game using `PixiJS` and `TypeScript`.
 
+## :sparkles: Features
+
+- Full TypeScript support
+- Game loop using MainLoop.js
+- Simple scene management
+- Keyboard input
+- Separate web app to develop features in isolation
+- Web worker
+- Auto-pause when window loses focus
+- Reactive state management - trigger functions when state changes
+- Visual effects like fade-in and blink
+- Debug panel to inspect your scene
+- Sprite management using `aseprite`
+- Sound management
+- Main menu
+- Type-safe local storage
+- Very fast dev server using `vite`
+- Github actions workflow to deploy to `itch.io`
+- Code formatting with `prettier` and linting with `xo`
+- Git hooks with `lint-staged` and `husky`
+
 ---
 
-## :sparkles: Includes
+### Dependencies included
 
-### Rendering and game logic
+#### Rendering and game logic
 
 - :tv: [`PixiJS`](https://github.com/pixijs/pixi.js)
 
@@ -36,7 +57,7 @@ Generates a template to make a 2D browser game using `PixiJS` and `TypeScript`.
 
 - :sound: [`howler`](https://github.com/goldfire/howler.js/)
 
-### Tooling
+#### Tooling
 
 - :m: [`typescript`](https://github.com/microsoft/TypeScript)
 
