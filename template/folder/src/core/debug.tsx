@@ -88,7 +88,8 @@ const initializeDebugTools = (): void => {
       return (
         <Panel>
           <Snackbar
-            value={notification}
+            isOpen={!!notification}
+            value={notification ?? ''}
             onClose={() => {
               state.application.error = undefined
             }}

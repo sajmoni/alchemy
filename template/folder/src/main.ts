@@ -80,6 +80,7 @@ document.fonts
         initializeKeyboardInput(Object.values(Key))
 
         subscribeKey(state.application.volume, 'sound', (volume) => {
+          // @ts-expect-error Incorrectly marked as error
           Howler.volume(volume * 0.1)
         })
 
