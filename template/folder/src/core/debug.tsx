@@ -67,7 +67,7 @@ const initializeDebugTools = (): void => {
       value: scene,
     }))
 
-    const DebugPanel = (): JSX.Element => {
+    const DebugPanel = () => {
       const [paused, setPaused] = useState(state.application.paused)
       const [showGrid, setShowGrid] = useState(false)
       const [scene, setScene] = useState(state.scene)
@@ -129,34 +129,34 @@ const initializeDebugTools = (): void => {
               value: 5,
             }}
           />
-          <StringValue label="Scene" getValue={(): string => state.scene} />
+          <StringValue label="Scene" getValue={() => state.scene} />
           <Divider />
           <Button
             label="Log state"
-            onClick={(): void => {
+            onClick={() => {
               console.log('state:', snapshot(state))
             }}
           />
           <Checkbox
             label="Pause game"
             checked={paused}
-            onClick={(checked): void => {
+            onClick={(checked) => {
               state.application.paused = checked
             }}
           />
           <Checkbox
             label="Show grid"
             checked={showGrid}
-            onClick={(checked): void => {
+            onClick={(checked) => {
               setShowGrid(checked)
             }}
           />
           <Dropdown
             value={scene}
-            dropdownLabel="Scene"
+            label="Scene"
             items={scenes}
-            onChange={(value): void => {
-              state.scene = value as Scene
+            onChange={(value) => {
+              state.scene = value
               storedScene.set(state.scene)
             }}
           />
@@ -164,11 +164,11 @@ const initializeDebugTools = (): void => {
       )
     }
 
-    const SELECTOR = '#debug-panel'
-    const element = document.querySelector(SELECTOR)
+    const selector = '#debug-panel'
+    const element = document.querySelector(selector)
     if (!element) {
       throw new Error(
-        `Tried to insert debug panel into non existent element ${SELECTOR}`,
+        `Tried to insert debug panel into non existent element ${selector}`,
       )
     }
 

@@ -46,7 +46,7 @@ const devDependencies = [
   'ava@3.15.0',
   'esbuild-runner@2.2.1',
   // Other
-  'nano-panel@0.0.10',
+  'nano-panel@0.1.2',
   'plop@2.7.4',
   'fs-extra@10.0.0',
   // Types
