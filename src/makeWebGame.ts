@@ -13,50 +13,50 @@ import displayDoneMessage from './message/done'
 
 const dependencies = [
   // Rendering
-  'pixi.js@6.2.1',
+  'pixi.js@6.2.2',
   'pixi-ex@0.2.0',
-  '@pixi/particle-emitter@5.0.2',
+  '@pixi/particle-emitter@5.0.3',
   // Sound
   'howler@2.2.3',
   // Game logic
   'juice.js@2.0.2',
   'l1@0.8.0',
   'mainloop.js@1.0.4',
-  'valtio@1.2.7',
-  'tinykeys@1.3.0',
+  'valtio@1.3.0',
+  'tinykeys@1.4.0',
   // Utils
   'tiny-toolkit@0.2.0',
   'round-to@6.0.0',
   'typed-ls@0.0.1',
   // Monitoring
-  '@sentry/browser@6.11.0',
-  '@sentry/tracing@6.11.0',
+  '@sentry/browser@6.18.0',
+  '@sentry/tracing@6.18.0',
 ]
 
 const devDependencies = [
   // Code quality
-  'xo@0.47.0',
-  'typescript@4.5.4',
+  'xo@0.48.0',
+  'typescript@4.5.5',
   // Module bundling
-  'vite@2.7.6',
+  'vite@2.8.4',
   // Testing
-  'ava@3.15.0',
+  'ava@4.0.1',
   'esbuild-runner@2.2.1',
   // Other
   'nano-panel@0.1.2',
   'plop@2.7.4',
-  'fs-extra@10.0.0',
+  'fs-extra@10.0.1',
   // Types
-  '@types/node@14.14.34',
-  '@types/howler@2.2.3',
+  '@types/node@17.0.21',
+  '@types/howler@2.2.5',
   '@types/mainloop.js@1.0.5',
   // Web - Labs and Debug tools
   'react@17.0.2',
   'react-dom@17.0.2',
   'styled-components@5.3.3',
-  '@types/react@17.0.3',
-  '@types/react-dom@17.0.2',
-  '@types/styled-components@5.1.8',
+  '@types/react@17.0.39',
+  '@types/react-dom@17.0.11',
+  '@types/styled-components@5.1.23',
 ]
 
 const makeWebGame = ({ projectName }: { projectName: string }) => {
