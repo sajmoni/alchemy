@@ -4,7 +4,6 @@ type ExtendedPackageJson = PackageJson & {
   ava: any
   prettier: any
   xo: any
-  husky: any
   browserslist: any
 }
 
@@ -64,12 +63,6 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
             json: 'always',
           },
         ],
-      },
-    },
-    husky: {
-      hooks: {
-        'pre-commit': 'lint-staged',
-        'pre-push': 'npm test',
       },
     },
     browserslist: ['defaults', 'not IE 11', 'not IE_Mob 11'],

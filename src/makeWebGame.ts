@@ -38,8 +38,6 @@ const devDependencies = [
   // Code quality
   'xo@0.47.0',
   'typescript@4.5.4',
-  'husky@4.3.6',
-  'lint-staged@10.5.4',
   // Module bundling
   'vite@2.7.6',
   // Testing
