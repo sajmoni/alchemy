@@ -25,8 +25,7 @@ const dependencies = [
   'valtio@1.2.7',
   'tinykeys@1.3.0',
   // Utils
-  'tiny-toolkit@0.1.0',
-  'math-avg@2.0.0',
+  'tiny-toolkit@0.2.0',
   'round-to@6.0.0',
   'typed-ls@0.0.1',
   // Monitoring

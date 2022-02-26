@@ -1,7 +1,7 @@
 import * as l1 from 'l1'
 import MainLoop from 'mainloop.js'
 import { roundTo } from 'round-to'
-import mathAverage from 'math-avg'
+import { getAverage } from 'tiny-toolkit'
 
 import app from '~/app'
 import env from '~/env'
@@ -68,7 +68,7 @@ const initializeGameLoop = (): void => {
 }
 
 const makeGetAverageDuration = (list: number[]) => (): number => {
-  const averageDuration = mathAverage(list.length > 0 ? list : [0])
+  const averageDuration = getAverage(list.length > 0 ? list : [0])
   const roundedAverageDuration = roundTo(averageDuration, 3)
 
   list.length = 0
