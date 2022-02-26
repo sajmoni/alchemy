@@ -29,6 +29,7 @@ const createPauseMenu = ({
     },
     'Paused (Click anywhere to resume)',
   )
+  text.anchor.set(0.5)
   text.x = width / 2
   text.y = height / 2
 

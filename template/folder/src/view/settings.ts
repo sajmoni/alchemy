@@ -65,6 +65,7 @@ const settings = (): PIXI.Container => {
   })
 
   const title = ex.text(component, TextStyle.MAIN, `Settings`)
+  title.anchor.set(0.5)
   title.position.set(width / 2, 10)
 
   const [soundSlider, renderSoundSlider] = makeVolumeSlider({
@@ -157,6 +158,7 @@ const makeVolumeSlider = ({
   container.position.set(x, y)
 
   const text = ex.text(container, TextStyle.MAIN, label)
+  text.anchor.set(0.5)
   text.position.set(0, -20)
 
   const [volumeSlider, volumeSliderRender] = slider({
