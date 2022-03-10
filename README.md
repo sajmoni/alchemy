@@ -32,8 +32,7 @@ Generates a template to make a 2D browser game using `PixiJS` and `TypeScript`.
 - Type-safe local storage
 - Very fast dev server using `vite`
 - Github actions workflow to deploy to `itch.io`
-- Code formatting with `prettier` and linting with `xo`
-- Git hooks with `lint-staged` and `husky`
+- Code formatting with `prettier`
 
 ---
 
@@ -63,13 +62,9 @@ Generates a template to make a 2D browser game using `PixiJS` and `TypeScript`.
 
 - :zap: [`vite`](https://github.com/vitejs/vite)
 
-- :policeman: [`xo`](https://github.com/xojs/xo)
-
 - :nail_care: [`prettier`](https://github.com/prettier/prettier)
 
 - :chart: [`sentry`](https://sentry.io/)
-
-- :no_entry_sign: :poop: [`lint-staged`](https://github.com/okonet/lint-staged) + :dog: [`husky`](https://github.com/typicode/husky)
 
 - :straight_ruler: [`ava`](https://github.com/avajs/ava)
 

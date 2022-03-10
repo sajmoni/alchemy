@@ -35,7 +35,7 @@ const dependencies = [
 
 const devDependencies = [
   // Code quality
-  'xo@0.48.0',
+  'prettier@2.5.1',
   'typescript@4.5.5',
   // Module bundling
   'vite@2.8.4',

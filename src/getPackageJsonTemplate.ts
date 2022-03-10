@@ -3,7 +3,6 @@ import { PackageJson } from 'type-fest'
 type ExtendedPackageJson = PackageJson & {
   ava: any
   prettier: any
-  xo: any
   browserslist: any
 }
 
@@ -20,7 +19,6 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
       sound: 'node -r esbuild-runner/register script/loadSounds.ts',
       test: 'ava',
       plop: 'plop --plopfile plop/plopfile.ts',
-      qa: 'tsc && xo src --fix',
       ase: './script/aseprite.sh',
       // 'elec:start': 'electron .',
       // 'elec:build':
@@ -34,36 +32,9 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
       extensions: ['ts'],
     },
     prettier: {
-      trailingComma: 'all',
       semi: false,
+      trailingComma: 'all',
       singleQuote: true,
-      useTabs: false,
-      bracketSpacing: true,
-    },
-    xo: {
-      prettier: true,
-      parser: '@typescript-eslint/parser',
-      env: ['browser', 'es2020', 'node'],
-      rules: {
-        'import/order': 'off',
-        '@typescript-eslint/naming-convention': 'off',
-        'unicorn/prefer-module': 'off',
-        'node/prefer-global/process': 'off',
-        'unicorn/no-array-method-this-argument': 'off',
-        'import/no-absolute-path': 'off',
-        'unicorn/filename-case': 'off',
-        'capitalized-comments': 'off',
-        'unicorn/prefer-node-remove': 'off',
-        'import/extensions': [
-          'error',
-          'never',
-          {
-            png: 'always',
-            wav: 'always',
-            json: 'always',
-          },
-        ],
-      },
     },
     browserslist: ['defaults', 'not IE 11', 'not IE_Mob 11'],
   }
