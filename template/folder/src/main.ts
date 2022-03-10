@@ -19,7 +19,7 @@ import initializeWorker from './core/worker'
 import initializeKeyboardInput from './input/keyboard'
 import handleError from './util/handleError'
 import createFullscreenLoading from './view/fullscreenLoading'
-import { language } from './db'
+import { language } from './ls'
 
 Sentry.init({
   dsn: '',

@@ -27,7 +27,7 @@ const dependencies = [
   // Utils
   'tiny-toolkit@0.2.0',
   'round-to@6.0.0',
-  'typed-ls@0.0.1',
+  'typed-ls@0.1.0',
   // Monitoring
   '@sentry/browser@6.18.0',
   '@sentry/tracing@6.18.0',

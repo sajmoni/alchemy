@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import * as PIXI from 'pixi.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
-import { createCommand } from 'typed-ls'
+import { createStoredValue } from 'typed-ls'
 
 import { Lab } from './type'
 
@@ -57,7 +57,7 @@ const App = ({
 
   const labKeys = useMemo(() => Object.keys(labData), [labData])
   const DEFAULT_LAB = labKeys[0]
-  const storedSelectedLab = createCommand('selectedLab', DEFAULT_LAB)
+  const storedSelectedLab = createStoredValue('selectedLab', DEFAULT_LAB)
 
   useEffect(() => {
     PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST

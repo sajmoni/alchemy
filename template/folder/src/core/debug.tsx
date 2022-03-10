@@ -23,7 +23,7 @@ import state, { State } from '~/state'
 import { Scene } from '~/enum'
 import { getAverageUpdateDuration, getAverageDrawDuration } from './loop'
 import env from '~/env'
-import { scene as storedScene } from '~/db'
+import { scene as storedScene } from '~/ls'
 
 type ConsoleInfo = Record<string, any>
 
