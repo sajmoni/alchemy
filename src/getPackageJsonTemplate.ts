@@ -20,6 +20,8 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
       test: 'ava',
       plop: 'plop --plopfile plop/plopfile.ts',
       ase: './script/aseprite.sh',
+      version:
+        'auto-changelog -p -t compact --commit-limit false && git add CHANGELOG.md',
       // 'elec:start': 'electron .',
       // 'elec:build':
       //   'rm -rf dist && parcel build src/index.html --public-url ./ --target electron',

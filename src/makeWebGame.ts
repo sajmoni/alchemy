@@ -46,6 +46,7 @@ const devDependencies = [
   'nano-panel@0.1.2',
   'plop@2.7.4',
   'fs-extra@10.0.1',
+  'auto-changelog@2.4.0',
   // Types
   '@types/node@17.0.21',
   '@types/howler@2.2.5',
@@ -155,8 +156,6 @@ const makeWebGame = ({ projectName }: { projectName: string }) => {
             '-m',
             'Initialize project using make-web-game',
           ])
-
-          execa.sync('git', ['branch', 'release'])
         } catch (error: any) {
           // It was not possible to commit.
           // Maybe the commit author config is not set.

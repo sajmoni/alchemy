@@ -34,9 +34,6 @@ Sentry.init({
 
 const FONT = 'Press Start 2P'
 
-if (env.VERSION) {
-  console.log(`Version: ${env.VERSION}`)
-}
 // const ERROR_LOGGING = process.env.ERROR_LOGGING || false
 
 const GAME_SELECTOR = '#game'

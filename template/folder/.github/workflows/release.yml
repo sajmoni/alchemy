@@ -1,8 +1,5 @@
-name: Build and deploy release
-on:
-  push:
-    branches:
-      - release
+name: Deploy to production
+on: workflow_dispatch
 
 jobs:
   build:
@@ -55,15 +52,27 @@ jobs:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
         run: ./butler push game rymdkraftverk/make-web-game-test:web
   tag:
-    name: Tag release
-    needs: deploy
+    name: Tag release and generate release notes
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Combine timestamp and sha of last commit to create version
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install
+        run: npm ci
+      - name: Set git information
         run: |
-          git config --global user.name 'Github Actions Pipeline'
-          git config --global user.email 'pipeline@not-a-real-email.com'
-          git tag `git show -s --format="prod-%ct-%h"`
+          git config --global user.name 'Github Actions [bot]'
+          git config --global user.email 'github-actions@not-a-real-email.com'
+      - name: Increase version and create release notes
+        run: npm version patch
+      - name: Push back to repository
+        run: |
           git push origin --tags
+          git push
