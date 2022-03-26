@@ -18,42 +18,13 @@ import { snapshot } from 'valtio'
 import { subscribeKey } from 'valtio/utils'
 
 import app from '~/app'
-import Sound from '~/sound'
-import state, { State } from '~/state'
+import state from '~/state'
 import { Scene } from '~/enum'
 import { getAverageUpdateDuration, getAverageDrawDuration } from './loop'
 import env from '~/env'
 import { scene as storedScene } from '~/ls'
 
-type ConsoleInfo = Record<string, any>
-
-type Debug = {
-  state: () => State
-  info: () => ConsoleInfo
-  sound: () => void
-}
-
-declare global {
-  interface Window {
-    debug: Debug
-  }
-}
-
-const initializeDebugTools = (): void => {
-  // * These commands can be run in the console, e.g: 'debug.state()'
-  window.debug = {
-    ...window.debug,
-    state: (): State => state,
-    info: (): ConsoleInfo => ({
-      'display objects': ex.getAllChildren(app.stage).length,
-      'amount of behaviors': l1.getAll().length,
-      behaviors: l1.getAll(),
-    }),
-    sound: (): void => {
-      Sound.coin.play()
-    },
-  }
-
+const initializeDebugOverlay = (): void => {
   if (env.DEBUG) {
     const gridGraphics = new PIXI.Graphics()
     gridGraphics.zIndex = 1
@@ -177,4 +148,4 @@ const initializeDebugTools = (): void => {
   }
 }
 
-export default initializeDebugTools
+export default initializeDebugOverlay

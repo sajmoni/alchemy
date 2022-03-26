@@ -13,13 +13,14 @@ import { Key, Render } from '~/enum'
 import env from './env'
 
 import initializeGameLoop from './core/loop'
-import initializeDebugTools from './core/debug'
+import initializeDebugOverlay from './core/debugOverlay'
 import initializeSceneHandler from './core/sceneHandler'
 import initializeWorker from './core/worker'
 import initializeKeyboardInput from './input/keyboard'
 import handleError from './util/handleError'
 import createFullscreenLoading from './view/fullscreenLoading'
 import { language } from './ls'
+import initializeDebugConsole from './core/debugConsole'
 
 Sentry.init({
   dsn: '',
@@ -71,7 +72,8 @@ document.fonts
 
         useAutoPause()
 
-        initializeDebugTools()
+        initializeDebugOverlay()
+        initializeDebugConsole()
         initializeSceneHandler()
         initializeWorker()
         initializeKeyboardInput(Object.values(Key))
