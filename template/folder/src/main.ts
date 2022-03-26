@@ -13,7 +13,6 @@ import { Key, Render } from '~/enum'
 import env from './env'
 
 import initializeGameLoop from './core/loop'
-import initializeDebugOverlay from './core/debugOverlay'
 import initializeSceneHandler from './core/sceneHandler'
 import initializeWorker from './core/worker'
 import initializeKeyboardInput from './input/keyboard'
@@ -72,7 +71,11 @@ document.fonts
 
         useAutoPause()
 
-        initializeDebugOverlay()
+        if (env.NODE_ENV === 'development' && env.DEBUG) {
+          import('~/core/debugOverlay').then((debugOverlay) => {
+            debugOverlay.default()
+          })
+        }
         initializeDebugConsole()
         initializeSceneHandler()
         initializeWorker()
