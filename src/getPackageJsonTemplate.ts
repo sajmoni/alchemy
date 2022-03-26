@@ -1,7 +1,6 @@
 import { PackageJson } from 'type-fest'
 
 type ExtendedPackageJson = PackageJson & {
-  ava: any
   prettier: any
   browserslist: any
 }
@@ -17,7 +16,7 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
       build: 'vite build',
       preview: 'vite preview --open --port 8080',
       sound: 'node -r esbuild-runner/register script/loadSounds.ts',
-      test: 'ava',
+      test: 'vitest',
       plop: 'plop --plopfile plop/plopfile.ts',
       ase: './script/aseprite.sh',
       version:
@@ -28,10 +27,6 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
       // 'elec:pack': 'npx electron-packager . --overwrite',
       // 'elec:run': `open ${projectName}-darwin-x64/${projectName}.app`,
       // 'elec:all': 'npm run elec:build && npm run elec:pack && npm run elec:run',
-    },
-    ava: {
-      require: ['esbuild-runner/register'],
-      extensions: ['ts'],
     },
     prettier: {
       semi: false,

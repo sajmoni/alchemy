@@ -40,8 +40,7 @@ const devDependencies = [
   'prettier@2.6.1',
   'typescript@4.6.3',
   // Testing
-  'ava@4.1.0',
-  'esbuild-runner@2.2.1',
+  'vitest',
   // Other
   'nano-panel@0.1.2',
   'plop@2.7.4',
