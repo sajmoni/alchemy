@@ -31,14 +31,14 @@ const dependencies = [
   // Monitoring
   '@sentry/browser@6.18.0',
   '@sentry/tracing@6.18.0',
+  // Module bundling
+  'vite@2.8.6',
 ]
 
 const devDependencies = [
   // Code quality
   'prettier@2.6.1',
   'typescript@4.6.3',
-  // Module bundling
-  'vite@2.8.6',
   // Testing
   'ava@4.1.0',
   'esbuild-runner@2.2.1',

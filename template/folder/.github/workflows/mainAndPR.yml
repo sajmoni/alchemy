@@ -1,0 +1,10 @@
+name: On PR and push to main
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  qa:
+    uses: sajmoni/foo/.github/workflows/qa.yml@main
