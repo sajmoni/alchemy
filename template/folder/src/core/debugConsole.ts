@@ -1,5 +1,6 @@
 import * as l1 from 'l1'
 import * as ex from 'pixi-ex'
+import { snapshot } from 'valtio'
 
 import app from '~/app'
 import state, { State } from '~/state'
@@ -23,13 +24,13 @@ const initializeDebugConsole = () => {
   // * These commands can be run in the console, e.g: 'debug.state()'
   window.debug = {
     ...window.debug,
-    state: (): State => state,
-    info: (): ConsoleInfo => ({
+    state: () => snapshot(state),
+    info: () => ({
       'display objects': ex.getAllChildren(app.stage).length,
       'amount of behaviors': l1.getAll().length,
       behaviors: l1.getAll(),
     }),
-    sound: (): void => {
+    sound: () => {
       Sound.coin.play()
     },
   }
