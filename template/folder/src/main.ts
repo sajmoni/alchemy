@@ -4,7 +4,6 @@ import MainLoop from 'mainloop.js'
 import * as Sentry from '@sentry/browser'
 import { Integrations } from '@sentry/tracing'
 import { subscribeKey } from 'valtio/utils'
-import { Howler } from 'howler'
 
 import app from '~/app'
 import state from '~/state'
@@ -20,6 +19,7 @@ import handleError from './util/handleError'
 import createFullscreenLoading from './view/fullscreenLoading'
 import { language } from './ls'
 import initializeDebugConsole from './core/debugConsole'
+import { setMusicVolume, setSoundVolume } from './sound'
 
 Sentry.init({
   dsn: '',
@@ -82,8 +82,10 @@ document.fonts
         initializeKeyboardInput(Object.values(Key))
 
         subscribeKey(state.application.volume, 'sound', (volume) => {
-          // @ts-expect-error Incorrectly marked as error
-          Howler.volume(volume * 0.1)
+          setSoundVolume(volume)
+        })
+        subscribeKey(state.application.volume, 'music', (volume) => {
+          setMusicVolume(volume)
         })
 
         l1.once(() => {
