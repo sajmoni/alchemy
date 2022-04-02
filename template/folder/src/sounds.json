@@ -1,6 +1,4 @@
 {
-  "coin": {
-    "src": "coin.mp3",
-    "volume": 1
-  }
+  "sound": { "coin": "coin.mp3" },
+  "music": { "coin": "coin.mp3" }
 }

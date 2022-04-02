@@ -27,6 +27,7 @@ const dependencies = [
   // Utils
   'tiny-toolkit@0.2.0',
   'round-to@6.0.0',
+  'ts-extras@0.10.1',
   'typed-ls@0.1.0',
   // Monitoring
   '@sentry/browser@6.18.0',
@@ -39,6 +40,7 @@ const devDependencies = [
   // Code quality
   'prettier@2.6.1',
   'typescript@4.6.3',
+  'esbuild-runner@2.2.1',
   // Testing
   'vitest',
   // Other

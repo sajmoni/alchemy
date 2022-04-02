@@ -76,12 +76,12 @@ const settings = (): PIXI.Container => {
     onMinus: () => {
       const currentVolume = state.application.volume.sound
       state.application.volume.sound = Math.max(currentVolume - 1, MIN_VOLUME)
-      sound.coin.play()
+      sound.sound.coin.play()
     },
     onPlus: () => {
       const currentVolume = state.application.volume.sound
       state.application.volume.sound = Math.min(currentVolume + 1, MAX_VOLUME)
-      sound.coin.play()
+      sound.sound.coin.play()
     },
   })
   component.addChild(soundSlider)

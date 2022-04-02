@@ -31,7 +31,7 @@ const initializeDebugConsole = () => {
       behaviors: l1.getAll(),
     }),
     sound: () => {
-      Sound.coin.play()
+      Sound.sound.coin.play()
     },
   }
 }
