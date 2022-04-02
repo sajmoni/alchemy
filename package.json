@@ -13,11 +13,6 @@
     "url": "git+https://github.com/sajmoni/make-web-game.git"
   },
   "bin": "dist/index.js",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "prettier": {
     "trailingComma": "all",
     "semi": false,
@@ -67,8 +62,6 @@
   "devDependencies": {
     "@types/fs-extra": "9.0.13",
     "@types/mustache": "4.1.2",
-    "husky": "4.3.0",
-    "lint-staged": "11.1.2",
     "np": "7.6.0",
     "package-preview": "4.0.0",
     "type-fest": "2.11.1",

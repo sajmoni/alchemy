@@ -91,7 +91,6 @@ const makeWebGame = ({ projectName }: { projectName: string }) => {
       title: 'Git init',
       task: () => {
         try {
-          // Change directory so that Husky gets installed in the right .git folder
           process.chdir(rootPath)
         } catch {
           throw new Error(`Could not change to project directory: ${rootPath}`)
