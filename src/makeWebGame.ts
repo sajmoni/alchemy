@@ -4,8 +4,7 @@ import process from 'node:process'
 import chalk from 'chalk'
 import fs from 'fs-extra'
 import execa from 'execa'
-// @ts-expect-error Will switch to listr2
-import Listr from 'listr'
+import { Listr } from 'listr2'
 
 import getPackageJsonTemplate from './getPackageJsonTemplate'
 import createFileFromTemplate from './createFileFromTemplate'
