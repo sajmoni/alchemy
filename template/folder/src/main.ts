@@ -17,7 +17,7 @@ import initializeWorker from './core/worker'
 import initializeKeyboardInput from './input/keyboard'
 import handleError from './util/handleError'
 import createFullscreenLoading from './view/fullscreenLoading'
-import { language } from './ls'
+import { language, musicVolume, soundVolume } from './ls'
 import initializeDebugConsole from './core/debugConsole'
 import { setMusicVolume, setSoundVolume } from './sound'
 
@@ -47,8 +47,6 @@ if (!gameElement) {
 gameElement.append(app.renderer.view)
 gameElement.style.width = `${Render.GAME_WIDTH * 2}px`
 gameElement.style.height = `${Render.GAME_HEIGHT * 2}px`
-
-state.application.language = language.get()
 
 app.loader.add('/asset/spritesheet/data.json')
 
@@ -82,11 +80,17 @@ document.fonts
         initializeKeyboardInput(Object.values(Key))
 
         subscribeKey(state.application.volume, 'sound', (volume) => {
+          soundVolume.set(volume)
           setSoundVolume(volume)
         })
         subscribeKey(state.application.volume, 'music', (volume) => {
+          musicVolume.set(volume)
           setMusicVolume(volume)
         })
+
+        state.application.language = language.get()
+        state.application.volume.sound = soundVolume.get()
+        state.application.volume.music = musicVolume.get()
 
         l1.once(() => {
           fullscreenLoading.destroy()

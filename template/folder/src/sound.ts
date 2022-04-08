@@ -37,13 +37,13 @@ const sound: Output = {
 
 export const setSoundVolume = (volume: number) => {
   for (const howlSound of Object.values(sound.sound)) {
-    howlSound.volume.set(volume * 0.1)
+    howlSound.volume(volume * 0.1)
   }
 }
 
 export const setMusicVolume = (volume: number) => {
   for (const howlSound of Object.values(sound.music)) {
-    howlSound.volume.set(volume * 0.1)
+    howlSound.volume(volume * 0.1)
   }
 }
 

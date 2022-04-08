@@ -26,8 +26,8 @@ export type State = {
 const state: State = {
   application: {
     volume: {
-      sound: 1,
-      music: 1,
+      sound: 5,
+      music: 5,
     },
     language: undefined,
     paused: false,
