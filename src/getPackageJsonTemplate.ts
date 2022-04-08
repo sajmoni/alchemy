@@ -11,7 +11,7 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
     version: '0.0.0',
     private: true,
     scripts: {
-      start: 'vite --open',
+      start: 'vite --open --port 3000',
       labs: 'vite --open --port 3001 --config vite-labs.config.ts',
       build: 'vite build',
       preview: 'vite preview --open --port 8080',
