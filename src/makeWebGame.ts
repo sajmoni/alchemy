@@ -21,7 +21,7 @@ const dependencies = [
   'juice.js@2.0.2',
   'l1@0.8.0',
   'mainloop.js@1.0.4',
-  'valtio@1.4.0',
+  'valtio@1.5.2',
   'tinykeys@1.4.0',
   // Utils
   'tiny-toolkit@0.2.0',
@@ -29,19 +29,19 @@ const dependencies = [
   'ts-extras@0.10.1',
   'typed-ls@0.1.0',
   // Monitoring
-  '@sentry/browser@6.18.0',
-  '@sentry/tracing@6.18.0',
+  '@sentry/browser@6.19.6',
+  '@sentry/tracing@6.19.6',
   // Module bundling
-  'vite@2.8.6',
+  'vite@2.9.1',
 ]
 
 const devDependencies = [
   // Code quality
-  'prettier@2.6.1',
+  'prettier@2.6.2',
   'typescript@4.6.3',
   'esbuild-runner@2.2.1',
   // Testing
-  'vitest',
+  'vitest@0.9.0',
   // Other
   'nano-panel@0.1.2',
   'plop@2.7.4',
@@ -54,10 +54,10 @@ const devDependencies = [
   // Web - Labs and Debug tools
   'react@17.0.2',
   'react-dom@17.0.2',
-  'styled-components@5.3.3',
+  'styled-components@5.3.5',
   '@types/react@17.0.39',
   '@types/react-dom@17.0.11',
-  '@types/styled-components@5.1.23',
+  '@types/styled-components@5.1.24',
 ]
 
 const makeWebGame = ({ projectName }: { projectName: string }) => {
