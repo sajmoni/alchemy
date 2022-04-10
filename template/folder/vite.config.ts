@@ -3,6 +3,8 @@ import { resolve } from 'path'
 
 export default defineConfig({
   root: './src',
+  // Needed for itch.io
+  base: './',
   build: {
     outDir: '../dist',
     cssCodeSplit: false,

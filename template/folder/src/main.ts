@@ -48,7 +48,7 @@ gameElement.append(app.renderer.view)
 gameElement.style.width = `${Render.GAME_WIDTH * 2}px`
 gameElement.style.height = `${Render.GAME_HEIGHT * 2}px`
 
-app.loader.add('/asset/spritesheet/data.json')
+app.loader.add('./asset/spritesheet/data.json')
 
 initializeGameLoop()
 

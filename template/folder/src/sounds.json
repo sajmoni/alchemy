@@ -1,4 +1,4 @@
 {
-  "sound": { "coin": "coin.mp3" },
-  "music": { "coin": "coin.mp3" }
+  "sound": { "coin": "./coin.mp3" },
+  "music": { "coin": "./coin.mp3" }
 }

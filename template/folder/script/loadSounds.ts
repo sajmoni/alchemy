@@ -78,7 +78,7 @@ const run = async () => {
         .concat(
           soundsNotExistingInJson.map((filepath) => [
             getNameFromFilename(filepath),
-            filepath,
+            `./${filepath}`,
           ]),
         ),
     ),
@@ -90,7 +90,7 @@ const run = async () => {
         .concat(
           musicNotExistingInJson.map((filepath) => [
             getNameFromFilename(filepath),
-            filepath,
+            `./${filepath}`,
           ]),
         ),
     ),
