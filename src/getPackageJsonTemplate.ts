@@ -19,6 +19,7 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
       test: 'vitest',
       plop: 'plop --plopfile plop/plopfile.ts',
       ase: './script/aseprite.sh',
+      release: 'gh workflow run "Deploy to production"',
       version:
         'auto-changelog -p -t changelog/template.hbs -o changelog/log.md --commit-limit false --sort-commits date-desc && git add changelog/log.md',
       // 'elec:start': 'electron .',
