@@ -7,6 +7,10 @@ export default defineConfig({
     outDir: '../dist',
     cssCodeSplit: false,
     emptyOutDir: true,
+    rollupOptions: {
+      // These aren't used in production
+      external: ['nano-panel', 'react-dom', 'react'],
+    },
   },
   resolve: {
     alias: {
