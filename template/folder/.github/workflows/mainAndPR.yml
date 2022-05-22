@@ -7,4 +7,4 @@ on:
 
 jobs:
   qa:
-    uses: sajmoni/foo/.github/workflows/qa.yml@main
+    uses: ./.github/workflows/qa.yml

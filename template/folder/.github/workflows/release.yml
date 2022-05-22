@@ -3,7 +3,7 @@ on: workflow_dispatch
 
 jobs:
   qa:
-    uses: sajmoni/foo/.github/workflows/qa.yml@main
+    uses: ./.github/workflows/qa.yml
   build:
     name: Build game
     needs: qa
