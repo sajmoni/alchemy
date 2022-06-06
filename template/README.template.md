@@ -18,6 +18,7 @@
 - [Debug overlay](#debug-overlay)
 - [Sounds](#sounds)
 - [State management](#state-management)
+- [Particles](#particles)
 - [Plop](#plop)
 - [Web worker](#web-worker)
 - [Input](#input)
@@ -239,6 +240,22 @@ import state from '~/state'
 subscribeKey(state.application, 'volume', (volume) => {
   renderVolume(volume)
 })
+```
+
+---
+
+## Particles
+
+How to use:
+
+```ts
+import { Emitter } from '@pixi/particle-emitter'
+import { explosion } from '~/particles'
+
+const particleContainer = ex.container(container)
+particleContainer.position.set(200, 50)
+// eslint-disable-next-line no-new
+new Emitter(particleContainer, explosion())
 ```
 
 ---

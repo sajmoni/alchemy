@@ -1,6 +1,6 @@
 import { proxy } from 'valtio'
 
-import { Resolution, Scene } from '~/enum'
+import { Render, Resolution, Scene } from '~/enum'
 import { scene } from './ls'
 
 export type State = {
@@ -17,8 +17,9 @@ export type State = {
   }
   scene: Scene
   bar: number
-  square: {
+  player: {
     x: number
+    y: number
     angle: number
   }
 }
@@ -37,8 +38,9 @@ const state: State = {
   },
   scene: Scene.MAIN_MENU,
   bar: 100,
-  square: {
-    x: 1,
+  player: {
+    x: 10,
+    y: Render.GAME_HEIGHT / 2,
     angle: 50,
   },
 }

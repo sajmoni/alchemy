@@ -14,8 +14,8 @@ type BarOptions = {
 
 const bar = ({
   initialValue = 1,
-  onColor = '#ff0000',
-  offColor = '#ff00ff',
+  onColor = '#ff8888',
+  offColor = '#dddddd',
   backgroundColor = '#000000',
   width = 100,
 }: BarOptions = {}): Fragment<number> => {
