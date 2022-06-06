@@ -12,16 +12,16 @@ import displayDoneMessage from './message/done'
 
 const dependencies = [
   // Rendering
-  'pixi.js@6.3.0',
+  'pixi.js@6.4.2',
   'pixi-ex@0.2.0',
-  '@pixi/particle-emitter@5.0.4',
+  '@pixi/particle-emitter@5.0.7',
   // Sound
   'howler@2.2.3',
   // Game logic
   'juice.js@2.0.2',
   'l1@0.8.0',
   'mainloop.js@1.0.4',
-  'valtio@1.5.2',
+  'valtio@1.6.1',
   'tinykeys@1.4.0',
   // Utils
   'tiny-toolkit@0.2.0',
@@ -38,10 +38,10 @@ const dependencies = [
 const devDependencies = [
   // Code quality
   'prettier@2.6.2',
-  'typescript@4.6.3',
+  'typescript@4.7.3',
   'esbuild-runner@2.2.1',
   // Testing
-  'vitest@0.9.0',
+  'vitest@0.14.1',
   // Other
   'nano-panel@0.1.2',
   'plop@2.7.4',
