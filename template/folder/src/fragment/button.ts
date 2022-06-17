@@ -18,7 +18,7 @@ const button = ({
 }: ButtonOptions): Fragment<void> => {
   const component = new PIXI.Container()
 
-  ex.makeClickable(component, () => {
+  ex.onClick(component, () => {
     onClick()
   })
 

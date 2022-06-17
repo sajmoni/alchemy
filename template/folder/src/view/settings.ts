@@ -47,7 +47,7 @@ const settings = (): PIXI.Container => {
       Render.GAME_HEIGHT,
     )
     .endFill()
-  ex.makeClickable(overlay, () => {
+  ex.onClick(overlay, () => {
     state.application.settingsVisible = false
   })
   overlay.visible = false

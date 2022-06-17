@@ -19,7 +19,7 @@ const select = ({ options, onClick }: SelectOptions): Fragment<string> => {
   const optionObjects = options.map(({ value, label }, index) => {
     const textObject = ex.text(component, { fill: 'white' }, label)
     textObject.y = 50 + index * 30
-    ex.makeClickable(textObject, () => {
+    ex.onClick(textObject, () => {
       onClick(value)
     })
     return { textObject, value }
