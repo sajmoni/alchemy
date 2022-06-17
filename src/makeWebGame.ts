@@ -26,26 +26,26 @@ const dependencies = [
   // Utils
   'tiny-toolkit@0.2.0',
   'round-to@6.0.0',
-  'ts-extras@0.10.1',
+  'ts-extras@0.10.2',
   'typed-ls@0.1.0',
   // Monitoring
-  '@sentry/browser@6.19.6',
-  '@sentry/tracing@6.19.6',
+  '@sentry/browser@7.2.0',
+  '@sentry/tracing@7.2.0',
   // Module bundling
-  'vite@2.9.1',
+  'vite@2.9.12',
 ]
 
 const devDependencies = [
   // Code quality
-  'prettier@2.6.2',
+  'prettier@2.7.1',
   'typescript@4.7.3',
   'esbuild-runner@2.2.1',
   // Testing
-  'vitest@0.14.1',
+  'vitest@0.15.1',
   // Other
   'nano-panel@0.1.2',
   'plop@2.7.4',
-  'fs-extra@10.0.1',
+  'fs-extra@10.1.0',
   'auto-changelog@2.4.0',
   // Types
   '@types/node',
