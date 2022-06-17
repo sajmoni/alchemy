@@ -48,16 +48,16 @@ const devDependencies = [
   'fs-extra@10.0.1',
   'auto-changelog@2.4.0',
   // Types
-  '@types/node@17.0.21',
-  '@types/howler@2.2.5',
-  '@types/mainloop.js@1.0.5',
+  '@types/node',
+  '@types/howler',
+  '@types/mainloop.js',
   // Web - Labs and Debug tools
   'react@17.0.2',
   'react-dom@17.0.2',
   'styled-components@5.3.5',
-  '@types/react@17.0.39',
-  '@types/react-dom@17.0.11',
-  '@types/styled-components@5.1.24',
+  '@types/react',
+  '@types/react-dom',
+  '@types/styled-components',
 ]
 
 const makeWebGame = ({ projectName }: { projectName: string }) => {
