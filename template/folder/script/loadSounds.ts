@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import path from 'node:path'
+import fs from 'node:fs/promises'
 import os from 'node:os'
 import { Buffer } from 'node:buffer'
-import fs from 'fs-extra'
 
 type SoundsJSONValues = Record<string, string>
 
@@ -45,7 +45,7 @@ const run = async () => {
   ] = await Promise.all([
     fs.readdir(soundFilesPath),
     fs.readdir(musicFilesPath),
-    fs.readFileSync(soundsJsonPath),
+    fs.readFile(soundsJsonPath),
   ])
 
   const soundsJson: SoundsJSON = JSON.parse(soundsJsonUnparsed.toString())
@@ -105,7 +105,7 @@ const run = async () => {
     soundsNotExistingInFileSystem.length > 0 ||
     musicNotExistingInFileSystem.length > 0
   ) {
-    fs.writeFileSync(
+    await fs.writeFile(
       soundsJsonPath,
       JSON.stringify(newSoundsJson, null, 2) + os.EOL,
     )

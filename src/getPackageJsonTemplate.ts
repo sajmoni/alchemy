@@ -15,7 +15,7 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
       labs: 'vite --open --port 3001 --config vite-labs.config.ts',
       build: 'vite build',
       preview: 'vite preview --open --port 8080',
-      sound: 'node -r esbuild-runner/register script/loadSounds.ts',
+      sound: 'tsx script/loadSounds.ts',
       test: 'vitest',
       plop: 'plop --plopfile plop/plopfile.ts',
       ase: './script/aseprite.sh',

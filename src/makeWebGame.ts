@@ -39,13 +39,12 @@ const devDependencies = [
   // Code quality
   'prettier@2.7.1',
   'typescript@4.8.4',
-  'esbuild-runner@2.2.1',
+  'tsx@3.12.0',
   // Testing
   'vitest@0.25.1',
   // Other
   'nano-panel@0.1.3',
   'plop@2.7.4',
-  'fs-extra@10.1.0',
   'auto-changelog@2.4.0',
   // Types
   '@types/node',
