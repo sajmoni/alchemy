@@ -21,29 +21,29 @@ const dependencies = [
   'juice.js@2.0.2',
   'l1@0.8.0',
   'mainloop.js@1.0.4',
-  'valtio@1.6.1',
+  'valtio@1.7.5',
   'tinykeys@1.4.0',
   // Utils
-  'tiny-toolkit@0.2.0',
+  'tiny-toolkit@0.2.2',
   'round-to@6.0.0',
-  'ts-extras@0.10.2',
-  'typed-ls@0.1.0',
+  'ts-extras@0.11.0',
+  'typed-ls@0.1.1',
   // Monitoring
   '@sentry/browser@7.2.0',
   '@sentry/tracing@7.2.0',
   // Module bundling
-  'vite@2.9.12',
+  'vite@3.2.3',
 ]
 
 const devDependencies = [
   // Code quality
   'prettier@2.7.1',
-  'typescript@4.7.3',
+  'typescript@4.8.4',
   'esbuild-runner@2.2.1',
   // Testing
-  'vitest@0.15.1',
+  'vitest@0.25.1',
   // Other
-  'nano-panel@0.1.2',
+  'nano-panel@0.1.3',
   'plop@2.7.4',
   'fs-extra@10.1.0',
   'auto-changelog@2.4.0',

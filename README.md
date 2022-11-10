@@ -81,7 +81,7 @@ Generates a template to make a 2D browser game using `PixiJS` and `TypeScript`.
 ## How to use
 
 ```shell
-npx make-web-game <game-name>
+npx make-web-game@latest <game-name>
 ```
 
 _Usage with `npx` ensures that you are always using the latest version_
