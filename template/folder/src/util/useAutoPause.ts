@@ -23,9 +23,7 @@ const autoPauseIfWindowNotFocused = (): void => {
   window.addEventListener('focus', play)
 }
 
-const useAutoPause = (): void => {
+export default function useAutoPause(): void {
   autoPauseIfTabInactive()
   autoPauseIfWindowNotFocused()
 }
-
-export default useAutoPause

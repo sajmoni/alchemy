@@ -1,5 +1,5 @@
 import * as l1 from 'l1'
-import * as PIXI from 'pixi.js'
+import { DisplayObject } from 'pixi.js'
 
 // * Duration in intervals
 const DEFAULT_DURATION = 5
@@ -11,7 +11,7 @@ type Options = {
 }
 
 const blink = async (
-  displayObject: PIXI.DisplayObject,
+  displayObject: DisplayObject,
   { duration = DEFAULT_DURATION, interval = DEFAULT_INTERVAL }: Options = {},
 ): Promise<void> =>
   new Promise((resolve) => {

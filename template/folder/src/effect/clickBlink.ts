@@ -1,4 +1,4 @@
-import * as PIXI from 'pixi.js'
+import { DisplayObject } from 'pixi.js'
 import * as l1 from 'l1'
 
 import fadeOut from './fadeOut'
@@ -8,8 +8,8 @@ import fullscreenFadeInOut from './fullscreenFadeInOut'
 const BEHAVIORS_TO_KEEP = new Set(['fullscreenFadeInOut', 'debug'])
 
 const clickBlink = async (
-  displayObject: PIXI.DisplayObject,
-  otherObjects: readonly PIXI.DisplayObject[],
+  displayObject: DisplayObject,
+  otherObjects: readonly DisplayObject[],
 ): Promise<void> => {
   void blink(displayObject)
   return Promise.all(

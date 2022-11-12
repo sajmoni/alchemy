@@ -1,4 +1,4 @@
-import * as PIXI from 'pixi.js'
+import { Container } from 'pixi.js'
 import { subscribeKey } from 'valtio/utils'
 
 /* PLOP_INJECT_IMPORT */
@@ -17,7 +17,7 @@ const sceneHandler: Record<Scene, (sceneArgs: SceneArgs) => void> = {
   [Scene.GAME]: game,
 }
 
-let container: PIXI.Container
+let container: Container
 
 const initializeSceneHandler = (): void => {
   const loadScene = (scene: Scene): void => {
@@ -25,7 +25,7 @@ const initializeSceneHandler = (): void => {
       container.destroy()
     }
 
-    container = new PIXI.Container()
+    container = new Container()
     app.stage.addChild(container)
 
     sceneHandler[scene]({

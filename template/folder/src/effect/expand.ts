@@ -1,6 +1,6 @@
 import * as l1 from 'l1'
 import * as juice from 'juice.js'
-import * as PIXI from 'pixi.js'
+import { DisplayObject } from 'pixi.js'
 
 type Options = {
   readonly duration?: number
@@ -8,7 +8,7 @@ type Options = {
 }
 
 const expand = async (
-  displayObject: PIXI.DisplayObject,
+  displayObject: DisplayObject,
   { duration = 30, endValue = 1 }: Options = {},
 ): Promise<void> =>
   new Promise((resolve) => {

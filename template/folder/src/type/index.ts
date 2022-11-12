@@ -1,4 +1,4 @@
-import * as PIXI from 'pixi.js'
+import { Container } from 'pixi.js'
 
 export type Position = {
   readonly x: number
@@ -6,7 +6,7 @@ export type Position = {
 }
 
 export type SceneArgs = {
-  container: PIXI.Container
+  container: Container
 }
 
-export type Fragment<T> = [PIXI.Container, (value: T) => void]
+export type Fragment<T> = [Container, (value: T) => void]

@@ -1,4 +1,4 @@
-import * as PIXI from 'pixi.js'
+import { TextStyle as PixiTextStyle } from 'pixi.js'
 import * as juice from 'juice.js'
 import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
@@ -45,7 +45,7 @@ const mainMenu = ({ container }: SceneArgs): void => {
 
   const [startGameButton] = button({
     label: `Start game`,
-    textStyle: new PIXI.TextStyle(TextStyle.MAIN),
+    textStyle: new PixiTextStyle(TextStyle.MAIN),
     onClick: async () => {
       await easeOutToPosition(startGameButton, {
         position: { y: Render.GAME_HEIGHT / 2, x: startGameButton.x },

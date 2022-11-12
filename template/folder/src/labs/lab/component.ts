@@ -1,4 +1,4 @@
-import * as PIXI from 'pixi.js'
+import { Container } from 'pixi.js'
 
 import { bar, slider, button, select } from '~/fragment'
 
@@ -35,7 +35,7 @@ const component = ({ app, container }: Lab): void => {
     label: 'refresh',
     onClick: () => {
       container.destroy()
-      const newContainer = new PIXI.Container()
+      const newContainer = new Container()
       app.stage.addChild(newContainer)
       component({ app, container: newContainer })
     },

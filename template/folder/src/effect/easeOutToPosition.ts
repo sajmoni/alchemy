@@ -1,6 +1,6 @@
 import * as l1 from 'l1'
 import * as juice from 'juice.js'
-import * as PIXI from 'pixi.js'
+import { DisplayObject } from 'pixi.js'
 
 import { Position } from '~/type'
 
@@ -10,7 +10,7 @@ type Options = {
 }
 
 const easeOutToPosition = async (
-  displayObject: PIXI.DisplayObject,
+  displayObject: DisplayObject,
   { position, duration = 45 }: Options,
 ): Promise<void> =>
   new Promise((resolve) => {

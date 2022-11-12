@@ -1,4 +1,4 @@
-import * as PIXI from 'pixi.js'
+import { Graphics, utils } from 'pixi.js'
 
 import { Fragment } from '~/type'
 
@@ -19,7 +19,7 @@ const bar = ({
   backgroundColor = '#000000',
   width = 100,
 }: BarOptions = {}): Fragment<number> => {
-  const component = new PIXI.Graphics()
+  const component = new Graphics()
 
   const paddedWidth = width + 2
 
@@ -27,13 +27,13 @@ const bar = ({
 
   const render = (value: number): void => {
     component.clear()
-    component.beginFill(PIXI.utils.string2hex(backgroundColor))
+    component.beginFill(utils.string2hex(backgroundColor))
     component.drawRect(BAR_X, 0, paddedWidth, HEIGHT + 2)
 
-    component.beginFill(PIXI.utils.string2hex(offColor))
+    component.beginFill(utils.string2hex(offColor))
     component.drawRect(BAR_X + 1, 1, width, HEIGHT)
 
-    component.beginFill(PIXI.utils.string2hex(onColor))
+    component.beginFill(utils.string2hex(onColor))
     const valueWidth = Math.max(Math.floor(width * value), 0)
     component.drawRect(BAR_X + 1, 1, valueWidth, HEIGHT)
   }

@@ -26,12 +26,9 @@ const stage = new PIXI.Container()
 // Disable this if you don't need z-index position on children
 stage.sortableChildren = true
 
-const loader = new PIXI.Loader()
-
 const app = {
   renderer,
   stage,
-  loader,
 }
 
 export default app

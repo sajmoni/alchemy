@@ -1,4 +1,4 @@
-import * as PIXI from 'pixi.js'
+import { Container, utils, TextStyle as PixiTextStyle } from 'pixi.js'
 import * as ex from 'pixi-ex'
 import { subscribeKey } from 'valtio/utils'
 
@@ -26,8 +26,8 @@ const height = Render.GAME_HEIGHT * 0.8
 const LEFT_COLUMN = (width / 4) * 1
 const CENTER_COLUMN = (width / 4) * 2
 
-const settings = (): PIXI.Container => {
-  const component = new PIXI.Container()
+const settings = (): Container => {
+  const component = new Container()
   component.zIndex = 10
   component.visible = false
 
@@ -39,7 +39,7 @@ const settings = (): PIXI.Container => {
 
   const overlay = ex.graphics(component)
   overlay
-    .beginFill(PIXI.utils.string2hex('#000000'), 0.8)
+    .beginFill(utils.string2hex('#000000'), 0.8)
     .drawRect(
       -((Render.GAME_WIDTH - width) / 2),
       -((Render.GAME_HEIGHT - height) / 2),
@@ -55,12 +55,12 @@ const settings = (): PIXI.Container => {
 
   const background = ex.graphics(component)
   background
-    .beginFill(PIXI.utils.string2hex(Color.BACKGROUND))
+    .beginFill(utils.string2hex(Color.BACKGROUND))
     .drawRect(0, 0, width, height)
     .endFill()
 
   background.interactive = true
-  background.on('click', (event: PIXI.InteractionEvent) => {
+  background.on('click', (event) => {
     event.stopPropagation()
   })
 
@@ -104,7 +104,7 @@ const settings = (): PIXI.Container => {
   component.addChild(musicSlider)
 
   const [doneButton] = button({
-    textStyle: new PIXI.TextStyle(TextStyle.MAIN),
+    textStyle: new PixiTextStyle(TextStyle.MAIN),
     label: `Done`,
     onClick: () => {
       state.application.settingsVisible = false
@@ -153,7 +153,7 @@ const makeVolumeSlider = ({
   onPlus: () => void
   label: string
 }): Fragment<number> => {
-  const container = new PIXI.Container()
+  const container = new Container()
 
   container.position.set(x, y)
 

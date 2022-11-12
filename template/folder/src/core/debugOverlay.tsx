@@ -1,5 +1,5 @@
 import * as l1 from 'l1'
-import * as PIXI from 'pixi.js'
+import { Graphics } from 'pixi.js'
 import * as ex from 'pixi-ex'
 import MainLoop from 'mainloop.js'
 import {
@@ -24,7 +24,7 @@ import { getAverageUpdateDuration, getAverageDrawDuration } from './loop'
 import { scene as storedScene } from '~/ls'
 
 const initializeDebugOverlay = (): void => {
-  const gridGraphics = new PIXI.Graphics()
+  const gridGraphics = new Graphics()
   gridGraphics.zIndex = 1
   app.stage.addChild(gridGraphics)
   gridGraphics.lineStyle(2, 0xff00ff)

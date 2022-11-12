@@ -1,5 +1,5 @@
 import * as l1 from 'l1'
-import * as PIXI from 'pixi.js'
+import { Graphics } from 'pixi.js'
 import * as juice from 'juice.js'
 
 import app from '~/app'
@@ -11,7 +11,7 @@ const ID = 'fullscreenFadeInOut'
 
 const fullscreenFadeInOut = async (): Promise<void> =>
   new Promise((resolve) => {
-    const fade = new PIXI.Graphics()
+    const fade = new Graphics()
     fade.zIndex = 1
     app.stage.addChild(fade)
 
@@ -23,7 +23,7 @@ const fullscreenFadeInOut = async (): Promise<void> =>
 type FadeInOutReturnType = (counter: number) => () => void
 
 const fadeInOut = (
-  graphics: PIXI.Graphics,
+  graphics: Graphics,
   duration: number,
   resolve: () => void,
 ): FadeInOutReturnType => {

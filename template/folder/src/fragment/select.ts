@@ -1,4 +1,4 @@
-import * as PIXI from 'pixi.js'
+import { Container } from 'pixi.js'
 import * as ex from 'pixi-ex'
 
 import { Fragment } from '~/type'
@@ -14,7 +14,7 @@ type SelectOptions = {
 }
 
 const select = ({ options, onClick }: SelectOptions): Fragment<string> => {
-  const component = new PIXI.Container()
+  const component = new Container()
 
   const optionObjects = options.map(({ value, label }, index) => {
     const textObject = ex.text(component, { fill: 'white' }, label)

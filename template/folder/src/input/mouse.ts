@@ -1,5 +1,3 @@
-import * as PIXI from 'pixi.js'
-
 import { Mouse } from '~/enum'
 
 type Data = {
@@ -8,7 +6,8 @@ type Data = {
   button: Mouse
 }
 
-const getDataFromEvent = (event: PIXI.InteractionEvent): Data => {
+// TODO: Figure out the correct type here
+const getDataFromEvent = (event: any): Data => {
   const {
     data: {
       global: { x, y },

@@ -12,8 +12,8 @@ import displayDoneMessage from './message/done'
 
 const dependencies = [
   // Rendering
-  'pixi.js@6.4.2',
-  'pixi-ex@0.3.2',
+  'pixi.js@7.0.4',
+  'pixi-ex@0.4.0',
   // Sound
   'howler@2.2.3',
   // Game logic
@@ -52,7 +52,7 @@ const devDependencies = [
   // Web - Labs and Debug tools
   'react@17.0.2',
   'react-dom@17.0.2',
-  'styled-components@5.3.5',
+  'styled-components@5.3.6',
   '@types/react',
   '@types/react-dom',
   '@types/styled-components',

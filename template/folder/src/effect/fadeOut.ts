@@ -1,6 +1,6 @@
 import * as l1 from 'l1'
 import * as juice from 'juice.js'
-import * as PIXI from 'pixi.js'
+import { DisplayObject } from 'pixi.js'
 
 const DURATION = 60
 const END_VALUE = 0
@@ -12,7 +12,7 @@ type Options = {
 }
 
 const fadeOut = async (
-  displayObject: PIXI.DisplayObject,
+  displayObject: DisplayObject,
   { resolveAt = 0.5, duration = DURATION, endValue = END_VALUE }: Options = {},
 ): Promise<void> =>
   new Promise((resolve) => {

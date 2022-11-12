@@ -1,4 +1,4 @@
-import * as PIXI from 'pixi.js'
+import { Container, ITextStyle, Texture } from 'pixi.js'
 import * as ex from 'pixi-ex'
 
 import { Fragment } from '~/type'
@@ -6,8 +6,8 @@ import { Fragment } from '~/type'
 type ButtonOptions = {
   label: string
   onClick: () => void
-  textStyle: Partial<PIXI.ITextStyle>
-  backgroundTexture?: PIXI.Texture
+  textStyle: Partial<ITextStyle>
+  backgroundTexture?: Texture
 }
 
 const button = ({
@@ -16,7 +16,7 @@ const button = ({
   textStyle,
   backgroundTexture = undefined,
 }: ButtonOptions): Fragment<void> => {
-  const component = new PIXI.Container()
+  const component = new Container()
 
   ex.onClick(component, () => {
     onClick()

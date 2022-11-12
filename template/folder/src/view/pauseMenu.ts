@@ -1,4 +1,4 @@
-import * as PIXI from 'pixi.js'
+import { Container, utils } from 'pixi.js'
 import * as ex from 'pixi-ex'
 import { subscribeKey } from 'valtio/utils'
 
@@ -10,14 +10,14 @@ const createPauseMenu = ({
 }: {
   width: number
   height: number
-}): PIXI.Container => {
-  const container = new PIXI.Container()
+}): Container => {
+  const container = new Container()
   container.zIndex = 1
   container.visible = false
 
   const overlay = ex.graphics(container)
   overlay
-    .beginFill(PIXI.utils.string2hex('#000000'), 0.5)
+    .beginFill(utils.string2hex('#000000'), 0.5)
     .drawRect(0, 0, width, height)
     .endFill()
 
