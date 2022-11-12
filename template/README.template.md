@@ -18,7 +18,6 @@
 - [Debug overlay](#debug-overlay)
 - [Sounds](#sounds)
 - [State management](#state-management)
-- [Particles](#particles)
 - [Plop](#plop)
 - [Web worker](#web-worker)
 - [Input](#input)
@@ -244,22 +243,6 @@ subscribeKey(state.application, 'volume', (volume) => {
 
 ---
 
-## Particles
-
-How to use:
-
-```ts
-import { Emitter } from '@pixi/particle-emitter'
-import { explosion } from '~/particles'
-
-const particleContainer = ex.container(container)
-particleContainer.position.set(200, 50)
-// eslint-disable-next-line no-new
-new Emitter(particleContainer, explosion())
-```
-
----
-
 ## Plop
 
 With [`plop`](https://github.com/plopjs/plop) you can create new files from the command line.
@@ -342,12 +325,27 @@ Creating and destroying pixi objects can be bad for performance. It is especiall
 
 Example usage:
 
-```js
+```ts
 import * as filters from 'pixi-filters'
 
 const text = new PIXI.Text()
 
 text.filters = [new filters.CRTFilter()]
+```
+
+[@pixi/particle-emitter](https://github.com/pixijs/particle-emitter)
+
+Example usage:
+
+```ts
+import { Emitter, EmitterConfigV3 } from '@pixi/particle-emitter'
+
+const particleContainer = ex.container(container)
+particleContainer.position.set(200, 50)
+// eslint-disable-next-line no-new
+new Emitter(particleContainer, {
+  // Use config options here
+})
 ```
 
 [pixi-heaven](https://github.com/gameofbombs/pixi-heaven)

@@ -14,7 +14,6 @@ const dependencies = [
   // Rendering
   'pixi.js@6.4.2',
   'pixi-ex@0.3.2',
-  '@pixi/particle-emitter@5.0.7',
   // Sound
   'howler@2.2.3',
   // Game logic
