@@ -1,4 +1,4 @@
-import { MessageType } from '~/enum'
+import { MessageType } from '~/enum/app'
 
 onmessage = ({ data: { type, payload: _ } }): void => {
   switch (type) {

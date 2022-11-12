@@ -9,7 +9,7 @@ import { Assets } from 'pixi.js'
 import app from '~/app'
 import state from '~/state'
 import useAutoPause from '~/util/useAutoPause'
-import { Key, Render } from '~/enum'
+import { Key, Render } from '~/enum/app'
 import env from './env'
 
 import initializeGameLoop from './core/loop'

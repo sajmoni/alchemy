@@ -5,7 +5,7 @@ import { subscribeKey } from 'valtio/utils'
 import mainMenu from '~/scene/mainMenu'
 import game from '~/scene/game'
 
-import { Scene } from '~/enum'
+import { Scene } from '~/enum/app'
 import app from '~/app'
 import { SceneArgs } from '~/type'
 import state from '~/state'

@@ -1,7 +1,7 @@
 import tinykeys from 'tinykeys'
 import * as l1 from 'l1'
 
-import { Key } from '~/enum'
+import { Key } from '~/enum/app'
 
 const pressed: Record<string, boolean> = {}
 

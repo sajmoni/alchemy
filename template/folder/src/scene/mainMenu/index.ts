@@ -4,11 +4,12 @@ import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
 
 import state from '~/state'
-import { Render, TextStyle, Scene } from '~/enum'
-import { button } from '~/fragment'
-import { settings } from '~/view'
+import { Render, TextStyle, Scene } from '~/enum/app'
+import button from '~/fragment/button'
+import settings from '~/view/settings'
 import { name as gameTitle } from '~/../package.json'
-import { clickBlink, easeOutToPosition } from '~/effect'
+import clickBlink from '~/effect/clickBlink'
+import easeOutToPosition from '~/effect/easeOutToPosition'
 import { SceneArgs } from '~/type'
 
 const mainMenu = ({ container }: SceneArgs): void => {

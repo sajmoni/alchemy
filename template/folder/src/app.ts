@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js'
 
 import env from './env'
-import { Render } from '~/enum'
+import { Render } from '~/enum/app'
 
 // Enable to turn on pixel perfect rendering:
 // PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST

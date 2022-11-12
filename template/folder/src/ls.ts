@@ -1,6 +1,6 @@
 import { createStoredValue } from 'typed-ls'
 
-import { Language, Scene } from '~/enum'
+import { Language, Scene } from '~/enum/app'
 
 export const language = createStoredValue('language', Language.EN.code)
 

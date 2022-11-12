@@ -1,6 +1,6 @@
 import { proxy } from 'valtio'
 
-import { Render, Resolution, Scene } from '~/enum'
+import { Render, Resolution, Scene } from '~/enum/app'
 import { scene } from './ls'
 
 export type State = {

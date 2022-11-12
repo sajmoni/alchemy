@@ -1,7 +1,7 @@
 import * as ex from 'pixi-ex'
 import { Container } from 'pixi.js'
 
-import { Render, TextStyle } from '~/enum'
+import { Render, TextStyle } from '~/enum/app'
 
 const createFullscreenLoading = (): Container => {
   const loadingContainer = new Container()

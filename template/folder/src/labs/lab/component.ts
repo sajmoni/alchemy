@@ -1,6 +1,9 @@
 import { Container } from 'pixi.js'
 
-import { bar, slider, button, select } from '~/fragment'
+import select from '~/fragment/select'
+import bar from '~/fragment/bar'
+import slider from '~/fragment/slider'
+import button from '~/fragment/button'
 
 import { Lab } from '../type'
 

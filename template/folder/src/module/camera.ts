@@ -1,7 +1,7 @@
 import { Container } from 'pixi.js'
 import { subscribe } from 'valtio'
 
-import Render from '~/enum/render'
+import { Render } from '~/enum/app'
 import state from '~/state'
 
 const camera = (container: Container) => {

@@ -19,7 +19,7 @@ import { subscribeKey } from 'valtio/utils'
 
 import app from '~/app'
 import state from '~/state'
-import { Scene } from '~/enum'
+import { Scene } from '~/enum/app'
 import { getAverageUpdateDuration, getAverageDrawDuration } from './loop'
 import { scene as storedScene } from '~/ls'
 

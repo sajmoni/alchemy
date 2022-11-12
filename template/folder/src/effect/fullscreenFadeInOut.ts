@@ -3,7 +3,7 @@ import { Graphics } from 'pixi.js'
 import * as juice from 'juice.js'
 
 import app from '~/app'
-import { Render } from '~/enum'
+import { Render } from '~/enum/app'
 
 const DURATION = 35
 
