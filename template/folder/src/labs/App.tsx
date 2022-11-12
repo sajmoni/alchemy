@@ -66,24 +66,23 @@ const App = ({
       height: 600,
     })
 
-    const onAssetsLoaded = (): void => {
+    PIXI.Assets.add('spritesheet', 'asset/spritesheet/data.json')
+
+    async function init() {
+      await ex.loadAssets('spritesheet')
       ex.init(app)
       setApp(app)
+      const selector = `#${PIXI_ID}`
+      const element = document.querySelector(selector)
+      if (!element) {
+        throw new Error(`Couldn't find element: ${selector}`)
+      }
+      app.ticker.add((deltaTime) => {
+        l1.update(deltaTime)
+      })
+      element.append(app.view as HTMLCanvasElement)
     }
-
-    app.loader.add('asset/spritesheet/data.json')
-    app.loader.load(onAssetsLoaded)
-
-    const selector = `#${PIXI_ID}`
-    const element = document.querySelector(selector)
-    if (!element) {
-      throw new Error(`Couldn't find element: ${selector}`)
-    }
-
-    app.ticker.add((deltaTime) => {
-      l1.update(deltaTime)
-    })
-    element.append(app.view)
+    init()
   }, [])
 
   useEffect(() => {
