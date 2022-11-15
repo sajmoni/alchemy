@@ -42,8 +42,6 @@ Generates a template to make a 2D browser game using `PixiJS` and `TypeScript`.
 
 - :tv: [`PixiJS`](https://github.com/pixijs/pixi.js)
 
-- :boom: [`@pixi/particle-emitter`](https://github.com/pixijs/particle-emitter)
-
 - :up: [`pixi-ex`](https://github.com/sajmoni/pixi-ex)\*
 
 - :pill: [`valtio`](https://github.com/pmndrs/valtio)
@@ -66,7 +64,7 @@ Generates a template to make a 2D browser game using `PixiJS` and `TypeScript`.
 
 - :chart: [`sentry`](https://sentry.io/)
 
-- :straight_ruler: [`ava`](https://github.com/avajs/ava)
+- :straight_ruler: [`vitest`](https://github.com/vitest-dev/vitest)
 
 - :eyes: [`nano-panel`](https://github.com/sajmoni/nano-panel)\*
 
@@ -106,8 +104,6 @@ npx make-web-game my-game
 - [Add your itch.io API key to your Github project secrets](https://itch.io/docs/butler/login.html)
 
 - Set Sentry DSN in `src/index.ts` at line `25`.
-
-- Suggestion: Make the `release` branch protected so that you don't accidentally push to it.
 
 ---
 
