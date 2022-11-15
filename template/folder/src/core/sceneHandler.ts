@@ -7,7 +7,7 @@ import game from '~/scene/game'
 
 import { Scene } from '~/enum/app'
 import app from '~/app'
-import { SceneArgs } from '~/type'
+import { SceneArgs } from '~/type/app'
 import state from '~/state'
 import handleError from '~/util/handleError'
 

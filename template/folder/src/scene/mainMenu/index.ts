@@ -10,7 +10,7 @@ import settings from '~/view/settings'
 import { name as gameTitle } from '~/../package.json'
 import clickBlink from '~/effect/clickBlink'
 import easeOutToPosition from '~/effect/easeOutToPosition'
-import { SceneArgs } from '~/type'
+import { SceneArgs } from '~/type/app'
 
 const mainMenu = ({ container }: SceneArgs): void => {
   const titleText = ex.text(

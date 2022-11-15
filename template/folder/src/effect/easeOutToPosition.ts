@@ -2,7 +2,7 @@ import * as l1 from 'l1'
 import * as juice from 'juice.js'
 import { DisplayObject } from 'pixi.js'
 
-import { Position } from '~/type'
+import { Position } from '~/type/app'
 
 type Options = {
   readonly position: Position

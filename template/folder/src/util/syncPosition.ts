@@ -2,7 +2,7 @@ import { setPosition } from 'pixi-ex'
 import { Container } from 'pixi.js'
 import { subscribe } from 'valtio'
 
-import { Position } from '~/type'
+import { Position } from '~/type/app'
 
 const syncPosition = (object: Container, position: Position) => {
   setPosition(object, position)

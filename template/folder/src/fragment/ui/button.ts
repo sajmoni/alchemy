@@ -1,7 +1,7 @@
 import { Container, ITextStyle, Texture } from 'pixi.js'
 import * as ex from 'pixi-ex'
 
-import { Fragment } from '~/type'
+import { Fragment } from '~/type/app'
 
 type ButtonOptions = {
   label: string

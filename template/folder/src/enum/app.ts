@@ -1,5 +1,3 @@
-// General app enums
-
 export enum Key {
   LEFT = 'ArrowLeft',
   RIGHT = 'ArrowRight',

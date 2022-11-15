@@ -1,7 +1,7 @@
 import { Container } from 'pixi.js'
 import * as ex from 'pixi-ex'
 
-import { Fragment } from '~/type'
+import { Fragment } from '~/type/app'
 
 type Option = {
   value: string

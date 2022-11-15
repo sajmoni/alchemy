@@ -8,7 +8,7 @@ import app from '~/app'
 import fadeOut from '~/effect/fadeOut'
 import slider from '~/fragment/slider'
 import button from '~/fragment/button'
-import { Fragment } from '~/type'
+import { Fragment } from '~/type/app'
 import sound from '~/sound'
 
 const Color = {

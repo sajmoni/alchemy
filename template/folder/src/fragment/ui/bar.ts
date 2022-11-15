@@ -1,6 +1,6 @@
 import { Graphics, utils } from 'pixi.js'
 
-import { Fragment } from '~/type'
+import { Fragment } from '~/type/app'
 
 const HEIGHT = 7
 

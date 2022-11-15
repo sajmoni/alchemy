@@ -1,3 +1,0 @@
-// Game-specific enums
-
-export {}
