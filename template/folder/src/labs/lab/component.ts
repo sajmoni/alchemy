@@ -7,7 +7,7 @@ import button from '~/fragment/ui/button'
 
 import { Lab } from '../type'
 
-const component = ({ app, container }: Lab): void => {
+const component = ({ app, container, textures }: Lab): void => {
   // Bar
   let value = 1
   const [_bar, renderBar] = bar()
@@ -21,6 +21,7 @@ const component = ({ app, container }: Lab): void => {
   // Slider
   let sliderValue = 1
   const [_slider, renderSlider] = slider({
+    textures,
     initialValue: sliderValue.toString(),
     onMinus: () => {
       sliderValue -= 1
@@ -40,7 +41,7 @@ const component = ({ app, container }: Lab): void => {
       container.destroy()
       const newContainer = new Container()
       app.stage.addChild(newContainer)
-      component({ app, container: newContainer })
+      component({ app, container: newContainer, textures })
     },
     textStyle: { fill: 'white' },
   })

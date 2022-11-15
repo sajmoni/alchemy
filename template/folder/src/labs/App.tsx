@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import styled, { css } from 'styled-components'
 import * as PIXI from 'pixi.js'
-import * as ex from 'pixi-ex'
 import * as l1 from 'l1'
 import { createStoredValue } from 'typed-ls'
 
@@ -54,6 +53,7 @@ const App = ({
 }): JSX.Element => {
   const [selectedLab, setSelectedLab] = useState<string | undefined>(undefined)
   const [app, setApp] = useState<PIXI.Application | undefined>(undefined)
+  const [textures, setTextures] = useState<any>(undefined)
 
   const labKeys = useMemo(() => Object.keys(labData), [labData])
   const DEFAULT_LAB = labKeys[0]
@@ -69,9 +69,10 @@ const App = ({
     PIXI.Assets.add('spritesheet', 'asset/spritesheet/data.json')
 
     async function init() {
-      await ex.loadAssets('spritesheet')
-      ex.init(app)
+      const { textures } = await PIXI.Assets.load('spritesheet')
       setApp(app)
+      setTextures(textures)
+
       const selector = `#${PIXI_ID}`
       const element = document.querySelector(selector)
       if (!element) {
@@ -86,7 +87,7 @@ const App = ({
   }, [])
 
   useEffect(() => {
-    if (!selectedLab || !app) {
+    if (!selectedLab || !app || !textures) {
       return
     }
 
@@ -99,11 +100,11 @@ const App = ({
 
       const container = new PIXI.Container()
       app.stage.addChild(container)
-      renderLab({ app, container })
+      renderLab({ app, container, textures })
     } else {
       // ignore
     }
-  }, [selectedLab, app, labData])
+  }, [selectedLab, app, labData, textures])
 
   useEffect(() => {
     const restored = storedSelectedLab.get()
