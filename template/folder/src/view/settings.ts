@@ -6,9 +6,9 @@ import state from '~/state'
 import { Render, TextStyle } from '~/enum/app'
 import app from '~/app'
 import fadeOut from '~/effect/fadeOut'
-import slider from '~/fragment/slider'
-import button from '~/fragment/button'
 import { Fragment } from '~/type/app'
+import slider from '~/fragment/ui/slider'
+import button from '~/fragment/ui/button'
 import sound from '~/sound'
 
 const Color = {

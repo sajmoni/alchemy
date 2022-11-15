@@ -1,9 +1,9 @@
 import { Container } from 'pixi.js'
 
-import select from '~/fragment/select'
+import select from '~/fragment/ui/select'
 import bar from '~/fragment/ui/bar'
-import slider from '~/fragment/slider'
-import button from '~/fragment/button'
+import slider from '~/fragment/ui/slider'
+import button from '~/fragment/ui/button'
 
 import { Lab } from '../type'
 

@@ -5,7 +5,7 @@ import * as l1 from 'l1'
 
 import state from '~/state'
 import { Render, TextStyle, Scene } from '~/enum/app'
-import button from '~/fragment/button'
+import button from '~/fragment/ui/button'
 import settings from '~/view/settings'
 import { name as gameTitle } from '~/../package.json'
 import clickBlink from '~/effect/clickBlink'
