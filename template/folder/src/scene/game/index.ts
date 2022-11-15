@@ -5,7 +5,7 @@ import { subscribeKey } from 'valtio/utils'
 
 import state from '~/state'
 import { Render } from '~/enum/app'
-import bar from '~/fragment/bar'
+import bar from '~/fragment/ui/bar'
 import pauseMenu from '~/view/pauseMenu'
 import { SceneArgs } from '~/type'
 import expand from '~/effect/expand'

@@ -1,7 +1,7 @@
 import { Container } from 'pixi.js'
 
 import select from '~/fragment/select'
-import bar from '~/fragment/bar'
+import bar from '~/fragment/ui/bar'
 import slider from '~/fragment/slider'
 import button from '~/fragment/button'
 
