@@ -6,9 +6,9 @@ import state from '~/state'
 import { Render, TextStyle } from '~/enum/app'
 import app from '~/app'
 import fadeOut from '~/effect/fadeOut'
-import { Fragment } from '~/type/app'
 import slider from '~/fragment/ui/slider'
 import button from '~/fragment/ui/button'
+import { Fragment, TextureMap } from '~/type/app'
 import sound from '~/sound'
 
 const Color = {
@@ -27,7 +27,7 @@ const height = Render.GAME_HEIGHT * 0.8
 const LEFT_COLUMN = (width / 4) * 1
 const CENTER_COLUMN = (width / 4) * 2
 
-const settings = (): Container => {
+const settings = (textures: TextureMap): Container => {
   const component = new Container()
   component.zIndex = 10
   component.visible = false
@@ -84,6 +84,7 @@ const settings = (): Container => {
       state.application.volume.sound = Math.min(currentVolume + 1, MAX_VOLUME)
       sound.sound.coin.play()
     },
+    textures,
   })
   component.addChild(soundSlider)
 
@@ -100,6 +101,7 @@ const settings = (): Container => {
       const currentVolume = state.application.volume.music
       state.application.volume.music = Math.min(currentVolume + 1, MAX_VOLUME)
     },
+    textures,
   })
 
   component.addChild(musicSlider)
@@ -146,6 +148,7 @@ const makeVolumeSlider = ({
   onMinus,
   onPlus,
   label,
+  textures,
 }: {
   x: number
   y: number
@@ -153,6 +156,7 @@ const makeVolumeSlider = ({
   onMinus: () => void
   onPlus: () => void
   label: string
+  textures: TextureMap
 }): Fragment<number> => {
   const container = new Container()
 
@@ -166,6 +170,7 @@ const makeVolumeSlider = ({
     initialValue: volume.toString(),
     onMinus,
     onPlus,
+    textures,
   })
 
   container.addChild(volumeSlider)

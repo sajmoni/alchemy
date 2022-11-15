@@ -9,15 +9,14 @@ import bar from '~/fragment/ui/bar'
 import pauseMenu from '~/view/pauseMenu'
 import { SceneArgs } from '~/type/app'
 import expand from '~/effect/expand'
-import getTexture from '~/util/getTexture'
 import camera from '~/module/camera'
 
-const game = ({ container }: SceneArgs): void => {
+const game = ({ container, textures }: SceneArgs): void => {
   const worldContainer = ex.container(container)
   const uiContainer = ex.container(container)
   camera(worldContainer)
 
-  const sprite = ex.sprite(worldContainer, getTexture('square-1'))
+  const sprite = ex.sprite(worldContainer, textures['square-1'])
   sprite.anchor.set(0.5)
 
   l1.forever(() => {

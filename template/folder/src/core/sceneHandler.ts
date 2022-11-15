@@ -7,7 +7,7 @@ import game from '~/scene/game'
 
 import { Scene } from '~/enum/app'
 import app from '~/app'
-import { SceneArgs } from '~/type/app'
+import { SceneArgs, TextureMap } from '~/type/app'
 import state from '~/state'
 import handleError from '~/util/handleError'
 
@@ -19,7 +19,7 @@ const sceneHandler: Record<Scene, (sceneArgs: SceneArgs) => void> = {
 
 let container: Container
 
-const initializeSceneHandler = (): void => {
+const initializeSceneHandler = (textures: TextureMap): void => {
   const loadScene = (scene: Scene): void => {
     if (container) {
       container.destroy()
@@ -30,6 +30,7 @@ const initializeSceneHandler = (): void => {
 
     sceneHandler[scene]({
       container,
+      textures,
     })
   }
 

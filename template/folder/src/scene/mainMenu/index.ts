@@ -12,7 +12,7 @@ import clickBlink from '~/effect/clickBlink'
 import easeOutToPosition from '~/effect/easeOutToPosition'
 import { SceneArgs } from '~/type/app'
 
-const mainMenu = ({ container }: SceneArgs): void => {
+const mainMenu = ({ container, textures }: SceneArgs): void => {
   const titleText = ex.text(
     container,
     { ...TextStyle.MAIN, fontSize: 25 },
@@ -64,7 +64,7 @@ const mainMenu = ({ container }: SceneArgs): void => {
   ex.centerX(startGameButton, Render.GAME_WIDTH / 2)
   container.addChild(startGameButton)
 
-  const _settings = settings()
+  const _settings = settings(textures)
   container.addChild(_settings)
 }
 

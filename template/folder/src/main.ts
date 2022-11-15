@@ -65,7 +65,8 @@ async function init() {
 
   try {
     ex.init(app)
-    await ex.loadAssets('spritesheet')
+    const { textures } = await Assets.load('spritesheet')
+
     useAutoPause()
 
     if (env.NODE_ENV === 'development' && env.DEBUG) {
@@ -74,7 +75,7 @@ async function init() {
       })
     }
     initializeDebugConsole()
-    initializeSceneHandler()
+    initializeSceneHandler(textures)
     initializeWorker()
     initializeKeyboardInput(Object.values(Key))
 

@@ -1,8 +1,12 @@
-import { getTextures as getTexturesEx } from 'pixi-ex'
+import { Texture } from 'pixi.js'
 
-import textureData from '~/public/asset/spritesheet/data.json'
+import { TextureMap, TextureName } from '~/type/app'
 
-const getTextures = (textureNames: Array<keyof typeof textureData.frames>) =>
-  getTexturesEx(textureNames)
+const getTextures = (
+  textureMap: TextureMap,
+  textureNames: Array<TextureName>,
+): Texture[] => {
+  return textureNames.map((textureName) => textureMap[textureName])
+}
 
 export default getTextures
