@@ -17,6 +17,9 @@ const game = ({ container, textures }: SceneArgs): void => {
   camera(worldContainer)
 
   const sprite = ex.sprite(worldContainer, textures['square-1'])
+  sprite.x = state.player.x
+  sprite.y = state.player.y
+  sprite.angle = state.player.angle
   sprite.anchor.set(0.5)
 
   l1.forever(() => {

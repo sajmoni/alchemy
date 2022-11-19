@@ -12,4 +12,4 @@ const loading = () => {
 
 loading()
 
-export default loading
+export {}

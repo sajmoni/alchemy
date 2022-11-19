@@ -1,6 +1,6 @@
 import { TextStyle as PixiTextStyle } from 'pixi.js'
 import * as juice from 'juice.js'
-import * as ex from 'pixi-ex'
+import { text, centerX } from 'pixi-ex'
 import * as l1 from 'l1'
 
 import state from '~/state'
@@ -13,7 +13,7 @@ import easeOutToPosition from '~/effect/easeOutToPosition'
 import { SceneArgs } from '~/type/app'
 
 const mainMenu = ({ container, textures }: SceneArgs): void => {
-  const titleText = ex.text(
+  const titleText = text(
     container,
     { ...TextStyle.MAIN, fontSize: 25 },
     gameTitle,
@@ -41,7 +41,7 @@ const mainMenu = ({ container, textures }: SceneArgs): void => {
     },
   })
   settingsButton.position.y = Render.GAME_HEIGHT - 20
-  ex.centerX(settingsButton, Render.GAME_WIDTH / 2)
+  centerX(settingsButton, Render.GAME_WIDTH / 2)
   container.addChild(settingsButton)
 
   const [startGameButton] = button({
@@ -61,7 +61,7 @@ const mainMenu = ({ container, textures }: SceneArgs): void => {
     },
   })
   startGameButton.position.y = Render.GAME_HEIGHT - 40
-  ex.centerX(startGameButton, Render.GAME_WIDTH / 2)
+  centerX(startGameButton, Render.GAME_WIDTH / 2)
   container.addChild(startGameButton)
 
   const _settings = settings(textures)
