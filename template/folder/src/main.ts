@@ -1,4 +1,4 @@
-import * as ex from 'pixi-ex'
+import { init as initPixiEx } from 'pixi-ex'
 import * as l1 from 'l1'
 import MainLoop from 'mainloop.js'
 import * as Sentry from '@sentry/browser'
@@ -10,8 +10,8 @@ import app from '~/app'
 import state from '~/state'
 import useAutoPause from '~/util/useAutoPause'
 import { Key, Render } from '~/enum/app'
-import env from './env'
 
+import env from './env'
 import initializeGameLoop from './core/loop'
 import initializeSceneHandler from './core/sceneHandler'
 import initializeWorker from './core/worker'
@@ -22,50 +22,45 @@ import { language, musicVolume, soundVolume } from './ls'
 import initializeDebugConsole from './core/debugConsole'
 import { setMusicVolume, setSoundVolume } from './sound'
 
-Sentry.init({
-  dsn: '',
-  integrations: [new Integrations.BrowserTracing()],
-  environment: env.NODE_ENV,
-  autoSessionTracking: true,
-  // Set tracesSampleRate to 1.0 to capture 100%
-  // of transactions for performance monitoring.
-  // We recommend adjusting this value in production
-  tracesSampleRate: 1,
-})
-
-// const ERROR_LOGGING = process.env.ERROR_LOGGING || false
-
-const gameSelector = '#game'
-const gameElement: HTMLElement | null = document.querySelector(gameSelector)
-if (!gameElement) {
-  throw new Error(`Element with id ${gameSelector} was not found in the DOM`)
-}
-gameElement.append(app.renderer.view as HTMLCanvasElement)
-gameElement.style.width = `${Render.GAME_WIDTH * 2}px`
-gameElement.style.height = `${Render.GAME_HEIGHT * 2}px`
-
-Assets.add('spritesheet', './asset/spritesheet/data.json')
-
-initializeGameLoop()
-
 async function init() {
-  try {
-    await document.fonts.load(`10pt "Press Start 2P"`)
-  } catch (error) {
-    handleError('Error loading font', error)
-  }
-
   const fullscreenLoading = createFullscreenLoading()
   app.stage.addChild(fullscreenLoading)
-
   // Only show loading screen if loading is slow
   l1.once(() => {
     fullscreenLoading.visible = true
-  }, 15)
+  }, 60)
+
+  Sentry.init({
+    dsn: '',
+    integrations: [new Integrations.BrowserTracing()],
+    environment: env.NODE_ENV,
+    autoSessionTracking: true,
+    // Set tracesSampleRate to 1.0 to capture 100%
+    // of transactions for performance monitoring.
+    // We recommend adjusting this value in production
+    tracesSampleRate: 1,
+  })
+
+  // const ERROR_LOGGING = process.env.ERROR_LOGGING || false
+
+  const gameSelector = '#game'
+  const gameElement: HTMLElement | null = document.querySelector(gameSelector)
+  if (!gameElement) {
+    throw new Error(`Element with id ${gameSelector} was not found in the DOM`)
+  }
+  gameElement.append(app.renderer.view as HTMLCanvasElement)
+  gameElement.style.width = `${Render.GAME_WIDTH * Render.RESOLUTION}px`
+  gameElement.style.height = `${Render.GAME_HEIGHT * Render.RESOLUTION}px`
+
+  Assets.add('spritesheet', './asset/spritesheet/data.json')
+  initializeGameLoop()
 
   try {
-    ex.init(app)
-    const { textures } = await Assets.load('spritesheet')
+    initPixiEx(app)
+    const [{ textures }] = await Promise.all([
+      Assets.load('spritesheet'),
+      document.fonts.load(`10pt "Press Start 2P"`),
+    ])
 
     useAutoPause()
 
