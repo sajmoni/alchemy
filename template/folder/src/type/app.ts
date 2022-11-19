@@ -1,4 +1,4 @@
-import { Container } from 'pixi.js'
+import type { Container, Texture } from 'pixi.js'
 import textureData from '~/public/asset/spritesheet/data.json'
 
 export type Position = {
@@ -13,6 +13,6 @@ export type SceneArgs = {
 
 export type Fragment<T> = [Container, (value: T) => void]
 
-export type TextureMap = typeof textureData.frames
-
 export type TextureName = keyof typeof textureData.frames
+
+export type TextureMap = Record<TextureName, Texture>
