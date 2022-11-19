@@ -1,5 +1,5 @@
 import { Container } from 'pixi.js'
-import * as ex from 'pixi-ex'
+import { text, onClick as exOnClick } from 'pixi-ex'
 
 import { Fragment } from '~/type/app'
 
@@ -17,9 +17,9 @@ const select = ({ options, onClick }: SelectOptions): Fragment<string> => {
   const component = new Container()
 
   const optionObjects = options.map(({ value, label }, index) => {
-    const textObject = ex.text(component, { fill: 'white' }, label)
+    const textObject = text(component, { fill: 'white' }, label)
     textObject.y = 50 + index * 30
-    ex.onClick(textObject, () => {
+    exOnClick(textObject, () => {
       onClick(value)
     })
     return { textObject, value }

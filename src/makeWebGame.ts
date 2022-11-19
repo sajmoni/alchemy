@@ -13,7 +13,7 @@ import displayDoneMessage from './message/done'
 const dependencies = [
   // Rendering
   'pixi.js@7.0.4',
-  'pixi-ex@0.4.0',
+  'pixi-ex@0.5.0',
   // Sound
   'howler@2.2.3',
   // Game logic

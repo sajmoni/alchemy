@@ -1,5 +1,5 @@
 import { Container } from 'pixi.js'
-import * as ex from 'pixi-ex'
+import { sprite, onClick, text } from 'pixi-ex'
 
 import { Fragment, TextureMap } from '~/type/app'
 
@@ -20,20 +20,20 @@ const slider = ({
 }: SliderOptions): Fragment<number> => {
   const component = new Container()
 
-  const minus = ex.sprite(component, textures['plus-minus-2'])
+  const minus = sprite(component, textures['plus-minus-1'])
   minus.x = -iconDistance
   minus.anchor.set(0.5)
-  ex.onClick(minus, onMinus)
+  onClick(minus, onMinus)
 
-  const text = ex.text(component, { fill: 'white', fontSize: 16 }, initialValue)
+  const _text = text(component, { fill: 'white', fontSize: 16 }, initialValue)
 
-  const plus = ex.sprite(component, textures['plus-minus-2'])
+  const plus = sprite(component, textures['plus-minus-2'])
   plus.anchor.set(0.5)
-  ex.onClick(plus, onPlus)
+  onClick(plus, onPlus)
   plus.x = iconDistance
 
   const render = (value: number): void => {
-    text.text = value.toString()
+    _text.text = value.toString()
   }
 
   return [component, render]

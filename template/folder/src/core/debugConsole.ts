@@ -1,5 +1,5 @@
 import * as l1 from 'l1'
-import * as ex from 'pixi-ex'
+import { getAllChildren } from 'pixi-ex'
 import { snapshot } from 'valtio'
 
 import app from '~/app'
@@ -11,7 +11,7 @@ const initializeDebugConsole = () => {
   ;(window as any).debug = {
     state: () => snapshot(state),
     info: () => ({
-      'display objects': ex.getAllChildren(app.stage).length,
+      'display objects': getAllChildren(app.stage).length,
       'amount of behaviors': l1.getAll().length,
       behaviors: l1.getAll(),
     }),

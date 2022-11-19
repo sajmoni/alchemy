@@ -1,6 +1,6 @@
 import * as l1 from 'l1'
 import { Graphics } from 'pixi.js'
-import * as ex from 'pixi-ex'
+import { showGrid, getAllChildren } from 'pixi-ex'
 import MainLoop from 'mainloop.js'
 import {
   NumericValue,
@@ -28,7 +28,7 @@ const initializeDebugOverlay = (): void => {
   gridGraphics.zIndex = 1
   app.stage.addChild(gridGraphics)
   gridGraphics.lineStyle(2, 0xff00ff)
-  ex.showGrid(gridGraphics, 3)
+  showGrid(app.renderer, gridGraphics, 3)
   gridGraphics.visible = false
 
   const scenes = Object.values(Scene).map((scene) => ({
@@ -80,7 +80,7 @@ const initializeDebugOverlay = (): void => {
         />
         <NumericValue
           label="Display objects"
-          getValue={(): number => ex.getAllChildren(app.stage).length}
+          getValue={(): number => getAllChildren(app.stage).length}
           warnAt={{
             value: 999,
           }}

@@ -1,5 +1,5 @@
 import { Container, utils } from 'pixi.js'
-import * as ex from 'pixi-ex'
+import { text, graphics } from 'pixi-ex'
 import { subscribeKey } from 'valtio/utils'
 
 import state from '~/state'
@@ -15,13 +15,13 @@ const createPauseMenu = ({
   container.zIndex = 1
   container.visible = false
 
-  const overlay = ex.graphics(container)
+  const overlay = graphics(container)
   overlay
     .beginFill(utils.string2hex('#000000'), 0.5)
     .drawRect(0, 0, width, height)
     .endFill()
 
-  const text = ex.text(
+  const _text = text(
     container,
     {
       fill: 'white',
@@ -29,9 +29,8 @@ const createPauseMenu = ({
     },
     'Paused (Click anywhere to resume)',
   )
-  text.anchor.set(0.5)
-  text.x = width / 2
-  text.y = height / 2
+  _text.anchor.set(0.5)
+  _text.position.set(width / 2, height / 2)
 
   const render = (paused: boolean): void => {
     container.visible = paused

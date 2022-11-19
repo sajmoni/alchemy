@@ -1,5 +1,5 @@
 import { Container, ITextStyle, Texture } from 'pixi.js'
-import * as ex from 'pixi-ex'
+import { onClick as exOnClick, sprite, text } from 'pixi-ex'
 
 import { Fragment } from '~/type/app'
 
@@ -18,16 +18,16 @@ const button = ({
 }: ButtonOptions): Fragment<void> => {
   const component = new Container()
 
-  ex.onClick(component, () => {
+  exOnClick(component, () => {
     onClick()
   })
 
   if (backgroundTexture) {
-    const button = ex.sprite(component, backgroundTexture)
+    const button = sprite(component, backgroundTexture)
     button.anchor.set(0.5)
   }
 
-  const label = ex.text(component, textStyle, labelString)
+  const label = text(component, textStyle, labelString)
   label.anchor.set(0)
 
   const render = (): void => {

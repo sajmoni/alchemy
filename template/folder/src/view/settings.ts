@@ -1,5 +1,5 @@
 import { Container, utils, TextStyle as PixiTextStyle } from 'pixi.js'
-import * as ex from 'pixi-ex'
+import { graphics, text, onClick, centerX } from 'pixi-ex'
 import { subscribeKey } from 'valtio/utils'
 
 import state from '~/state'
@@ -38,7 +38,7 @@ const settings = (textures: TextureMap): Container => {
   component.height = height
   component.pivot.set(CENTER_COLUMN, height / 2)
 
-  const overlay = ex.graphics(component)
+  const overlay = graphics(component)
   overlay
     .beginFill(utils.string2hex('#000000'), 0.8)
     .drawRect(
@@ -48,13 +48,13 @@ const settings = (textures: TextureMap): Container => {
       Render.GAME_HEIGHT,
     )
     .endFill()
-  ex.onClick(overlay, () => {
+  onClick(overlay, () => {
     state.application.settingsVisible = false
   })
   overlay.visible = false
   component.addChild(overlay)
 
-  const background = ex.graphics(component)
+  const background = graphics(component)
   background
     .beginFill(utils.string2hex(Color.BACKGROUND))
     .drawRect(0, 0, width, height)
@@ -65,7 +65,7 @@ const settings = (textures: TextureMap): Container => {
     event.stopPropagation()
   })
 
-  const title = ex.text(component, TextStyle.MAIN, `Settings`)
+  const title = text(component, TextStyle.MAIN, `Settings`)
   title.anchor.set(0.5)
   title.position.set(width / 2, 10)
 
@@ -114,7 +114,7 @@ const settings = (textures: TextureMap): Container => {
     },
   })
   doneButton.position.y = BUTTONS_Y
-  ex.centerX(doneButton, CENTER_COLUMN)
+  centerX(doneButton, CENTER_COLUMN)
   component.addChild(doneButton)
 
   app.stage.addChild(component)
@@ -162,9 +162,9 @@ const makeVolumeSlider = ({
 
   container.position.set(x, y)
 
-  const text = ex.text(container, TextStyle.MAIN, label)
-  text.anchor.set(0.5)
-  text.position.set(0, -20)
+  const _text = text(container, TextStyle.MAIN, label)
+  _text.anchor.set(0.5)
+  _text.position.set(0, -20)
 
   const [volumeSlider, volumeSliderRender] = slider({
     initialValue: volume.toString(),

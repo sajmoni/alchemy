@@ -1,4 +1,3 @@
-import { init as initPixiEx } from 'pixi-ex'
 import * as l1 from 'l1'
 import MainLoop from 'mainloop.js'
 import * as Sentry from '@sentry/browser'
@@ -56,7 +55,6 @@ async function init() {
   initializeGameLoop()
 
   try {
-    initPixiEx(app)
     const [{ textures }] = await Promise.all([
       Assets.load('spritesheet'),
       document.fonts.load(`10pt "Press Start 2P"`),

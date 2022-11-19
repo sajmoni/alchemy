@@ -1,4 +1,4 @@
-import * as ex from 'pixi-ex'
+import { container, sprite } from 'pixi-ex'
 import * as l1 from 'l1'
 import { subscribe } from 'valtio'
 import { subscribeKey } from 'valtio/utils'
@@ -11,16 +11,16 @@ import { SceneArgs } from '~/type/app'
 import expand from '~/effect/expand'
 import camera from '~/module/camera'
 
-const game = ({ container, textures }: SceneArgs): void => {
-  const worldContainer = ex.container(container)
-  const uiContainer = ex.container(container)
+const game = ({ container: _container, textures }: SceneArgs): void => {
+  const worldContainer = container(_container)
+  const uiContainer = container(_container)
   camera(worldContainer)
 
-  const sprite = ex.sprite(worldContainer, textures['square-1'])
-  sprite.x = state.player.x
-  sprite.y = state.player.y
-  sprite.angle = state.player.angle
-  sprite.anchor.set(0.5)
+  const square = sprite(worldContainer, textures['square-1'])
+  square.x = state.player.x
+  square.y = state.player.y
+  square.angle = state.player.angle
+  square.anchor.set(0.5)
 
   l1.forever(() => {
     state.player.x += 0.25
@@ -29,13 +29,13 @@ const game = ({ container, textures }: SceneArgs): void => {
   }, 1)
 
   subscribe(state.player, () => {
-    sprite.x = state.player.x
-    sprite.y = state.player.y
-    sprite.angle = state.player.angle
+    square.x = state.player.x
+    square.y = state.player.y
+    square.angle = state.player.angle
   })
 
   l1.forever(() => {
-    void expand(sprite)
+    void expand(square)
   }, 180)
 
   const [manaBar, renderManaBar] = bar({
@@ -52,7 +52,7 @@ const game = ({ container, textures }: SceneArgs): void => {
     height: Render.GAME_HEIGHT,
   })
 
-  container.addChild(_pauseMenu)
+  uiContainer.addChild(_pauseMenu)
 }
 
 export default game
