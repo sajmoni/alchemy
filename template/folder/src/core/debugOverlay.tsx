@@ -64,7 +64,7 @@ const initializeDebugOverlay = (): void => {
           }}
         />
         <NumericValue
-          label="FPS"
+          label='FPS'
           warnAt={{
             value: 59,
             when: 'below',
@@ -72,50 +72,53 @@ const initializeDebugOverlay = (): void => {
           getValue={(): number => Math.round(MainLoop.getFPS())}
         />
         <NumericValue
-          label="Behaviors"
+          label='Behaviors'
           getValue={(): number => l1.getAll().length}
           warnAt={{
             value: 99,
           }}
         />
         <NumericValue
-          label="Display objects"
+          label='Display objects'
           getValue={(): number => getAllChildren(app.stage).length}
           warnAt={{
             value: 999,
           }}
         />
         <NumericValue
-          label="Loop duration"
+          label='Loop duration'
           getValue={getAverageUpdateDuration}
           warnAt={{
             value: 5,
           }}
         />
         <NumericValue
-          label="Draw duration"
+          label='Draw duration'
           getValue={getAverageDrawDuration}
           warnAt={{
             value: 5,
           }}
         />
-        <StringValue label="Scene" getValue={() => state.scene} />
+        <StringValue
+          label='Scene'
+          getValue={() => state.scene}
+        />
         <Divider />
         <Button
-          label="Log state"
+          label='Log state'
           onClick={() => {
             console.log('state:', snapshot(state))
           }}
         />
         <Checkbox
-          label="Pause game"
+          label='Pause game'
           checked={paused}
           onClick={(checked) => {
             state.application.paused = checked
           }}
         />
         <Checkbox
-          label="Show grid"
+          label='Show grid'
           checked={showGrid}
           onClick={(checked) => {
             setShowGrid(checked)
@@ -123,7 +126,7 @@ const initializeDebugOverlay = (): void => {
         />
         <Dropdown
           value={scene}
-          label="Scene"
+          label='Scene'
           items={scenes}
           onChange={(value) => {
             state.scene = value

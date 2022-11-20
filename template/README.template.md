@@ -42,7 +42,7 @@
   - [Steam integration](#steam-integration)
 - [Useful external resources](#useful-external-resources)
 - [Guides](#guides)
-    - [Pixel perfect rendering](#pixel-perfect-rendering)
+  - [Pixel perfect rendering](#pixel-perfect-rendering)
 
 ---
 
