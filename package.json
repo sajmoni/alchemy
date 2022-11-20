@@ -20,43 +20,11 @@
     "useTabs": false,
     "bracketSpacing": true
   },
-  "xo": {
-    "ignores": [
-      "template"
-    ],
-    "prettier": true,
-    "env": [
-      "browser",
-      "es2020",
-      "node"
-    ],
-    "rules": {
-      "@typescript-eslint/no-unsafe-assignment": "off",
-      "@typescript-eslint/no-unsafe-call": "off",
-      "@typescript-eslint/no-unsafe-member-access": "off",
-      "@typescript-eslint/no-implicit-any-catch": "off",
-      "unicorn/prefer-module": "off",
-      "@typescript-eslint/restrict-template-expressions": "off",
-      "@typescript-eslint/ban-ts-comment": "off",
-      "import/no-unassigned-import": "off",
-      "import/no-absolute-path": "off",
-      "unicorn/filename-case": "off",
-      "capitalized-comments": "off",
-      "import/extensions": [
-        "error",
-        "never",
-        {
-          "json": "always"
-        }
-      ]
-    }
-  },
   "scripts": {
     "version": "npm run build",
     "clean": "rm -rf ./test-game",
     "go": "./build-test.sh",
     "build": "rm -rf dist && tsc",
-    "qa": "tsc && xo --fix",
     "release": "npm run clean && npm run qa && npm run build && np --no-tests"
   },
   "devDependencies": {
@@ -65,8 +33,7 @@
     "np": "7.6.2",
     "package-preview": "4.0.0",
     "type-fest": "3.2.0",
-    "typescript": "4.9.3",
-    "xo": "0.47.0"
+    "typescript": "4.9.3"
   },
   "dependencies": {
     "cfonts": "3.1.1",
