@@ -1,7 +1,6 @@
 import { TextStyle as PixiTextStyle } from 'pixi.js'
 import * as juice from 'juice.js'
 import { text, centerX } from 'pixi-ex'
-import * as l1 from 'l1'
 
 import state from '~/state'
 import { Render, TextStyle, Scene } from '~/enum/app'
@@ -12,7 +11,7 @@ import clickBlink from '~/effect/clickBlink'
 import easeOutToPosition from '~/effect/easeOutToPosition'
 import { SceneArgs } from '~/type/app'
 
-const mainMenu = ({ container, textures }: SceneArgs): void => {
+const mainMenu = ({ container, textures, run }: SceneArgs): void => {
   const titleText = text(
     container,
     { ...TextStyle.MAIN, fontSize: 25 },
@@ -29,7 +28,7 @@ const mainMenu = ({ container, textures }: SceneArgs): void => {
     endValue: (titleText.style.fontSize as number) * 1.15,
   })
 
-  l1.forever((counter) => {
+  run.forever((counter) => {
     titleText.style.fontSize = getFontSize(counter)
   }, 1)
 

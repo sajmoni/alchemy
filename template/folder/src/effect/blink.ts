@@ -29,7 +29,7 @@ const blink = async (
         }
 
         if (counter === duration * interval) {
-          l1.remove(id)
+          l1.cancel(id)
           displayObject.visible = true
           resolve()
         }

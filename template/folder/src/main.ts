@@ -24,10 +24,6 @@ import { setMusicVolume, setSoundVolume } from './sound'
 async function init() {
   const fullscreenLoading = createFullscreenLoading()
   app.stage.addChild(fullscreenLoading)
-  // Only show loading screen if loading is slow
-  l1.once(() => {
-    fullscreenLoading.visible = true
-  }, 60)
 
   Sentry.init({
     dsn: '',
@@ -53,6 +49,10 @@ async function init() {
 
   Assets.add('spritesheet', './asset/spritesheet/data.json')
   initializeGameLoop()
+  // Only show loading screen if loading is slow
+  l1.once(() => {
+    fullscreenLoading.visible = true
+  }, 60)
 
   try {
     const [{ textures }] = await Promise.all([

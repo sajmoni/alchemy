@@ -18,7 +18,7 @@ const dependencies = [
   'howler@2.2.3',
   // Game logic
   'juice.js@2.0.2',
-  'l1@0.8.0',
+  'l1@0.9.0',
   'mainloop.js@1.0.4',
   'valtio@1.7.6',
   'tinykeys@1.4.0',

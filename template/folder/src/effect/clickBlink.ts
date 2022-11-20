@@ -22,7 +22,7 @@ const clickBlink = async (
       for (const behavior of l1
         .getAll()
         .filter(({ id }) => id && !BEHAVIORS_TO_KEEP.has(id))) {
-        l1.remove(behavior)
+        l1.cancel(behavior)
       }
     })
 }

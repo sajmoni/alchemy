@@ -80,7 +80,7 @@ export const debouncedKey = (
   const behavior = l1.forever(onUpdate, 1)
 
   const remove = () => {
-    l1.remove(behavior)
+    l1.cancel(behavior)
     unsubscribe()
   }
 

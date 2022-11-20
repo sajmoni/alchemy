@@ -1,5 +1,4 @@
 import { container, sprite } from 'pixi-ex'
-import * as l1 from 'l1'
 import { subscribe } from 'valtio'
 import { subscribeKey } from 'valtio/utils'
 
@@ -11,7 +10,7 @@ import { SceneArgs } from '~/type/app'
 import expand from '~/effect/expand'
 import camera from '~/module/camera'
 
-const game = ({ container: _container, textures }: SceneArgs): void => {
+const game = ({ container: _container, textures, run }: SceneArgs): void => {
   const worldContainer = container(_container)
   const uiContainer = container(_container)
   camera(worldContainer)
@@ -22,7 +21,7 @@ const game = ({ container: _container, textures }: SceneArgs): void => {
   square.angle = state.player.angle
   square.anchor.set(0.5)
 
-  l1.forever(() => {
+  run.forever(() => {
     state.player.x += 0.25
     state.player.angle += 2
     state.bar = Math.max(0, state.bar - 0.2)
@@ -34,7 +33,7 @@ const game = ({ container: _container, textures }: SceneArgs): void => {
     square.angle = state.player.angle
   })
 
-  l1.forever(() => {
+  run.forever(() => {
     void expand(square)
   }, 180)
 
