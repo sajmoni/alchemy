@@ -18,7 +18,7 @@ const dependencies = [
   'howler@2.2.3',
   // Game logic
   'juice.js@2.0.2',
-  'l1@0.9.0',
+  'l1@0.9.2',
   'mainloop.js@1.0.4',
   'valtio@1.7.6',
   'tinykeys@1.4.0',
@@ -28,19 +28,19 @@ const dependencies = [
   'ts-extras@0.11.0',
   'typed-ls@0.1.1',
   // Monitoring
-  '@sentry/browser@7.20.0',
-  '@sentry/tracing@7.20.0',
+  '@sentry/browser@7.21.1',
+  '@sentry/tracing@7.21.1',
   // Module bundling
   'vite@3.2.4',
 ]
 
 const devDependencies = [
   // Code quality
-  'prettier@2.7.1',
+  'prettier@2.8.0',
   'typescript@4.9.3',
   'tsx@3.12.1',
   // Testing
-  'vitest@0.25.2',
+  'vitest@0.25.3',
   // Other
   'nano-panel@0.2.0',
   'plop@2.7.4',
