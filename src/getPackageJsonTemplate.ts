@@ -29,11 +29,7 @@ const getPackageJsonTemplate = ({ projectName }: { projectName: string }) => {
       // 'elec:run': `open ${projectName}-darwin-x64/${projectName}.app`,
       // 'elec:all': 'npm run elec:build && npm run elec:pack && npm run elec:run',
     },
-    prettier: {
-      semi: false,
-      trailingComma: 'all',
-      singleQuote: true,
-    },
+    prettier: 'prettier-config-one',
     browserslist: ['defaults', 'not IE 11', 'not IE_Mob 11'],
   }
 

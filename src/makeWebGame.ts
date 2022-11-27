@@ -37,6 +37,7 @@ const dependencies = [
 const devDependencies = [
   // Code quality
   'prettier@2.8.0',
+  'prettier-config-one@0.1.1',
   'typescript@4.9.3',
   'tsx@3.12.1',
   // Testing
