@@ -42,7 +42,7 @@ const devDependencies = [
   // Testing
   'vitest@0.25.2',
   // Other
-  'nano-panel@0.1.3',
+  'nano-panel@0.2.0',
   'plop@2.7.4',
   'auto-changelog@2.4.0',
   // Types
@@ -50,8 +50,8 @@ const devDependencies = [
   '@types/howler',
   '@types/mainloop.js',
   // Web - Labs and Debug tools
-  'react@17.0.2',
-  'react-dom@17.0.2',
+  'react@18.2.0',
+  'react-dom@18.2.0',
   'styled-components@5.3.6',
   '@types/react',
   '@types/react-dom',

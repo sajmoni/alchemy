@@ -13,7 +13,7 @@ import {
   Snackbar,
 } from 'nano-panel'
 import React, { useState, useEffect } from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { snapshot } from 'valtio'
 import { subscribeKey } from 'valtio/utils'
 
@@ -145,7 +145,8 @@ const initializeDebugOverlay = (): void => {
     )
   }
 
-  ReactDOM.render(<DebugPanel />, element as HTMLElement)
+  const root = createRoot(element as HTMLElement)
+  root.render(<DebugPanel />)
 }
 
 export default initializeDebugOverlay
