@@ -19,7 +19,7 @@
     "clean": "rm -rf ./test-game",
     "go": "./build-test.sh",
     "build": "rm -rf dist && tsc",
-    "release": "npm run clean && npm run qa && npm run build && np --no-tests"
+    "release": "npm run clean && npm run build && np --no-tests"
   },
   "devDependencies": {
     "@types/fs-extra": "9.0.13",
