@@ -12,15 +12,15 @@ import displayDoneMessage from './message/done'
 
 const dependencies = [
   // Rendering
-  'pixi.js@7.0.4',
+  'pixi.js@7.0.5',
   'pixi-ex@0.5.0',
   // Sound
   'howler@2.2.3',
   // Game logic
   'juice.js@2.0.2',
-  'l1@0.9.2',
+  'l1@0.10.1',
   'mainloop.js@1.0.4',
-  'valtio@1.7.6',
+  'valtio@1.8.2',
   'tinykeys@1.4.0',
   // Utils
   'tiny-toolkit@0.2.2',
@@ -28,20 +28,20 @@ const dependencies = [
   'ts-extras@0.11.0',
   'typed-ls@0.1.1',
   // Monitoring
-  '@sentry/browser@7.21.1',
-  '@sentry/tracing@7.21.1',
+  '@sentry/browser',
+  '@sentry/tracing',
   // Module bundling
-  'vite@3.2.4',
+  'vite@4.0.4',
 ]
 
 const devDependencies = [
   // Code quality
-  'prettier@2.8.0',
+  'prettier@2.8.2',
   'prettier-config-one@0.1.1',
-  'typescript@4.9.3',
+  'typescript@4.9.4',
   'tsx@3.12.1',
   // Testing
-  'vitest@0.25.3',
+  'vitest@0.26.3',
   // Other
   'nano-panel@0.2.0',
   'plop@2.7.4',
