@@ -1,17 +1,6 @@
 import { Container } from 'pixi.js'
 import { subscribeKey } from 'valtio/utils'
-import {
-  OnceCallback,
-  BehaviorOptions,
-  once,
-  cancel,
-  getByLabel,
-  ForeverCallback,
-  forever,
-  every,
-  EveryCallback,
-  delay,
-} from 'l1'
+import { Instance, BehaviorOptions } from 'l1'
 
 /* PLOP_INJECT_IMPORT */
 import mainMenu from '~/scene/mainMenu'
@@ -29,72 +18,70 @@ const sceneHandler: Record<Scene, (sceneArgs: SceneArgs) => void> = {
   [Scene.GAME]: game,
 }
 
-let container: Container
-let previousScene: string | undefined
+export default function initializeSceneHandler(
+  l1: Instance,
+  textures: TextureMap,
+): void {
+  let container: Container
+  let previousScene: string | undefined
 
-const initializeSceneHandler = (textures: TextureMap): void => {
-  const loadScene = (scene: Scene): void => {
+  const loadScene = async (scene: Scene): Promise<void> => {
     if (container) {
       container.destroy()
     }
 
     if (previousScene) {
-      for (const behavior of getByLabel(previousScene)) {
-        cancel(behavior)
+      for (const behavior of l1.getByLabel(previousScene)) {
+        console.log(
+          'file: sceneHandler.ts ~ line 35 ~ loadScene ~ behavior',
+          behavior,
+        )
+        l1.cancel(behavior)
       }
     }
 
     // Ensure that previous behaviors are removed
-    once(() => {
-      container = new Container()
-      app.stage.addChild(container)
+    await l1.delay(1)
+    console.log('hello', l1.getAll())
 
-      const run: Run = {
-        once: (
-          callback: OnceCallback,
-          delay: number,
-          options: BehaviorOptions = {},
-        ) => {
-          return once(callback, delay, {
-            ...options,
-            labels: options.labels ? [...options.labels, scene] : [scene],
-          })
-        },
-        forever: (
-          callback: ForeverCallback,
-          interval: number,
-          options: BehaviorOptions = {},
-        ) => {
-          return forever(callback, interval, {
-            ...options,
-            labels: options.labels ? [...options.labels, scene] : [scene],
-          })
-        },
-        every: (
-          callback: EveryCallback,
-          duration: number,
-          options: BehaviorOptions = {},
-        ) => {
-          return every(callback, duration, {
-            ...options,
-            labels: options.labels ? [...options.labels, scene] : [scene],
-          })
-        },
-        delay: async (_delay: number, options: BehaviorOptions = {}) => {
-          return delay(_delay, {
-            ...options,
-            labels: options.labels ? [...options.labels, scene] : [scene],
-          })
-        },
-      }
+    container = new Container()
+    app.stage.addChild(container)
 
-      previousScene = scene
-      sceneHandler[scene]({
-        container,
-        textures,
-        run,
-      })
-    }, 1)
+    const run: Run = {
+      forever: (
+        callback: any,
+        interval: number,
+        options: BehaviorOptions = {},
+      ) => {
+        return l1.forever(callback, interval, {
+          ...options,
+          labels: options.labels ? [...options.labels, scene] : [scene],
+        })
+      },
+      every: (
+        callback: any,
+        duration: number,
+        options: BehaviorOptions = {},
+      ) => {
+        return l1.every(callback, duration, {
+          ...options,
+          labels: options.labels ? [...options.labels, scene] : [scene],
+        })
+      },
+      delay: async (_delay: number, options: BehaviorOptions = {}) => {
+        return l1.delay(_delay, {
+          ...options,
+          labels: options.labels ? [...options.labels, scene] : [scene],
+        })
+      },
+    }
+
+    previousScene = scene
+    sceneHandler[scene]({
+      container,
+      textures,
+      run,
+    })
   }
 
   subscribeKey(state, 'scene', (scene: Scene) => {
@@ -106,5 +93,3 @@ const initializeSceneHandler = (textures: TextureMap): void => {
   })
   loadScene(state.scene)
 }
-
-export default initializeSceneHandler

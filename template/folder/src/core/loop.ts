@@ -1,4 +1,4 @@
-import * as l1 from 'l1'
+import { Instance } from 'l1'
 import MainLoop from 'mainloop.js'
 import { roundTo } from 'round-to'
 import { getAverage } from 'tiny-toolkit'
@@ -11,7 +11,7 @@ import handleError from '~/util/handleError'
 const updateDurations: number[] = []
 const drawDurations: number[] = []
 
-const update = (deltaTime: number): void => {
+const update = (l1: Instance, deltaTime: number): void => {
   try {
     // 16.6 -> 1
     l1.update(deltaTime / (1000 / 60))
@@ -20,7 +20,7 @@ const update = (deltaTime: number): void => {
   }
 }
 
-const initializeGameLoop = (): void => {
+const initializeGameLoop = (l1: Instance): void => {
   if (env.DEBUG) {
     MainLoop.setUpdate((deltaTime) => {
       if (state.application.paused) {
@@ -29,7 +29,7 @@ const initializeGameLoop = (): void => {
 
       const beforeUpdate = performance.now()
 
-      update(deltaTime)
+      update(l1, deltaTime)
 
       const afterUpdate = performance.now()
       const loopDuration = afterUpdate - beforeUpdate
@@ -51,7 +51,7 @@ const initializeGameLoop = (): void => {
         return
       }
 
-      update(deltaTime)
+      update(l1, deltaTime)
     })
 
     MainLoop.setDraw(() => {

@@ -1,10 +1,5 @@
 import type { Container, Texture } from 'pixi.js'
-import {
-  OnceCallback,
-  BehaviorOptions,
-  ForeverCallback,
-  EveryCallback,
-} from 'l1'
+import { BehaviorOptions } from 'l1'
 
 import textureData from '~/public/asset/spritesheet/data.json'
 
@@ -14,21 +9,8 @@ export type Position = {
 }
 
 export type Run = {
-  once: (
-    callback: OnceCallback,
-    delay: number,
-    options?: BehaviorOptions,
-  ) => void
-  forever: (
-    callback: ForeverCallback,
-    interval: number,
-    options?: BehaviorOptions,
-  ) => void
-  every: (
-    callback: EveryCallback,
-    duration: number,
-    options?: BehaviorOptions,
-  ) => void
+  forever: (callback: any, interval: number, options?: BehaviorOptions) => void
+  every: (callback: any, duration: number, options?: BehaviorOptions) => void
   delay: (delay: number, options?: BehaviorOptions) => Promise<void>
 }
 

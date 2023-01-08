@@ -34,7 +34,7 @@ const game = ({ container: _container, textures, run }: SceneArgs): void => {
   })
 
   run.forever(() => {
-    void expand(square)
+    void run.every(expand(square), 30)
   }, 180)
 
   const [manaBar, renderManaBar] = bar({

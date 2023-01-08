@@ -1,9 +1,8 @@
-import * as l1 from 'l1'
-
+import { Instance } from 'l1'
 import Worker from '../worker?worker'
 import { MessageType } from '~/enum/app'
 
-const initializeWorker = (): void => {
+const initializeWorker = (l1: Instance): void => {
   const worker = new Worker()
 
   worker.postMessage({

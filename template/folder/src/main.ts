@@ -1,4 +1,4 @@
-import * as l1 from 'l1'
+import createInstance from 'l1'
 import MainLoop from 'mainloop.js'
 import * as Sentry from '@sentry/browser'
 import { Integrations } from '@sentry/tracing'
@@ -48,11 +48,15 @@ async function init() {
   gameElement.style.height = `${Render.GAME_HEIGHT * Render.RESOLUTION}px`
 
   Assets.add('spritesheet', './asset/spritesheet/data.json')
-  initializeGameLoop()
+  const l1 = createInstance()
+
+  initializeGameLoop(l1)
   // Only show loading screen if loading is slow
-  l1.once(() => {
+  const showFullscreen = async () => {
+    await l1.delay(60)
     fullscreenLoading.visible = true
-  }, 60)
+  }
+  void showFullscreen()
 
   try {
     const [{ textures }] = await Promise.all([
@@ -64,12 +68,12 @@ async function init() {
 
     if (env.NODE_ENV === 'development' && env.DEBUG) {
       import('~/core/debugOverlay').then((debugOverlay) => {
-        debugOverlay.default()
+        debugOverlay.default(l1)
       })
     }
-    initializeDebugConsole()
-    initializeSceneHandler(textures)
-    initializeWorker()
+    initializeDebugConsole(l1)
+    initializeSceneHandler(l1, textures)
+    initializeWorker(l1)
     initializeKeyboardInput(Object.values(Key))
 
     subscribeKey(state.application.volume, 'sound', (volume) => {
@@ -85,9 +89,8 @@ async function init() {
     state.application.volume.sound = soundVolume.get()
     state.application.volume.music = musicVolume.get()
 
-    l1.once(() => {
-      fullscreenLoading.destroy()
-    }, 1)
+    await l1.delay(1)
+    fullscreenLoading.destroy()
 
     MainLoop.start()
   } catch (error) {

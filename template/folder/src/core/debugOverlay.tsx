@@ -1,4 +1,4 @@
-import * as l1 from 'l1'
+import { Instance } from 'l1'
 import { Graphics } from 'pixi.js'
 import { showGrid, getAllChildren } from 'pixi-ex'
 import MainLoop from 'mainloop.js'
@@ -23,7 +23,7 @@ import { Scene } from '~/enum/app'
 import { getAverageUpdateDuration, getAverageDrawDuration } from './loop'
 import { scene as storedScene } from '~/ls'
 
-const initializeDebugOverlay = (): void => {
+const initializeDebugOverlay = (l1: Instance): void => {
   const gridGraphics = new Graphics()
   gridGraphics.zIndex = 1
   app.stage.addChild(gridGraphics)
