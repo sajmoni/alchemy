@@ -41,6 +41,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: game
+          path: game
       - name: Install Butler
         run: |
           curl --max-time 5 -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
