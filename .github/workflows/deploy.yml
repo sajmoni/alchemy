@@ -1,13 +1,14 @@
 name: Deploy to itch.io
-on: workflow_call
-inputs:
-  # Example: sajmoni/foo:web
-  game_name:
-    required: true
-    type: string
-secrets:
-  BUTLER_API_KEY:
-    required: true
+on:
+  workflow_call:
+    inputs:
+      # Example: sajmoni/foo:web
+      game_name:
+        required: true
+        type: string
+    secrets:
+      BUTLER_API_KEY:
+        required: true
 
 jobs:
   build:
