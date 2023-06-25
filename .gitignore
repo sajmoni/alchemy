@@ -1,5 +1,4 @@
 node_modules
-.DS_Store
 dist
-.cache
-test-game
+DS_Store
+game

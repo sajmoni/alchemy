@@ -1,0 +1,11 @@
+name: Deploy to Staging
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    # TODO: Point to the right workflow
+    uses: ./.github/workflows/deploy.yml@v1
+    with:
+      game_name: foo/bar:web
+    secrets:
+      BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}

@@ -1,0 +1,11 @@
+name: QA on PR and main branch
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  qa:
+    # TODO: Use the right workflow
+    uses: ./.github/workflows/qa.yml@v1

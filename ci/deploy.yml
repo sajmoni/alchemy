@@ -1,0 +1,77 @@
+name: Deploy to itch.io
+on: workflow_call
+inputs:
+  # Example: sajmoni/foo:web
+  game_name:
+    required: true
+    type: string
+secrets:
+  BUTLER_API_KEY:
+    required: true
+
+jobs:
+  build:
+    name: Build game
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install
+        run: npm ci --production
+      - name: Build
+        run: npm run build
+      - name: Upload build
+        uses: actions/upload-artifact@v3
+        with:
+          name: game
+          path: dist
+  deploy:
+    name: Deploy game
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Download build
+        uses: actions/download-artifact@v3
+        with:
+          name: game
+      - name: Install Butler
+        run: |
+          curl --max-time 5 -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+          unzip butler.zip
+          chmod +x butler
+          ./butler -V
+      - name: Deploy to itch.io
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        run: ./butler push game ${{ inputs.game_name }}
+  tag:
+    name: Tag release and generate release notes
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      # TODO: Checkout the repository at the correct revision
+      # Otherwise you could accidentally tag the wrong commit
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install auto-changelog
+        run: npm install auto-changelog --no-save
+      - name: Set git information
+        run: |
+          git config --global user.name 'Github Actions [bot]'
+          git config --global user.email 'github-actions@not-a-real-email.com'
+      - name: Increase version and create release notes
+        run: npm version patch
+      - name: Push back to repository
+        run: |
+          git push origin --tags
+          git push

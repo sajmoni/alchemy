@@ -1,126 +1,270 @@
-<h1 align="center" >
-  make-web-game
-</h1>
-<h4 align="center">
-  CLI tool to generate a 2D browser game template
-</h4>
-<div align="center">
-  <img src="https://badgen.net/npm/v/make-web-game?icon=npm" />
-  <!-- <img src="https://badgen.net/npm/dw/make-web-game?icon=npm" /> -->
-  <img src="https://badgen.net/github/last-commit/sajmoni/make-web-game?icon=github" />
-</div>
+# :alembic: alchemy engine
 
----
+> :space_invader: Easily make 2D browser games with TypeScript and pixi.js :space_invader:
 
-Generates a template to make a 2D browser game using `PixiJS` and `TypeScript`.
+_(This project was previously known as `make-web-game`)_
 
 ## :sparkles: Features
 
-- Full TypeScript support
-- Game loop using MainLoop.js
-- Simple scene management
+- Reactive - Re-render view when state changes
+- Pooling - Create all game object up front - in render never add or remove game objects
+- Timer - Run logic every X ticks
+- Animations
+- Debug overlay
 - Keyboard input
-- Separate web app to develop features in isolation
-- Web worker
-- Auto-pause when window loses focus
-- Reactive state management - trigger functions when state changes
-- Visual effects like fade-in and blink
-- Debug panel to inspect your scene
-- Sprite management using `aseprite`
-- Sound management
-- Main menu
-- Type-safe local storage
-- Very fast dev server using `vite`
-- Github actions workflow to deploy to `itch.io`
-- Code formatting with `prettier`
+- Sounds
+- Sprite sheet generation
+- Scenes
+- CLI - Create project and components
+- CI - Workflows to build, test and deploy to `itch.io`
+- Screen shake
+
+## Other highlights
+
+- 100% Type-Safe
+- Minimal API
+- Easy to use
+- Batteries included (get started using one CLI command)
+- Includes `vite` for a super fast and modern dev server
 
 ---
 
-### Dependencies included
+## :no_good: Out of scope
 
-#### Rendering and game logic
-
-- :tv: [`PixiJS`](https://github.com/pixijs/pixi.js)
-
-- :up: [`pixi-ex`](https://github.com/sajmoni/pixi-ex)\*
-
-- :pill: [`valtio`](https://github.com/pmndrs/valtio)
-
-- :loop: [`mainloop`](https://github.com/IceCreamYou/MainLoop.js)
-
-- :tropical_drink: [`juice.js`](https://github.com/rymdkraftverk/juice.js)\*
-
-- :one: [`level1`](https://github.com/rymdkraftverk/level1)\*
-
-- :sound: [`howler`](https://github.com/goldfire/howler.js/)
-
-#### Tooling
-
-- :m: [`typescript`](https://github.com/microsoft/TypeScript)
-
-- :zap: [`vite`](https://github.com/vitejs/vite)
-
-- :nail_care: [`prettier`](https://github.com/prettier/prettier)
-
-- :chart: [`sentry`](https://sentry.io/)
-
-- :straight_ruler: [`vitest`](https://github.com/vitest-dev/vitest)
-
-- :eyes: [`nano-panel`](https://github.com/sajmoni/nano-panel)\*
-
-- :red_circle: [`GitHub actions workflows`](https://github.com/features/actions)
-
-- :recycle: [`plop`](https://github.com/plopjs/plop)
-
-\* = made by me
+- State machine (Recommended library: [xstate](https://github.com/statelyai/xstate/tree/main/packages/xstate-fsm))
+- Physics
+- Network
 
 ---
 
-## How to use
+## Upcoming features
 
-```shell
-npx make-web-game@latest <game-name>
+- Tests - E2E and unit tests
+- i18n - Translations
+
+---
+
+## Getting started
+
+```console
+npx alchemy-engine@latest create <game-name>
 ```
 
-_Usage with `npx` ensures that you are always using the latest version_
+---
 
-`make-web-game` will do the following:
+## Module API
 
-- Create a new folder called `<game-name>`
-- Copy all template files to that folder
-- Install the dependencies
-- Create an initial commit
+WIP
 
-### Example usage
+### create
+
+- sprite
+- animatedSprite
+- text
+- htmlText
+- container
+- graphics
+- rectangle
+
+### event
+
+- onClick
+- onHover
+
+### sync
+
+- sync
+- syncPosition
+
+### arrowKeys
+
+Constants for all arrow keys
+
+```ts
+import { arrowKeys } from 'alchemy-engine'
+
+export const keys = ['a', 'w', 's', 'd', ...arrowKeys] as const
+```
+
+### position
+
+TODO
+
+### boundsToString
+
+TODO
+
+### getAllChildren
+
+TODO
+
+### getAllLeafChildren
+
+TODO
+
+### logObject
+
+Nicely log a Pixi object. Set `name` property for best result.
+
+```ts
+const sprite = new Sprite()
+sprite.name = 'sprite'
+logObject(sprite)
+```
+
+### contains
+
+Check if a point is within the bounds of an object
+
+### intersects
+
+Check if the bounds of two objects are intersecting
+
+### pool
+
+[Docs](https://github.com/sajmoni/nano-pool)
+
+---
+
+## Scene API
+
+WIP
+
+The arguments passed to a scene
+
+```ts
+{
+  textures,
+  container,
+  input,
+  state,
+  timer,
+  sound,
+  app,
+  timer,
+  useScreenShake,
+  useLightMask,
+}: Scene
+```
+
+### textures
+
+An object containing all textures by name
+
+```ts
+Record<TextureName, Texture>
+```
+
+### getTextures
+
+Get multiple textures
+
+```ts
 
 ```
-npx make-web-game my-game
+
+### useLightMask
+
+Get a light mask
+
+```ts
+
 ```
 
-## What you should do after the script is run
+### useScreenShake
 
-- Update the itch.io project name in `.github/workflows/release.yml` on line `69`.
+Enable the use of screen shake
 
-- [Add your itch.io API key to your Github project secrets](https://itch.io/docs/butler/login.html)
+```ts
 
-- Set Sentry DSN in `src/index.ts` at line `25`.
+```
 
----
+### animate
 
-## Template docs
+- sine
+- easeOut
+- easeIn
 
-[Docs](template/folder/README.md)
+### util
 
----
+- center
 
-## Showcase
+### app
 
-A list of games bootstrapped using this tool:
+Pixi Application instance
 
-- [Diablito](https://rymdkraftverk.itch.io/diablito) _A very tiny roguelike_
+### music
 
----
+```ts
+Record<MusicName, Howl>
+```
 
-## Requirements
+### sound
 
-- `git >=v2.28.0`
+```ts
+Record<SoundName, Howl>
+```
+
+### setScene
+
+```ts
+setScene('mainMenu')
+```
+
+### global
+
+- timer
+
+### container
+
+A scene specific Pixi container. Will be destroyed when scene is changed.
+
+### state
+
+Set state to trigger `sync` and `subscribe` functions
+
+### subscribeKey
+
+### timer
+
+**delay**
+
+```ts
+// Wait 100 ticks
+await delay(100)
+```
+
+**repeatUntil**
+
+```ts
+await repeatUntil(3, () => {})
+```
+
+**repeatEvery**
+
+```ts
+const cancel = repeatEvery(3, () => {})
+```
+
+### input
+
+**debouncedKey**
+
+```ts
+input.debouncedKey(
+  // Key id
+  'd',
+  // Callback
+  () => {
+    s.position.x += 1
+  },
+  // Delay between key presses
+  10,
+)
+```
+
+**isKeyDown**
+
+```ts
+
+```
