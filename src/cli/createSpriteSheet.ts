@@ -22,6 +22,7 @@ export default async function createSpriteSheet() {
         '../src/public/asset/spritesheet/data.json',
         '--filename-format',
         "'{path}/{title}-{frame1}'",
+        '--extrude',
       ],
       {
         shell: true,
