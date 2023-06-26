@@ -1,13 +1,13 @@
 export type Env = {
-  NODE_ENV: 'development' | 'production'
+  DEV: boolean
 }
 
 const production: Env = {
-  NODE_ENV: 'production',
+  DEV: false,
 }
 
 const development: Env = {
-  NODE_ENV: 'development',
+  DEV: true,
 }
 
 const useProductionOrDevelopment = (): Env => {
