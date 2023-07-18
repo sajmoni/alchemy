@@ -125,8 +125,8 @@ export default function createAlchemyProject(gameName: string) {
     .then(() => {
       console.log(`
   ${chalk.green('Success!')} Created ${chalk.cyan(gameName)} at ${chalk.cyan(
-        rootPath,
-      )}
+    rootPath,
+  )}
 
   Start the game by typing:
 
