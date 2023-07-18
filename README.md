@@ -18,14 +18,9 @@ _(This project was previously known as `make-web-game`)_
 - CLI - Create project and components
 - CI - Workflows to build, test and deploy to `itch.io`
 - Screen shake
-
-## Other highlights
-
 - 100% Type-Safe
-- Minimal API
-- Easy to use
 - Batteries included (get started using one CLI command)
-- Includes `vite` for a super fast and modern dev server
+- Uses [`vite`](https://github.com/vitejs/vite) for a super fast and modern dev server
 
 ---
 
@@ -160,7 +155,8 @@ Record<TextureName, Texture>
 Get multiple textures
 
 ```ts
-
+const textures = getTextures(['./texture-1', './texture-2'])
+new AnimatedSprite(textures)
 ```
 
 ### useLightMask
@@ -176,7 +172,8 @@ Get a light mask
 Enable the use of screen shake
 
 ```ts
-
+const screenShake = useScreenShake(container)
+screenShake.add(0.5)
 ```
 
 ### animate
@@ -185,13 +182,17 @@ Enable the use of screen shake
 - easeOut
 - easeIn
 
+These functions all require an `onUpdate` and `duration` argument
+
+Optionally you can pass a `startValue` (default: 0) and `endValue` (default: 1)
+
 ### util
 
 - center
 
 ### app
 
-Pixi Application instance
+The Pixi `Application` instance
 
 ### music
 
@@ -213,7 +214,9 @@ setScene('mainMenu')
 
 ### global
 
-- timer
+**timer**
+
+A timer that doesn't get cancelled when changing scenes
 
 ### container
 
@@ -223,27 +226,35 @@ A scene specific Pixi container. Will be destroyed when scene is changed.
 
 Set state to trigger `sync` and `subscribe` functions
 
-### subscribeKey
+### subscribe, subscribeKey, proxy
+
+Re-exported from [valtio](https://github.com/pmndrs/valtio)
 
 ### timer
 
 **delay**
 
 ```ts
-// Wait 100 ticks
+// Wait 100 updates
 await delay(100)
 ```
 
 **repeatUntil**
 
+Execute a callback every update until `duration` is reached
+
 ```ts
-await repeatUntil(3, () => {})
+await repeatUntil(3, (time, deltaTime) => {})
 ```
 
 **repeatEvery**
 
+Execute a callback forever every `interval` updates
+
+Returns a `cancel` function
+
 ```ts
-const cancel = repeatEvery(3, () => {})
+const cancel = repeatEvery(3, (time, deltaTime) => {})
 ```
 
 ### input
@@ -251,7 +262,7 @@ const cancel = repeatEvery(3, () => {})
 **debouncedKey**
 
 ```ts
-input.debouncedKey(
+debouncedKey(
   // Key id
   'd',
   // Callback
@@ -265,6 +276,49 @@ input.debouncedKey(
 
 **isKeyDown**
 
-```ts
+Check if a key is currently being pressed
 
+```ts
+repeatEvery(1, () => {
+  if (isKeyDown(['a', 'ArrowLeft'])) {
+    s.position.x -= 1
+  }
+  if (isKeyDown(['d', 'ArrowRight'])) {
+    s.position.x += 1
+  }
+})
+```
+
+---
+
+## CLI
+
+### create
+
+```console
+npx alchemy-engine@latest create <game-name>
+```
+
+### dev
+
+Start the dev server. Listens to changes to source code, `sprite`, `src/public/asset/sound` and `src/public/asset/music` folders.
+
+```console
+npx alchemy-engine@latest dev
+```
+
+### sprite
+
+Generate sprite sheet
+
+```console
+npx alchemy-engine@latest sprite
+```
+
+### sound
+
+Load sounds
+
+```console
+npx alchemy-engine@latest sound
 ```
