@@ -1,6 +1,6 @@
 import { type BaseScene } from 'alchemy-engine'
 
-import textureData from '~/public/asset/spritesheet/data.json'
+import type textureData from '~/public/asset/spritesheet/data.json'
 import sounds from './sounds.json'
 import { keys, scenes, state } from './data'
 
