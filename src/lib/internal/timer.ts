@@ -51,6 +51,9 @@ export default function createTimer() {
     return promise as CancelablePromise
   }
 
+  /**
+   * Execute a callback every update until `duration` is reached
+   */
   function repeatUntil(
     duration: number,
     callback: (time: number, deltaTime: number) => void,
@@ -83,6 +86,9 @@ export default function createTimer() {
     return promise as CancelablePromise
   }
 
+  /**
+   * Execute a callback every `interval` updates
+   */
   function repeatEvery(
     interval: number,
     callback: (time: number, deltaTime: number) => void,
