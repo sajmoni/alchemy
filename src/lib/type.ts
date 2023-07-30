@@ -1,6 +1,6 @@
 import type { Application, Container, Texture } from 'pixi.js'
 import { subscribeKey } from 'valtio/utils'
-import { subscribe } from 'valtio'
+import { subscribe, proxy } from 'valtio'
 import type { Howl } from 'howler'
 import type { TupleToUnion } from 'type-fest'
 
@@ -74,6 +74,7 @@ export type BaseScene<
   state: State
   subscribeKey: typeof subscribeKey
   subscribe: typeof subscribe
+  proxy: typeof proxy
   timer: Timer
   global: {
     timer: Timer

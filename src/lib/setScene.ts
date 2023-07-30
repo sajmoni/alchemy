@@ -1,6 +1,6 @@
 import { Application, Container, Texture, Ticker } from 'pixi.js'
 import { subscribeKey } from 'valtio/utils'
-import { subscribe } from 'valtio'
+import { subscribe, proxy } from 'valtio'
 
 import handleError from './internal/handleError'
 import initializeKeyboardInput from './internal/input'
@@ -123,6 +123,7 @@ export default function createSetScene<
           state: state,
           subscribeKey,
           subscribe,
+          proxy,
           timer: {
             delay: timer.delay,
             repeatUntil: timer.repeatUntil,
