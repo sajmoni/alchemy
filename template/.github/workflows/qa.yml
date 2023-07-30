@@ -7,5 +7,4 @@ on:
 
 jobs:
   qa:
-    # TODO: Use the right workflow
-    uses: ./.github/workflows/qa.yml@v1
+    uses: sajmoni/alchemy/.github/workflows/qa.yml@main

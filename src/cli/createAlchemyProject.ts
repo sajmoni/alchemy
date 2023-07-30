@@ -61,7 +61,7 @@ export default function createAlchemyProject(gameName: string) {
       title: 'Setup package.json',
       task: async () => {
         const scripts = {
-          dev: 'vite --open',
+          dev: 'alc dev',
           build: 'vite build',
           preview: 'vite preview',
         }

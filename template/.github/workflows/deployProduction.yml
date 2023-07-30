@@ -3,8 +3,7 @@ on: workflow_dispatch
 
 jobs:
   deploy:
-    # TODO: Point to the right workflow
-    uses: ./.github/workflows/deploy.yml@v1
+    uses: sajmoni/alchemy/.github/workflows/deploy.yml@main
     with:
       game_name: foo/bar:web
     secrets:
