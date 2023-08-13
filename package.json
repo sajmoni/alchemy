@@ -1,6 +1,6 @@
 {
   "name": "alchemy-engine",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "Create 2D browser games with pixi.js and TypeScript",
   "keywords": [],
   "homepage": "https://github.com/sajmoni/alchemy#readme",
