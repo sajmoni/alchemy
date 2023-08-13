@@ -48,6 +48,8 @@ export default function initializeTicker<
   // By default this is true only for the PIXI.Ticker.shared instance.
   ticker.autoStart = false
 
+  ticker.maxFPS = 60
+
   // FYI, call this to ensure the ticker is stopped. It should be stopped
   // if you have not attempted to render anything yet.
   ticker.stop()
