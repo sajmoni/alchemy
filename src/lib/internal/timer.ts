@@ -107,14 +107,15 @@ export default function createTimer() {
     return cancel
   }
 
-  async function update(deltaTime: number) {
+  async function update(_deltaTime: number) {
     for (const timer of timers) {
       // Make timer independent on frame rate
-      timer.time += Math.floor(deltaTime)
+      const roundedDeltaTime = Math.round(_deltaTime)
+      timer.time += roundedDeltaTime
       const hasReachedDuration = timer.time >= timer.duration
 
       if (isRepeatUntil(timer)) {
-        timer.callback(timer.time, deltaTime)
+        timer.callback(timer.time, roundedDeltaTime)
         if (hasReachedDuration) {
           timer.resolve(true)
           removeFromList(timer, timers)
@@ -123,7 +124,7 @@ export default function createTimer() {
         timer.resolve(true)
         removeFromList(timer, timers)
       } else if (isRepeatEvery(timer) && timer.time % timer.duration === 0) {
-        timer.callback(timer.time, deltaTime)
+        timer.callback(timer.time, roundedDeltaTime)
       }
     }
   }
