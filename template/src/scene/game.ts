@@ -8,18 +8,20 @@ import {
 } from 'alchemy-engine'
 import { type Scene } from '~/type'
 
-export default async function game({
-  textures,
-  container,
-  input: { isKeyDown, debouncedKey },
-  state,
-  timer: { repeatEvery },
-  sound,
-  app,
-  timer,
-  useScreenShake,
-  useLightMask,
-}: Scene) {
+export default async function game(scene: Scene) {
+  const {
+    textures,
+    container,
+    input: { isKeyDown, debouncedKey },
+    state,
+    timer: { repeatEvery },
+    sound,
+    app,
+    timer,
+    useScreenShake,
+    useLightMask,
+  } = scene
+
   const screenShake = useScreenShake(container)
   const lightMask = useLightMask()
   const background = graphics(container)
@@ -83,18 +85,18 @@ export default async function game({
     10,
   )
 
-  repeatEvery(1, () => {
+  repeatEvery(1, (_time, delta) => {
     if (isKeyDown(['a', 'ArrowLeft'])) {
-      s.position.x -= 1
+      s.position.x -= 1 * delta
     }
     if (isKeyDown(['w', 'ArrowUp'])) {
-      s.position.y -= 1
+      s.position.y -= 1 * delta
     }
     if (isKeyDown(['s', 'ArrowDown'])) {
-      s.position.y += 1
+      s.position.y += 1 * delta
     }
     if (isKeyDown(['d', 'ArrowRight'])) {
-      s.position.x += 1
+      s.position.x += 1 * delta
     }
   })
 
