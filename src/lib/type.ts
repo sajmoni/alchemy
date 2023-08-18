@@ -26,6 +26,7 @@ export type AlchemyState<SceneKey extends string> = {
   scene: SceneKey
   timer: TimerInstance | undefined
   error: string | undefined
+  time: number
 }
 
 export type Timer = Pick<TimerInstance, 'delay' | 'repeatUntil' | 'repeatEvery'>

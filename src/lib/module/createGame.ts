@@ -77,6 +77,7 @@ export default async function createGame<
     scene,
     timer: undefined,
     error: undefined,
+    time: 0,
   }
   const proxyState = proxy({ ...state, alchemy: alchemyState })
 

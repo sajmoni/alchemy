@@ -23,6 +23,7 @@ export default function initializeTicker<
       if (!state.alchemy.paused) {
         try {
           global.timer.update(deltaTime)
+          state.alchemy.time += 1
         } catch (error) {
           handleError(state.alchemy, 'Error in global timer', error)
         }
@@ -34,6 +35,7 @@ export default function initializeTicker<
         try {
           const beforeUpdate = performance.now()
           global.timer.update(deltaTime)
+          state.alchemy.time += 1
           const afterUpdate = performance.now()
           const loopDuration = afterUpdate - beforeUpdate
           updateDurations.push(loopDuration)
