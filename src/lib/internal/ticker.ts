@@ -15,7 +15,7 @@ export default function initializeTicker<
   },
   global: { timer: TimerInstance },
 ): Ticker {
-  const ticker = Ticker.shared
+  const ticker = new Ticker()
 
   // Global timers
   if (import.meta.env.MODE === 'production') {
@@ -44,17 +44,9 @@ export default function initializeTicker<
     })
   }
 
-  // Set this to prevent starting this ticker when listeners are added.
-  // By default this is true only for the PIXI.Ticker.shared instance.
-  ticker.autoStart = false
-
   ticker.maxFPS = 60
+  ticker.minFPS = 60
 
-  // FYI, call this to ensure the ticker is stopped. It should be stopped
-  // if you have not attempted to render anything yet.
-  ticker.stop()
-
-  // Call this when you are ready for a running shared ticker.
   ticker.start()
 
   return ticker
