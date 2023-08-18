@@ -12,6 +12,8 @@ import gradient from 'gradient-string'
 
 const dependencies = ['pixi.js', 'vite', 'alchemy-engine']
 
+const devDependencies = ['vitest']
+
 export default function createAlchemyProject(gameName: string) {
   const rootPath = path.resolve(gameName)
 
@@ -64,6 +66,7 @@ export default function createAlchemyProject(gameName: string) {
           dev: 'alc dev',
           build: 'vite build',
           preview: 'vite preview',
+          test: 'vitest',
         }
 
         const packageJson = await readPackage({
@@ -103,8 +106,15 @@ export default function createAlchemyProject(gameName: string) {
     {
       title: 'Install dependencies',
       task: async () => {
-        const productionArgs = npmInstall.concat(dependencies)
-        return execa(command, productionArgs, { all: true }).all
+        const args = npmInstall.concat(dependencies)
+        return execa(command, args, { all: true }).all
+      },
+    },
+    {
+      title: 'Install dev dependencies',
+      task: async () => {
+        const args = npmInstall.concat(devDependencies).concat('--save-dev')
+        return execa(command, args, { all: true }).all
       },
     },
     {
