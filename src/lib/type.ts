@@ -10,7 +10,7 @@ import type animate from './internal/animate'
 import type createUseLightMask from './internal/useLightMask'
 import type createUseScreenShake from './internal/useScreenShake'
 import type { createGetTextures } from './internal/getTextures'
-import type ParkMiller from 'park-miller'
+import type createRandom from './internal/random'
 
 export type Position = {
   readonly x: number
@@ -90,7 +90,7 @@ export type BaseScene<
   useScreenShake: UseScreenShake
   useLightMask: UseLightMask
   getTextures: GetTextures<TextureName>
-  random: ParkMiller
+  random: ReturnType<typeof createRandom>
 }
 
 export type JuiceFn = (time: number) => number
