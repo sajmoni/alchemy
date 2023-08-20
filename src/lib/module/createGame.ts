@@ -17,6 +17,8 @@ import initializeDebugOverlay from '../internal/debugOverlay'
 import showLoadingScreen from '../internal/loading'
 import useAutoPause from '../internal/useAutoPause'
 import createSetScene from '../setScene'
+import ParkMiller from 'park-miller'
+import { getRandomInt } from 'tiny-toolkit'
 
 export default async function createGame<
   Keys extends readonly string[],
@@ -37,6 +39,7 @@ export default async function createGame<
   state,
   sounds,
   scene,
+  randomSeed,
   config = {},
 }: {
   keys: Keys
@@ -52,6 +55,7 @@ export default async function createGame<
   state: State
   sounds: Sounds
   scene: SceneKey
+  randomSeed?: number
   config?: {
     pixelPerfect?: boolean
     autoPause?: boolean
@@ -96,6 +100,8 @@ export default async function createGame<
 
   const { sound } = initializeSound<SoundName, MusicName>(sounds)
 
+  const random = new ParkMiller(randomSeed ?? getRandomInt())
+
   const setScene = createSetScene({
     state: proxyState,
     app,
@@ -105,6 +111,7 @@ export default async function createGame<
     textures,
     scenes,
     global,
+    random,
   })
 
   if (import.meta.env.MODE === 'development') {
