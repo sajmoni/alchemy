@@ -26,7 +26,8 @@ _(This project was previously known as `make-web-game`)_
 
 ## :no_good: Out of scope
 
-- State machine (Recommended library: [xstate](https://github.com/statelyai/xstate/tree/main/packages/xstate-fsm))
+- State machine (Recommendation: [xstate](https://github.com/statelyai/xstate/tree/main/packages/xstate-fsm))
+- Noise (Recommendation: [simplex-noise](https://github.com/jwagner/simplex-noise.js))
 - Physics
 - Network
 
@@ -288,6 +289,16 @@ repeatEvery(1, () => {
   }
 })
 ```
+
+### random
+
+There is a built-in seedable random module.
+
+To set the seed, pass it in to `createGame`
+
+The module uses the same API as [park-miller](https://github.com/sindresorhus/park-miller), with some additions:
+
+`chance(percentage) => boolean`
 
 ---
 

@@ -220,7 +220,6 @@ export default function initializeDebugOverlay<
           }}
         />
         <Dropdown
-          // TODO: Fix this in nano-panel - should take undefined?
           value={sceneState}
           label='Scene'
           items={scenesToDisplay}
