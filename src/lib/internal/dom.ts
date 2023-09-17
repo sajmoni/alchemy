@@ -10,7 +10,7 @@ export default function initializeDOM({ app }: { app: Application }): void {
 
   const gameElement = document.createElement('div')
 
-  gameElement.append(app.renderer.view as HTMLCanvasElement)
+  gameElement.append(app.renderer.view.element as HTMLCanvasElement)
   // Prevent default browser right-click behavior
   gameElement.setAttribute('oncontextmenu', 'return false;')
 

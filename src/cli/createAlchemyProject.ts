@@ -10,7 +10,7 @@ import sortPackageJson from 'sort-package-json'
 import { writePackage } from 'write-pkg'
 import gradient from 'gradient-string'
 
-const dependencies = ['pixi.js', 'vite', 'alchemy-engine']
+const dependencies = ['pixi.js@8.0.0-alpha.3', 'vite', 'alchemy-engine']
 
 const devDependencies = ['vitest']
 
@@ -106,7 +106,7 @@ export default function createAlchemyProject(gameName: string) {
     {
       title: 'Install dependencies',
       task: async () => {
-        const args = npmInstall.concat(dependencies)
+        const args = npmInstall.concat(dependencies).concat('--force')
         return execa(command, args, { all: true }).all
       },
     },

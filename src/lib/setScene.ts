@@ -61,7 +61,7 @@ export default function createSetScene<
 
   let input: Input<Keys> | undefined
 
-  let tickerSceneFn: (deltaTime: number) => void | undefined
+  let tickerSceneFn: (ticker: Ticker) => void | undefined
 
   async function setScene(sceneKey: SceneKey): Promise<void> {
     state.alchemy.scene = sceneKey
@@ -72,7 +72,7 @@ export default function createSetScene<
       app.stage.removeChild(container)
     }
     container = new Container()
-    container.name = `${sceneKey}-container`
+    container.label = `${sceneKey}-container`
 
     app.stage.addChild(container)
 
@@ -86,21 +86,21 @@ export default function createSetScene<
       ticker.remove(tickerSceneFn)
     }
     if (import.meta.env.MODE === 'production') {
-      tickerSceneFn = (deltaTime) => {
+      tickerSceneFn = (ticker) => {
         if (state.alchemy.timer && !state.alchemy.paused) {
           try {
-            state.alchemy.timer.update(deltaTime)
+            state.alchemy.timer.update(ticker.deltaTime)
           } catch (error) {
             handleError(state.alchemy, 'Error in scene timer', error)
           }
         }
       }
     } else {
-      tickerSceneFn = (deltaTime) => {
+      tickerSceneFn = (ticker) => {
         if (state.alchemy.timer && !state.alchemy.paused) {
           try {
             const beforeUpdate = performance.now()
-            state.alchemy.timer.update(deltaTime)
+            state.alchemy.timer.update(ticker.deltaTime)
             const afterUpdate = performance.now()
             const loopDuration = afterUpdate - beforeUpdate
             updateDurations.push(loopDuration)

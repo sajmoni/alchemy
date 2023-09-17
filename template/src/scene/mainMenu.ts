@@ -18,7 +18,7 @@ export default async function mainMenu({
     { ...TextStyle.MAIN, fontSize: 50 },
     gameTitle,
   )
-  titleText.name = 'titleText'
+  titleText.label = 'titleText'
   titleText.anchor.set(0.5)
   titleText.x = app.screen.width / 2
   titleText.y = app.screen.height / 3
@@ -37,7 +37,7 @@ export default async function mainMenu({
     { ...TextStyle.MAIN, fontSize: 20 },
     'Start game',
   )
-  startGameButton.name = 'startGameButton'
+  startGameButton.label = 'startGameButton'
   startGameButton.anchor.set(0.5)
   startGameButton.position.y = app.screen.height - 140
   startGameButton.position.x = app.screen.width / 2
@@ -77,7 +77,7 @@ export default async function mainMenu({
     { ...TextStyle.MAIN, fontSize: 20 },
     'Settings',
   )
-  settingsButton.name = 'settingsButton'
+  settingsButton.label = 'settingsButton'
   settingsButton.anchor.set(0.5)
   settingsButton.position.y = app.screen.height - 100
   settingsButton.position.x = app.screen.width / 2

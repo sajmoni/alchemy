@@ -49,9 +49,9 @@ export default function initializeDebugOverlay<
 
   const gridGraphics = new Graphics()
   gridGraphics.zIndex = 9999
-  gridGraphics.name = 'gridGraphics'
+  gridGraphics.label = 'gridGraphics'
   app.stage.addChild(gridGraphics)
-  gridGraphics.lineStyle(2, 0xff00ff)
+  gridGraphics.stroke({ width: 2, color: 0xff00ff })
   showGrid(app.renderer, gridGraphics, 3)
   gridGraphics.visible = false
 
@@ -188,10 +188,10 @@ export default function initializeDebugOverlay<
               const g = new Graphics()
               const { pivot } = object
               g.zIndex = 9999
-              g.beginFill('#22ff22', 0.5)
-                .drawCircle(pivot.x, pivot.y, 4)
-                .beginFill('#dd22dd', 0.5)
-                .drawCircle(pivot.x, pivot.y, 2)
+              g.fill({ color: 0x22ff22, alpha: 0.5 })
+                .circle(pivot.x, pivot.y, 4)
+                .fill({ color: 0xdd22dd, alpha: 0.5 })
+                .circle(pivot.x, pivot.y, 2)
               object.addChild(g)
               // Ensure that anchor graphics always has scale 1
               g.scale.set(1 / object.scale.x, 1 / object.scale.y)
@@ -207,10 +207,10 @@ export default function initializeDebugOverlay<
             setShowHitboxes(checked)
 
             const hitboxGraphics = graphics(app.stage)
-            hitboxGraphics.name = 'hitboxGraphics'
+            hitboxGraphics.label = 'hitboxGraphics'
             hitboxGraphics.zIndex = 9999
             const strokeThickness = 2
-            hitboxGraphics.lineStyle(strokeThickness, '#22ff22')
+            hitboxGraphics.stroke({ width: strokeThickness, color: 0x22ff22 })
 
             const objects = getAllLeafChildren(app.stage)
 

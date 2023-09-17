@@ -10,16 +10,17 @@ export default function initializeInspectMode(app: Application) {
   const objects = getAllLeafChildren(app.stage)
 
   const hitboxGraphics = graphics(app.stage)
-  hitboxGraphics.name = 'hitboxGraphics'
+  hitboxGraphics.label = 'hitboxGraphics'
   hitboxGraphics.zIndex = 9999
   const strokeThickness = 2
 
   const hoverText = text(app.stage, {
     fontSize: 8,
     stroke: '#d53434',
-    strokeThickness: 2,
+    //  TODO: Figure this one out
+    // strokeThickness: 2,
   })
-  hoverText.name = 'hoverText'
+  hoverText.label = 'hoverText'
   hoverText.zIndex = 9999
 
   for (const object of objects) {
@@ -29,11 +30,11 @@ export default function initializeInspectMode(app: Application) {
     onHover(object, {
       onOver: () => {
         hoverText.visible = true
-        hoverText.text = object.name ?? '(No name)'
+        hoverText.text = object.label ?? '(No name)'
 
         const global = object.getGlobalPosition()
         hoverText.position.set(global.x, global.y)
-        hitboxGraphics.lineStyle(strokeThickness, '#22ff22')
+        hitboxGraphics.stroke({ width: strokeThickness, color: 0x22ff22 })
         drawHitbox(object, hitboxGraphics, strokeThickness)
       },
       onOut: () => {
@@ -52,7 +53,7 @@ export function drawHitbox(
   const global = object.getGlobalPosition()
 
   if (object.hitArea && object.hitArea instanceof Rectangle) {
-    graphics.drawRect(
+    graphics.rect(
       object.hitArea.x,
       object.hitArea.y,
       object.hitArea.width - strokeThickness,
@@ -60,7 +61,7 @@ export function drawHitbox(
     )
   } else {
     // Handle anchor point
-    graphics.drawRect(
+    graphics.rect(
       // @ts-expect-error - Better anchor check
       object.anchor ? global.x - object.anchor.x * object.width : global.x,
       // @ts-expect-error - Better anchor check
