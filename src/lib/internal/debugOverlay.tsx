@@ -33,6 +33,7 @@ export default function initializeDebugOverlay<
   ticker,
   setScene,
   scene,
+  panel,
 }: {
   sceneKeys: SceneKey[]
   state: State & {
@@ -42,6 +43,7 @@ export default function initializeDebugOverlay<
   ticker: Ticker
   setScene: (sceneKey: SceneKey) => Promise<void>
   scene: SceneKey
+  panel: any[]
 }) {
   const storedScene = createStoredValue('scene', scene)
 
@@ -228,6 +230,20 @@ export default function initializeDebugOverlay<
             storedScene.set(value)
           }}
         />
+        <Divider />
+        {panel.map((p, index) => {
+          if (p.type === 'string') {
+            return (
+              <StringValue
+                key={index}
+                label={p.label}
+                getValue={p.getValue}
+              />
+            )
+          }
+
+          return null
+        })}
       </Panel>
     )
   }

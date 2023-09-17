@@ -41,6 +41,7 @@ export default async function createGame<
   scene,
   randomSeed,
   config = {},
+  panel,
 }: {
   keys: Keys
   scenes: Record<
@@ -60,6 +61,7 @@ export default async function createGame<
     pixelPerfect?: boolean
     autoPause?: boolean
   }
+  panel: Array<{ type: string; label: string; getValue: () => string }>
 }) {
   if (config.pixelPerfect) {
     // antialias: true has to be set on application
@@ -123,6 +125,7 @@ export default async function createGame<
       ticker,
       setScene,
       scene,
+      panel,
     })
   } else {
     setScene(scene)
