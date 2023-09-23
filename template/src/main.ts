@@ -27,11 +27,4 @@ createGame({
   config: {
     pixelPerfect: true,
   },
-  panel: [
-    {
-      type: 'string',
-      getValue: () => Math.random().toString(),
-      label: 'Hello',
-    },
-  ],
 })

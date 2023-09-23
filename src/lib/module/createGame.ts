@@ -14,7 +14,7 @@ import createTimer from '../internal/timer'
 import type { AlchemyState, BaseScene, Sounds } from '../type'
 import { initializeSound } from '../internal/sound'
 import initializeDebugConsole from '../internal/debugConsole'
-import initializeDebugOverlay from '../internal/debugOverlay'
+import initializeDebugOverlay, { type Panel } from '../internal/debugOverlay'
 import showLoadingScreen from '../internal/loading'
 import useAutoPause from '../internal/useAutoPause'
 import createSetScene from '../setScene'
@@ -61,7 +61,7 @@ export default async function createGame<
     pixelPerfect?: boolean
     autoPause?: boolean
   }
-  panel: Array<{ type: string; label: string; getValue: () => string }>
+  panel?: Panel
 }) {
   if (config.pixelPerfect) {
     // antialias: true has to be set on application
