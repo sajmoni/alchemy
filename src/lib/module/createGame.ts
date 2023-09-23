@@ -70,7 +70,7 @@ export default async function createGame<
 
   showLoadingScreen()
 
-  Assets.add('spritesheet', spriteSheetPath)
+  Assets.add({ alias: 'spritesheet', src: spriteSheetPath })
   const [{ textures }] = await Promise.all([
     Assets.load('spritesheet'),
     document.fonts.load(font),
