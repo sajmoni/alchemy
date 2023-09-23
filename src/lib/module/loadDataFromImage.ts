@@ -6,7 +6,7 @@ export type Pixel = `${number}-${number}-${number}`
 /**
  * This function can be used to for example load a level from image data
  */
-export default async function loadDataFromImage(imagePath: string): Promise<{
+export async function loadDataFromImage(imagePath: string): Promise<{
   pixels: Pixel[]
   width: number
   height: number
