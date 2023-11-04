@@ -77,13 +77,12 @@ export const bitmapText = (
 export const htmlText = (
   parent: Container,
   textStyle: Partial<TextStyle>,
-  textContent?: string,
+  textContent: string,
 ): Text => {
-  const t = new Text({ text: textContent ?? '', renderMode: 'html' })
+  const t = new Text({ text: textContent, renderMode: 'html' })
+  t.style = textStyle
+
   parent.addChild(t)
-
-  t.style = new TextStyle(textStyle)
-
   return t
 }
 

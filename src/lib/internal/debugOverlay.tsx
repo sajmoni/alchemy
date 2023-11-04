@@ -192,6 +192,7 @@ export default function initializeDebugOverlay<
                 .circle(pivot.x, pivot.y, 4)
                 .fill({ color: 0xdd22dd, alpha: 0.5 })
                 .circle(pivot.x, pivot.y, 2)
+              // TODO: This will only work with containers now
               object.addChild(g)
               // Ensure that anchor graphics always has scale 1
               g.scale.set(1 / object.scale.x, 1 / object.scale.y)

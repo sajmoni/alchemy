@@ -1,10 +1,4 @@
-import {
-  type Application,
-  // settings,
-  // SCALE_MODES,
-  // BaseTexture,
-  Assets,
-} from 'pixi.js'
+import { type Application, Assets } from 'pixi.js'
 import { proxy } from 'valtio'
 
 import initializeDOM from '../internal/dom'
@@ -66,7 +60,7 @@ export default async function createGame<
   if (config.pixelPerfect) {
     // antialias: true has to be set on application
     // TODO: Figure this one out
-    // BaseTexture.defaultOptions.scaleMode = SCALE_MODES.NEAREST
+    // Texture.defaultOptions.scaleMode = 'nearest'
   }
 
   // TODO: Enable this again
@@ -77,9 +71,6 @@ export default async function createGame<
     Assets.load('spritesheet'),
     document.fonts.load(font),
   ])
-
-  // TODO: Figure out what's wrong here
-  // settings.ROUND_PIXELS = true
 
   const alchemyState: AlchemyState<SceneKey> = {
     paused: false,

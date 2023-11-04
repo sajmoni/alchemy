@@ -19,15 +19,15 @@ export default async function game(scene: Scene) {
     app,
     timer,
     useScreenShake,
-    useLightMask,
   } = scene
 
   const screenShake = useScreenShake(container)
   // TODO: Enable again
   // const lightMask = useLightMask()
-  const background = graphics(container)
-  background.label = 'background'
-  background.fill(0xcccccc).rect(0, 0, app.screen.width, app.screen.height)
+  const background = graphics(app.stage)
+  background.rect(10, 10, 100, 100).fill({ color: '#cccccc', alpha: 1 })
+  background.position.set(100, 100)
+  app.stage.addChild(background)
   // TODO: Figure out this one
   // background.cacheAsBitmap = true
 
@@ -36,15 +36,12 @@ export default async function game(scene: Scene) {
   c.position.set(200, 200)
 
   const g = graphics(c)
-  g.fill({ color: 0xbb22dd, alpha: 1 }).rect(0, 0, 100, 100)
+  g.rect(0, 0, 100, 100).fill({ color: 0xbb22dd, alpha: 1 })
   g.label = 'big pink'
   g.scale.set(2)
   c.pivot.set(c.width / 2, c.height / 2)
 
-  const _text = htmlText(container, {
-    fontSize: 24,
-    fill: 0xffffff,
-  })
+  const _text = htmlText(c, { fontSize: 24, fill: 0xffffff }, 'number 24')
   _text.label = 'number 24'
 
   const spritePool = createObjectPool(10, () => {

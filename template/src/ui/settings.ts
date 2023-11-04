@@ -18,7 +18,7 @@ export default function settings(
   settingsContainer.pivot.set(width / 2, height / 2)
 
   const background = graphics(settingsContainer)
-  background.fill(0xaaaaaa).rect(0, 0, width, height)
+  background.rect(0, 0, width, height).fill(0xaaaaaa)
 
   const title = text(settingsContainer, TextStyle.MAIN, `Settings`)
   title.anchor.set(0.5)
