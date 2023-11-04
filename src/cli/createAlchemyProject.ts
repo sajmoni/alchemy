@@ -1,6 +1,7 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+import { writeFile } from 'node:fs/promises'
 import fs from 'fs-extra'
 import chalk from 'chalk'
 import { execa } from 'execa'
@@ -9,6 +10,8 @@ import { readPackage } from 'read-pkg'
 import sortPackageJson from 'sort-package-json'
 import { writePackage } from 'write-pkg'
 import gradient from 'gradient-string'
+import { loadJsonFile } from 'load-json-file'
+import type { TsConfigJson } from 'type-fest'
 
 const dependencies = ['pixi.js', 'vite', 'alchemy-engine']
 
@@ -57,6 +60,17 @@ export default function createAlchemyProject(gameName: string) {
       task: async () => {
         await execa('npx', ['setup-ts-project', '--skip-commit'])
         await execa('npx', ['enable-absolute-paths'])
+        const tsConfig = (await loadJsonFile('tsconfig.json')) as TsConfigJson
+        const updatedTsConfig = {
+          ...tsConfig,
+          compilerOptions: {
+            ...tsConfig.compilerOptions,
+            types: tsConfig.compilerOptions?.types
+              ? [...tsConfig.compilerOptions.types, 'vite/client']
+              : ['vite/client'],
+          },
+        }
+        await writeFile('tsconfig.json', JSON.stringify(updatedTsConfig))
       },
     },
     {
