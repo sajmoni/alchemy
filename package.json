@@ -85,6 +85,7 @@
     "typed-ls": "0.1.3",
     "valtio": "1.11.2",
     "vite": "4.4.9",
-    "write-pkg": "6.0.0"
+    "write-pkg": "6.0.0",
+    "write-pretty-file": "0.0.2"
   }
 }

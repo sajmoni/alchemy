@@ -1,7 +1,6 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import { writeFile } from 'node:fs/promises'
 import fs from 'fs-extra'
 import chalk from 'chalk'
 import { execa } from 'execa'
@@ -12,6 +11,7 @@ import { writePackage } from 'write-pkg'
 import gradient from 'gradient-string'
 import { loadJsonFile } from 'load-json-file'
 import type { TsConfigJson } from 'type-fest'
+import writePrettyFile from 'write-pretty-file'
 
 const dependencies = ['pixi.js@8.0.0-beta.8', 'vite', 'alchemy-engine']
 
@@ -70,7 +70,7 @@ export default function createAlchemyProject(gameName: string) {
               : ['vite/client'],
           },
         }
-        await writeFile('tsconfig.json', JSON.stringify(updatedTsConfig))
+        await writePrettyFile('tsconfig.json', JSON.stringify(updatedTsConfig))
       },
     },
     {
