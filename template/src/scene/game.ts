@@ -24,10 +24,9 @@ export default async function game(scene: Scene) {
   const screenShake = useScreenShake(container)
   // TODO: Enable again
   // const lightMask = useLightMask()
-  const background = graphics(app.stage)
+  const background = graphics(container)
   background.rect(10, 10, 100, 100).fill({ color: '#cccccc', alpha: 1 })
   background.position.set(100, 100)
-  app.stage.addChild(background)
   // TODO: Figure out this one
   // background.cacheAsBitmap = true
 
