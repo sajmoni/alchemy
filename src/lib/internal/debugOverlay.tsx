@@ -12,16 +12,23 @@ import {
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
 import { snapshot } from 'valtio'
-import type { AlchemyState } from '../type'
 import { subscribeKey } from 'valtio/utils'
+import { createStoredValue } from 'typed-ls'
+
+import type { AlchemyState } from '../type'
 import { getAverageGlobalUpdateDuration } from './ticker'
 import { getAverageSceneUpdateDuration } from '../setScene'
-import { createStoredValue } from 'typed-ls'
 import getAllChildren from '../module/getAllChildren'
 import showGrid from './showGrid'
 import { graphics } from '../module/create'
 import getAllLeafChildren from '../module/getAllLeafChildren'
 import initializeInspectMode, { drawHitbox } from './inspectMode'
+
+export type Panel = Array<{
+  type: string
+  label: string
+  getValue: () => string
+}>
 
 export default function initializeDebugOverlay<
   State extends object,
@@ -43,7 +50,7 @@ export default function initializeDebugOverlay<
   ticker: Ticker
   setScene: (sceneKey: SceneKey) => Promise<void>
   scene: SceneKey
-  panel: any[]
+  panel?: Panel | undefined
 }) {
   const storedScene = createStoredValue('scene', scene)
 
@@ -231,19 +238,21 @@ export default function initializeDebugOverlay<
           }}
         />
         <Divider />
-        {panel.map((p, index) => {
-          if (p.type === 'string') {
-            return (
-              <StringValue
-                key={index}
-                label={p.label}
-                getValue={p.getValue}
-              />
-            )
-          }
+        {panel
+          ? panel.map((p, index) => {
+              if (p.type === 'string') {
+                return (
+                  <StringValue
+                    key={index}
+                    label={p.label}
+                    getValue={p.getValue}
+                  />
+                )
+              }
 
-          return null
-        })}
+              return null
+            })
+          : null}
       </Panel>
     )
   }

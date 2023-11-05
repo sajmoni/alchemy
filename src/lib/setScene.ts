@@ -12,8 +12,7 @@ import animate from './internal/animate'
 import createUseLightMask from './internal/useLightMask'
 import createUseScreenShake from './internal/useScreenShake'
 import { createGetTextures } from './internal/getTextures'
-import type ParkMiller from 'park-miller'
-import createRandom from './internal/random'
+import type ExtendedParkMiller from './internal/random'
 
 const updateDurations: number[] = []
 
@@ -55,7 +54,7 @@ export default function createSetScene<
   global: {
     timer: TimerInstance
   }
-  random: ParkMiller
+  random: ExtendedParkMiller
 }) {
   let container: Container | undefined
 
@@ -149,7 +148,7 @@ export default function createSetScene<
           useScreenShake: createUseScreenShake(timer),
           useLightMask: createUseLightMask(app, timer),
           getTextures: createGetTextures(textures),
-          random: createRandom(random),
+          random,
         })
       } catch (error) {
         handleError(state.alchemy, 'Error in scene', error)

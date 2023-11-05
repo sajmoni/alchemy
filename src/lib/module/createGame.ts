@@ -1,5 +1,6 @@
 import { type Application, Assets } from 'pixi.js'
 import { proxy } from 'valtio'
+import { getRandomInt } from 'tiny-toolkit'
 
 import initializeDOM from '../internal/dom'
 import initializeTicker from '../internal/ticker'
@@ -7,12 +8,11 @@ import createTimer from '../internal/timer'
 import type { AlchemyState, BaseScene, Sounds } from '../type'
 import { initializeSound } from '../internal/sound'
 import initializeDebugConsole from '../internal/debugConsole'
-import initializeDebugOverlay from '../internal/debugOverlay'
+import initializeDebugOverlay, { type Panel } from '../internal/debugOverlay'
 // import showLoadingScreen from '../internal/loading'
 import useAutoPause from '../internal/useAutoPause'
 import createSetScene from '../setScene'
-import ParkMiller from 'park-miller'
-import { getRandomInt } from 'tiny-toolkit'
+import ExtendedParkMiller from '../internal/random'
 
 export default async function createGame<
   Keys extends readonly string[],
@@ -55,7 +55,7 @@ export default async function createGame<
     pixelPerfect?: boolean
     autoPause?: boolean
   }
-  panel: Array<{ type: string; label: string; getValue: () => string }>
+  panel?: Panel
 }) {
   if (config.pixelPerfect) {
     // antialias: true has to be set on application
@@ -96,7 +96,7 @@ export default async function createGame<
 
   const { sound } = initializeSound<SoundName, MusicName>(sounds)
 
-  const random = new ParkMiller(randomSeed ?? getRandomInt())
+  const random = new ExtendedParkMiller(randomSeed ?? getRandomInt())
 
   const setScene = createSetScene({
     state: proxyState,
