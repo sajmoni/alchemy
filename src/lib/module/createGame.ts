@@ -72,6 +72,9 @@ export default async function createGame<
     document.fonts.load(font),
   ])
 
+  // TODO: Enable this again
+  // settings.ROUND_PIXELS = true
+
   const alchemyState: AlchemyState<SceneKey> = {
     paused: false,
     scene,
