@@ -14,7 +14,7 @@ env:
   NODE_VERSION: 18
 
 jobs:
-  build:
+  deploy:
     name: Build game
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -29,22 +29,6 @@ jobs:
         run: npm ci --production
       - name: Build
         run: npm run build
-      - name: Upload build
-        uses: actions/upload-artifact@v3
-        with:
-          name: game
-          path: dist
-  deploy:
-    name: Deploy game
-    needs: build
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - name: Download build
-        uses: actions/download-artifact@v3
-        with:
-          name: game
-          path: game
       - name: Install Butler
         run: |
           curl --max-time 5 -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
@@ -55,25 +39,13 @@ jobs:
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
         run: ./butler push game ${{ inputs.game_name }}
-  tag:
-    name: Tag release and generate release notes
-    needs: deploy
-    runs-on: ubuntu-latest
-    steps:
-      # TODO: Checkout the repository at the correct revision
-      # Otherwise you could accidentally tag the wrong commit
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Use Node.js $NODE_VERSION
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ env.NODE_VERSION }}
       - name: Set git information
         run: |
           git config --global user.name 'Github Actions [bot]'
           git config --global user.email 'github-actions@not-a-real-email.com'
       - name: Increase version
         run: npm version patch
+      # TODO: This will fail if someone else pushes changes to main
       - name: Push back to repository
         run: |
           git push origin --tags
