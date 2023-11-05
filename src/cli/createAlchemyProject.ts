@@ -13,7 +13,7 @@ import gradient from 'gradient-string'
 import { loadJsonFile } from 'load-json-file'
 import type { TsConfigJson } from 'type-fest'
 
-const dependencies = ['pixi.js@8.0.0-alpha.3', 'vite', 'alchemy-engine']
+const dependencies = ['pixi.js@8.0.0-beta.8', 'vite', 'alchemy-engine']
 
 const devDependencies = ['vitest']
 
