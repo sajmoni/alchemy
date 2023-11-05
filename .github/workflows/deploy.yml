@@ -68,13 +68,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - name: Install auto-changelog
-        run: npm install auto-changelog --no-save
       - name: Set git information
         run: |
           git config --global user.name 'Github Actions [bot]'
           git config --global user.email 'github-actions@not-a-real-email.com'
-      - name: Increase version and create release notes
+      - name: Increase version
         run: npm version patch
       - name: Push back to repository
         run: |
