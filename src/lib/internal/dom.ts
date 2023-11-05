@@ -10,12 +10,13 @@ export default function initializeDOM({ app }: { app: Application }): void {
 
   const gameElement = document.createElement('div')
 
-  gameElement.append(app.renderer.view as HTMLCanvasElement)
+  gameElement.append(app.canvas)
   // Prevent default browser right-click behavior
   gameElement.setAttribute('oncontextmenu', 'return false;')
 
-  gameElement.style.width = `${app.renderer.width}px`
-  gameElement.style.height = `${app.renderer.height}px`
+  // TODO: This doesn't do anything
+  // gameElement.style.width = `${app.renderer.width}px`
+  // gameElement.style.height = `${app.renderer.height}px`
 
   containerElement.appendChild(gameElement)
 }

@@ -1,4 +1,4 @@
-import type { Graphics, IRenderer, Renderer } from 'pixi.js'
+import type { Graphics, Renderer } from 'pixi.js'
 
 type GetCellsArgs = {
   width: number
@@ -41,7 +41,7 @@ export const getCells = ({
 }
 
 export default function showGrid(
-  renderer: Renderer | IRenderer,
+  renderer: Renderer,
   graphics: Graphics,
   numberOfCells = 2,
 ): void {
@@ -55,6 +55,6 @@ export default function showGrid(
   })
 
   for (const { x, y, width, height } of cells) {
-    graphics.drawRect(x, y, width, height)
+    graphics.rect(x, y, width, height)
   }
 }

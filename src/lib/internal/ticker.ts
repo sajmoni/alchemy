@@ -19,10 +19,10 @@ export default function initializeTicker<
 
   // Global timers
   if (import.meta.env.MODE === 'production') {
-    ticker.add((deltaTime) => {
+    ticker.add((ticker) => {
       if (!state.alchemy.paused) {
         try {
-          global.timer.update(deltaTime)
+          global.timer.update(ticker.deltaTime)
           state.alchemy.time += 1
         } catch (error) {
           handleError(state.alchemy, 'Error in global timer', error)
@@ -30,11 +30,11 @@ export default function initializeTicker<
       }
     })
   } else {
-    ticker.add((deltaTime) => {
+    ticker.add((ticker) => {
       if (!state.alchemy.paused) {
         try {
           const beforeUpdate = performance.now()
-          global.timer.update(deltaTime)
+          global.timer.update(ticker.deltaTime)
           state.alchemy.time += 1
           const afterUpdate = performance.now()
           const loopDuration = afterUpdate - beforeUpdate

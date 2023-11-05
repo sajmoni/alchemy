@@ -44,7 +44,7 @@
     "get-bin-path": "10.0.0",
     "happy-dom": "12.1.6",
     "np": "8.0.4",
-    "pixi.js": "7.3.1",
+    "pixi.js": "8.0.0-beta.8",
     "prettier": "3.0.3",
     "prettier-config-one": "0.2.0",
     "tempy": "3.1.0",
@@ -54,7 +54,7 @@
     "vitest": "0.34.5"
   },
   "peerDependencies": {
-    "pixi.js": "7.x"
+    "pixi.js": "8.0.0-beta.8"
   },
   "dependencies": {
     "@types/howler": "2.2.9",

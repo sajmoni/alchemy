@@ -15,9 +15,10 @@ export default function createUseLightMask(app: Application, timer: Timer) {
         render(light)
       }
 
+      //TODO: Figure this one out
       app.renderer.render(lightContainer, {
         renderTexture,
-        clear: true,
+        // clear: true,
       })
     })
 

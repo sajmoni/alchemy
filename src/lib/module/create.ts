@@ -7,9 +7,6 @@ import {
   TextStyle,
   Text,
   Texture,
-  type ITextStyle,
-  HTMLTextStyle,
-  HTMLText,
 } from 'pixi.js'
 
 /**
@@ -47,10 +44,26 @@ export const animatedSprite = (
  */
 export const text = (
   parent: Container,
-  textStyle: Partial<ITextStyle>,
+  textStyle: Partial<TextStyle>,
   textContent?: string,
 ): Text => {
-  const t = new Text(textContent ?? '')
+  const t = new Text({ text: textContent ?? '', renderMode: 'canvas' })
+  parent.addChild(t)
+
+  t.style = new TextStyle(textStyle)
+
+  return t
+}
+
+/**
+ * Create a BitmapText
+ */
+export const bitmapText = (
+  parent: Container,
+  textStyle: Partial<TextStyle>,
+  textContent?: string,
+): Text => {
+  const t = new Text({ text: textContent ?? '', renderMode: 'bitmap' })
   parent.addChild(t)
 
   t.style = new TextStyle(textStyle)
@@ -63,14 +76,13 @@ export const text = (
  */
 export const htmlText = (
   parent: Container,
-  textStyle: Partial<HTMLTextStyle>,
-  textContent?: string,
-): HTMLText => {
-  const t = new HTMLText(textContent ?? '')
+  textStyle: Partial<TextStyle>,
+  textContent: string,
+): Text => {
+  const t = new Text({ text: textContent, renderMode: 'html' })
+  t.style = textStyle
+
   parent.addChild(t)
-
-  t.style = new HTMLTextStyle(textStyle)
-
   return t
 }
 

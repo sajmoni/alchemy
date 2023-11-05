@@ -1,32 +1,32 @@
-import type { DisplayObject, FederatedPointerEvent } from 'pixi.js'
+import type { Container, FederatedPointerEvent } from 'pixi.js'
 
 export const onClick = (
-  displayObject: DisplayObject,
+  container: Container,
   callback: (event: FederatedPointerEvent) => void,
 ): void => {
-  displayObject.eventMode = 'static'
-  displayObject.cursor = 'pointer'
+  container.eventMode = 'static'
+  container.cursor = 'pointer'
 
-  displayObject.onpointerdown = (event) => {
+  container.onpointerdown = (event) => {
     callback(event)
   }
 }
 
 export const onHover = (
-  displayObject: DisplayObject,
+  container: Container,
   options: { onOver?: () => void; onOut?: () => void },
 ) => {
   const { onOver, onOut } = options
 
-  displayObject.eventMode = 'static'
+  container.eventMode = 'static'
 
-  displayObject.on('pointerover', () => {
+  container.on('pointerover', () => {
     if (onOver) {
       onOver()
     }
   })
 
-  displayObject.on('pointerout', () => {
+  container.on('pointerout', () => {
     if (onOut) {
       onOut()
     }

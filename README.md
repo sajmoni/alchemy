@@ -100,11 +100,11 @@ TODO
 
 ### logObject
 
-Nicely log a Pixi object. Set `name` property for best result.
+Nicely log a Pixi object. Set `label` property for best result.
 
 ```ts
 const sprite = new Sprite()
-sprite.name = 'sprite'
+sprite.label = 'sprite'
 logObject(sprite)
 ```
 

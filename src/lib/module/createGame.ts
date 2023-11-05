@@ -1,10 +1,4 @@
-import {
-  type Application,
-  settings,
-  SCALE_MODES,
-  BaseTexture,
-  Assets,
-} from 'pixi.js'
+import { type Application, Assets } from 'pixi.js'
 import { proxy } from 'valtio'
 import { getRandomInt } from 'tiny-toolkit'
 
@@ -15,7 +9,7 @@ import type { AlchemyState, BaseScene, Sounds } from '../type'
 import { initializeSound } from '../internal/sound'
 import initializeDebugConsole from '../internal/debugConsole'
 import initializeDebugOverlay, { type Panel } from '../internal/debugOverlay'
-import showLoadingScreen from '../internal/loading'
+// import showLoadingScreen from '../internal/loading'
 import useAutoPause from '../internal/useAutoPause'
 import createSetScene from '../setScene'
 import ExtendedParkMiller from '../internal/random'
@@ -65,10 +59,12 @@ export default async function createGame<
 }) {
   if (config.pixelPerfect) {
     // antialias: true has to be set on application
-    BaseTexture.defaultOptions.scaleMode = SCALE_MODES.NEAREST
+    // TODO: Figure this one out
+    // Texture.defaultOptions.scaleMode = 'nearest'
   }
 
-  showLoadingScreen()
+  // TODO: Enable this again
+  // showLoadingScreen()
 
   Assets.add({ alias: 'spritesheet', src: spriteSheetPath })
   const [{ textures }] = await Promise.all([
@@ -76,7 +72,8 @@ export default async function createGame<
     document.fonts.load(font),
   ])
 
-  settings.ROUND_PIXELS = true
+  // TODO: Enable this again
+  // settings.ROUND_PIXELS = true
 
   const alchemyState: AlchemyState<SceneKey> = {
     paused: false,

@@ -13,7 +13,7 @@ import gradient from 'gradient-string'
 import { loadJsonFile } from 'load-json-file'
 import type { TsConfigJson } from 'type-fest'
 
-const dependencies = ['pixi.js', 'vite', 'alchemy-engine']
+const dependencies = ['pixi.js@8.0.0-beta.8', 'vite', 'alchemy-engine']
 
 const devDependencies = ['vitest']
 
@@ -120,7 +120,7 @@ export default function createAlchemyProject(gameName: string) {
     {
       title: 'Install dependencies',
       task: async () => {
-        const args = npmInstall.concat(dependencies)
+        const args = npmInstall.concat(dependencies).concat('--force')
         return execa(command, args, { all: true }).all
       },
     },
