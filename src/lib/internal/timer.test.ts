@@ -16,8 +16,19 @@ test('delay', async () => {
   expect(done).toBe(true)
 })
 
-test('delay - cancel', () => {
-  // TODO: Cancel
+// Canceling a delay might not actually have any real world use cases, might remove in the future
+test('delay - cancel', async () => {
+  let done = false
+  const { delay, debug } = createTimer()
+
+  expect(debug().timers.length).toBe(0)
+  expect(done).toBe(false)
+  const promise = delay(3)
+  expect(debug().timers.length).toBe(1)
+  promise.cancel()
+  expect(debug().timers.length).toBe(0)
+  done = true
+  expect(done).toBe(true)
 })
 
 test('repeatUntil', async () => {
@@ -37,8 +48,16 @@ test('repeatUntil', async () => {
   expect(callback).toHaveBeenCalledTimes(3)
 })
 
-test('repeatUntil - cancel', () => {
-  // TODO
+test('repeatUntil - cancel', async () => {
+  const { repeatUntil, debug } = createTimer()
+
+  const callback = vi.fn(() => {})
+  expect(debug().timers.length).toBe(0)
+  const promise = repeatUntil(3, callback)
+  expect(debug().timers.length).toBe(1)
+  promise.cancel()
+  expect(debug().timers.length).toBe(0)
+  expect(callback).toHaveBeenCalledTimes(0)
 })
 
 test('repeatEvery', async () => {
@@ -49,7 +68,7 @@ test('repeatEvery', async () => {
   const deltaTime = 1
 
   const callback = vi.fn((time, deltaTime) => {
-    // Use time === 2 to only test this once
+    // Use time === 2 to only test this once§
     if (time === 2) {
       expect(deltaTime).toBe(1)
     }

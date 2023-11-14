@@ -30,19 +30,24 @@ export type TimerInstance = ReturnType<typeof createTimer>
 export default function createTimer() {
   let timers: Timer[] = []
 
-  async function delay(duration: number) {
+  /**
+   * Wait until `duration` is reached before continuing
+   */
+  function delay(duration: number) {
     const controller = new AbortController()
 
-    const promise: Partial<CancelablePromise> = new Promise((resolve) => {
-      const timer: Delay = { time: 0, duration, resolve, type: 'delay' }
-      timers.push(timer)
+    const promise: Partial<CancelablePromise> = new Promise<boolean>(
+      (resolve) => {
+        const timer: Delay = { time: 0, duration, resolve, type: 'delay' }
+        timers.push(timer)
 
-      controller.signal.addEventListener('abort', () => {
-        if (timer.time < timer.duration) {
-          removeFromList(timer, timers)
-        }
-      })
-    })
+        controller.signal.addEventListener('abort', () => {
+          if (timer.time < timer.duration) {
+            removeFromList(timer, timers)
+          }
+        })
+      },
+    )
 
     promise.cancel = () => {
       controller.abort()
