@@ -8,6 +8,7 @@ import {
   Panel,
   StringValue,
   Snackbar,
+  Row,
 } from 'nano-panel'
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
@@ -105,6 +106,7 @@ export default function initializeDebugOverlay<
             state.alchemy.error = undefined
           }}
         />
+        <Divider />
         <NumericValue
           label='FPS'
           warnAt={{
@@ -148,20 +150,23 @@ export default function initializeDebugOverlay<
           getValue={() => state.alchemy.scene ?? '-'}
         />
         <Divider />
-        <Button
-          label='Log state'
-          onClick={() => {
-            console.log('state:', snapshot(state))
-          }}
-        />
-        <Button
-          label='Inspect'
-          onClick={() => {
-            state.alchemy.paused = true
-            setPaused(true)
-            initializeInspectMode(app)
-          }}
-        />
+        <Row>
+          <Button
+            label='Log state'
+            onClick={() => {
+              console.log('state:', snapshot(state))
+            }}
+          />
+          <Button
+            label='Inspect'
+            onClick={() => {
+              state.alchemy.paused = true
+              setPaused(true)
+              initializeInspectMode(app)
+            }}
+          />
+        </Row>
+        <Divider />
         <Checkbox
           label='Pause game'
           checked={paused}
