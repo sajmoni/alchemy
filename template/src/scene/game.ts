@@ -16,7 +16,6 @@ export default async function game(scene: Scene) {
     state,
     timer: { repeatEvery },
     sound,
-    app,
     timer,
     useScreenShake,
   } = scene
