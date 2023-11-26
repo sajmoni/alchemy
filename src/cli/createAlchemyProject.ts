@@ -13,7 +13,7 @@ import { loadJsonFile } from 'load-json-file'
 import type { TsConfigJson } from 'type-fest'
 import writePrettyFile from 'write-pretty-file'
 
-const dependencies = ['pixi.js@8.0.0-beta.8', 'vite', 'alchemy-engine']
+const dependencies = ['pixi.js@8.0.0-beta.11', 'vite', 'alchemy-engine']
 
 const devDependencies = ['vitest']
 
