@@ -7,6 +7,7 @@ import {
   TextStyle,
   Text,
   Texture,
+  type TextStyleOptions,
 } from 'pixi.js'
 
 /**
@@ -44,7 +45,7 @@ export const animatedSprite = (
  */
 export const text = (
   parent: Container,
-  textStyle: Partial<TextStyle>,
+  textStyle: Partial<TextStyleOptions>,
   textContent?: string,
 ): Text => {
   const t = new Text({ text: textContent ?? '', renderMode: 'canvas' })
@@ -60,7 +61,7 @@ export const text = (
  */
 export const bitmapText = (
   parent: Container,
-  textStyle: Partial<TextStyle>,
+  textStyle: Partial<TextStyleOptions>,
   textContent?: string,
 ): Text => {
   const t = new Text({ text: textContent ?? '', renderMode: 'bitmap' })

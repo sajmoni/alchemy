@@ -13,7 +13,7 @@ import { loadJsonFile } from 'load-json-file'
 import type { TsConfigJson } from 'type-fest'
 import writePrettyFile from 'write-pretty-file'
 
-const dependencies = ['pixi.js@8.0.0-beta.11', 'vite', 'alchemy-engine']
+const dependencies = ['pixi.js@8.0.0-rc', 'vite', 'alchemy-engine']
 
 const devDependencies = ['vitest']
 
@@ -120,7 +120,9 @@ export default function createAlchemyProject(gameName: string) {
     {
       title: 'Install dependencies',
       task: async () => {
-        const args = npmInstall.concat(dependencies).concat('--force')
+        const args = npmInstall
+          .concat(dependencies)
+          .concat('--legacy-peer-deps')
         return execa(command, args, { all: true }).all
       },
     },
