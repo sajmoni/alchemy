@@ -1,6 +1,6 @@
 # :alembic: alchemy engine
 
-> :space_invader: Easily make 2D browser games with TypeScript and pixi.js :space_invader:
+> 👾 Easily make 2D browser games with TypeScript and pixi.js
 
 _(This project was previously known as `make-web-game`)_
 
@@ -50,29 +50,72 @@ npx alchemy-engine@latest create <game-name>
 
 ## Module API
 
-WIP
-
 ### create
 
-- sprite
-- animatedSprite
-- text
-- htmlText
-- container
-- graphics
-- rectangle
+#### sprite
+
+```ts
+import { sprite } from 'alchemy-engine'
+
+sprite(container, textures['./square-1'])
+```
+
+#### animatedSprite
+
+```ts
+import { animatedSprite } from 'alchemy-engine'
+
+animatedSprite(container, [textures['./square-1']])
+```
+
+#### text
+
+#### htmlText
+
+#### bitmapText
+
+#### container
+
+#### graphics
+
+#### rectangle
 
 ### event
 
-- onClick
-- onHover
+#### onClick
+
+```ts
+import { onClick } from 'alchemy-engine'
+
+onClick(container, () => {
+  console.log('Clicked!')
+})
+```
+
+#### onHover
+
+```ts
+import { onHover } from 'alchemy-engine'
+
+onHover(container, {
+  onOver() {
+    console.log('Hovered!')
+  },
+  onOut() {
+    console.log('Not hovered!')
+  },
+})
+```
 
 ### sync
 
-- sync
-- syncPosition
+#### sync
 
-### arrowKeys
+#### syncPosition
+
+### keys
+
+#### arrowKeys
 
 Constants for all arrow keys
 
@@ -86,10 +129,6 @@ export const keys = ['a', 'w', 's', 'd', ...arrowKeys] as const
 
 TODO
 
-### boundsToString
-
-TODO
-
 ### getAllChildren
 
 TODO
@@ -98,23 +137,78 @@ TODO
 
 TODO
 
-### logObject
+### debug
+
+#### logObject
 
 Nicely log a Pixi object. Set `label` property for best result.
 
 ```ts
+import { logObject } from 'alchemy-engine'
+
 const sprite = new Sprite()
 sprite.label = 'sprite'
 logObject(sprite)
+```
+
+### boundsToString
+
+Enables easier logging of sprite bounds
+
+```ts
+import { boundsToString } from 'alchemy-engine'
+
+console.log(boundsToString(sprite))
 ```
 
 ### contains
 
 Check if a point is within the bounds of an object
 
+```ts
+import { contains } from 'alchemy-engine'
+
+if (contains(sprite, { x: 1, y: 1 })) {
+  // point is within bounds of sprite
+}
+```
+
 ### intersects
 
 Check if the bounds of two objects are intersecting
+
+```ts
+import { intersects } from 'alchemy-engine'
+
+if (intersects(sprite1, sprite2)) {
+  // sprites are intersecting
+}
+```
+
+### type guards
+
+#### isAnimatedSprite
+
+```ts
+import { isAnimatedSprite } from 'alchemy-engine'
+
+if (isAnimatedSprite(sprite)) {
+  // sprite is of type AnimatedSprite
+}
+```
+
+### loadDataFromImage
+
+This function can be used to for example load a level from image data
+
+```ts
+import { loadDataFromImage } from 'alchemy-engine'
+import map from '~/public/asset/map.png?url'
+
+const { pixels, width, height } = await loadDataFromImage(map)
+console.log(pixels)
+// ['255-255-255', '0-0-0']
+```
 
 ### pool
 
@@ -123,8 +217,6 @@ Check if the bounds of two objects are intersecting
 ---
 
 ## Scene API
-
-WIP
 
 The arguments passed to a scene
 
@@ -151,13 +243,21 @@ An object containing all textures by name
 Record<TextureName, Texture>
 ```
 
+```ts
+function myScene({ textures, container }: Scene) {
+  sprite(container, textures['./square1'])
+}
+```
+
 ### getTextures
 
 Get multiple textures
 
 ```ts
-const textures = getTextures(['./texture-1', './texture-2'])
-new AnimatedSprite(textures)
+function myScene({ getTextures, container }: Scene) {
+  const textures = getTextures(['./texture-1', './texture-2'])
+  animatedSprite(container, textures)
+}
 ```
 
 ### useLightMask
@@ -165,7 +265,7 @@ new AnimatedSprite(textures)
 Get a light mask
 
 ```ts
-
+// TODO
 ```
 
 ### useScreenShake

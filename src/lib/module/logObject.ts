@@ -9,6 +9,6 @@ const logWithColor = (string: string) => {
 }
 
 export default function logObject(object: Container): void {
-  logWithColor(`== ${object.label ?? '(No name)'} ==`)
+  logWithColor(`== ${object.label ?? '(No label)'} ==`)
   console.log(object)
 }
