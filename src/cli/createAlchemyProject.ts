@@ -9,9 +9,8 @@ import { readPackage } from 'read-pkg'
 import sortPackageJson from 'sort-package-json'
 import { writePackage } from 'write-pkg'
 import gradient from 'gradient-string'
-import { loadJsonFile } from 'load-json-file'
-import type { TsConfigJson } from 'type-fest'
 import writePrettyFile from 'write-pretty-file'
+import { getTsconfig } from 'get-tsconfig'
 
 const dependencies = ['pixi.js@8.0.0-rc', 'vite', 'alchemy-engine']
 
@@ -60,17 +59,27 @@ export default function createAlchemyProject(gameName: string) {
       task: async () => {
         await execa('npx', ['setup-ts-project', '--skip-commit'])
         await execa('npx', ['enable-absolute-paths'])
-        const tsConfig = (await loadJsonFile('tsconfig.json')) as TsConfigJson
-        const updatedTsConfig = {
-          ...tsConfig,
-          compilerOptions: {
-            ...tsConfig.compilerOptions,
-            types: tsConfig.compilerOptions?.types
-              ? [...tsConfig.compilerOptions.types, 'vite/client']
-              : ['vite/client'],
-          },
+        const tsconfig = getTsconfig()
+
+        if (tsconfig) {
+          const { config } = tsconfig
+
+          const updatedTsConfig = {
+            ...config,
+            compilerOptions: {
+              ...config.compilerOptions,
+              types: config.compilerOptions?.types
+                ? [...config.compilerOptions.types, 'vite/client']
+                : ['vite/client'],
+            },
+          }
+          await writePrettyFile(
+            'tsconfig.json',
+            JSON.stringify(updatedTsConfig),
+          )
+        } else {
+          throw new Error('No tsconfig found')
         }
-        await writePrettyFile('tsconfig.json', JSON.stringify(updatedTsConfig))
       },
     },
     {
