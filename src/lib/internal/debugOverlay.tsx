@@ -243,21 +243,21 @@ export default function initializeDebugOverlay<
           }}
         />
         <Divider />
-        {panel
-          ? panel.map((p, index) => {
-              if (p.type === 'string') {
-                return (
-                  <StringValue
-                    key={index}
-                    label={p.label}
-                    getValue={p.getValue}
-                  />
-                )
-              }
+        {panel ?
+          panel.map((p, index) => {
+            if (p.type === 'string') {
+              return (
+                <StringValue
+                  key={index}
+                  label={p.label}
+                  getValue={p.getValue}
+                />
+              )
+            }
 
-              return null
-            })
-          : null}
+            return null
+          })
+        : null}
       </Panel>
     )
   }

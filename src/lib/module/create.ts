@@ -8,6 +8,8 @@ import {
   Text,
   Texture,
   type TextStyleOptions,
+  BitmapText,
+  HTMLText,
 } from 'pixi.js'
 
 /**
@@ -48,7 +50,7 @@ export const text = (
   textStyle: Partial<TextStyleOptions>,
   textContent?: string,
 ): Text => {
-  const t = new Text({ text: textContent ?? '', renderMode: 'canvas' })
+  const t = new Text({ text: textContent ?? '' })
   parent.addChild(t)
 
   t.style = new TextStyle(textStyle)
@@ -63,8 +65,8 @@ export const bitmapText = (
   parent: Container,
   textStyle: Partial<TextStyleOptions>,
   textContent?: string,
-): Text => {
-  const t = new Text({ text: textContent ?? '', renderMode: 'bitmap' })
+): BitmapText => {
+  const t = new BitmapText({ text: textContent ?? '' })
   parent.addChild(t)
 
   t.style = new TextStyle(textStyle)
@@ -79,8 +81,8 @@ export const htmlText = (
   parent: Container,
   textStyle: Partial<TextStyle>,
   textContent: string,
-): Text => {
-  const t = new Text({ text: textContent, renderMode: 'html' })
+): HTMLText => {
+  const t = new HTMLText({ text: textContent })
   t.style = textStyle
 
   parent.addChild(t)

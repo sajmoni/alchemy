@@ -5,8 +5,8 @@
     "outDir": "dist",
     "incremental": false,
     "declaration": true,
-    "jsx": "react"
+    "jsx": "react",
   },
   "include": ["src"],
-  "exclude": ["template"]
+  "exclude": ["template"],
 }

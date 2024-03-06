@@ -12,7 +12,7 @@ import gradient from 'gradient-string'
 import writePrettyFile from 'write-pretty-file'
 import { getTsconfig } from 'get-tsconfig'
 
-const dependencies = ['pixi.js@8.0.0-rc', 'vite', 'alchemy-engine']
+const dependencies = ['pixi.js', 'vite', 'alchemy-engine']
 
 const devDependencies = ['vitest']
 
