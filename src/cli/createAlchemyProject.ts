@@ -10,7 +10,8 @@ import sortPackageJson from 'sort-package-json'
 import { writePackage } from 'write-pkg'
 import gradient from 'gradient-string'
 import writePrettyFile from 'write-pretty-file'
-import { getTsconfig } from 'get-tsconfig'
+import typescriptPkg from 'typescript'
+const { findConfigFile, readConfigFile, sys } = typescriptPkg
 
 const dependencies = ['pixi.js', 'vite', 'alchemy-engine']
 
@@ -59,7 +60,18 @@ export default function createAlchemyProject(gameName: string) {
       task: async () => {
         await execa('npx', ['setup-ts-project', '--skip-commit'])
         await execa('npx', ['enable-absolute-paths'])
-        const tsconfig = getTsconfig()
+
+        const tsconfigPath = findConfigFile(
+          process.cwd(),
+          sys.fileExists,
+          'tsconfig.json',
+        )
+
+        if (!tsconfigPath) {
+          throw new Error('No tsconfig path found!')
+        }
+
+        const tsconfig = readConfigFile(tsconfigPath, sys.readFile)
 
         if (tsconfig) {
           const { config } = tsconfig
@@ -68,8 +80,9 @@ export default function createAlchemyProject(gameName: string) {
             ...config,
             compilerOptions: {
               ...config.compilerOptions,
-              types: config.compilerOptions?.types
-                ? [...config.compilerOptions.types, 'vite/client']
+              types:
+                config.compilerOptions?.types ?
+                  [...config.compilerOptions.types, 'vite/client']
                 : ['vite/client'],
             },
           }
@@ -98,8 +111,9 @@ export default function createAlchemyProject(gameName: string) {
 
         const updatedPackageJson = sortPackageJson({
           ...packageJson,
-          scripts: packageJson.scripts
-            ? {
+          scripts:
+            packageJson.scripts ?
+              {
                 ...packageJson.scripts,
                 ...scripts,
               }
