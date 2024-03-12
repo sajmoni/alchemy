@@ -58,8 +58,8 @@ export default function createAlchemyProject(gameName: string) {
     {
       title: 'Setup TS project',
       task: async () => {
-        await execa('npx', ['setup-ts-project', '--skip-commit'])
-        await execa('npx', ['enable-absolute-paths'])
+        await execa('npx', ['setup-ts-project@latest', '--skip-commit'])
+        await execa('npx', ['enable-absolute-paths@latest'])
 
         const tsconfigPath = findConfigFile(
           process.cwd(),
