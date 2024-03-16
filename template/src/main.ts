@@ -17,8 +17,6 @@ await app.init({
 const spriteSheetPath = './asset/spritesheet/data.json'
 const font = '10pt "Press Start 2P"'
 
-// TODO: Add noise module?
-
 createGame({
   app,
   state,
