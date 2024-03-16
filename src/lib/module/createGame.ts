@@ -14,7 +14,6 @@ import type { AlchemyState, BaseScene, Sounds } from '../type'
 import { initializeSound } from '../internal/sound'
 import initializeDebugConsole from '../internal/debugConsole'
 import initializeDebugOverlay, { type Panel } from '../internal/debugOverlay'
-// import showLoadingScreen from '../internal/loading'
 import useAutoPause from '../internal/useAutoPause'
 import createSetScene from '../setScene'
 import ExtendedParkMiller from '../internal/random'
@@ -66,9 +65,6 @@ export default async function createGame<
     // antialias: true has to be set on application
     TextureStyle.defaultOptions.scaleMode = 'nearest'
   }
-
-  // TODO: Enable this again
-  // showLoadingScreen()
 
   Assets.add({ alias: 'spritesheet', src: spriteSheetPath })
   const [{ textures }] = await Promise.all([
