@@ -1,6 +1,6 @@
 # :alembic: alchemy engine
 
-> 👾 Easily make 2D browser games with TypeScript and pixi.js
+> 👾 Easily make 2D browser games with pixi.js
 
 _(This project was previously known as `make-web-game`)_
 
@@ -70,15 +70,51 @@ animatedSprite(container, [textures['./square-1']])
 
 #### text
 
+```ts
+import { text } from 'alchemy-engine'
+
+text(container, textStyle, 'Hello world')
+```
+
 #### htmlText
+
+```ts
+import { htmlText } from 'alchemy-engine'
+
+htmlText(container, textStyle, 'Hello world')
+```
 
 #### bitmapText
 
+```ts
+import { bitmapText } from 'alchemy-engine'
+
+bitmapText(container, textStyle, 'Hello world')
+```
+
 #### container
+
+```ts
+import { container } from 'alchemy-engine'
+
+container(_container)
+```
 
 #### graphics
 
+```ts
+import { graphics } from 'alchemy-engine'
+
+graphics(container)
+```
+
 #### rectangle
+
+```ts
+import { rectangle } from 'alchemy-engine'
+
+rectangle(container, { x: 0, y: 0, width: 10, height: 10 })
+```
 
 ### event
 
