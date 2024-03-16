@@ -73,7 +73,9 @@ export type BaseScene<
   textures: Textures<TextureName>
   container: Container
   input: Input<Keys>
-  state: State
+  state: State & {
+    alchemy: AlchemyState<SceneKey>
+  }
   subscribeKey: typeof subscribeKey
   subscribe: typeof subscribe
   proxy: typeof proxy
