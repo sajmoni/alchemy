@@ -28,9 +28,7 @@
 - Noise (Recommendation: [simplex-noise](https://github.com/jwagner/simplex-noise.js))
 - Physics
 - Network
--
-
----
+- ***
 
 ## Getting started
 
@@ -259,7 +257,6 @@ The arguments passed to a scene
   app,
   timer,
   useScreenShake,
-  useLightMask,
 }: Scene
 ```
 
@@ -286,14 +283,6 @@ function myScene({ getTextures, container }: Scene) {
   const textures = getTextures(['./texture-1', './texture-2'])
   animatedSprite(container, textures)
 }
-```
-
-### useLightMask
-
-Get a light mask
-
-```ts
-// TODO
 ```
 
 ### useScreenShake

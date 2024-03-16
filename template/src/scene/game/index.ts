@@ -22,13 +22,9 @@ export default async function game(scene: Scene) {
   } = scene
 
   const screenShake = useScreenShake(container)
-  // TODO: Enable again
-  // const lightMask = useLightMask()
   const background = graphics(container)
   background.rect(10, 10, 100, 100).fill({ color: '#cccccc', alpha: 1 })
   background.position.set(100, 100)
-  // TODO: Figure out this one
-  // background.cacheAsBitmap = true
 
   const c = createContainer(container)
   c.label = 'container'
@@ -51,28 +47,15 @@ export default async function game(scene: Scene) {
   s.label = 'small blue'
   s.position.set(200, 200)
 
-  // const l1 = lightMask.create({
-  //   texture: textures['light/circle-1'],
-  //   getPosition: () => s.position,
-  // })
-  // l1.label = 'light mask 1'
-
   sync(_text, 'text', state, 'gold')
 
   const s2 = sprite(container, textures['./square-1'])
   s2.anchor.set(1)
   s2.label = 'other name'
   s2.position.set(350, 250)
-  // const l2 = lightMask.create({
-  //   texture: textures['light/circle-1'],
-  //   getPosition: () => s2.position,
-  // })
-  // l2.label = 'light mask 2'
   timer.repeatEvery(10, () => {
     s2.x += 1
   })
-
-  // container.mask = lightMask.getLightMask()
 
   debouncedKey(
     'Space',

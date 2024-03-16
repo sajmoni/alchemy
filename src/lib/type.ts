@@ -7,7 +7,6 @@ import type { TupleToUnion } from 'type-fest'
 import type { TimerInstance } from './internal/timer'
 import type createUtil from './internal/util'
 import type animate from './internal/animate'
-import type createUseLightMask from './internal/useLightMask'
 import type createUseScreenShake from './internal/useScreenShake'
 import type { createGetTextures } from './internal/getTextures'
 import type ExtendedParkMiller from './internal/random'
@@ -56,8 +55,6 @@ export type UseScreenShake = ReturnType<typeof createUseScreenShake>
 
 export type ScreenShake = ReturnType<UseScreenShake>
 
-export type UseLightMask = ReturnType<typeof createUseLightMask>
-
 export type GetTextures<TextureName extends string> = ReturnType<
   typeof createGetTextures<TextureName>
 >
@@ -90,7 +87,6 @@ export type BaseScene<
   util: Util
   animate: Animate
   useScreenShake: UseScreenShake
-  useLightMask: UseLightMask
   getTextures: GetTextures<TextureName>
   random: ExtendedParkMiller
 }

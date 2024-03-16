@@ -9,7 +9,6 @@ import type { AlchemyState, BaseScene, Input, Music, Sound } from './type'
 import makeGetAverageDuration from './internal/makeGetAverageDuration'
 import createUtil from './internal/util'
 import animate from './internal/animate'
-import createUseLightMask from './internal/useLightMask'
 import createUseScreenShake from './internal/useScreenShake'
 import { createGetTextures } from './internal/getTextures'
 import type ExtendedParkMiller from './internal/random'
@@ -146,7 +145,6 @@ export default function createSetScene<
           util: createUtil(app),
           animate: animate(timer),
           useScreenShake: createUseScreenShake(timer),
-          useLightMask: createUseLightMask(app, timer),
           getTextures: createGetTextures(textures),
           random,
         })
