@@ -98,7 +98,6 @@ export default async function game(scene: Scene) {
   })
 
   state.gold = 42
-  console.log('game ~ state:', state)
   sound.coin.play()
 
   pause(scene)

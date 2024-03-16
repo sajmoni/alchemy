@@ -1,4 +1,9 @@
-import { type Application, Assets } from 'pixi.js'
+import {
+  type Application,
+  Assets,
+  AbstractRenderer,
+  TextureStyle,
+} from 'pixi.js'
 import { proxy } from 'valtio'
 import { getRandomInt } from 'tiny-toolkit'
 
@@ -59,8 +64,7 @@ export default async function createGame<
 }) {
   if (config.pixelPerfect) {
     // antialias: true has to be set on application
-    // TODO: Figure this one out
-    // Texture.defaultOptions.scaleMode = 'nearest'
+    TextureStyle.defaultOptions.scaleMode = 'nearest'
   }
 
   // TODO: Enable this again
@@ -72,8 +76,7 @@ export default async function createGame<
     document.fonts.load(font),
   ])
 
-  // TODO: Enable this again
-  // settings.ROUND_PIXELS = true
+  AbstractRenderer.defaultOptions.roundPixels = true
 
   const alchemyState: AlchemyState<SceneKey> = {
     paused: false,

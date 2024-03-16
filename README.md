@@ -2,8 +2,6 @@
 
 > 👾 Easily make 2D browser games with pixi.js
 
-_(This project was previously known as `make-web-game`)_
-
 ## :sparkles: Features
 
 - Reactive - Re-render view when state changes
@@ -30,13 +28,7 @@ _(This project was previously known as `make-web-game`)_
 - Noise (Recommendation: [simplex-noise](https://github.com/jwagner/simplex-noise.js))
 - Physics
 - Network
-
----
-
-## Upcoming features
-
-- Tests - E2E and unit tests
-- i18n - Translations
+-
 
 ---
 
