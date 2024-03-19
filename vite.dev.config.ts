@@ -14,7 +14,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '~': resolve(import.meta.dirname, 'src'),
-      'alchemy-engine': resolve(import.meta.dirname, '../src/lib'),
+      'alchemy-engine': resolve(import.meta.dirname, '../package/runtime/src'),
     },
   },
 })
