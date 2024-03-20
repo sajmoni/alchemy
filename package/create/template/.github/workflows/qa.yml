@@ -1,0 +1,10 @@
+name: QA on PR and main branch
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  qa:
+    uses: sajmoni/alchemy/.github/workflows/qa.yml@main

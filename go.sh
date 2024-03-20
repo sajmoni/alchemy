@@ -5,11 +5,11 @@ set -e
 rm -rf game
 cd package/runtime
 npm run build
-cd ../../package/cli
+cd ../../package/create
 npm run build
-chmod +x ./dist/package/cli/src/index.js
+chmod +x ./dist/package/create/src/index.js
 cd ../..
-node package/cli/dist/package/cli/src/index.js create game
+node package/create/dist/package/create/src/index.js create game
 cpy vite.dev.config.ts game --rename=vite.config.ts 
 cd game 
 npm run dev

@@ -1,0 +1,12 @@
+{
+  "extends": "tsconfig-one/tsconfig.json",
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable"],
+    "outDir": "dist",
+    "incremental": false,
+    "declaration": true,
+    "jsx": "react",
+  },
+  "include": ["src"],
+  "exclude": ["template"],
+}

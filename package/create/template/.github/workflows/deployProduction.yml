@@ -1,0 +1,10 @@
+name: Deploy to Production
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    uses: sajmoni/alchemy/.github/workflows/deploy.yml@main
+    with:
+      game_name: foo/bar:web
+    secrets:
+      BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}

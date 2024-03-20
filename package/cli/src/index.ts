@@ -2,7 +2,6 @@
 import cac from 'cac'
 import createSpriteSheet from './createSpriteSheet.js'
 import loadSounds from './loadSounds.js'
-import createAlchemyProject from './createAlchemyProject.js'
 import devServer from './devServer.js'
 import packageJson from '../../../package.json' assert { type: 'json' }
 
@@ -18,10 +17,6 @@ cli.command('sprite', 'Create sprite sheet').action(() => {
 
 cli.command('load', 'Load sound and sprite sheet').action(() => {
   // Create sprite sheet
-})
-
-cli.command('create [game-name]', 'Create a new game').action((gameName) => {
-  createAlchemyProject(gameName)
 })
 
 cli.command('dev', 'Start dev server').action(() => {
