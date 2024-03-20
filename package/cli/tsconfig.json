@@ -7,6 +7,6 @@
     "declaration": true,
     "jsx": "react",
   },
-  "include": ["src", "package/runtime/src/d.ts", "package/runtime/src/index.ts", "package/runtime/src/internal", "package/runtime/src/module", "package/runtime/src/setScene.ts", "package/runtime/src/type.ts"],
+  "include": ["src"],
   "exclude": ["template"],
 }

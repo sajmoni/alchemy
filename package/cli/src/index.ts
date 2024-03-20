@@ -4,7 +4,7 @@ import createSpriteSheet from './createSpriteSheet.js'
 import loadSounds from './loadSounds.js'
 import createAlchemyProject from './createAlchemyProject.js'
 import devServer from './devServer.js'
-import packageJson from '../../package.json' assert { type: 'json' }
+import packageJson from '../../../package.json' assert { type: 'json' }
 
 const cli = cac('alc')
 

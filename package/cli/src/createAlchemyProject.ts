@@ -131,7 +131,7 @@ export default function createAlchemyProject(gameName: string) {
       title: 'Copy template files',
       task: () => {
         const __dirname = path.dirname(fileURLToPath(import.meta.url))
-        const templateDirectory = path.join(__dirname, `../../../template`)
+        const templateDirectory = path.join(__dirname, `../../../../template`)
 
         try {
           fs.copySync(templateDirectory, rootPath)
