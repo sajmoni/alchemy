@@ -37,7 +37,6 @@
     "@types/gradient-string": "1.1.5",
     "@types/node": "20.11.28",
     "get-bin-path": "11.0.0",
-    "happy-dom": "13.8.6",
     "np": "10.0.1",
     "prettier": "3.2.5",
     "prettier-config-one": "0.2.1",

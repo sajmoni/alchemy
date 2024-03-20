@@ -28,7 +28,6 @@
     "node": ">=20"
   },
   "devDependencies": {
-    "@types/node": "20.11.28",
     "@types/react": "18.2.66",
     "@types/react-dom": "18.2.22",
     "get-bin-path": "11.0.0",
