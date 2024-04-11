@@ -38,7 +38,7 @@ jobs:
       - name: Deploy to itch.io
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
-        run: ./butler push game ${{ inputs.game_name }}
+        run: ./butler push dist ${{ inputs.game_name }}
       - name: Set git information
         run: |
           git config --global user.name 'Github Actions [bot]'
