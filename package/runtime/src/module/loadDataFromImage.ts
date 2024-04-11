@@ -23,8 +23,7 @@ export async function loadDataFromImage(imagePath: string): Promise<{
       const { data } = context2d.getImageData(0, 0, canvas.width, canvas.height)
       let pixelArray: Pixel[] = []
 
-      times2d(canvas.width, canvas.height, (x, y) => {
-        const pixel = canvas.width * x + y
+      times2d(canvas.width, canvas.height, (_x, _y, pixel) => {
         const position = pixel * 4
 
         const red = data[position]!
