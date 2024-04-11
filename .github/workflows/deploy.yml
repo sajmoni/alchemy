@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
       - name: Install
-        run: npm ci --production
+        run: npm ci --omit=dev
       - name: Build
         run: npm run build
       - name: Install Butler
