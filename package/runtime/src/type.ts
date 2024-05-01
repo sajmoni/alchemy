@@ -1,6 +1,5 @@
 import type { Application, Container, Texture } from 'pixi.js'
-import { subscribeKey } from 'valtio/utils'
-import { subscribe, proxy } from 'valtio'
+import { proxy } from 'valtio'
 import type { Howl } from 'howler'
 import type { TupleToUnion } from 'type-fest'
 
@@ -26,6 +25,7 @@ export type Sounds = {
 export type AlchemyState<SceneKey extends string> = {
   paused: boolean
   scene: SceneKey
+  // TODO: Should this really be exposed in the public API?
   timer: TimerInstance | undefined
   error: string | undefined
   time: number

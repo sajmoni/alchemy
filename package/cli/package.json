@@ -1,7 +1,7 @@
 {
-  "name": "alchemy-engine",
-  "version": "0.1.1",
-  "description": "Create 2D browser games with pixi.js",
+  "name": "@alchemy/cli",
+  "version": "0.0.0",
+  "description": "CLI for Alchemy engine",
   "keywords": [],
   "homepage": "https://github.com/sajmoni/alchemy#readme",
   "bugs": {
@@ -15,8 +15,7 @@
   "author": "sajmoni",
   "type": "module",
   "files": [
-    "dist/",
-    "template/"
+    "dist/"
   ],
   "bin": {
     "alc": "dist/package/cli/src/index.js"

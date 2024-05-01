@@ -1,6 +1,8 @@
 import { times2d } from 'tiny-toolkit'
 
-// R-G-B
+/**
+ *  R-G-B
+ */
 export type Pixel = `${number}-${number}-${number}`
 
 /**
