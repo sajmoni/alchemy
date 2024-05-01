@@ -1,8 +1,12 @@
 {
   "name": "@alchemy/create",
   "version": "0.0.1",
-  "description": "Create 2D browser games with pixi.js",
-  "keywords": [],
+  "description": "Create an alchemy project from the command line",
+  "keywords": [
+    "alchemy-engine",
+    "pixi.js",
+    "cli"
+  ],
   "homepage": "https://github.com/sajmoni/alchemy#readme",
   "bugs": {
     "url": "https://github.com/sajmoni/alchemy/issues"
@@ -15,11 +19,11 @@
   "author": "sajmoni",
   "type": "module",
   "files": [
-    "dist/",
+    "dist/package/create/src",
     "template/"
   ],
   "bin": {
-    "alc": "dist/package/cli/src/index.js"
+    "alc": "dist/package/create/src/index.js"
   },
   "prettier": "prettier-config-one",
   "scripts": {

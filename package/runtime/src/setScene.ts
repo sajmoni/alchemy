@@ -152,7 +152,7 @@ export default function createSetScene<
         handleError(state.alchemy, 'Error in scene', error)
       }
     } else {
-      throw new Error('Incorrect scene key')
+      throw new Error(`Incorrect scene key: "${sceneKey}"`)
     }
   }
 
