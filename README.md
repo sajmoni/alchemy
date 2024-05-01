@@ -450,3 +450,7 @@ Load sounds
 ```console
 npx alchemy-engine@latest sound
 ```
+
+#### Dev
+
+Run `./go.sh` to test that things work
