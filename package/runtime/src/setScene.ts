@@ -1,5 +1,5 @@
 import { Application, Container, Texture, Ticker } from 'pixi.js'
-import { subscribeKey } from 'valtio/utils'
+
 import { subscribe, proxy } from 'valtio'
 
 import handleError from './internal/handleError'
@@ -12,6 +12,7 @@ import animate from './internal/animate'
 import createUseScreenShake from './internal/useScreenShake'
 import { createGetTextures } from './internal/getTextures'
 import type ExtendedParkMiller from './internal/random'
+import createSubscribeKey from './internal/subscribeKey'
 
 const updateDurations: number[] = []
 
@@ -58,6 +59,8 @@ export default function createSetScene<
   let container: Container | undefined
 
   let input: Input<Keys> | undefined
+
+  let unsubscribeFromStateFunctions: Array<() => void> = []
 
   let tickerSceneFn: (ticker: Ticker) => void | undefined
 
@@ -110,6 +113,11 @@ export default function createSetScene<
     }
     ticker.add(tickerSceneFn)
 
+    for (const unsubscribeFromStateFunction of unsubscribeFromStateFunctions) {
+      unsubscribeFromStateFunction()
+    }
+    unsubscribeFromStateFunctions = []
+
     if (input) {
       input.unsubscribe()
     }
@@ -123,7 +131,7 @@ export default function createSetScene<
           textures,
           container,
           state: state,
-          subscribeKey,
+          subscribeKey: createSubscribeKey(unsubscribeFromStateFunctions),
           subscribe,
           proxy,
           timer: {
