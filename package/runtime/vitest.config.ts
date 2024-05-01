@@ -4,7 +4,7 @@ export default defineConfig({
   test: {
     server: {
       deps: {
-        inline: ['tinykeys'],
+        inline: ['tinykeys', 'nano-pool'],
       },
     },
   },
