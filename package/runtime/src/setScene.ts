@@ -13,6 +13,7 @@ import createUseScreenShake from './internal/useScreenShake'
 import { createGetTextures } from './internal/getTextures'
 import type ExtendedParkMiller from './internal/random'
 import createSubscribeKey from './internal/subscribeKey'
+import createSubscribe from './internal/subscribe'
 
 const updateDurations: number[] = []
 
@@ -132,7 +133,7 @@ export default function createSetScene<
           container,
           state: state,
           subscribeKey: createSubscribeKey(unsubscribeFromStateFunctions),
-          subscribe,
+          subscribe: createSubscribe(unsubscribeFromStateFunctions),
           proxy,
           timer: {
             delay: timer.delay,

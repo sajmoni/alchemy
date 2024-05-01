@@ -10,6 +10,8 @@ import type animate from './internal/animate'
 import type createUseScreenShake from './internal/useScreenShake'
 import type { createGetTextures } from './internal/getTextures'
 import type ExtendedParkMiller from './internal/random'
+import type createSubscribeKey from './internal/subscribeKey'
+import type createSubscribe from './internal/subscribe'
 
 export type Position = {
   readonly x: number
@@ -73,8 +75,8 @@ export type BaseScene<
   state: State & {
     alchemy: AlchemyState<SceneKey>
   }
-  subscribeKey: typeof subscribeKey
-  subscribe: typeof subscribe
+  subscribeKey: ReturnType<typeof createSubscribeKey>
+  subscribe: ReturnType<typeof createSubscribe>
   proxy: typeof proxy
   timer: Timer
   global: {
