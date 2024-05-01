@@ -1,5 +1,4 @@
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 
 import fs from 'fs-extra'
 import chalk from 'chalk'
@@ -130,8 +129,10 @@ export default function createAlchemyProject(gameName: string) {
     {
       title: 'Copy template files',
       task: () => {
-        const __dirname = path.dirname(fileURLToPath(import.meta.url))
-        const templateDirectory = path.join(__dirname, `../../../../template`)
+        const templateDirectory = path.join(
+          import.meta.dirname,
+          `../../template`,
+        )
 
         try {
           fs.copySync(templateDirectory, rootPath)

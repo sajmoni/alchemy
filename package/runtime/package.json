@@ -17,7 +17,7 @@
   "files": [
     "dist/"
   ],
-  "main": "dist/src/lib/index.js",
+  "main": "dist/index.js",
   "prettier": "prettier-config-one",
   "scripts": {
     "build": "rm -rf dist && tsc",

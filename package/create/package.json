@@ -19,11 +19,11 @@
   "author": "sajmoni",
   "type": "module",
   "files": [
-    "dist/package/create/src",
+    "dist/",
     "template/"
   ],
   "bin": {
-    "alc": "dist/package/create/src/index.js"
+    "alc": "dist/src/index.js"
   },
   "prettier": "prettier-config-one",
   "scripts": {
