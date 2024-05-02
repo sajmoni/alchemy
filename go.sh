@@ -10,6 +10,7 @@ npm run build
 chmod +x ./dist/src/index.js
 cd ../..
 node package/create/dist/src/index.js create game
-cpy vite.dev.config.ts game --rename=vite.config.ts 
+cp vite.dev.config.ts game
+mv -f game/vite.dev.config.ts game/vite.config.ts
 cd game 
 npm run dev
