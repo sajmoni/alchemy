@@ -18,7 +18,7 @@
     "dist/"
   ],
   "bin": {
-    "alc": "dist/package/cli/src/index.js"
+    "alc": "dist/src/index.js"
   },
   "prettier": "prettier-config-one",
   "scripts": {

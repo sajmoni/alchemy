@@ -12,7 +12,7 @@ import writePrettyFile from 'write-pretty-file'
 import typescriptPkg from 'typescript'
 const { findConfigFile, readConfigFile, sys } = typescriptPkg
 
-const dependencies = ['pixi.js', 'vite', 'alchemy-engine']
+const dependencies = ['pixi.js', 'vite', 'alchemy-engine', '@alchemy/cli']
 
 const devDependencies = ['vitest']
 
