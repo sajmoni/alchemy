@@ -33,16 +33,16 @@
   },
   "devDependencies": {
     "@types/fs-extra": "11.0.4",
-    "@types/gradient-string": "1.1.5",
-    "@types/node": "20.11.28",
+    "@types/gradient-string": "1.1.6",
+    "@types/node": "20.12.8",
     "get-bin-path": "11.0.0",
-    "np": "10.0.1",
+    "np": "10.0.5",
     "prettier": "3.2.5",
     "prettier-config-one": "0.2.1",
     "tempy": "3.1.0",
     "tsconfig-one": "0.0.9",
-    "tsx": "4.7.1",
-    "vitest": "1.4.0"
+    "tsx": "4.8.2",
+    "vitest": "1.5.3"
   },
   "dependencies": {
     "cac": "6.7.14",
@@ -50,6 +50,6 @@
     "chokidar": "3.6.0",
     "execa": "8.0.1",
     "load-json-file": "7.0.1",
-    "vite": "5.1.6"
+    "vite": "5.2.10"
   }
 }
