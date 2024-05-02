@@ -4,7 +4,7 @@ import { subscribe as valtioSubscribe } from 'valtio'
  * Same as subscribe but it also calls the callback once
  *
  * This allows you to define state first and then add the subscribers and the states will still be in sync
- * 
+ *
  * Also auto-unsubscribes when you change scenes
  */
 export default function createSubscribe(list: Array<() => void>) {

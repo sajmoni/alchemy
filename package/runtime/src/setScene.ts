@@ -1,6 +1,6 @@
 import { Application, Container, Texture, Ticker } from 'pixi.js'
 
-import { subscribe, proxy } from 'valtio'
+import { proxy } from 'valtio'
 
 import handleError from './internal/handleError'
 import initializeKeyboardInput from './internal/input'

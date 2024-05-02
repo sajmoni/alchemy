@@ -21,7 +21,7 @@
   "prettier": "prettier-config-one",
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "test": "vitest --dir src/lib --dom",
+    "test": "vitest --dir src --dom",
     "release": "npm run build && np --no-tests"
   },
   "engines": {
