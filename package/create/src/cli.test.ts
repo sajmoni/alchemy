@@ -9,10 +9,10 @@ test('createAlchemyGame', async () => {
     throw new Error('No binPath found')
   }
   const directory = temporaryDirectory({ prefix: 'hello-world' })
+  // @ts-expect-error - TODO
   const { stdout } = await execa(binPath, ['create', 'test-game'], {
     cwd: directory,
     env: {
-      // @ts-expect-error
       FORCE_COLOR: 2,
     },
   })
