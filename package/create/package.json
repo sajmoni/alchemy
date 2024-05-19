@@ -1,6 +1,6 @@
 {
-  "name": "@alchemy/create",
-  "version": "0.0.1",
+  "name": "alchemy-create",
+  "version": "0.0.0",
   "description": "Create an alchemy project from the command line",
   "keywords": [
     "alchemy-engine",

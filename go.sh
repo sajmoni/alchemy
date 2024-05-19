@@ -11,8 +11,6 @@ cd ../../package/create
 npm run build
 chmod +x ./dist/src/index.js
 cd ../..
-node package/create/dist/src/index.js create game
-cp vite.dev.config.ts game
-mv -f game/vite.dev.config.ts game/vite.config.ts
+MODE=development node package/create/dist/src/index.js create game
 cd game 
 npm run dev

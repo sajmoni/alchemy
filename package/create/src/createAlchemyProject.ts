@@ -1,4 +1,5 @@
 import path from 'node:path'
+import process from 'node:process'
 
 import fs from 'fs-extra'
 import chalk from 'chalk'
@@ -12,7 +13,16 @@ import writePrettyFile from 'write-pretty-file'
 import typescriptPkg from 'typescript'
 const { findConfigFile, readConfigFile, sys } = typescriptPkg
 
-const dependencies = ['pixi.js', 'vite', 'alchemy-engine', '@alchemy/cli']
+const externalDependencies = ['pixi.js', 'vite']
+
+const dependencies =
+  process.env['MODE'] === 'development' ?
+    [
+      ...externalDependencies,
+      path.join(import.meta.dirname, `../../../runtime`),
+      path.join(import.meta.dirname, `../../../cli`),
+    ]
+  : [...externalDependencies, 'alchemy-engine', 'alchemy-cli']
 
 const devDependencies = ['vitest']
 

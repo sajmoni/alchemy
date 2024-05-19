@@ -1,5 +1,5 @@
 {
-  "name": "@alchemy/cli",
+  "name": "alchemy-cli",
   "version": "0.0.0",
   "description": "CLI for Alchemy engine",
   "keywords": [],
