@@ -28,12 +28,13 @@
 - Noise (Recommendation: [simplex-noise](https://github.com/jwagner/simplex-noise.js))
 - Physics
 - Network
-- ***
+
+---
 
 ## Getting started
 
 ```console
-npx alchemy-engine@latest create <game-name>
+npx alchemy-create@latest create <game-name>
 ```
 
 ---
@@ -45,65 +46,65 @@ npx alchemy-engine@latest create <game-name>
 #### sprite
 
 ```ts
-import { sprite } from 'alchemy-engine'
+import { sprite } from "alchemy-engine";
 
-sprite(container, textures['./square-1'])
+sprite(container, textures["./square-1"]);
 ```
 
 #### animatedSprite
 
 ```ts
-import { animatedSprite } from 'alchemy-engine'
+import { animatedSprite } from "alchemy-engine";
 
-animatedSprite(container, [textures['./square-1']])
+animatedSprite(container, [textures["./square-1"]]);
 ```
 
 #### text
 
 ```ts
-import { text } from 'alchemy-engine'
+import { text } from "alchemy-engine";
 
-text(container, textStyle, 'Hello world')
+text(container, textStyle, "Hello world");
 ```
 
 #### htmlText
 
 ```ts
-import { htmlText } from 'alchemy-engine'
+import { htmlText } from "alchemy-engine";
 
-htmlText(container, textStyle, 'Hello world')
+htmlText(container, textStyle, "Hello world");
 ```
 
 #### bitmapText
 
 ```ts
-import { bitmapText } from 'alchemy-engine'
+import { bitmapText } from "alchemy-engine";
 
-bitmapText(container, textStyle, 'Hello world')
+bitmapText(container, textStyle, "Hello world");
 ```
 
 #### container
 
 ```ts
-import { container } from 'alchemy-engine'
+import { container } from "alchemy-engine";
 
-container(_container)
+container(_container);
 ```
 
 #### graphics
 
 ```ts
-import { graphics } from 'alchemy-engine'
+import { graphics } from "alchemy-engine";
 
-graphics(container)
+graphics(container);
 ```
 
 #### rectangle
 
 ```ts
-import { rectangle } from 'alchemy-engine'
+import { rectangle } from "alchemy-engine";
 
-rectangle(container, { x: 0, y: 0, width: 10, height: 10 })
+rectangle(container, { x: 0, y: 0, width: 10, height: 10 });
 ```
 
 ### event
@@ -111,26 +112,26 @@ rectangle(container, { x: 0, y: 0, width: 10, height: 10 })
 #### onClick
 
 ```ts
-import { onClick } from 'alchemy-engine'
+import { onClick } from "alchemy-engine";
 
 onClick(container, () => {
-  console.log('Clicked!')
-})
+  console.log("Clicked!");
+});
 ```
 
 #### onHover
 
 ```ts
-import { onHover } from 'alchemy-engine'
+import { onHover } from "alchemy-engine";
 
 onHover(container, {
   onOver() {
-    console.log('Hovered!')
+    console.log("Hovered!");
   },
   onOut() {
-    console.log('Not hovered!')
+    console.log("Not hovered!");
   },
-})
+});
 ```
 
 ### sync
@@ -146,9 +147,9 @@ onHover(container, {
 Constants for all arrow keys
 
 ```ts
-import { arrowKeys } from 'alchemy-engine'
+import { arrowKeys } from "alchemy-engine";
 
-export const keys = ['a', 'w', 's', 'd', ...arrowKeys] as const
+export const keys = ["a", "w", "s", "d", ...arrowKeys] as const;
 ```
 
 ### position
@@ -170,11 +171,11 @@ TODO
 Nicely log a Pixi object. Set `label` property for best result.
 
 ```ts
-import { logObject } from 'alchemy-engine'
+import { logObject } from "alchemy-engine";
 
-const sprite = new Sprite()
-sprite.label = 'sprite'
-logObject(sprite)
+const sprite = new Sprite();
+sprite.label = "sprite";
+logObject(sprite);
 ```
 
 ### boundsToString
@@ -182,9 +183,9 @@ logObject(sprite)
 Enables easier logging of sprite bounds
 
 ```ts
-import { boundsToString } from 'alchemy-engine'
+import { boundsToString } from "alchemy-engine";
 
-console.log(boundsToString(sprite))
+console.log(boundsToString(sprite));
 ```
 
 ### contains
@@ -192,7 +193,7 @@ console.log(boundsToString(sprite))
 Check if a point is within the bounds of an object
 
 ```ts
-import { contains } from 'alchemy-engine'
+import { contains } from "alchemy-engine";
 
 if (contains(sprite, { x: 1, y: 1 })) {
   // point is within bounds of sprite
@@ -204,7 +205,7 @@ if (contains(sprite, { x: 1, y: 1 })) {
 Check if the bounds of two objects are intersecting
 
 ```ts
-import { intersects } from 'alchemy-engine'
+import { intersects } from "alchemy-engine";
 
 if (intersects(sprite1, sprite2)) {
   // sprites are intersecting
@@ -216,7 +217,7 @@ if (intersects(sprite1, sprite2)) {
 #### isAnimatedSprite
 
 ```ts
-import { isAnimatedSprite } from 'alchemy-engine'
+import { isAnimatedSprite } from "alchemy-engine";
 
 if (isAnimatedSprite(sprite)) {
   // sprite is of type AnimatedSprite
@@ -228,11 +229,11 @@ if (isAnimatedSprite(sprite)) {
 This function can be used to for example load a level from image data
 
 ```ts
-import { loadDataFromImage } from 'alchemy-engine'
-import map from '~/public/asset/map.png?url'
+import { loadDataFromImage } from "alchemy-engine";
+import map from "~/public/asset/map.png?url";
 
-const { pixels, width, height } = await loadDataFromImage(map)
-console.log(pixels)
+const { pixels, width, height } = await loadDataFromImage(map);
+console.log(pixels);
 // ['255-255-255', '0-0-0']
 ```
 
@@ -265,12 +266,12 @@ The arguments passed to a scene
 An object containing all textures by name
 
 ```ts
-Record<TextureName, Texture>
+Record<TextureName, Texture>;
 ```
 
 ```ts
 function myScene({ textures, container }: Scene) {
-  sprite(container, textures['./square1'])
+  sprite(container, textures["./square1"]);
 }
 ```
 
@@ -280,8 +281,8 @@ Get multiple textures
 
 ```ts
 function myScene({ getTextures, container }: Scene) {
-  const textures = getTextures(['./texture-1', './texture-2'])
-  animatedSprite(container, textures)
+  const textures = getTextures(["./texture-1", "./texture-2"]);
+  animatedSprite(container, textures);
 }
 ```
 
@@ -290,8 +291,8 @@ function myScene({ getTextures, container }: Scene) {
 Enable the use of screen shake
 
 ```ts
-const screenShake = useScreenShake(container)
-screenShake.add(0.5)
+const screenShake = useScreenShake(container);
+screenShake.add(0.5);
 ```
 
 ### animate
@@ -315,19 +316,19 @@ The Pixi `Application` instance
 ### music
 
 ```ts
-Record<MusicName, Howl>
+Record<MusicName, Howl>;
 ```
 
 ### sound
 
 ```ts
-Record<SoundName, Howl>
+Record<SoundName, Howl>;
 ```
 
 ### setScene
 
 ```ts
-setScene('mainMenu')
+setScene("mainMenu");
 ```
 
 ### global
@@ -354,7 +355,7 @@ Re-exported from [valtio](https://github.com/pmndrs/valtio)
 
 ```ts
 // Wait 100 updates
-await delay(100)
+await delay(100);
 ```
 
 **repeatUntil**
@@ -362,7 +363,7 @@ await delay(100)
 Execute a callback every update until `duration` is reached
 
 ```ts
-await repeatUntil(3, (time, deltaTime) => {})
+await repeatUntil(3, (time, deltaTime) => {});
 ```
 
 **repeatEvery**
@@ -372,7 +373,7 @@ Execute a callback forever every `interval` updates
 Returns a `cancel` function
 
 ```ts
-const cancel = repeatEvery(3, (time, deltaTime) => {})
+const cancel = repeatEvery(3, (time, deltaTime) => {});
 ```
 
 ### input
@@ -382,14 +383,14 @@ const cancel = repeatEvery(3, (time, deltaTime) => {})
 ```ts
 debouncedKey(
   // Key id
-  'd',
+  "d",
   // Callback
   () => {
-    s.position.x += 1
+    s.position.x += 1;
   },
   // Delay between key presses
-  10,
-)
+  10
+);
 ```
 
 **isKeyDown**
@@ -398,13 +399,13 @@ Check if a key is currently being pressed
 
 ```ts
 repeatEvery(1, () => {
-  if (isKeyDown(['a', 'ArrowLeft'])) {
-    s.position.x -= 1
+  if (isKeyDown(["a", "ArrowLeft"])) {
+    s.position.x -= 1;
   }
-  if (isKeyDown(['d', 'ArrowRight'])) {
-    s.position.x += 1
+  if (isKeyDown(["d", "ArrowRight"])) {
+    s.position.x += 1;
   }
-})
+});
 ```
 
 ### random
@@ -421,18 +422,12 @@ The module uses the same API as [park-miller](https://github.com/sindresorhus/pa
 
 ## CLI
 
-### create
-
-```console
-npx alchemy-engine@latest create <game-name>
-```
-
 ### dev
 
 Start the dev server. Listens to changes to source code, `sprite`, `src/public/asset/sound` and `src/public/asset/music` folders.
 
 ```console
-npx alchemy-engine@latest dev
+npx alchemy-cli dev
 ```
 
 ### sprite
@@ -440,7 +435,7 @@ npx alchemy-engine@latest dev
 Generate sprite sheet
 
 ```console
-npx alchemy-engine@latest sprite
+npx alchemy-cli sprite
 ```
 
 ### sound
@@ -448,7 +443,7 @@ npx alchemy-engine@latest sprite
 Load sounds
 
 ```console
-npx alchemy-engine@latest sound
+npx alchemy-cli sound
 ```
 
 #### Dev
