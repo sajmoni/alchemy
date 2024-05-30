@@ -3,7 +3,7 @@ import cac from 'cac'
 import createSpriteSheet from './createSpriteSheet.js'
 import loadSounds from './loadSounds.js'
 import devServer from './devServer.js'
-import packageJson from '../package.json' assert { type: 'json' }
+import packageJson from '../package.json' with { type: 'json' }
 
 const cli = cac('alc')
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import cac from 'cac'
 import createAlchemyProject from './createAlchemyProject.js'
-import packageJson from '../package.json' assert { type: 'json' }
+import packageJson from '../package.json' with { type: 'json' }
 
 const cli = cac('create-alchemy')
 
