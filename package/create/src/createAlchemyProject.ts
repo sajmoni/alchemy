@@ -112,6 +112,8 @@ export default function createAlchemyProject(gameName: string) {
           build: 'vite build',
           preview: 'vite preview',
           test: 'vitest',
+          'deploy:production': 'gh workflow run "Deploy to production"',
+          'deploy:staging': 'gh workflow run "Deploy to staging"',
         }
 
         const packageJson = await readPackage({
