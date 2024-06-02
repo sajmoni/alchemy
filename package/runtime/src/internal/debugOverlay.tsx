@@ -25,12 +25,18 @@ import { graphics } from '../module/create'
 import getAllLeafChildren from '../module/getAllLeafChildren'
 import initializeInspectMode, { drawHitbox } from './inspectMode'
 
-export type Panel<State> = Array<{
-  type: string
-  label: string
-  // TODO: Different types, not only string
-  getValue: (state: State) => string
-}>
+export type Panel<State> = Array<
+  | {
+      type: 'string'
+      label: string
+      getValue: (state: State) => string
+    }
+  | {
+      type: 'number'
+      label: string
+      getValue: (state: State) => number
+    }
+>
 
 export default function initializeDebugOverlay<
   UserState extends object,
@@ -67,7 +73,7 @@ export default function initializeDebugOverlay<
   gridGraphics.visible = false
 
   const scenesToDisplay = Object.values(sceneKeys).map((scene) => ({
-    label: scene, 
+    label: scene,
     value: scene,
   }))
 
@@ -251,6 +257,15 @@ export default function initializeDebugOverlay<
             if (p.type === 'string') {
               return (
                 <StringValue
+                  key={index}
+                  label={p.label}
+                  getValue={() => p.getValue(state)}
+                />
+              )
+            }
+            if (p.type === 'number') {
+              return (
+                <NumericValue
                   key={index}
                   label={p.label}
                   getValue={() => p.getValue(state)}
