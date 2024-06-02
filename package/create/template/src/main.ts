@@ -29,4 +29,13 @@ createGame({
   config: {
     pixelPerfect: true,
   },
+  panel: [
+    {
+      type: 'string',
+      label: 'gold',
+      getValue: (state) => {
+        return state.gold.toString()
+      },
+    },
+  ],
 })

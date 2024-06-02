@@ -59,7 +59,7 @@ export default async function createGame<
     pixelPerfect?: boolean
     autoPause?: boolean
   }
-  panel?: Panel
+  panel?: Panel<State>
 }) {
   if (config.pixelPerfect) {
     // antialias: true has to be set on application

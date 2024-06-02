@@ -25,15 +25,20 @@ import { graphics } from '../module/create'
 import getAllLeafChildren from '../module/getAllLeafChildren'
 import initializeInspectMode, { drawHitbox } from './inspectMode'
 
-export type Panel = Array<{
+export type Panel<State> = Array<{
   type: string
   label: string
-  getValue: () => string
+  // TODO: Different types, not only string
+  getValue: (state: State) => string
 }>
 
 export default function initializeDebugOverlay<
-  State extends object,
+  UserState extends object,
   SceneKey extends string,
+  // TODO: Use everywhere
+  State extends UserState & {
+    alchemy: AlchemyState<SceneKey>
+  },
 >({
   sceneKeys,
   state,
@@ -44,14 +49,12 @@ export default function initializeDebugOverlay<
   panel,
 }: {
   sceneKeys: SceneKey[]
-  state: State & {
-    alchemy: AlchemyState<SceneKey>
-  }
+  state: State
   app: Application
   ticker: Ticker
   setScene: (sceneKey: SceneKey) => Promise<void>
   scene: SceneKey
-  panel?: Panel | undefined
+  panel?: Panel<State> | undefined
 }) {
   const storedScene = createStoredValue('scene', scene)
 
@@ -250,7 +253,7 @@ export default function initializeDebugOverlay<
                 <StringValue
                   key={index}
                   label={p.label}
-                  getValue={p.getValue}
+                  getValue={() => p.getValue(state)}
                 />
               )
             }
