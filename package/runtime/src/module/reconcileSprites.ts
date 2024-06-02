@@ -12,7 +12,6 @@ export function reconcileSprites<
   Item extends { id: string | number },
   PixiType extends Container,
 >({
-  // TODO: Enforce this to be proxy state from valtio somehow
   /**
    * Has to be a Proxy
    */

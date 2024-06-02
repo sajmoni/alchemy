@@ -1,12 +1,4 @@
-import type { Graphics, Renderer } from 'pixi.js'
-
-type GetCellsArgs = {
-  width: number
-  height: number
-  numberOfCells: number
-  resolution: number
-  scale: number
-}
+import type { Graphics, Rectangle } from 'pixi.js'
 
 type Cell = {
   x: number
@@ -19,11 +11,13 @@ export const getCells = ({
   width,
   height,
   numberOfCells,
-  resolution,
-  scale,
-}: GetCellsArgs): Cell[] => {
-  const cellWidth = width / numberOfCells / resolution / scale
-  const cellHeight = height / numberOfCells / resolution / scale
+}: {
+  width: number
+  height: number
+  numberOfCells: number
+}): Cell[] => {
+  const cellWidth = width / numberOfCells
+  const cellHeight = height / numberOfCells
 
   let cells = []
   for (let x = 0; x < numberOfCells; x++) {
@@ -41,20 +35,18 @@ export const getCells = ({
 }
 
 export default function showGrid(
-  renderer: Renderer,
+  screen: Rectangle,
   graphics: Graphics,
   numberOfCells = 2,
 ): void {
-  const { resolution, width, height } = renderer
   const cells = getCells({
-    resolution,
-    width,
-    height,
+    width: screen.width,
+    height: screen.height,
     numberOfCells,
-    scale: 1,
   })
 
-  for (const { x, y, width, height } of cells) {
+  for (const cell of cells) {
+    const { x, y, width, height } = cell
     graphics.rect(x, y, width, height)
   }
 }

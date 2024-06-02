@@ -62,12 +62,12 @@ export default function initializeDebugOverlay<
   gridGraphics.zIndex = 9999
   gridGraphics.label = 'gridGraphics'
   app.stage.addChild(gridGraphics)
-  gridGraphics.stroke({ width: 2, color: 0xff00ff })
-  showGrid(app.renderer, gridGraphics, 3)
+  showGrid(app.screen, gridGraphics, 3)
+  gridGraphics.stroke({ width: 2, color: 0xdddd33 })
   gridGraphics.visible = false
 
   const scenesToDisplay = Object.values(sceneKeys).map((scene) => ({
-    label: scene,
+    label: scene, 
     value: scene,
   }))
 
