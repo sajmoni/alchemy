@@ -1,6 +1,7 @@
 import path from 'node:path'
 import fs from 'node:fs/promises'
 import os from 'node:os'
+
 import { loadJsonFile } from 'load-json-file'
 import chalk from 'chalk'
 
@@ -34,7 +35,6 @@ const getNotExistingInFileSystem = (
 
 export default async function loadSounds() {
   const rootPath = './src'
-  // TODO: Make this path configurable
   const soundsJsonPath = path.join(rootPath, `sounds.json`)
   const soundFilesPath = path.join(rootPath, `public/asset/sound`)
   const musicFilesPath = path.join(rootPath, `public/asset/music`)

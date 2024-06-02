@@ -59,7 +59,7 @@
     "read-pkg": "9.0.1",
     "sort-package-json": "2.10.0",
     "typescript": "5.4.5",
-    "write-pkg": "7.0.0",
+    "write-package": "7.0.1",
     "write-pretty-file": "0.2.0"
   }
 }

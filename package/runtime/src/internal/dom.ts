@@ -14,9 +14,5 @@ export default function initializeDOM({ app }: { app: Application }): void {
   // Prevent default browser right-click behavior
   gameElement.setAttribute('oncontextmenu', 'return false;')
 
-  // TODO: This doesn't do anything
-  // gameElement.style.width = `${app.renderer.width}px`
-  // gameElement.style.height = `${app.renderer.height}px`
-
   containerElement.appendChild(gameElement)
 }
