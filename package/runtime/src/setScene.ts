@@ -14,6 +14,7 @@ import { createGetTextures } from './internal/getTextures'
 import type ExtendedParkMiller from './internal/random'
 import createSubscribeKey from './internal/subscribeKey'
 import createSubscribe from './internal/subscribe'
+import { createGetTexturesInFolder } from './internal/getTexturesInFolder'
 
 const updateDurations: number[] = []
 
@@ -155,6 +156,7 @@ export default function createSetScene<
           animate: animate(timer),
           useScreenShake: createUseScreenShake(timer),
           getTextures: createGetTextures(textures),
+          getTexturesInFolder: createGetTexturesInFolder(textures),
           random,
         })
       } catch (error) {

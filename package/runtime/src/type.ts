@@ -11,6 +11,7 @@ import type { createGetTextures } from './internal/getTextures'
 import type ExtendedParkMiller from './internal/random'
 import type createSubscribeKey from './internal/subscribeKey'
 import type createSubscribe from './internal/subscribe'
+import type { createGetTexturesInFolder } from './internal/getTexturesInFolder'
 
 export type Position = {
   readonly x: number
@@ -60,6 +61,9 @@ export type ScreenShake = ReturnType<UseScreenShake>
 export type GetTextures<TextureName extends string> = ReturnType<
   typeof createGetTextures<TextureName>
 >
+export type GetTexturesInFolder<TextureName extends string> = ReturnType<
+  typeof createGetTexturesInFolder<TextureName>
+>
 
 export type BaseScene<
   Keys extends readonly string[],
@@ -90,6 +94,7 @@ export type BaseScene<
   animate: Animate
   useScreenShake: UseScreenShake
   getTextures: GetTextures<TextureName>
+  getTexturesInFolder: GetTexturesInFolder<TextureName>
   random: ExtendedParkMiller
 }
 

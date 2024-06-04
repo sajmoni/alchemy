@@ -2,13 +2,16 @@ import type { Texture } from 'pixi.js'
 import { objectEntries } from 'ts-extras'
 import type { Textures } from '../type'
 
-export function createGetTexturesInFolder<
-  TextureName extends string,
-  FolderName extends string,
->(textures: Textures<TextureName>) {
-  return function getTexturesInFolder(folderName: FolderName): Texture[] {
+function getFolderName(input: string): string {
+  return input.substring(0, input.indexOf('/'))
+}
+
+export function createGetTexturesInFolder<TextureName extends string>(
+  textures: Textures<TextureName>,
+) {
+  return function getTexturesInFolder(folderName: string): Texture[] {
     return objectEntries(textures)
-      .filter(([key]) => key.includes(folderName))
+      .filter(([key]) => getFolderName(key).includes(folderName))
       .map(([, texture]) => texture)
   }
 }
