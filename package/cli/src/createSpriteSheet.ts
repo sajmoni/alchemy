@@ -3,6 +3,8 @@ import { chdir } from 'node:process'
 import chalk from 'chalk'
 import { execa } from 'execa'
 
+export const SPRITESHEET_FOLDER_PATH = '/src/public/asset/spritesheet'
+
 export default async function createSpriteSheet() {
   console.log()
   console.log(chalk.blue('Generating sprite sheet...'))
@@ -17,25 +19,25 @@ export default async function createSpriteSheet() {
         '*.{png,ase}',
         '**/*.{png,ase}',
         '--sheet',
-        '../src/public/asset/spritesheet/sheet.png',
+        `..${SPRITESHEET_FOLDER_PATH}/sheet.png`,
         '--data',
-        '../src/public/asset/spritesheet/data.json',
+        `..${SPRITESHEET_FOLDER_PATH}/data.json`,
         '--filename-format',
-        "'{path}/{title}-{frame1}'",
+        "'{title}-{frame1}'",
         '--extrude',
       ],
       {
         shell: true,
       },
     )
-    console.log(stdout)
+    console.log('Aseprite output: ', stdout)
 
     await execa('prettier', [
       '--write',
       '../src/public/asset/spritesheet/data.json',
     ])
     console.log()
-    console.log(chalk.green('Script executed successfully'))
+    console.log(chalk.green('Script executed successfully!'))
     console.log()
   } catch (error) {
     console.error('Failed to generate sprite sheet: ', error)
