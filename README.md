@@ -4,8 +4,10 @@
 
 ## :sparkles: Features
 
+- 100% Type-Safe
+- Batteries included (get started using one CLI command)
 - Reactive - Re-render view when state changes
-- Pooling - Create all game object up front - in render never add or remove game objects
+- Object pooling
 - Timer - Run logic every X ticks
 - Animations
 - Debug overlay
@@ -16,18 +18,7 @@
 - CLI - Create project and components
 - CI - Workflows to build, test and deploy to `itch.io`
 - Screen shake
-- 100% Type-Safe
-- Batteries included (get started using one CLI command)
 - Uses [`vite`](https://github.com/vitejs/vite) for a super fast and modern dev server
-
----
-
-## :no_good: Out of scope
-
-- State machine (Recommendation: [xstate](https://github.com/statelyai/xstate/tree/main/packages/xstate-fsm))
-- Noise (Recommendation: [simplex-noise](https://github.com/jwagner/simplex-noise.js))
-- Physics
-- Network
 
 ---
 
@@ -41,7 +32,11 @@ npx alchemy-create@latest create <game-name>
 
 ## Module API
 
+These are imported directly from `alchemy-engine`
+
 ### create
+
+Convenience functions to create Pixi objects
 
 #### sprite
 
@@ -110,6 +105,8 @@ rectangle(container, { x: 0, y: 0, width: 10, height: 10 });
 ### event
 
 #### onClick
+
+Convenience functions for mouse input
 
 ```ts
 import { onClick } from "alchemy-engine";
@@ -449,3 +446,10 @@ npx alchemy-cli sound
 #### Dev
 
 Run `./go.sh` to test that things work
+
+---
+
+## See also
+
+- State machine: [xstate](https://github.com/statelyai/xstate/tree/main/packages/xstate-fsm)
+- Noise [simplex-noise](https://github.com/jwagner/simplex-noise.js)
