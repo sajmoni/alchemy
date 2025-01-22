@@ -1,0 +1,10 @@
+name: Deploy to Staging
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    uses: sajmoni/alchemy/.github/workflows/deploy.yml@main
+    with:
+      game_name: foo/bar-beta:web
+    secrets:
+      BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}

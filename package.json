@@ -1,0 +1,87 @@
+{
+  "name": "alchemy-engine",
+  "version": "0.1.4",
+  "description": "Create 2D browser games with pixi.js",
+  "keywords": [],
+  "homepage": "https://github.com/sajmoni/alchemy#readme",
+  "bugs": {
+    "url": "https://github.com/sajmoni/alchemy/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sajmoni/alchemy.git"
+  },
+  "license": "MIT",
+  "author": "sajmoni",
+  "type": "module",
+  "files": [
+    "dist/"
+  ],
+  "bin": {
+    "alc": "dist/src/index.js"
+  },
+  "main": "dist/index.js",
+  "prettier": "prettier-config-one",
+  "scripts": {
+    "s": "tsx .",
+    "build": "rm -rf dist && tsc",
+    "test": "vitest --dir src --dom",
+    "test:cli": "npm run build && chmod +x dist/src/cli/index.js && vitest --dir src/cli",
+    "release": "npm run build && np --no-tests"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "20.12.12",
+    "@types/react": "18.3.2",
+    "@types/react-dom": "18.3.0",
+    "get-bin-path": "11.0.0",
+    "happy-dom": "14.11.0",
+    "np": "10.0.5",
+    "pixi.js": "8.1.4",
+    "prettier": "3.2.5",
+    "prettier-config-one": "0.2.1",
+    "tempy": "3.1.0",
+    "tsconfig-one": "0.0.9",
+    "tsx": "4.10.5",
+    "vitest": "1.6.0",
+    "@types/fs-extra": "11.0.4",
+    "@types/gradient-string": "1.1.6"
+  },
+  "peerDependencies": {
+    "pixi.js": "8.x"
+  },
+  "dependencies": {
+    "cac": "6.7.14",
+    "chalk": "5.3.0",
+    "execa": "9.1.0",
+    "fs-extra": "11.2.0",
+    "gradient-string": "2.0.2",
+    "listr2": "8.2.1",
+    "read-pkg": "9.0.1",
+    "sort-package-json": "2.10.0",
+    "typescript": "5.4.5",
+    "write-package": "7.0.1",
+    "write-pretty-file": "0.2.0",
+    "@types/howler": "2.2.11",
+    "howler": "2.2.4",
+    "nano-panel": "0.2.2",
+    "nano-pool": "0.1.0",
+    "park-miller": "2.0.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remeda": "1.61.0",
+    "round-to": "6.0.0",
+    "screen-shake": "0.0.5",
+    "tiny-toolkit": "0.3.0",
+    "tinykeys": "2.1.0",
+    "ts-extras": "0.11.0",
+    "type-fest": "4.18.2",
+    "typed-ls": "0.2.0",
+    "valtio": "1.13.2",
+    "chokidar": "3.6.0",
+    "load-json-file": "7.0.1",
+    "vite": "5.3.1"
+  }
+}
