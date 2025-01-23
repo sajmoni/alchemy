@@ -18,8 +18,8 @@
     "dist/",
     "template/"
   ],
-  "bin": "dist/src/index.js",
-  "main": "dist/src/index.js",
+  "bin": "dist/src/cli/index.js",
+  "main": "dist/src/runtime/index.js",
   "prettier": "prettier-config-one",
   "scripts": {
     "s": "tsx .",
