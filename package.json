@@ -15,13 +15,17 @@
   "author": "sajmoni",
   "type": "module",
   "files": [
-    "dist/"
+    "dist/",
+    "template/"
   ],
-  "main": "dist/index.js",
+  "bin": "dist/src/index.js",
+  "main": "dist/src/index.js",
   "prettier": "prettier-config-one",
   "scripts": {
-    "build": "rm -rf dist && tsc",
+    "s": "tsx .",
+    "build": "rm -rf dist && tsc && tsc --project tsconfig.prod.json",
     "test": "vitest --dir src --dom",
+    "test:cli": "npm run build && chmod +x dist/src/cli/index.js && vitest --dir src/cli",
     "release": "npm run build && np --no-tests"
   },
   "engines": {
@@ -40,12 +44,25 @@
     "tempy": "3.1.0",
     "tsconfig-one": "0.0.9",
     "tsx": "4.10.5",
-    "vitest": "1.6.0"
+    "vitest": "1.6.0",
+    "@types/fs-extra": "11.0.4",
+    "@types/gradient-string": "1.1.6"
   },
   "peerDependencies": {
     "pixi.js": "8.x"
   },
   "dependencies": {
+    "cac": "6.7.14",
+    "chalk": "5.3.0",
+    "execa": "9.1.0",
+    "fs-extra": "11.2.0",
+    "gradient-string": "2.0.2",
+    "listr2": "8.2.1",
+    "read-pkg": "9.0.1",
+    "sort-package-json": "2.10.0",
+    "typescript": "5.4.5",
+    "write-package": "7.0.1",
+    "write-pretty-file": "0.2.0",
     "@types/howler": "2.2.11",
     "howler": "2.2.4",
     "nano-panel": "0.2.2",
@@ -62,6 +79,8 @@
     "type-fest": "4.18.2",
     "typed-ls": "0.2.0",
     "valtio": "1.13.2",
-    "vite": "5.2.11"
+    "chokidar": "3.6.0",
+    "load-json-file": "7.0.1",
+    "vite": "5.3.1"
   }
 }

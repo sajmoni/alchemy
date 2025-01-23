@@ -5,6 +5,7 @@
     "outDir": "dist",
     "incremental": false,
     "declaration": true,
+    "noEmit": true,
     "jsx": "react",
   },
   "include": ["src"],

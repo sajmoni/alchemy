@@ -3,9 +3,14 @@ import cac from 'cac'
 import createSpriteSheet from './createSpriteSheet.js'
 import loadSounds from './loadSounds.js'
 import devServer from './devServer.js'
-import packageJson from '../package.json' with { type: 'json' }
+import createAlchemyProject from './createAlchemyProject.js'
+import packageJson from '../../package.json' with { type: 'json' }
 
 const cli = cac('alc')
+
+cli.command('create [game-name]', 'Create a new game').action((gameName) => {
+  createAlchemyProject(gameName)
+})
 
 cli.command('sound', 'Load sounds from the sounds folder').action(() => {
   loadSounds()

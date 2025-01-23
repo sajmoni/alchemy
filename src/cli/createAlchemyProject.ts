@@ -17,12 +17,8 @@ const externalDependencies = ['pixi.js', 'vite']
 
 const dependencies =
   process.env['MODE'] === 'development' ?
-    [
-      ...externalDependencies,
-      path.join(import.meta.dirname, `../../../runtime`),
-      path.join(import.meta.dirname, `../../../cli`),
-    ]
-  : [...externalDependencies, 'alchemy-engine', 'alchemy-cli']
+    [...externalDependencies, path.join(import.meta.dirname, `../../../`)]
+  : [...externalDependencies, 'alchemy-engine']
 
 const devDependencies = ['vitest']
 
@@ -108,7 +104,7 @@ export default function createAlchemyProject(gameName: string) {
       title: 'Setup package.json',
       task: async () => {
         const scripts = {
-          dev: 'alc dev',
+          dev: 'alchemy-engine dev',
           build: 'vite build',
           preview: 'vite preview',
           test: 'vitest',
@@ -143,7 +139,7 @@ export default function createAlchemyProject(gameName: string) {
       task: () => {
         const templateDirectory = path.join(
           import.meta.dirname,
-          `../../template`,
+          `../../../template`,
         )
 
         try {

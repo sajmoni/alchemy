@@ -3,14 +3,8 @@
 set -e
 
 rm -rf game
-cd package/runtime
 npm run build
-cd ../../package/cli
-npm run build
-cd ../../package/create
-npm run build
-chmod +x ./dist/src/index.js
-cd ../..
-MODE=development node package/create/dist/src/index.js create game
+chmod +x ./dist/src/cli/index.js
+MODE=development node dist/src/cli/index.js create game
 cd game 
 npm run dev
