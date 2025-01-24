@@ -10,7 +10,6 @@ export default function initializeDOM({ app }: { app: Application }): void {
 
   const gameElement = document.createElement('div')
 
-  // @ts-expect-error - Some strange error
   gameElement.append(app.canvas)
   // Prevent default browser right-click behavior
   gameElement.setAttribute('oncontextmenu', 'return false;')
