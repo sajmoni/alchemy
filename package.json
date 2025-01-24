@@ -78,7 +78,7 @@
     "ts-extras": "0.11.0",
     "type-fest": "4.18.2",
     "typed-ls": "0.2.0",
-    "valtio": "1.13.2",
+    "valtio": "2.1.2",
     "chokidar": "3.6.0",
     "load-json-file": "7.0.1",
     "vite": "5.3.1"
