@@ -2,7 +2,7 @@ name: QA
 on: workflow_call
 
 env:
-  NODE_VERSION: 20
+  NODE_VERSION: 22
 
 jobs:
   qa:
