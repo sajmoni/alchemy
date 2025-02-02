@@ -11,6 +11,12 @@ export default defineConfig({
     cssCodeSplit: false,
     emptyOutDir: true,
     chunkSizeWarningLimit: 2000,
+    // Fix for issue when building with rollup
+    rollupOptions: {
+      output: {
+        inlineDynamicImports: true,
+      },
+    },
   },
   resolve: {
     alias: {
