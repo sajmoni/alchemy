@@ -1,8 +1,8 @@
 import path from 'node:path'
 import process from 'node:process'
 import { styleText } from 'node:util'
+import { cpSync, existsSync, mkdirSync } from 'node:fs'
 
-import fs from 'fs-extra'
 import { execa } from 'execa'
 import { Listr } from 'listr2'
 import { readPackage } from 'read-pkg'
@@ -38,11 +38,11 @@ export default function createAlchemyProject(gameName: string) {
     {
       title: 'Create project folder',
       task: () => {
-        if (fs.existsSync(rootPath)) {
+        if (existsSync(rootPath)) {
           throw new Error('Project folder already exists')
         }
 
-        fs.mkdirSync(rootPath)
+        mkdirSync(rootPath, { recursive: true })
         try {
           process.chdir(rootPath)
         } catch {
@@ -143,7 +143,7 @@ export default function createAlchemyProject(gameName: string) {
         )
 
         try {
-          fs.copySync(templateDirectory, rootPath)
+          cpSync(templateDirectory, rootPath, { recursive: true })
         } catch (error: any) {
           throw new Error(`Could not copy template files: ${error.message}`)
         }
@@ -195,10 +195,12 @@ export default function createAlchemyProject(gameName: string) {
   Good luck!
   `)
     })
-    .catch((error: any) => {
-      console.log()
-      console.error(styleText('red', error))
-      console.log()
-      throw new Error(error)
+    .catch((error: unknown) => {
+      if (typeof error === 'string') {
+        console.log()
+        console.error(styleText('red', error))
+        console.log()
+      }
+      throw new Error(error as any)
     })
 }
