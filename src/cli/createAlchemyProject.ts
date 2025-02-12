@@ -1,8 +1,8 @@
 import path from 'node:path'
 import process from 'node:process'
+import { styleText } from 'node:util'
 
 import fs from 'fs-extra'
-import chalk from 'chalk'
 import { execa } from 'execa'
 import { Listr } from 'listr2'
 import { readPackage } from 'read-pkg'
@@ -26,9 +26,9 @@ export default function createAlchemyProject(gameName: string) {
   const rootPath = path.resolve(gameName)
 
   console.log()
-  console.log(chalk.bold(gradient.passion(' ⚗️ Alchemy')))
+  console.log(styleText('bold', gradient.passion(' ⚗️ Alchemy')))
   console.log()
-  console.log(` Creating a new game in ${chalk.green(rootPath)}`)
+  console.log(` Creating a new game in ${styleText('green', rootPath)}`)
   console.log()
 
   const command = 'npm'
@@ -182,21 +182,22 @@ export default function createAlchemyProject(gameName: string) {
     .run()
     .then(() => {
       console.log(`
-  ${chalk.green('Success!')} Created ${chalk.cyan(gameName)} at ${chalk.cyan(
+  ${styleText('green', 'Success!')} Created ${styleText('cyan', gameName)} at ${styleText(
+    'cyan',
     rootPath,
   )}
 
   Start the game by typing:
 
-    ${chalk.cyan(`cd ${gameName}`)}
-    ${chalk.cyan('npm run dev')}
+    ${styleText('cyan', `cd ${gameName}`)}
+    ${styleText('cyan', 'npm run dev')}
 
   Good luck!
   `)
     })
     .catch((error: any) => {
       console.log()
-      console.error(chalk.red(error))
+      console.error(styleText('red', error))
       console.log()
       throw new Error(error)
     })

@@ -1,9 +1,9 @@
 import path from 'node:path'
 import fs from 'node:fs/promises'
 import os from 'node:os'
+import { styleText } from 'node:util'
 
 import { loadJsonFile } from 'load-json-file'
-import chalk from 'chalk'
 
 type SoundsJSONValues = Record<string, string>
 
@@ -94,7 +94,7 @@ export default async function loadSounds() {
   }
 
   console.log()
-  console.log(chalk.bold('== Load sounds =='))
+  console.log(styleText('bold', '== Load sounds =='))
   console.log()
 
   if (
@@ -108,30 +108,34 @@ export default async function loadSounds() {
       JSON.stringify(newSoundsJson, null, 2) + os.EOL,
     )
   } else {
-    console.log(chalk.gray.italic('No changes made'))
+    console.log(styleText(['gray', 'italic'], 'No changes made'))
     console.log()
   }
 
   if (soundsNotExistingInJson.length > 0) {
-    console.log(`New ${chalk.bold.cyan('sound')} files detected:`)
+    console.log(`New ${styleText(['bold', 'cyan'], 'sound')} files detected:`)
     console.log(soundsNotExistingInJson)
     console.log()
   }
 
   if (musicNotExistingInJson.length > 0) {
-    console.log(`New ${chalk.bold.cyan('music')} files detected:`)
+    console.log(`New ${styleText(['bold', 'cyan'], 'music')} files detected:`)
     console.log(musicNotExistingInJson)
     console.log()
   }
 
   if (soundsNotExistingInFileSystem.length > 0) {
-    console.log(`Removed ${chalk.bold.cyan('sound')} in sounds.json:`)
+    console.log(
+      `Removed ${styleText(['bold', 'cyan'], 'sound')} in sounds.json:`,
+    )
     console.log(soundsNotExistingInFileSystem)
     console.log()
   }
 
   if (musicNotExistingInFileSystem.length > 0) {
-    console.log(`Removed ${chalk.bold.cyan('music')} in sounds.json:`)
+    console.log(
+      `Removed ${styleText(['bold', 'cyan'], 'music')} in sounds.json:`,
+    )
     console.log(musicNotExistingInFileSystem)
     console.log()
   }
