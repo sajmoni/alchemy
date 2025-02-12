@@ -32,7 +32,7 @@
     "node": ">=20"
   },
   "devDependencies": {
-    "@types/node": "20.12.12",
+    "@types/node": "22.13.1",
     "@types/react": "18.3.2",
     "@types/react-dom": "18.3.0",
     "get-bin-path": "11.0.0",
