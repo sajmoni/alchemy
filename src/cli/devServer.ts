@@ -24,7 +24,6 @@ function handleSounds() {
       console.log(`${event}: Sound folder updated...`)
       loadSounds()
     })
-  // TODO: Combine with glob
   chokidar
     .watch('src/public/asset/music', {
       ignoreInitial: true,
