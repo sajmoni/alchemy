@@ -5,6 +5,8 @@ import { execa } from 'execa'
 
 export const SPRITESHEET_FOLDER_PATH = '/src/public/asset/spritesheet'
 
+const MAC_ASEPRITE_PATH = `$HOME/Library/Application\\ Support/Steam/steamapps/common/Aseprite/Aseprite.app/Contents/MacOS/aseprite`
+
 export default async function createSpriteSheet() {
   console.log()
   console.log(styleText('blue', 'Generating sprite sheet...'))
@@ -13,7 +15,7 @@ export default async function createSpriteSheet() {
     // Change directory so that "sprite" is not included in the texture name
     chdir('./sprite')
     const { stdout } = await execa(
-      `$HOME/Library/Application\\ Support/Steam/steamapps/common/Aseprite/Aseprite.app/Contents/MacOS/aseprite`,
+      MAC_ASEPRITE_PATH,
       [
         '--batch',
         '*.{png,ase}',
