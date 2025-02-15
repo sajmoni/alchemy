@@ -17,6 +17,7 @@ export default async function game(scene: Scene) {
     state,
     timer: { repeatEvery },
     sound,
+    music,
     timer,
     useScreenShake,
   } = scene
@@ -84,7 +85,10 @@ export default async function game(scene: Scene) {
   repeatEvery(60, () => {
     state.gold++
   })
+
   sound.coin.play()
+  music.bgm.loop()
+  music.bgm.play()
 
   pause(scene)
 }
