@@ -1,5 +1,5 @@
 import { Howl } from 'howler'
-import { objectFromEntries, objectEntries } from 'ts-extras'
+
 import type { Sounds } from '../type'
 
 export function initializeSound<
@@ -9,7 +9,7 @@ export function initializeSound<
   const soundPath = (fileName: string): string => `./asset/sound/${fileName}`
   const musicPath = (fileName: string): string => `./asset/music/${fileName}`
 
-  const soundEntries = objectEntries(sounds.sound)
+  const soundEntries = Object.entries(sounds.sound)
   const soundEntriesWithHowl: Array<[SoundName, Howl]> = soundEntries.map(
     ([soundName, filename]) => {
       const howlInstance = new Howl({
@@ -20,7 +20,7 @@ export function initializeSound<
     },
   )
 
-  const musicEntries = objectEntries(sounds.music)
+  const musicEntries = Object.entries(sounds.music)
   const musicEntriesWithHowl: Array<[MusicName, Howl]> = musicEntries.map(
     ([musicName, filename]) => {
       const howlInstance = new Howl({
@@ -38,19 +38,19 @@ export function initializeSound<
   }
 
   const sound: Output = {
-    sound: objectFromEntries(soundEntriesWithHowl),
-    music: objectFromEntries(musicEntriesWithHowl),
+    sound: Object.fromEntries(soundEntriesWithHowl) as Record<SoundName, Howl>,
+    music: Object.fromEntries(musicEntriesWithHowl) as Record<MusicName, Howl>,
   }
 
   const setSoundVolume = (volume: number) => {
-    for (const [, howlSound] of objectEntries(sound.sound)) {
-      howlSound.volume(volume * 0.1)
+    for (const [, howlSound] of Object.entries(sound.sound)) {
+      ;(howlSound as Howl).volume(volume * 0.1)
     }
   }
 
   const setMusicVolume = (volume: number) => {
-    for (const [, howlSound] of objectEntries(sound.music)) {
-      howlSound.volume(volume * 0.1)
+    for (const [, howlSound] of Object.entries(sound.music)) {
+      ;(howlSound as Howl).volume(volume * 0.1)
     }
   }
 
