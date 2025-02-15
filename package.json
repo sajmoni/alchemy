@@ -36,7 +36,6 @@
     "@types/react": "18.3.2",
     "@types/react-dom": "18.3.0",
     "get-bin-path": "11.0.0",
-    "happy-dom": "14.11.0",
     "np": "10.0.5",
     "pixi.js": "8.7.3",
     "prettier": "3.2.5",
