@@ -5,6 +5,7 @@ export default createGame
 export * from './type'
 
 export * from './module/create'
+export * from './module/reset'
 export * from './module/event'
 export * from './module/sync'
 export * from './module/keys'
@@ -18,4 +19,5 @@ export * from './module/intersects'
 export * from './module/pixiTypeGuard'
 export * from './module/loadDataFromImage'
 export * from './module/reconcileSprites'
+
 export * from 'nano-pool'
