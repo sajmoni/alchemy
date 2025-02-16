@@ -6,7 +6,6 @@ export default defineConfig({
   // Needed for itch.io
   base: './',
   build: {
-    target: 'esnext',
     outDir: '../dist',
     cssCodeSplit: false,
     emptyOutDir: true,
