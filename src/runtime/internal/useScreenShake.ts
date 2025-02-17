@@ -29,10 +29,8 @@ export default function createUseScreenShake(timer: Timer) {
       previousScreenShake = { angle, offsetX, offsetY }
     })
 
+    // TODO: Return only add function?
     return {
-      /**
-       * Will not do anything until you call setCamera
-       */
       add: screenShake.add,
     }
   }
