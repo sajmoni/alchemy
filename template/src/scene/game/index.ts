@@ -1,10 +1,9 @@
 import {
   sprite,
-  htmlText,
-  sync,
   graphics,
   container as createContainer,
   createObjectPool,
+  centerPivot,
 } from 'alchemy-engine'
 
 import { type Scene } from '~/type'
@@ -24,9 +23,7 @@ export default async function game(scene: Scene) {
     app,
   } = scene
 
-  // Set center point in the middle to allow for screen shake
-  container.pivot.set(app.screen.width / 2, app.screen.height / 2)
-  container.position.set(app.screen.width / 2, app.screen.height / 2)
+  centerPivot(container, app.screen.width, app.screen.height)
 
   const screenShake = useScreenShake(container)
   const background = graphics(container)

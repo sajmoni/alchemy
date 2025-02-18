@@ -19,5 +19,6 @@ export * from './module/intersects'
 export * from './module/pixiTypeGuard'
 export * from './module/loadDataFromImage'
 export * from './module/reconcileSprites'
+export * from './module/centerPivot'
 
 export * from 'nano-pool'
