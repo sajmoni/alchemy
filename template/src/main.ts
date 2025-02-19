@@ -7,11 +7,30 @@ import sounds from './sounds.json'
 
 const app = new Application()
 
+const GAME_WIDTH = 640
+const GAME_HEIGHT = 480
+
+function getResolution() {
+  const WINDOW_WIDTH = window.innerWidth
+  const WINDOW_HEIGHT = window.innerHeight
+
+  const resolution = Math.min(
+    WINDOW_WIDTH / GAME_WIDTH,
+    WINDOW_HEIGHT / GAME_HEIGHT,
+  )
+
+  return resolution
+}
+
+window.addEventListener('resize', () => {
+  app.renderer.resolution = getResolution()
+})
+
 async function main() {
   await app.init({
-    width: 640,
-    height: 480,
-    resolution: 2,
+    width: GAME_WIDTH,
+    height: GAME_HEIGHT,
+    resolution: getResolution(),
     antialias: true,
   })
 
