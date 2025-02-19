@@ -53,7 +53,7 @@ export default async function game(scene: Scene) {
   debouncedKey(
     'Space',
     () => {
-      screenShake.add(1)
+      screenShake(1)
     },
     10,
   )

@@ -29,9 +29,9 @@ export default function createUseScreenShake(timer: Timer) {
       previousScreenShake = { angle, offsetX, offsetY }
     })
 
-    // TODO: Return only add function?
-    return {
-      add: screenShake.add,
-    }
+    /**
+     * trauma is a number between 0-1
+     */
+    return screenShake.add
   }
 }
