@@ -5,7 +5,7 @@ import { proxy } from 'valtio'
 import handleError from './internal/handleError'
 import initializeKeyboardInput from './internal/input'
 import createTimer, { type TimerInstance } from './internal/timer'
-import type { AlchemyState, BaseScene, Input, Music, Sound } from './type'
+import type { InternalState, BaseScene, Input, Music, Sound } from './type'
 import makeGetAverageDuration from './internal/makeGetAverageDuration'
 import createUtil from './internal/util'
 import animate from './internal/animate'
@@ -27,6 +27,7 @@ export default function createSetScene<
   const MusicName extends string,
 >({
   state,
+  internalState,
   app,
   keys,
   ticker,
@@ -36,9 +37,8 @@ export default function createSetScene<
   global,
   random,
 }: {
-  state: State & {
-    alchemy: AlchemyState<SceneKey>
-  }
+  state: State
+  internalState: InternalState<SceneKey>
   app: Application
   keys: Keys
   ticker: Ticker
@@ -52,8 +52,10 @@ export default function createSetScene<
       args: BaseScene<Keys, TextureName, State, SceneKey, SoundName, MusicName>,
     ) => void
   >
+  // TODO: Maybe this shouldn't be exposed and we only use a function instead
   textures: Record<TextureName, Texture>
   global: {
+    // TODO: Global state?
     timer: TimerInstance
   }
   random: ExtendedParkMiller
@@ -67,7 +69,7 @@ export default function createSetScene<
   let tickerSceneFn: (ticker: Ticker) => void | undefined
 
   async function setScene(sceneKey: SceneKey): Promise<void> {
-    state.alchemy.scene = sceneKey
+    internalState.scene = sceneKey
 
     // Destroy previous scene
     if (container) {
@@ -79,36 +81,36 @@ export default function createSetScene<
 
     app.stage.addChild(container)
 
-    if (state.alchemy.timer) {
-      state.alchemy.timer.destroy()
+    if (internalState.timer) {
+      internalState.timer.destroy()
     }
     const timer = createTimer()
-    state.alchemy.timer = timer
+    internalState.timer = timer
 
     if (tickerSceneFn) {
       ticker.remove(tickerSceneFn)
     }
     if (import.meta.env.MODE === 'production') {
       tickerSceneFn = (ticker) => {
-        if (state.alchemy.timer && !state.alchemy.paused) {
+        if (internalState.timer && !internalState.paused) {
           try {
-            state.alchemy.timer.update(ticker.deltaTime)
+            internalState.timer.update(ticker.deltaTime)
           } catch (error) {
-            handleError(state.alchemy, 'Error in scene timer', error)
+            handleError(internalState, 'Error in scene timer', error)
           }
         }
       }
     } else {
       tickerSceneFn = (ticker) => {
-        if (state.alchemy.timer && !state.alchemy.paused) {
+        if (internalState.timer && !internalState.paused) {
           try {
             const beforeUpdate = performance.now()
-            state.alchemy.timer.update(ticker.deltaTime)
+            internalState.timer.update(ticker.deltaTime)
             const afterUpdate = performance.now()
             const loopDuration = afterUpdate - beforeUpdate
             updateDurations.push(loopDuration)
           } catch (error) {
-            handleError(state.alchemy, 'Error in scene timer', error)
+            handleError(internalState, 'Error in scene timer', error)
           }
         }
       }
@@ -123,7 +125,7 @@ export default function createSetScene<
     if (input) {
       input.unsubscribe()
     }
-    input = initializeKeyboardInput(keys, state.alchemy.timer)
+    input = initializeKeyboardInput(keys, internalState.timer)
 
     const scene = scenes[sceneKey]
     if (scene) {
@@ -132,7 +134,8 @@ export default function createSetScene<
           input,
           textures,
           container,
-          state: state,
+          state,
+          internalState,
           subscribeKey: createSubscribeKey(unsubscribeFromStateFunctions),
           subscribe: createSubscribe(unsubscribeFromStateFunctions),
           proxy,
@@ -160,7 +163,7 @@ export default function createSetScene<
           random,
         })
       } catch (error) {
-        handleError(state.alchemy, 'Error in scene', error)
+        handleError(internalState, 'Error in scene', error)
       }
     } else {
       throw new Error(`Incorrect scene key: "${sceneKey}"`)

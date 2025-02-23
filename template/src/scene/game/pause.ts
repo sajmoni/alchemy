@@ -16,7 +16,7 @@ export default function pause(scene: Scene) {
 
   c.visible = false
 
-  scene.subscribeKey(scene.state.alchemy, 'paused', (paused) => {
+  scene.subscribeKey(scene.internalState, 'paused', (paused) => {
     c.visible = paused
   })
 }

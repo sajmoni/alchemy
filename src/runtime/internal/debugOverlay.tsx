@@ -16,7 +16,7 @@ import { snapshot } from 'valtio'
 import { subscribeKey } from 'valtio/utils'
 import { createStoredValue } from 'typed-ls'
 
-import type { AlchemyState } from '../type'
+import type { InternalState } from '../type'
 import { getAverageGlobalUpdateDuration } from './ticker'
 import { getAverageSceneUpdateDuration } from '../setScene'
 import getAllChildren from '../module/getAllChildren'
@@ -41,13 +41,11 @@ export type Panel<State> = Array<
 export default function initializeDebugOverlay<
   UserState extends object,
   SceneKey extends string,
-  // TODO: Use everywhere
-  State extends UserState & {
-    alchemy: AlchemyState<SceneKey>
-  },
+  State extends UserState,
 >({
   sceneKeys,
   state,
+  internalState,
   app,
   ticker,
   setScene,
@@ -56,6 +54,7 @@ export default function initializeDebugOverlay<
 }: {
   sceneKeys: SceneKey[]
   state: State
+  internalState: InternalState<SceneKey>
   app: Application
   ticker: Ticker
   setScene: (sceneKey: SceneKey) => Promise<void>
@@ -88,11 +87,11 @@ export default function initializeDebugOverlay<
     )
 
     useEffect(() => {
-      subscribeKey(state.alchemy, 'paused', setPaused)
-      subscribeKey(state.alchemy, 'error', (value) => {
+      subscribeKey(internalState, 'paused', setPaused)
+      subscribeKey(internalState, 'error', (value) => {
         setNotification(value)
       })
-      subscribeKey(state.alchemy, 'scene', (value) => {
+      subscribeKey(internalState, 'scene', (value) => {
         setSceneState(value)
       })
       const _scene = storedScene.get()
@@ -112,7 +111,7 @@ export default function initializeDebugOverlay<
           isOpen={!!notification}
           value={notification ?? ''}
           onClose={() => {
-            state.alchemy.error = undefined
+            internalState.error = undefined
           }}
         />
         <Divider />
@@ -127,7 +126,7 @@ export default function initializeDebugOverlay<
         <NumericValue
           label='Timers'
           getValue={(): number =>
-            state.alchemy.timer?.debug().timers.length ?? 0
+            internalState.timer?.debug().timers.length ?? 0
           }
           warnAt={{
             value: 50,
@@ -156,7 +155,7 @@ export default function initializeDebugOverlay<
         />
         <StringValue
           label='Scene'
-          getValue={() => state.alchemy.scene ?? '-'}
+          getValue={() => internalState.scene ?? '-'}
         />
         <Divider />
         <Row>
@@ -169,7 +168,7 @@ export default function initializeDebugOverlay<
           <Button
             label='Inspect'
             onClick={() => {
-              state.alchemy.paused = true
+              internalState.paused = true
               setPaused(true)
               initializeInspectMode(app)
             }}
@@ -180,7 +179,7 @@ export default function initializeDebugOverlay<
           label='Pause game'
           checked={paused}
           onClick={(checked) => {
-            state.alchemy.paused = checked
+            internalState.paused = checked
             setPaused(checked)
           }}
         />

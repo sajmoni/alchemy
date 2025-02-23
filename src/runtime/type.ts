@@ -23,7 +23,7 @@ export type Sounds = {
   music: Record<string, string>
 }
 
-export type AlchemyState<SceneKey extends string> = {
+export type InternalState<SceneKey extends string> = {
   paused: boolean
   scene: SceneKey
   // TODO: Should this really be exposed in the public API?
@@ -76,9 +76,8 @@ export type BaseScene<
   textures: Textures<TextureName>
   container: Container
   input: Input<Keys>
-  state: State & {
-    alchemy: AlchemyState<SceneKey>
-  }
+  state: State
+  internalState: InternalState<SceneKey>
   subscribeKey: ReturnType<typeof createSubscribeKey>
   subscribe: ReturnType<typeof createSubscribe>
   proxy: typeof proxy

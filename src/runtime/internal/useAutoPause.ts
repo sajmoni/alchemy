@@ -1,53 +1,43 @@
-import type { AlchemyState } from '../type'
+import type { InternalState } from '../type'
 
-const pause = <State, SceneKey extends string>(
-  state: State & {
-    alchemy: AlchemyState<SceneKey>
-  },
+const pause = <SceneKey extends string>(
+  internalState: InternalState<SceneKey>,
 ): void => {
-  state.alchemy.paused = true
+  internalState.paused = true
 }
 
-const play = <State, SceneKey extends string>(
-  state: State & {
-    alchemy: AlchemyState<SceneKey>
-  },
+const play = <SceneKey extends string>(
+  internalState: InternalState<SceneKey>,
 ): void => {
-  state.alchemy.paused = false
+  internalState.paused = false
 }
 
-const autoPauseIfTabInactive = <State, SceneKey extends string>(
-  state: State & {
-    alchemy: AlchemyState<SceneKey>
-  },
+const autoPauseIfTabInactive = <SceneKey extends string>(
+  internalState: InternalState<SceneKey>,
 ): void => {
   window.addEventListener('visibilitychange', () => {
     if (document.hidden) {
-      pause(state)
+      pause(internalState)
     } else {
-      play(state)
+      play(internalState)
     }
   })
 }
 
-const autoPauseIfWindowNotFocused = <State, SceneKey extends string>(
-  state: State & {
-    alchemy: AlchemyState<SceneKey>
-  },
+const autoPauseIfWindowNotFocused = <SceneKey extends string>(
+  internalState: InternalState<SceneKey>,
 ): void => {
   window.addEventListener('blur', () => {
-    pause(state)
+    pause(internalState)
   })
   window.addEventListener('focus', () => {
-    play(state)
+    play(internalState)
   })
 }
 
-export default function useAutoPause<State, SceneKey extends string>(
-  state: State & {
-    alchemy: AlchemyState<SceneKey>
-  },
+export default function useAutoPause<SceneKey extends string>(
+  internalState: InternalState<SceneKey>,
 ): void {
-  autoPauseIfTabInactive(state)
-  autoPauseIfWindowNotFocused(state)
+  autoPauseIfTabInactive(internalState)
+  autoPauseIfWindowNotFocused(internalState)
 }

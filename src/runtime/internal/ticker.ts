@@ -1,18 +1,14 @@
 import { Ticker } from 'pixi.js'
+
 import type { TimerInstance } from './timer'
 import makeGetAverageDuration from './makeGetAverageDuration'
-import type { AlchemyState } from '../type'
+import type { InternalState } from '../type'
 import handleError from './handleError'
 
 const updateDurations: number[] = []
 
-export default function initializeTicker<
-  State extends object,
-  SceneKey extends string,
->(
-  state: State & {
-    alchemy: AlchemyState<SceneKey>
-  },
+export default function initializeTicker<SceneKey extends string>(
+  internalState: InternalState<SceneKey>,
   global: { timer: TimerInstance },
 ): Ticker {
   const ticker = new Ticker()
@@ -20,27 +16,27 @@ export default function initializeTicker<
   // Global timers
   if (import.meta.env.MODE === 'production') {
     ticker.add((ticker) => {
-      if (!state.alchemy.paused) {
+      if (!internalState.paused) {
         try {
           global.timer.update(ticker.deltaTime)
-          state.alchemy.time += 1
+          internalState.time += 1
         } catch (error) {
-          handleError(state.alchemy, 'Error in global timer', error)
+          handleError(internalState, 'Error in global timer', error)
         }
       }
     })
   } else {
     ticker.add((ticker) => {
-      if (!state.alchemy.paused) {
+      if (!internalState.paused) {
         try {
           const beforeUpdate = performance.now()
           global.timer.update(ticker.deltaTime)
-          state.alchemy.time += 1
+          internalState.time += 1
           const afterUpdate = performance.now()
           const loopDuration = afterUpdate - beforeUpdate
           updateDurations.push(loopDuration)
         } catch (error) {
-          handleError(state.alchemy, 'Error in global timer', error)
+          handleError(internalState, 'Error in global timer', error)
         }
       }
     })

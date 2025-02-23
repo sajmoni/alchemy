@@ -1,10 +1,10 @@
-import type { AlchemyState } from '../type'
+import type { InternalState } from '../type'
 
 export default function handleError<SceneKey extends string>(
-  alchemyState: AlchemyState<SceneKey>,
+  internalState: InternalState<SceneKey>,
   label: string,
   error: any,
 ): void {
-  alchemyState.error = `${label}: ${error.message as string}`
+  internalState.error = `${label}: ${error.message as string}`
   console.error(`${label}:`, error)
 }

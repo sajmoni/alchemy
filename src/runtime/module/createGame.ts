@@ -10,7 +10,7 @@ import { getRandomInt } from 'tiny-toolkit'
 import initializeDOM from '../internal/dom'
 import initializeTicker from '../internal/ticker'
 import createTimer from '../internal/timer'
-import type { AlchemyState, BaseScene, Sounds } from '../type'
+import type { InternalState, BaseScene, Sounds } from '../type'
 import { initializeSound } from '../internal/sound'
 import initializeDebugConsole from '../internal/debugConsole'
 import initializeDebugOverlay, { type Panel } from '../internal/debugOverlay'
@@ -74,17 +74,18 @@ export default async function createGame<
 
   AbstractRenderer.defaultOptions.roundPixels = true
 
-  const alchemyState: AlchemyState<SceneKey> = {
+  const internalState: InternalState<SceneKey> = {
     paused: false,
     scene,
     timer: undefined,
     error: undefined,
     time: 0,
   }
-  const proxyState = proxy({ ...state, alchemy: alchemyState })
+  const proxyState = proxy(state)
+  const proxyInternalState = proxy(internalState)
 
   if (config.autoPause) {
-    useAutoPause(proxyState)
+    useAutoPause(proxyInternalState)
   }
 
   initializeDOM({ app })
@@ -92,9 +93,9 @@ export default async function createGame<
     timer: createTimer(),
   }
 
-  const ticker = initializeTicker(proxyState, global)
+  const ticker = initializeTicker(proxyInternalState, global)
 
-  initializeDebugConsole(proxyState, app)
+  initializeDebugConsole(proxyState, proxyInternalState, app)
 
   const { sound } = initializeSound<SoundName, MusicName>(sounds)
 
@@ -102,6 +103,7 @@ export default async function createGame<
 
   const setScene = createSetScene({
     state: proxyState,
+    internalState: proxyInternalState,
     app,
     keys,
     ticker,
@@ -117,6 +119,7 @@ export default async function createGame<
     initializeDebugOverlay({
       sceneKeys,
       state: proxyState,
+      internalState: proxyInternalState,
       app,
       ticker,
       setScene,
