@@ -1,4 +1,5 @@
 import type { Texture } from 'pixi.js'
+
 import type { Textures } from '../type'
 
 export function createGetTextures<TextureName extends string>(

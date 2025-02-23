@@ -35,7 +35,6 @@ export default async function createSpriteSheet() {
     )
     console.log('Aseprite output: ', stdout)
 
-    // TODO: Use project config
     await execa('prettier', [
       '--write',
       '../src/public/asset/spritesheet/data.json',

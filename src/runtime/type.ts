@@ -12,6 +12,7 @@ import type ExtendedParkMiller from './internal/random'
 import type createSubscribeKey from './internal/subscribeKey'
 import type createSubscribe from './internal/subscribe'
 import type { createGetTexturesInFolder } from './internal/getTexturesInFolder'
+import type { createGetTexture } from './internal/getTexture'
 
 export type Position = {
   readonly x: number
@@ -26,7 +27,6 @@ export type Sounds = {
 export type InternalState<SceneKey extends string> = {
   paused: boolean
   scene: SceneKey
-  // TODO: Should this really be exposed in the public API?
   timer: TimerInstance | undefined
   error: string | undefined
   time: number
@@ -58,6 +58,9 @@ export type UseScreenShake = ReturnType<typeof createUseScreenShake>
 
 export type ScreenShake = ReturnType<UseScreenShake>
 
+export type GetTexture<TextureName extends string> = ReturnType<
+  typeof createGetTexture<TextureName>
+>
 export type GetTextures<TextureName extends string> = ReturnType<
   typeof createGetTextures<TextureName>
 >
@@ -73,7 +76,6 @@ export type BaseScene<
   SoundName extends string,
   MusicName extends string,
 > = {
-  textures: Textures<TextureName>
   container: Container
   input: Input<Keys>
   state: State
@@ -92,6 +94,7 @@ export type BaseScene<
   util: Util
   animate: Animate
   useScreenShake: UseScreenShake
+  getTexture: GetTexture<TextureName>
   getTextures: GetTextures<TextureName>
   getTexturesInFolder: GetTexturesInFolder<TextureName>
   random: ExtendedParkMiller

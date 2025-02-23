@@ -45,7 +45,6 @@ export default async function loadSounds() {
     loadJsonFile<SoundsJSON>(soundsJsonPath),
   ])
 
-  // TODO: Make this dynamic to allow for custom categories
   const soundsJsonSounds = soundsJson.sound
   const soundsJsonMusic = soundsJson.music
 

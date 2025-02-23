@@ -11,6 +11,7 @@ import createUtil from './internal/util'
 import animate from './internal/animate'
 import createUseScreenShake from './internal/useScreenShake'
 import { createGetTextures } from './internal/getTextures'
+import { createGetTexture } from './internal/getTexture'
 import type ExtendedParkMiller from './internal/random'
 import createSubscribeKey from './internal/subscribeKey'
 import createSubscribe from './internal/subscribe'
@@ -52,7 +53,6 @@ export default function createSetScene<
       args: BaseScene<Keys, TextureName, State, SceneKey, SoundName, MusicName>,
     ) => void
   >
-  // TODO: Maybe this shouldn't be exposed and we only use a function instead
   textures: Record<TextureName, Texture>
   global: {
     // TODO: Global state?
@@ -132,7 +132,6 @@ export default function createSetScene<
       try {
         scene({
           input,
-          textures,
           container,
           state,
           internalState,
@@ -159,6 +158,7 @@ export default function createSetScene<
           animate: animate(timer),
           useScreenShake: createUseScreenShake(timer),
           getTextures: createGetTextures(textures),
+          getTexture: createGetTexture(textures),
           getTexturesInFolder: createGetTexturesInFolder(textures),
           random,
         })

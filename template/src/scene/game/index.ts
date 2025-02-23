@@ -11,7 +11,6 @@ import pause from './pause'
 
 export default async function game(scene: Scene) {
   const {
-    textures,
     container,
     input: { isKeyDown, debouncedKey },
     state,
@@ -21,6 +20,7 @@ export default async function game(scene: Scene) {
     timer,
     useScreenShake,
     app,
+    getTexture,
   } = scene
 
   centerPivot(container, app.screen.width, app.screen.height)
@@ -40,10 +40,10 @@ export default async function game(scene: Scene) {
 
   const spritePool = createObjectPool(10, () => sprite(container))
   const s = spritePool.get()
-  s.texture = textures['./square-1']
+  s.texture = getTexture('./square-1')
   s.position.set(200, 200)
 
-  const s2 = sprite(container, textures['./square-1'])
+  const s2 = sprite(container, getTexture('./square-1'))
   s2.anchor.set(1)
   s2.position.set(350, 250)
   timer.repeatEvery(10, () => {
