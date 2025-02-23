@@ -5,15 +5,12 @@ import type { Container } from 'pixi.js'
 export default function createUseScreenShake(timer: Timer) {
   return function useScreenShake(
     camera: Container,
-    screenShakeOptions: ScreenShakeOptions & {
-      speed?: number
-    } = {},
+    screenShakeOptions: ScreenShakeOptions = {},
   ) {
-    const speed = screenShakeOptions.speed || 1
     const screenShake = createScreenShake(screenShakeOptions)
 
     timer.repeatEvery(1, (time) => {
-      const { angle, offsetX, offsetY } = screenShake.update(time * speed)
+      const { angle, offsetX, offsetY } = screenShake.update(time)
 
       camera.angle = camera.angle + angle
       camera.position.x = camera.x + offsetX
