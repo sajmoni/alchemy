@@ -85,6 +85,10 @@ export default function createAlchemyProject(gameName: string) {
             ...config,
             compilerOptions: {
               ...config.compilerOptions,
+              lib:
+                config.compilerOptions?.lib ?
+                  [...config.compilerOptions.lib, 'dom']
+                : ['dom'],
               types:
                 config.compilerOptions?.types ?
                   [...config.compilerOptions.types, 'vite/client']
