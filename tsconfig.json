@@ -2,12 +2,10 @@
   "extends": "tsconfig-one/tsconfig.json",
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "outDir": "dist",
-    "incremental": false,
     "declaration": true,
     "noEmit": true,
     "jsx": "react",
   },
-  "include": ["src"],
+  "include": ["src", "test"],
   "exclude": ["template"],
 }
