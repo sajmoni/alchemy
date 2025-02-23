@@ -83,6 +83,23 @@ export default function animate(timer: Timer) {
         duration,
         startValue,
       })
+
+      return timer.repeatUntil(duration, (time, deltaTime) => {
+        onUpdate(getValue(time), deltaTime)
+      })
+    },
+    linear: ({
+      onUpdate,
+      duration,
+      startValue = 0,
+      endValue = 1,
+    }: AdditionalFields & AnimateOptions): Promise<boolean> & Animation => {
+      const interval = endValue - startValue
+      const getValue = (time: number) => {
+        const progress = time / duration
+        return startValue + interval * progress
+      }
+
       return timer.repeatUntil(duration, (time, deltaTime) => {
         onUpdate(getValue(time), deltaTime)
       })
