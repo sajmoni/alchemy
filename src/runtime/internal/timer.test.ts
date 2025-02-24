@@ -1,6 +1,6 @@
 import { test, expect, vi } from 'vitest'
 
-import { willTick } from './test/util'
+import { willTick } from '../../../test/util'
 import createTimer from './timer'
 
 test('delay', async () => {
@@ -68,7 +68,7 @@ test('repeatEvery', async () => {
   const deltaTime = 1
 
   const callback = vi.fn((time, deltaTime) => {
-    // Use time === 2 to only test this once§
+    // Use time === 2 to only test this once
     if (time === 2) {
       expect(deltaTime).toBe(1)
     }

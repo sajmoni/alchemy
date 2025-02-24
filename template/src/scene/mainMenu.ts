@@ -3,8 +3,8 @@ import { text, onClick, onHover } from 'alchemy-engine'
 
 import { name as gameTitle } from '~/../package.json'
 import { TextStyle } from '~/data'
-import settings from '../ui/settings'
 import { type Scene } from '~/type'
+import settings from '../ui/settings'
 
 export default async function mainMenu({
   container,
