@@ -24,7 +24,7 @@
   "scripts": {
     "s": "tsx .",
     "build": "rm -rf dist && tsc && tsc --project tsconfig.prod.json",
-    "test": "vitest --dir src --dom",
+    "test": "vitest --dir test/runtime --dom",
     "test:cli": "npm run build && chmod +x dist/src/cli/index.js && vitest --dir src/cli",
     "release": "npm run build && np --no-tests"
   },

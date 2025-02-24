@@ -1,10 +1,11 @@
 import { setTimeout } from 'node:timers/promises'
+
 import { Sprite } from 'pixi.js'
 import { createObjectPool } from 'nano-pool'
 import { test, expect, vi } from 'vitest'
 import { proxy } from 'valtio'
 
-import { reconcileSprites } from './reconcileSprites'
+import { reconcileSprites } from '../../src/runtime'
 
 test('reconcileSprites', async () => {
   const firstItem = { id: '1', value: 0 }

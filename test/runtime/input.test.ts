@@ -1,7 +1,7 @@
 import { test, expect, vi } from 'vitest'
 
-import initializeKeyboardInput from './input'
-import createTimer from './timer'
+import initializeKeyboardInput from '../../src/runtime/internal/input'
+import createTimer from '../../src/runtime/internal/timer'
 
 test('debouncedKey', async () => {
   const key = 'a'

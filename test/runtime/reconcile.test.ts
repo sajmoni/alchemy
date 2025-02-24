@@ -1,5 +1,5 @@
 import { describe, test, expect, vi } from 'vitest'
-import createReconciledList from './reconcile'
+import createReconciledList from '../../src/runtime/module/reconcile'
 
 describe('reconcile', () => {
   test('reconcile', () => {
