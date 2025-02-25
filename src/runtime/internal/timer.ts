@@ -22,6 +22,7 @@ const isRepeatUntil = (timer: Timer): timer is RepeatUntil =>
 type RepeatEvery = Timer & {
   callback: (time: number, deltaTime: number) => void
   updateCount: number
+  totalTime: number
 }
 const isRepeatEvery = (timer: Timer): timer is RepeatEvery =>
   timer.type === 'repeatEvery'
@@ -106,6 +107,7 @@ export default function createTimer() {
   ): () => void {
     const timer: RepeatEvery = {
       time: 0,
+      totalTime: 0,
       duration: interval,
       callback,
       type: 'repeatEvery',
@@ -138,8 +140,9 @@ export default function createTimer() {
         removeFromList(timer, timers)
       } else if (isRepeatEvery(timer)) {
         timer.updateCount += 1
+        timer.totalTime += roundedDeltaTime
         if (hasReachedDuration) {
-          timer.callback(timer.time, timer.time / timer.updateCount)
+          timer.callback(timer.totalTime, timer.time / timer.updateCount)
           timer.time = 0
           timer.updateCount = 0
         }
