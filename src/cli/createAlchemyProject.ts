@@ -8,7 +8,6 @@ import { Listr } from 'listr2'
 import { readPackage } from 'read-pkg'
 import sortPackageJson from 'sort-package-json'
 import { writePackage } from 'write-package'
-import gradient from 'gradient-string'
 import writePrettyFile from 'write-pretty-file'
 import typescriptPkg from 'typescript'
 const { findConfigFile, readConfigFile, sys } = typescriptPkg
@@ -26,7 +25,7 @@ export default function createAlchemyProject(gameName: string) {
   const rootPath = path.resolve(gameName)
 
   console.log()
-  console.log(styleText('bold', gradient.passion(' ⚗️ Alchemy')))
+  console.log(styleText('bold', styleText(['blue', 'bold'], ' ⚗️ Alchemy')))
   console.log()
   console.log(` Creating a new game in ${styleText('green', rootPath)}`)
   console.log()

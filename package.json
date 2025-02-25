@@ -43,8 +43,7 @@
     "tempy": "3.1.0",
     "tsconfig-one": "0.0.10",
     "tsx": "4.19.3",
-    "vitest": "3.0.6",
-    "@types/gradient-string": "1.1.6"
+    "vitest": "3.0.6"
   },
   "peerDependencies": {
     "pixi.js": "8.x"
@@ -52,7 +51,6 @@
   "dependencies": {
     "cac": "6.7.14",
     "execa": "9.5.2",
-    "gradient-string": "2.0.2",
     "listr2": "8.2.5",
     "read-pkg": "9.0.1",
     "sort-package-json": "2.14.0",
