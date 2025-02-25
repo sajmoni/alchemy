@@ -21,6 +21,7 @@ const isRepeatUntil = (timer: Timer): timer is RepeatUntil =>
 
 type RepeatEvery = Timer & {
   callback: (time: number, deltaTime: number) => void
+  updateCount: number
 }
 const isRepeatEvery = (timer: Timer): timer is RepeatEvery =>
   timer.type === 'repeatEvery'
@@ -38,7 +39,12 @@ export default function createTimer() {
 
     const promise: Partial<CancelablePromise> = new Promise<boolean>(
       (resolve) => {
-        const timer: Delay = { time: 0, duration, resolve, type: 'delay' }
+        const timer: Delay = {
+          time: 0,
+          duration,
+          resolve,
+          type: 'delay',
+        }
         timers.push(timer)
 
         controller.signal.addEventListener('abort', () => {
@@ -103,6 +109,7 @@ export default function createTimer() {
       duration: interval,
       callback,
       type: 'repeatEvery',
+      updateCount: 0,
     }
     timers.push(timer)
 
@@ -117,6 +124,7 @@ export default function createTimer() {
       // Make timer independent on frame rate
       const roundedDeltaTime = Math.round(_deltaTime)
       timer.time += roundedDeltaTime
+
       const hasReachedDuration = timer.time >= timer.duration
 
       if (isRepeatUntil(timer)) {
@@ -128,8 +136,13 @@ export default function createTimer() {
       } else if (isDelay(timer) && hasReachedDuration) {
         timer.resolve(true)
         removeFromList(timer, timers)
-      } else if (isRepeatEvery(timer) && timer.time % timer.duration === 0) {
-        timer.callback(timer.time, roundedDeltaTime)
+      } else if (isRepeatEvery(timer)) {
+        timer.updateCount += 1
+        if (hasReachedDuration) {
+          timer.callback(timer.time, timer.time / timer.updateCount)
+          timer.time = 0
+          timer.updateCount = 0
+        }
       }
     }
   }

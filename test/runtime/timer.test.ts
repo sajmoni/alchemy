@@ -64,17 +64,17 @@ test('repeatEvery', async () => {
   const { update, repeatEvery, debug } = createTimer()
   // Add no-op timer to ensure removal logic works
   repeatEvery(10, () => {})
+  expect(debug().timers.length).toBe(1)
 
   const deltaTime = 1
-
   const callback = vi.fn((time, deltaTime) => {
     // Use time === 2 to only test this once
     if (time === 2) {
       expect(deltaTime).toBe(1)
     }
   })
-  expect(debug().timers.length).toBe(1)
   const cancel = repeatEvery(2, callback)
+
   expect(debug().timers.length).toBe(2)
   await update(deltaTime)
   await update(deltaTime)
@@ -88,4 +88,37 @@ test('repeatEvery', async () => {
   await update(deltaTime)
   // After cancel the callback will not be called again
   expect(callback).toHaveBeenCalledTimes(2)
+})
+
+test('repeatEvery - deltaTime greater than duration should still trigger', async () => {
+  const { update, repeatEvery } = createTimer()
+
+  const callback = vi.fn(() => {})
+  repeatEvery(3, callback)
+
+  await update(4)
+  expect(callback).toBeCalledTimes(1)
+
+  await update(1)
+  expect(callback).toBeCalledTimes(1)
+
+  await update(2)
+  expect(callback).toBeCalledTimes(2)
+})
+
+test('repeatEvery - variable deltaTime', async () => {
+  const { update, repeatEvery } = createTimer()
+
+  let _deltaTime
+  const callback = vi.fn((_time, deltaTime) => {
+    console.log(' callback ~ deltaTime:', deltaTime)
+    _deltaTime = deltaTime
+  })
+
+  repeatEvery(10, callback)
+
+  await update(3)
+  await update(7)
+
+  expect(_deltaTime).toBe(5)
 })
