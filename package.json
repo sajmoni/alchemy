@@ -37,13 +37,13 @@
     "@types/react-dom": "18.3.0",
     "get-bin-path": "11.0.0",
     "np": "10.2.0",
-    "pixi.js": "8.8.0",
+    "pixi.js": "8.8.1",
     "prettier": "3.5.2",
     "prettier-config-one": "0.2.1",
     "tempy": "3.1.0",
     "tsconfig-one": "0.0.10",
     "tsx": "4.19.3",
-    "vitest": "3.0.6"
+    "vitest": "3.0.7"
   },
   "peerDependencies": {
     "pixi.js": "8.x"
@@ -64,7 +64,7 @@
     "park-miller": "2.0.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "remeda": "2.20.2",
+    "remeda": "2.21.0",
     "round-to": "6.0.0",
     "screen-shake": "0.2.1",
     "tiny-toolkit": "0.3.0",
