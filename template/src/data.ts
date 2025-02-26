@@ -11,7 +11,6 @@ export const scenes = {
 export const keys = ['a', 'w', 's', 'd', ...arrowKeys, 'Space'] as const
 
 export const state = {
-  gold: 10,
   settingsVisible: false,
 }
 export type State = typeof state

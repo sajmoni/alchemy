@@ -1,18 +1,17 @@
-import { Application, Container } from 'pixi.js'
 import { text, sync, container, graphics, onClick } from 'alchemy-engine'
 
-import { type State, TextStyle } from '~/data'
+import { TextStyle } from '~/data'
+import { type Scene } from '~/type'
 
-export default function settings(
-  app: Application,
-  _container: Container,
-  state: State,
-) {
-  const settingsContainer = container(_container)
-  settingsContainer.position.set(app.screen.width / 2, app.screen.height / 2)
+export default function settings(scene: Scene) {
+  const settingsContainer = container(scene.container)
+  settingsContainer.position.set(
+    scene.app.screen.width / 2,
+    scene.app.screen.height / 2,
+  )
 
-  const width = app.screen.width * 0.6
-  const height = app.screen.height * 0.8
+  const width = scene.app.screen.width * 0.6
+  const height = scene.app.screen.height * 0.8
   settingsContainer.width = width
   settingsContainer.height = height
   settingsContainer.pivot.set(width / 2, height / 2)
@@ -28,9 +27,9 @@ export default function settings(
   doneButton.anchor.set(0.5)
   doneButton.position.set(width / 2, height - 30)
   onClick(doneButton, () => {
-    state.settingsVisible = false
+    scene.state.settingsVisible = false
   })
 
   settingsContainer.visible = false
-  sync(settingsContainer, 'visible', state, 'settingsVisible')
+  sync(settingsContainer, 'visible', scene.state, 'settingsVisible')
 }

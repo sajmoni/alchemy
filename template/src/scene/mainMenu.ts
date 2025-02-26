@@ -6,13 +6,9 @@ import { TextStyle } from '~/data'
 import { type Scene } from '~/type'
 import settings from '../ui/settings'
 
-export default async function mainMenu({
-  container,
-  state,
-  setScene,
-  app,
-  animate,
-}: Scene) {
+export default async function mainMenu(scene: Scene) {
+  const { container, state, setScene, app, animate } = scene
+
   const titleText = text(
     container,
     { ...TextStyle.MAIN, fontSize: 50 },
@@ -88,5 +84,5 @@ export default async function mainMenu({
     state.settingsVisible = true
   })
 
-  settings(app, container, state)
+  settings(scene)
 }

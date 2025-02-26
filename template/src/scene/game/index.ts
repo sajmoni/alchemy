@@ -12,9 +12,7 @@ import pause from './pause'
 export default async function game(scene: Scene) {
   const {
     container,
-    input: { isKeyDown, debouncedKey },
-    state,
-    timer: { repeatEvery },
+    input,
     sound,
     music,
     timer,
@@ -39,9 +37,10 @@ export default async function game(scene: Scene) {
   c.pivot.set(c.width / 2, c.height / 2)
 
   const spritePool = createObjectPool(10, () => sprite(container))
-  const s = spritePool.get()
-  s.texture = getTexture('./square-1')
-  s.position.set(200, 200)
+
+  const s1 = spritePool.get()
+  s1.texture = getTexture('./square-1')
+  s1.position.set(200, 200)
 
   const s2 = sprite(container, getTexture('./square-1'))
   s2.anchor.set(1)
@@ -50,37 +49,31 @@ export default async function game(scene: Scene) {
     s2.x += 1
   })
 
-  debouncedKey(
+  input.debouncedKey(
     'Space',
     () => {
       screenShake(1)
     },
-    10,
+    1,
   )
 
-  repeatEvery(1, (_time, delta) => {
-    if (isKeyDown(['a', 'ArrowLeft'])) {
-      s.position.x -= 1 * delta
+  timer.repeatEvery(1, (_time, delta) => {
+    if (input.isKeyDown(['a', 'ArrowLeft'])) {
+      s1.position.x -= 1 * delta
     }
-    if (isKeyDown(['w', 'ArrowUp'])) {
-      s.position.y -= 1 * delta
+    if (input.isKeyDown(['w', 'ArrowUp'])) {
+      s1.position.y -= 1 * delta
     }
-    if (isKeyDown(['s', 'ArrowDown'])) {
-      s.position.y += 1 * delta
+    if (input.isKeyDown(['s', 'ArrowDown'])) {
+      s1.position.y += 1 * delta
     }
-    if (isKeyDown(['d', 'ArrowRight'])) {
-      s.position.x += 1 * delta
+    if (input.isKeyDown(['d', 'ArrowRight'])) {
+      s1.position.x += 1 * delta
     }
-  })
-
-  state.gold = 42
-  repeatEvery(60, () => {
-    state.gold++
   })
 
   sound.coin.play()
-  music.bgm.loop()
-  music.bgm.play()
+  music.bgm.loop(true).play()
 
   pause(scene)
 }
