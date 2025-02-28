@@ -1,4 +1,4 @@
-import type { AnimateOptions, JuiceFn, Timer, Animation } from '../type'
+import type { AnimateOptions, JuiceFn, Timer, Animation } from '../type.js'
 
 const createSine =
   ({ duration, startValue, endValue }: Required<AnimateOptions>): JuiceFn =>

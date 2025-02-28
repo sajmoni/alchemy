@@ -1,9 +1,9 @@
 import { Ticker } from 'pixi.js'
 
-import type { TimerInstance } from './timer'
-import makeGetAverageDuration from './makeGetAverageDuration'
-import type { InternalState } from '../type'
-import handleError from './handleError'
+import type { TimerInstance } from './timer.js'
+import makeGetAverageDuration from './makeGetAverageDuration.js'
+import type { InternalState } from '../type.js'
+import handleError from './handleError.js'
 
 const updateDurations: number[] = []
 

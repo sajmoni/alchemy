@@ -1,4 +1,4 @@
-import type { Position } from '../type'
+import type { Position } from '../type.js'
 
 // TODO: Include only the second part of this as a scene export
 export const screenToWorldPixelPosition =

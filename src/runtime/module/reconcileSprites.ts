@@ -2,8 +2,8 @@ import { type Container, Texture } from 'pixi.js'
 import { snapshot, subscribe } from 'valtio'
 import type { ObjectPool } from 'nano-pool'
 
-import { isAnimatedSprite } from './pixiTypeGuard'
-import createReconciledList from './reconcile'
+import { isAnimatedSprite } from './pixiTypeGuard.js'
+import createReconciledList from './reconcile.js'
 
 /**
  * Automatically get and release sprites from a pool whenever a list or map of objects change

@@ -1,5 +1,5 @@
 import { setTimeout } from 'node:timers'
-import type { TimerInstance } from '../src/runtime/internal/timer'
+import type { TimerInstance } from '../src/runtime/internal/timer.js'
 
 /**
  * Will tick all timers in the next run of the event loop

@@ -1,8 +1,8 @@
 import type { Application } from 'pixi.js'
 import { snapshot } from 'valtio'
 
-import type { InternalState } from '../type'
-import getAllChildren from '../module/getAllChildren'
+import type { InternalState } from '../type.js'
+import getAllChildren from '../module/getAllChildren.js'
 
 export default function initializeDebugConsole<
   State extends object,

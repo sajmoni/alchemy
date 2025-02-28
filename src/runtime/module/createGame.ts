@@ -7,16 +7,16 @@ import {
 import { proxy } from 'valtio'
 import { getRandomInt } from 'tiny-toolkit'
 
-import initializeDOM from '../internal/dom'
-import initializeTicker from '../internal/ticker'
-import createTimer from '../internal/timer'
-import type { InternalState, BaseScene, Sounds } from '../type'
-import { initializeSound } from '../internal/sound'
-import initializeDebugConsole from '../internal/debugConsole'
-import initializeDebugOverlay, { type Panel } from '../internal/debugOverlay'
-import useAutoPause from '../internal/useAutoPause'
-import createSetScene from '../setScene'
-import ExtendedParkMiller from '../internal/random'
+import initializeDOM from '../internal/dom.js'
+import initializeTicker from '../internal/ticker.js'
+import createTimer from '../internal/timer.js'
+import type { InternalState, BaseScene, Sounds } from '../type.js'
+import { initializeSound } from '../internal/sound.js'
+import initializeDebugConsole from '../internal/debugConsole.js'
+import initializeDebugOverlay, { type Panel } from '../internal/debugOverlay.js'
+import useAutoPause from '../internal/useAutoPause.js'
+import createSetScene from '../setScene.js'
+import ExtendedParkMiller from '../internal/random.js'
 
 export default async function createGame<
   Keys extends readonly string[],

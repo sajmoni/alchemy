@@ -1,15 +1,17 @@
 #!/usr/bin/env node
 import cac from 'cac'
+
 import createSpriteSheet from './createSpriteSheet.js'
 import loadSounds from './loadSounds.js'
 import devServer from './devServer.js'
 import createAlchemyProject from './createAlchemyProject.js'
 import packageJson from '../../package.json' with { type: 'json' }
 
+// @ts-expect-error - TODO: Figure out the types here
 const cli = cac('alc')
 
-cli.command('create [game-name]', 'Create a new game').action((gameName) => {
-  createAlchemyProject(gameName)
+cli.command('create', 'Create a new game').action(() => {
+  createAlchemyProject()
 })
 
 cli.command('sound', 'Load sounds from the sounds folder').action(() => {

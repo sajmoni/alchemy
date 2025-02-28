@@ -1,7 +1,7 @@
 import { test, expect, vi } from 'vitest'
 
-import createTimer from '../../src/runtime/internal/timer'
-import { willTick } from '../util'
+import createTimer from '../../src/runtime/internal/timer.js'
+import { willTick } from '../util.js'
 
 test('delay', async () => {
   let done = false

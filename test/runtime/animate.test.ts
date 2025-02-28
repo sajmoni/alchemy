@@ -1,8 +1,8 @@
 import { describe, expect, test } from 'vitest'
 
-import animate from '../../src/runtime/internal/animate'
-import createTimer from '../../src/runtime/internal/timer'
-import { willTick } from '../util'
+import animate from '../../src/runtime/internal/animate.js'
+import createTimer from '../../src/runtime/internal/timer.js'
+import { willTick } from '../util.js'
 
 describe('animate', () => {
   // TODO: Add tests for all animate functions

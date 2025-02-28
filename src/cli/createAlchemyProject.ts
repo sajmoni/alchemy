@@ -1,9 +1,9 @@
 import path from 'node:path'
 import process from 'node:process'
 import { styleText } from 'node:util'
-import { cpSync, existsSync, mkdirSync } from 'node:fs'
+import { cpSync } from 'node:fs'
 
-import { execa } from 'execa'
+import spawn from 'nano-spawn'
 import { Listr } from 'listr2'
 import { readPackage } from 'read-pkg'
 import sortPackageJson from 'sort-package-json'
@@ -21,8 +21,8 @@ const dependencies =
 
 const devDependencies = ['vitest']
 
-export default function createAlchemyProject(gameName: string) {
-  const rootPath = path.resolve(gameName)
+export default function createAlchemyProject() {
+  const rootPath = path.resolve()
 
   console.log()
   console.log(styleText('bold', styleText(['blue', 'bold'], ' ⚗️ Alchemy')))
@@ -35,35 +35,10 @@ export default function createAlchemyProject(gameName: string) {
 
   const tasks = new Listr([
     {
-      title: 'Create project folder',
-      task: () => {
-        if (existsSync(rootPath)) {
-          throw new Error('Project folder already exists')
-        }
-
-        mkdirSync(rootPath, { recursive: true })
-        try {
-          process.chdir(rootPath)
-        } catch {
-          throw new Error(`Could not change to project directory: ${rootPath}`)
-        }
-      },
-    },
-    {
-      title: 'Git init',
-      task: async () => {
-        try {
-          await execa('git', ['init'])
-        } catch (error: any) {
-          throw new Error(`Git repo not initialized: ${error.message}`)
-        }
-      },
-    },
-    {
       title: 'Setup TS project',
       task: async () => {
-        await execa('npx', ['setup-ts-project@latest', '--skip-commit'])
-        await execa('npx', ['enable-absolute-paths@latest'])
+        await spawn('npx', ['setup-ts-project@latest', '--skip-commit'])
+        await spawn('npx', ['enable-absolute-paths@latest'])
 
         const tsconfigPath = findConfigFile(
           process.cwd(),
@@ -107,7 +82,7 @@ export default function createAlchemyProject(gameName: string) {
       title: 'Setup package.json',
       task: async () => {
         const scripts = {
-          dev: 'alchemy-engine dev',
+          dev: 'alchemy dev',
           build: 'vite build',
           preview: 'vite preview',
           test: 'vitest',
@@ -158,22 +133,22 @@ export default function createAlchemyProject(gameName: string) {
         const args = npmInstall
           .concat(dependencies)
           .concat('--legacy-peer-deps')
-        return execa(command, args, { all: true }).all
+        return spawn(command, args)
       },
     },
     {
       title: 'Install dev dependencies',
       task: async () => {
         const args = npmInstall.concat(devDependencies).concat('--save-dev')
-        return execa(command, args, { all: true }).all
+        return spawn(command, args)
       },
     },
     {
       title: 'Git commit',
       task: async () => {
         try {
-          await execa('git', ['add', '-A'])
-          await execa('git', ['commit', '-m', 'Initialize Alchemy game'])
+          await spawn('git', ['add', '-A'])
+          await spawn('git', ['commit', '-m', 'Initialize Alchemy game'])
         } catch (error: any) {
           throw new Error(`Could not create commit ${error.message}`)
         }
@@ -185,14 +160,10 @@ export default function createAlchemyProject(gameName: string) {
     .run()
     .then(() => {
       console.log(`
-  ${styleText('green', 'Success!')} Created ${styleText('cyan', gameName)} at ${styleText(
-    'cyan',
-    rootPath,
-  )}
+  ${styleText('green', 'Successfully initialized Alchemy game!')}
 
-  Start the game by typing:
+  Start the game by running:
 
-    ${styleText('cyan', `cd ${gameName}`)}
     ${styleText('cyan', 'npm run dev')}
 
   Good luck!

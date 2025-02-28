@@ -5,6 +5,8 @@
     "declaration": true,
     "noEmit": true,
     "jsx": "react",
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
   },
   "include": ["src", "test"],
   "exclude": ["template"],

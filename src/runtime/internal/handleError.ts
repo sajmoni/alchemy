@@ -1,4 +1,4 @@
-import type { InternalState } from '../type'
+import type { InternalState } from '../type.js'
 
 export default function handleError<SceneKey extends string>(
   internalState: InternalState<SceneKey>,

@@ -6,7 +6,7 @@ import { execa } from 'execa'
 import { temporaryDirectory } from 'tempy'
 import { getBinPath } from 'get-bin-path'
 
-import { SPRITESHEET_FOLDER_PATH } from '../../src/cli/createSpriteSheet'
+import { SPRITESHEET_FOLDER_PATH } from '../../src/cli/createSpriteSheet.js'
 
 test('sprites', async () => {
   const binPath = await getBinPath()

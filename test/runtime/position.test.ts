@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import { screenToWorldPixelPosition } from '../../src/runtime'
+import { screenToWorldPixelPosition } from '../../src/runtime/index.js'
 
 const getWorldPosition = screenToWorldPixelPosition({
   screenWidth: 100,

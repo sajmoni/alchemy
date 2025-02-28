@@ -1,5 +1,6 @@
 import { removeFromList } from 'tiny-toolkit'
-import { type CancelablePromise } from '../type'
+
+import { type CancelablePromise } from '../type.js'
 
 type Timer = {
   type: 'delay' | 'repeatUntil' | 'repeatEvery'

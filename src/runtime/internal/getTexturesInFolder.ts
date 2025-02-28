@@ -1,6 +1,6 @@
 import type { Texture } from 'pixi.js'
 
-import type { Textures } from '../type'
+import type { Textures } from '../type.js'
 
 function getFolderName(input: string): string {
   return input.substring(0, input.indexOf('/'))

@@ -1,6 +1,8 @@
+// @ts-expect-error
 import { tinykeys } from 'tinykeys'
 import type { TupleToUnion } from 'type-fest'
-import type { TimerInstance } from './timer'
+
+import type { TimerInstance } from './timer.js'
 
 export default function initializeKeyboardInput<const Key extends string>(
   keys: readonly Key[],

@@ -1,8 +1,9 @@
 import { Application, Container, Graphics, Rectangle } from 'pixi.js'
-import { graphics, text } from '../module/create'
-import { onClick, onHover } from '../module/event'
-import getAllLeafChildren from '../module/getAllLeafChildren'
-import logObject from '../module/logObject'
+
+import { graphics, text } from '../module/create.js'
+import { onClick, onHover } from '../module/event.js'
+import getAllLeafChildren from '../module/getAllLeafChildren.js'
+import logObject from '../module/logObject.js'
 
 export default function initializeInspectMode(app: Application) {
   app.stage.sortableChildren = true

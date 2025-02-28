@@ -1,9 +1,9 @@
 import { expect, test } from 'vitest'
 import { Texture } from 'pixi.js'
 
-import { createGetTexturesInFolder } from '../../src/runtime/internal/getTexturesInFolder'
+import { createGetTexturesInFolder } from '../../src/runtime/internal/getTexturesInFolder.js'
 
-test.only('getTexturesInFolder', () => {
+test('getTexturesInFolder', () => {
   const getTexturesInFolder = createGetTexturesInFolder({
     'hello/world': Texture.EMPTY,
     'world/hello': Texture.EMPTY,

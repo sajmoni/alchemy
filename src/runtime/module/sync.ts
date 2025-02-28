@@ -1,7 +1,8 @@
 import type { Container } from 'pixi.js'
 import { subscribe } from 'valtio'
 import { subscribeKey } from 'valtio/utils'
-import type { Position } from '../type'
+
+import type { Position } from '../type.js'
 
 /**
  * Sync a state value to a pixi object property

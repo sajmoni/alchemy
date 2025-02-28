@@ -1,6 +1,6 @@
 import { Howl } from 'howler'
 
-import type { Sounds } from '../type'
+import type { Sounds } from '../type.js'
 
 export function initializeSound<
   SoundName extends string,

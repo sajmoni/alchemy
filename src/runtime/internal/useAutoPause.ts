@@ -1,4 +1,4 @@
-import type { InternalState } from '../type'
+import type { InternalState } from '../type.js'
 
 const pause = <SceneKey extends string>(
   internalState: InternalState<SceneKey>,

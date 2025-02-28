@@ -1,6 +1,7 @@
 import createScreenShake, { type ScreenShakeOptions } from 'screen-shake'
-import type { Timer } from '../type'
 import type { Container } from 'pixi.js'
+
+import type { Timer } from '../type.js'
 
 export default function createUseScreenShake(timer: Timer) {
   return function useScreenShake(

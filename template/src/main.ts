@@ -32,6 +32,7 @@ async function main() {
     height: GAME_HEIGHT,
     resolution: getResolution(),
     antialias: true,
+    backgroundColor: 0x333333,
   })
 
   const spriteSheetPath = './asset/spritesheet/data.json'

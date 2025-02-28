@@ -16,14 +16,14 @@ import { snapshot } from 'valtio'
 import { subscribeKey } from 'valtio/utils'
 import { createStoredValue } from 'typed-ls'
 
-import type { InternalState } from '../type'
-import { getAverageGlobalUpdateDuration } from './ticker'
-import { getAverageSceneUpdateDuration } from '../setScene'
-import getAllChildren from '../module/getAllChildren'
-import showGrid from './showGrid'
-import { graphics } from '../module/create'
-import getAllLeafChildren from '../module/getAllLeafChildren'
-import initializeInspectMode, { drawHitbox } from './inspectMode'
+import type { InternalState } from '../type.js'
+import { getAverageGlobalUpdateDuration } from './ticker.js'
+import { getAverageSceneUpdateDuration } from '../setScene.js'
+import getAllChildren from '../module/getAllChildren.js'
+import showGrid from './showGrid.js'
+import { graphics } from '../module/create.js'
+import getAllLeafChildren from '../module/getAllLeafChildren.js'
+import initializeInspectMode, { drawHitbox } from './inspectMode.js'
 
 export type Panel<State> = Array<
   | {
@@ -80,6 +80,7 @@ export default function initializeDebugOverlay<
     const [paused, setPaused] = useState(false)
     const [showGrid, setShowGrid] = useState(false)
     const [showAnchorAndPivot, setShowAnchorAndPivot] = useState(false)
+    const [showHoverInfo, setShowHoverInfo] = useState(false)
     const [showHitboxes, setShowHitboxes] = useState(false)
     const [sceneState, setSceneState] = useState<SceneKey>(scene)
     const [notification, setNotification] = useState<string | undefined>(
@@ -194,7 +195,9 @@ export default function initializeDebugOverlay<
         <Checkbox
           label='Show hover info'
           checked={showAnchorAndPivot}
-          onClick={() => {}}
+          onClick={() => {
+            setShowHoverInfo(!showHoverInfo)
+          }}
         />
         <Checkbox
           label='Show anchor / pivot'
