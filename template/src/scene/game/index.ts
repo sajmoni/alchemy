@@ -1,7 +1,6 @@
 import {
   sprite,
   graphics,
-  container as createContainer,
   createObjectPool,
   centerPivot,
   text,
@@ -20,7 +19,7 @@ export default async function game(scene: Scene) {
   g.rect(0, 0, 100, 100).fill({ color: 0xbb22dd, alpha: 1 })
   g.scale.set(2)
 
-  const alchemyText = text(scene.container, TextStyle.Main, 'Alchemy engine')
+  const alchemyText = text(scene.container, TextStyle.MAIN, 'Alchemy engine')
   alchemyText.anchor.x = 0.5
   alchemyText.position.x = scene.app.screen.width / 2
   alchemyText.position.y = 10
