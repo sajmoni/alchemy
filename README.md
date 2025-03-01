@@ -1,8 +1,8 @@
-# :alembic: alchemy engine
+# :alembic: alchemy engine <!-- omit from toc -->
 
 > 👾 Easily make 2D browser games with pixi.js
 
-## :sparkles: Features
+## :sparkles: Features <!-- omit from toc -->
 
 - 100% Type-Safe
 - Batteries included (get started using one CLI command)
@@ -22,13 +22,76 @@
 
 ---
 
-## Getting started
+## Getting started <!-- omit from toc -->
+
+Run the `init` command from within a Git repo
 
 ```console
-npx alchemy-create@latest create <game-name>
+npx alchemy@latest init
 ```
 
+This will:
+
+- Copy template files
+- Add `alchemy-engine` and `pixi.js` as dependencies
+
 ---
+
+## API Docs <!-- omit from toc -->
+
+- [Module API](#module-api)
+  - [create](#create)
+    - [sprite](#sprite)
+    - [animatedSprite](#animatedsprite)
+    - [text](#text)
+    - [htmlText](#htmltext)
+    - [bitmapText](#bitmaptext)
+    - [container](#container)
+    - [graphics](#graphics)
+    - [rectangle](#rectangle)
+  - [event](#event)
+    - [onClick](#onclick)
+    - [onHover](#onhover)
+  - [sync](#sync)
+    - [sync](#sync-1)
+    - [syncPosition](#syncposition)
+  - [keys](#keys)
+    - [arrowKeys](#arrowkeys)
+  - [position](#position)
+  - [getAllChildren](#getallchildren)
+  - [getAllLeafChildren](#getallleafchildren)
+  - [debug](#debug)
+    - [logObject](#logobject)
+  - [boundsToString](#boundstostring)
+  - [contains](#contains)
+  - [intersects](#intersects)
+  - [type guards](#type-guards)
+    - [isAnimatedSprite](#isanimatedsprite)
+  - [loadDataFromImage](#loaddatafromimage)
+  - [pool](#pool)
+- [Scene API](#scene-api)
+  - [getTexture](#gettexture)
+  - [getTextures](#gettextures)
+  - [useScreenShake](#usescreenshake)
+  - [animate](#animate)
+  - [app](#app)
+  - [music](#music)
+  - [sound](#sound)
+  - [setScene](#setscene)
+  - [global](#global)
+  - [container](#container-1)
+  - [state](#state)
+  - [internalState](#internalstate)
+  - [subscribe, subscribeKey, proxy](#subscribe-subscribekey-proxy)
+  - [timer](#timer)
+  - [input](#input)
+  - [random](#random)
+- [CLI](#cli)
+  - [dev](#dev)
+  - [sprite](#sprite-1)
+  - [sound](#sound-1)
+- [Local development](#local-development)
+- [See also](#see-also)
 
 ## Module API
 
@@ -43,7 +106,7 @@ Convenience functions to create Pixi objects
 ```ts
 import { sprite } from 'alchemy-engine'
 
-sprite(container, textures['./square-1'])
+sprite(container, getTexture('./square-1')])
 ```
 
 #### animatedSprite
@@ -51,7 +114,7 @@ sprite(container, textures['./square-1'])
 ```ts
 import { animatedSprite } from 'alchemy-engine'
 
-animatedSprite(container, [textures['./square-1']])
+animatedSprite(container, getTextures(['./square-1', './square-2']))
 ```
 
 #### text
@@ -258,17 +321,13 @@ The arguments passed to a scene
 }: Scene
 ```
 
-### textures
+### getTexture
 
-An object containing all textures by name
-
-```ts
-Record<TextureName, Texture>
-```
+Get a texture
 
 ```ts
-function myScene({ textures, container }: Scene) {
-  sprite(container, textures['./square1'])
+function myScene(scene: Scene) {
+  sprite(scene.container, scene.getTexture('./texture-1'))
 }
 ```
 
@@ -299,17 +358,16 @@ screenShake(0.5)
 
 ### animate
 
-- sine
-- easeOut
-- easeIn
-
 These functions all require an `onUpdate` and `duration` argument
 
 Optionally you can pass a `startValue` (default: 0) and `endValue` (default: 1)
 
-Example with denormalize
+<!-- TODO -->
 
-<!-- TODO: Should denormalize be the default? Or pass both? -->
+- sine
+- easeOut
+- easeIn
+- linear
 
 ```ts
 
@@ -328,7 +386,7 @@ Record<MusicName, Howl>
 Example:
 
 ```ts
-scene.music.bgm.play()
+scene.music.bgm.loop(true).play()
 ```
 
 ### sound
@@ -365,17 +423,28 @@ A scene specific Pixi container. Will be destroyed when scene is changed.
 
 Set state to trigger `sync` and `subscribe` functions
 
+### internalState
+
+<!-- TODO -->
+
 ### subscribe, subscribeKey, proxy
 
 Re-exported from [valtio](https://github.com/pmndrs/valtio)
+
+Changes from `valtio` versions:
+
+- Triggers once up front when called
+- Unsubscribes when changing scene
 
 ### timer
 
 **delay**
 
+Resolves a promise after X ticks
+
 ```ts
 // Wait 100 updates
-await delay(100)
+await scene.timer.delay(100)
 ```
 
 **repeatUntil**
@@ -383,12 +452,12 @@ await delay(100)
 Execute a callback every update until `duration` is reached
 
 ```ts
-await repeatUntil(3, (time, deltaTime) => {})
+await scene.timer.repeatUntil(3, (time, deltaTime) => {})
 ```
 
 **repeatEvery**
 
-Execute a callback forever every `interval` updates
+Execute a callback indefinitely every `interval` updates
 
 Returns a `cancel` function
 
@@ -400,11 +469,11 @@ const cancel = repeatEvery(3, (time, deltaTime) => {})
 
 **debouncedKey**
 
+<!-- TODO: Rethink this API -->
+
 ```ts
-debouncedKey(
-  // Key id
+scene.input.debouncedKey(
   'd',
-  // Callback
   () => {
     s.position.x += 1
   },
@@ -418,11 +487,11 @@ debouncedKey(
 Check if a key is currently being pressed
 
 ```ts
-repeatEvery(1, () => {
-  if (isKeyDown(['a', 'ArrowLeft'])) {
+scene.timer.repeatEvery(1, () => {
+  if (scene.input.isKeyDown(['a', 'ArrowLeft'])) {
     s.position.x -= 1
   }
-  if (isKeyDown(['d', 'ArrowRight'])) {
+  if (scene.input.isKeyDown(['d', 'ArrowRight'])) {
     s.position.x += 1
   }
 })
@@ -433,6 +502,12 @@ repeatEvery(1, () => {
 There is a built-in seedable random module.
 
 To set the seed, pass it in to `createGame`
+
+```ts
+createGame({
+  randomSeed: 99,
+})
+```
 
 The module uses the same API as [park-miller](https://github.com/sindresorhus/park-miller), with some additions:
 
@@ -447,7 +522,7 @@ The module uses the same API as [park-miller](https://github.com/sindresorhus/pa
 Start the dev server. Listens to changes to source code, `sprite`, `src/public/asset/sound` and `src/public/asset/music` folders.
 
 ```console
-npx alchemy-cli dev
+npx alchemy dev
 ```
 
 ### sprite
@@ -455,7 +530,7 @@ npx alchemy-cli dev
 Generate sprite sheet
 
 ```console
-npx alchemy-cli sprite
+npx alchemy sprite
 ```
 
 ### sound
@@ -463,10 +538,12 @@ npx alchemy-cli sprite
 Load sounds
 
 ```console
-npx alchemy-cli sound
+npx alchemy sound
 ```
 
-#### Dev
+---
+
+## Local development
 
 Run `./go.sh` to test that things work
 
