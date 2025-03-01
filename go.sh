@@ -9,5 +9,5 @@ mkdir game
 cd game
 # Prevent creating commit in root folder
 git init
-MODE=development node ../dist/src/cli/index.js create 
+MODE=development node ../dist/src/cli/index.js init 
 npm run dev

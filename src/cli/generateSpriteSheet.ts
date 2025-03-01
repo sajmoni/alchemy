@@ -7,7 +7,7 @@ export const SPRITESHEET_FOLDER_PATH = '/src/public/asset/spritesheet'
 
 const MAC_ASEPRITE_PATH = `$HOME/Library/Application\\ Support/Steam/steamapps/common/Aseprite/Aseprite.app/Contents/MacOS/aseprite`
 
-export default async function createSpriteSheet() {
+export default async function generateSpriteSheet() {
   console.log()
   console.log(styleText('blue', 'Generating sprite sheet...'))
   console.log()

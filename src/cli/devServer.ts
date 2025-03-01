@@ -3,7 +3,7 @@ import chokidar from 'chokidar'
 import { createServer } from 'vite'
 
 import loadSounds from './loadSounds.js'
-import createSpriteSheet from './createSpriteSheet.js'
+import generateSpriteSheet from './generateSpriteSheet.js'
 
 // Copied from the vite source code
 export function clearScreen() {
@@ -43,7 +43,7 @@ function handleSprites() {
     .on('all', (event) => {
       clearScreen()
       console.log(`${event}: Sprites updated...`)
-      createSpriteSheet()
+      generateSpriteSheet()
     })
 }
 
