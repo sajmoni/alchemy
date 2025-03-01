@@ -27,7 +27,7 @@
 Run the `init` command from within a Git repo
 
 ```console
-npx alchemy@latest init
+npx alchemy-engine@latest init
 ```
 
 This will:
