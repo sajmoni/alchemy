@@ -20,5 +20,6 @@ export * from './module/pixiTypeGuard.js'
 export * from './module/loadDataFromImage.js'
 export * from './module/reconcileSprites.js'
 export * from './module/centerPivot.js'
+export * from './module/flipSprite.js'
 
 export * from 'nano-pool'
