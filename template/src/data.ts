@@ -10,11 +10,6 @@ export const scenes = {
 
 export const keys = ['a', 'w', 's', 'd', ...arrowKeys, 'Space'] as const
 
-export const state = {
-  settingsVisible: false,
-}
-export type State = typeof state
-
 export const TextStyle = {
   MAIN: {
     fontFamily: 'Press Start 2P',

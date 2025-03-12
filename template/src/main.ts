@@ -1,7 +1,8 @@
 import { Application } from 'pixi.js'
 import createGame from 'alchemy-engine'
 
-import { keys, scenes, state } from './data'
+import { keys, scenes } from './data.js'
+import { state } from './state.js'
 
 import sounds from './sounds.json'
 
