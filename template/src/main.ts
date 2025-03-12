@@ -4,7 +4,7 @@ import createGame from 'alchemy-engine'
 import { keys, scenes } from './data.js'
 import { state } from './state.js'
 
-import sounds from './sounds.json'
+import sounds from './sounds.json' with { type: 'json' }
 
 const app = new Application()
 

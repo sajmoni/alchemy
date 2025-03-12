@@ -1,10 +1,9 @@
-import { Container } from 'pixi.js'
-import { text, onClick, onHover } from 'alchemy-engine'
+import { text, onClick } from 'alchemy-engine'
 
-import { name as gameTitle } from '~/../package.json'
-import { TextStyle } from '~/data'
-import { type Scene } from '~/type'
-import settings from '../ui/settings'
+import packageJson from '~/../package.json' with { type: 'json' }
+import { TextStyle } from '~/data.js'
+import { type Scene } from '~/type.js'
+import settings from '../ui/settings.js'
 
 export default async function mainMenu(scene: Scene) {
   const { container, state, setScene, app, animate } = scene
@@ -12,7 +11,7 @@ export default async function mainMenu(scene: Scene) {
   const titleText = text(
     container,
     { ...TextStyle.MAIN, fontSize: 50 },
-    gameTitle,
+    packageJson.name,
   )
   titleText.label = 'titleText'
   titleText.anchor.set(0.5)

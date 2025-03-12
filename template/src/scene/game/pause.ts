@@ -1,6 +1,6 @@
 import { graphics, container as createContainer, text } from 'alchemy-engine'
 
-import { type Scene } from '~/type'
+import { type Scene } from '~/type.js'
 
 export default function pause(scene: Scene) {
   const c = createContainer(scene.container)

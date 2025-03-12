@@ -6,9 +6,9 @@ import {
   text,
 } from 'alchemy-engine'
 
-import { type Scene } from '~/type'
-import { TextStyle } from '~/data'
-import pause from './pause'
+import { type Scene } from '~/type.js'
+import { TextStyle } from '~/data.js'
+import pause from './pause.js'
 
 export default async function game(scene: Scene) {
   centerPivot(scene.container, scene.app.screen.width, scene.app.screen.height)

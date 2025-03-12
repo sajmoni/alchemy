@@ -1,14 +1,14 @@
 import { text, sync, container, graphics, onClick } from 'alchemy-engine'
 
-import { TextStyle } from '~/data'
-import { type Scene } from '~/type'
+import { TextStyle } from '~/data.js'
+import { type Scene } from '~/type.js'
 
 export default function settings(scene: Scene) {
   const settingsContainer = container(scene.container)
-  settingsContainer.position.set(
-    scene.app.screen.width / 2,
-    scene.app.screen.height / 2,
-  )
+  settingsContainer.position = {
+    x: scene.app.screen.width / 2,
+    y: scene.app.screen.height / 2,
+  }
 
   const width = scene.app.screen.width * 0.6
   const height = scene.app.screen.height * 0.8

@@ -1,7 +1,7 @@
 import { arrowKeys } from 'alchemy-engine'
 
-import game from './scene/game'
-import mainMenu from './scene/mainMenu'
+import game from './scene/game/index.js'
+import mainMenu from './scene/mainMenu.js'
 
 export const scenes = {
   game,

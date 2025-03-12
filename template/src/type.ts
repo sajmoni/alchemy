@@ -1,8 +1,9 @@
 import { type BaseScene } from 'alchemy-engine'
 
-import type textureData from '~/public/asset/spritesheet/data.json'
-import sounds from './sounds.json'
-import { keys, scenes, state } from './data'
+import textureData from '~/public/asset/spritesheet/data.json' with { type: 'json' }
+import sounds from './sounds.json' with { type: 'json' }
+import { keys, scenes } from './data.js'
+import { state } from './state.js'
 
 export type Keys = typeof keys
 export type TextureName = keyof typeof textureData.frames
