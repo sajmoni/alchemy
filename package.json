@@ -38,18 +38,18 @@
     "node": ">=20"
   },
   "devDependencies": {
-    "@types/node": "22.13.5",
-    "@types/react": "18.3.2",
-    "@types/react-dom": "18.3.0",
+    "@types/node": "22.13.10",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4",
     "get-bin-path": "11.0.0",
     "np": "10.2.0",
     "pixi.js": "8.8.1",
-    "prettier": "3.5.2",
+    "prettier": "3.5.3",
     "prettier-config-one": "0.2.1",
     "tempy": "3.1.0",
     "tsconfig-one": "0.0.11",
     "tsx": "4.19.3",
-    "vitest": "3.0.7"
+    "vitest": "3.0.8"
   },
   "peerDependencies": {
     "pixi.js": "8.x"
@@ -66,20 +66,20 @@
     "nano-pool": "0.1.1",
     "nano-spawn": "0.2.0",
     "park-miller": "2.0.0",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "read-pkg": "9.0.1",
-    "remeda": "2.21.0",
+    "remeda": "2.21.2",
     "round-to": "6.0.0",
     "screen-shake": "0.2.1",
-    "sort-package-json": "2.15.0",
+    "sort-package-json": "3.0.0",
     "tiny-toolkit": "0.3.0",
     "tinykeys": "3.0.0",
-    "type-fest": "4.35.0",
+    "type-fest": "4.37.0",
     "typed-ls": "0.2.0",
-    "typescript": "5.7.3",
+    "typescript": "5.8.2",
     "valtio": "2.1.3",
-    "vite": "6.2.0",
+    "vite": "6.2.2",
     "write-package": "7.1.0",
     "write-pretty-file": "0.2.0"
   }
