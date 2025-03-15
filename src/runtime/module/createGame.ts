@@ -56,14 +56,40 @@ export default async function createGame<
   scene: SceneKey
   randomSeed?: number
   config?: {
+    /**
+     * Note: For best result, pass `antiAlias: true` to app.init
+     */
     pixelPerfect?: boolean
+    /**
+     * Pause the game when the user goes to another tab or window
+     */
     autoPause?: boolean
+    /**
+     * Automatically adjust resolution to take up full width or height
+     */
+    fullScreen?: boolean
   }
   panel?: Panel<State>
 }) {
   if (config.pixelPerfect) {
     // antialias: true has to be set on application
     TextureStyle.defaultOptions.scaleMode = 'nearest'
+  }
+
+  if (config.fullScreen) {
+    function getResolution() {
+      const resolution = Math.min(
+        window.innerWidth / app.screen.width,
+        window.innerHeight / app.screen.height,
+      )
+
+      return resolution
+    }
+
+    window.addEventListener('resize', () => {
+      app.renderer.resolution = getResolution()
+    })
+    app.renderer.resolution = getResolution()
   }
 
   Assets.add({ alias: 'spritesheet', src: spriteSheetPath })
