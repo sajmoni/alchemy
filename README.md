@@ -553,3 +553,4 @@ Run `./go.sh` to test that things work
 
 - State machine: [xstate](https://github.com/statelyai/xstate/tree/main/packages/xstate-fsm)
 - Noise [simplex-noise](https://github.com/jwagner/simplex-noise.js)
+- 2D Vector [vcr-2d](https://github.com/sajmoni/vcr-2d)
